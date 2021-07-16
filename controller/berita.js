@@ -42,9 +42,25 @@ module.exports = {
           res.redirect('/berita')
         }
       )
-    }
-    if (req.body.submit=="foto") {
-      
+    }else if (req.body.submit=="foto") {
+      if (req.files) {
+        var file = req.files.foto;
+        var filename = req.body.id_berita+".png";
+        file.mv("public/assets/img/berita/"+filename,function(err){
+          if(err)console.log(err)
+          db.query(
+            "UPDATE `berita` SET `foto`=? WHERE `id_berita` = ?",
+            [filename, req.body.id_berita],
+            (err, result) => {
+              if (err) console.log(err)
+              res.redirect('/berita')
+            }
+          )
+        });
+      }
+    } else {
+      console.log("nothing happen -"+req.body.submit+"-")
+      res.redirect('/berita')
     }
 
   }

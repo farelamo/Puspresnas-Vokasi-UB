@@ -25,7 +25,7 @@ module.exports = {
                 if (error) console.log(error)
                 else {
                   db.query(
-                    'SELECT * FROM kategori_lomba',
+                    'SELECT * FROM kategori',
                     (error, kategori) => {
                       if (error) console.log(error)
                       else {
@@ -44,9 +44,12 @@ module.exports = {
 
   crud: (req, res) => {
     if (req.body.submit=="edit") {
+      var judul     = req.body.judul;
+      var deskripsi = req.body.deskripsi;
+      var isi       = req.body.isi;
       db.query(
         "UPDATE `berita` SET `judul`=?,`deskripsi`=?,`isi`=?,`id_kategori`=? WHERE `id_berita` = ?",
-        [req.body.judul, req.body.deskripsi, req.body.isi, req.body.id_kategori, req.body.id_berita],
+        [judul, deskripsi, isi, req.body.id_kategori, req.body.id_berita],
         (err, result) => {
           if (err) console.log(err)
           res.redirect('/berita')
