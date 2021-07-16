@@ -1,5 +1,6 @@
 const express  = require('express')
 const session  = require('express-session')
+const upload = require("express-fileupload");
 const app = express()
 
 //mvc
@@ -23,6 +24,7 @@ const beritaEdit = require('./routers/beritaEdit')
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));
 app.use(session({secret: 'excalibur'}));
+app.use(upload());
 app.set('view engine','ejs');
 var sess;
 //akhir middleware
