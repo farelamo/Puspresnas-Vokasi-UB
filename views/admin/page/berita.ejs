@@ -17,6 +17,7 @@
                         <thead>
                           <tr>
                             <th>No.</th>
+                            <th>Foto</th>
                             <th>Judul</th>
                             <th>Deskripsi</th>
                             <th>Tanggal</th>
@@ -27,9 +28,14 @@
                           <% 
                             var no = 1;
                             berita.forEach((data)=> { 
+                              if (data.foto!==""){ var foto = data.foto;}
+                              else {var foto = "default.png";}
                           %>
                             <tr>
                               <td class="text-center"><%= no %></td>
+                              <td>
+                                <img src="/assets/img/berita/<%= foto %>" class="thumbnail-table">
+                              </td>
                               <td><%= data.judul %></td>
                               <td><%= data.deskripsi %></td>
                               <td style="width: 100px;"><%= data.tanggal %></td>
@@ -64,8 +70,8 @@
                 <form class="forms-sample" method="post" enctype="multipart/form-data">
                   <div class="form-group">
                     <input type="hidden" class="d-none" id="fId" name="id_berita" required>
-                    <p for="buku">Upload foto :</p>
-                    <input type="file" class="form-control" id="eBuku" name="buku" required style="height: auto">
+                    <p for="foto">Upload foto :</p>
+                    <input type="file" class="form-control" id="foto" name="foto" required style="height: auto">
                   </div><hr>
                   <div class="modal-footer p-0 pt-3">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -122,13 +128,9 @@
     .btn-table {padding: 2px !important; height: fit-content;}
     .btn-table i {font-size: 16px !important}
     .btn i {font-size: 14px;}
-    .of-cover {object-fit: cover;}
-    .of-contain {object-fit: contain;}
     .img-profil {object-fit: cover; object-position: top}
     td .img-hover:hover{height: 100px !important;width: 100px !important;left: 10px;margin-top: -75px;position: absolute;}
     .dataTables_wrapper .dataTable .btn {padding: 3px 5px 5px 3px;}
-    .flip-h {transform: scale(-1, 1)}
-    .flip-v {transform: scale(1, -1)}
 
     .dataTables_wrapper .dataTable thead .sorting:before, .dataTables_wrapper .dataTable thead .sorting_asc:before, .dataTables_wrapper .dataTable thead .sorting_desc:before, .dataTables_wrapper .dataTable thead .sorting_asc_disabled:before, .dataTables_wrapper .dataTable thead .sorting_desc_disabled:before {right: 8px;bottom: 10px;}
     .dataTables_wrapper .dataTable thead .sorting:after, .dataTables_wrapper .dataTable thead .sorting_asc:after, .dataTables_wrapper .dataTable thead .sorting_desc:after, .dataTables_wrapper .dataTable thead .sorting_asc_disabled:after, .dataTables_wrapper .dataTable thead .sorting_desc_disabled:after {
