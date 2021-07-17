@@ -19,7 +19,7 @@ module.exports = {
           if (error) console.log(error)
           else {
             db.query(
-              'SELECT * FROM kategori_lomba',
+              'SELECT * FROM kategori_konten',
               (error, kategori) => {
                 if (error) console.log(error)
                 else {

@@ -2,7 +2,7 @@
 
 Persiapan yang di install
 ```
-npm i express express-session mysql ejs dotenv cryptojs nodemon
+npm i express express-session express-fileupload mysql ejs dotenv cryptojs nodemon
 ```
 
 Run Project 
