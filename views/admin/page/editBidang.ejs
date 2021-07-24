@@ -1,0 +1,89 @@
+<section class="section">
+    <div class="section-header">
+        <h1>Edit Bidang Lomba</h1>
+    </div>
+
+    <div class="section-body">
+        <form action="/editBidang" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-12 col-md-7 col-lg-8">
+                    <!-- tinggal isi js kaya tag, lalu disimpan hasilnya ke var nomer -->
+                    <div class="form-group">
+                        <select class="form-control" name="namaLomba" id="test" required>
+                            <option class="eKategori" value="0">Pilih Bidang Lomba</option>
+                            <% bidang.forEach((data)=> { %>
+                                <option value="<%= data.id %>"><%= data.nama_bidang %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+
+                    <!-- yang pake class nya var nomer aja -->
+                    <% bidang.forEach((data)=> { %>
+                        <p id="<%= data.id %>" class="d-none"> <%= data.nama_bidang + "," + data.hadiah + "," + data.biaya + "," + data.link + "," + data.desk %></p>
+                    <% }) %>
+
+                    <input type="hidden" class="d-none" id="eId" name="id" value="" required>
+
+                    <input type="text" class="form-control" id="enama" name="nama" placeholder="Nama Bidang Lomba" value="" required><br>
+
+                    <input type="text" class="form-control" id="ehadiah" name="hadiah" placeholder="Hadiah" value="" required><br>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    Rp
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" id="ebiaya" name="biaya" placeholder="Biaya" value="" required>
+                        </div>
+                    </div>
+
+                    <textarea class=" form-control" name="desk" id="edesk" placeholder="Deskripsi.." style="height: 300px"
+                        required></textarea>
+                </div>
+
+                <div class="col-12 col-md-5 col-lg-4">
+                    <button type="submit" class="col-12 btn btn-primary btn-shadow" name="submit" value="edit"
+                        id="haha">Simpan</button><br><br>
+
+                    <div class="card">
+                        <div class="card-body">
+
+                            <!-- <div class="section-title mt-haha">File Refrensi</div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Pilih File</label>
+                            </div>
+                            <br><br> -->
+
+                            <div class="form-group">
+                                <div class="section-title mt-haha">File Refrensi</div>
+                                <input type="file" name="berkas">
+                            </div>
+
+                            <div class="section-title mt-haha">Link Group</div>
+                            <div class="form-group">
+                                <textarea class="form-control" id="elink" name="link" placeholder="Link Grup (bila ada)"
+                                    style="height: 1hahahahapx"></textarea>
+                            </div>
+                        </div>
+                    </div>
+        </form>
+    </div>
+</section>
+
+<script>
+    document.getElementById('test').addEventListener('change', function () {
+    var haha = this.value
+    console.log(this.value)
+
+    var dataLomba = (document.getElementById(this.value).textContent).split(",");
+    document.getElementById("enama").value = dataLomba[0];
+    document.getElementById("ehadiah").value = dataLomba[1];
+    document.getElementById("ebiaya").value = dataLomba[2];
+    document.getElementById("edesk").value = dataLomba[4];
+    document.getElementById("elink").value = dataLomba[3];
+    document.getElementById("eId").value = haha;
+  });
+</script>

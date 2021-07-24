@@ -1,16 +1,18 @@
 <section class="section">
   <div class="section-header">
-    <h1>Tambah Jenis Lomba</h1>
+    <h1>Edit Jenis Lomba</h1>
   </div>
 
   <div class="section-body">
-    <form method="post">
+    <form action="/editJenis" method="post">
       <div class="row">
         <div class="col-12 col-md-7 col-lg-8">
+          <input type="hidden" class="d-none" id="eId" name="id" value="<%= id %> " required>
 
-          <input type="text" class="form-control" name="nama" placeholder="Nama Lomba" required><br>
+          <input type="text" class="form-control" name="nama" value="<%= jenis[0].nama_lomba %> "
+            placeholder="Nama Lomba"><br>
 
-          <input type="text" class="form-control" name="sumber" placeholder="Sumber" required><br>
+          <input type="text" class="form-control" name="sumber" value="<%= jenis[0].sumber %>" placeholder="Sumber"><br>
 
           <div class="form-group">
             <div class="input-group">
@@ -19,17 +21,17 @@
                   <i class="fas fa-calendar"></i>
                 </div>
               </div>
-              <input type="text" class="form-control daterange" name="tanggal">
+              <input type="text" class="form-control daterange" name="tanggal" value="<%= jenis[0].tanggal %> ">
             </div>
           </div>
 
-          <textarea class=" form-control" name="desk" placeholder="Deskripsi.." style="height: 370px"
-            required></textarea>
+          <textarea class=" form-control" name="desk" placeholder="Deskripsi.."
+            style="height: 370px"><%= jenis[0].desk %></textarea>
         </div>
 
         <div class="col-12 col-md-5 col-lg-4">
-          <button type="submit" class="col-12 btn btn-primary btn-shadow" name="submit" value="tambah"
-            id="haha">Simpan</button><br><br>
+          <button type="submit" class="col-12 btn btn-primary btn-shadow" name="submit"
+            value="edit">Simpan</button><br><br>
 
           <div class="card">
             <div class="card-body">
@@ -45,36 +47,35 @@
                 <input type="file" name="gambar" class="form-control">
               </div> -->
 
-              <!-- <div class="section-title mt-0">Deskripsi Singkat</div>
-              <div class="form-group">
-                <textarea class="form-control" name="deskShort" placeholder="Deskripsi singkat..."
-                  style="height: 100px"></textarea>
-              </div> -->
-
               <div class="section-title mt-0">Tipe Lomba</div>
               <div class="form-group">
-                <select class="form-control" name="tipe" required>
+                <select class="form-control" name="tipe">
                   <option class="eKategori" value="">Pilih Tipe</option>
-                  <option class="eKategori" value="Team">Team</option>
-                  <option class="eKategori" value="Individu">Individu</option>
-                </select>
-              </div>
-
-              <div class="section-title mt-0">Kategori Lomba</div>
-              <div class="form-group">
-                <select class="form-control" name="kategoriLomba" id="test" required>
-                  <option class="eKategori" value="0">Pilih Kategori</option>
-                  <% kategoriLomba.forEach((data)=> { %>
-                    <option class="eKategori" value="<%= data.id %>">
-                      <%= data.kategori %>
+                  <!-- <option class="eKategori" value="Team">Team</option>
+                  <option class="eKategori" value="Individu">Individu</option> -->
+                  <% enumArray.forEach((data)=> { %>
+                    <option value="<%= data %>" <% if(data==jenis[0].tipe){ %> selected <% } %>><%= data %>
                     </option>
                     <% }) %>
                 </select>
               </div>
 
+              <div class="section-title mt-0">Kategori Lomba</div>
+              <div class="form-group">
+                <select class="form-control" name="kategoriLomba" id="test">
+                  <option class="eKategori" value="0">Pilih Kategori</option>
+                  <% kategoriLomba.forEach((data)=> { %>
+                    <option class="eKategori" value="<%= data.id %>" <% if(data.id==jenis[0].id_kategori){ %> selected
+                      <% } %>>
+                        <%= data.kategori %>
+                    </option>
+                    <% }) %>
+                </select>
+              </div>
+
+              <input type="hidden" class="d-none" id="eId" name="tags" value="<%= tag %> ">
               <div class="section-title mt-0">Tag Lomba</div>
               <div class="form-group">
-                <input type="hidden" class="d-none" id="kId" name="id_kategori" required>
 
                 <div class="selectTag kategori0">
                   <label class="selectgroup-item">
@@ -82,15 +83,19 @@
                   </label>
                 </div>
 
-
-                <% tag.forEach((data)=> { %>
-                  <div class="selectgroup selectgroup-pills selectTag kategori<%= data.id_kategori_lomba %>"
-                    style="display : none">
+                <% tagLomba.forEach((data)=> { %>
+                  <div class="selectgroup selectgroup-pills selectTag kategori<%= data.id_kategori_lomba %>" style="display : none">
                     <label class="selectgroup-item">
-                      <input type="checkbox" name="tag" value="<%= data.id %>" class="selectgroup-input">
-                      <span class="selectgroup-button">
-                        <%= data.tag %>
-                      </span>
+                      <input type="checkbox" name="tag" value="<%= data.id %>" <% tag.forEach((isi)=> { %>
+                      <% if (data.id==isi) { %>
+                        checked="checked"
+                        <% } %>
+                          <% }) %>
+                            class="selectgroup-input">
+                            <span class="selectgroup-button">
+                              <%= data.tag %>
+                            </span>
+
                     </label>
                   </div>
                   <% }) %>

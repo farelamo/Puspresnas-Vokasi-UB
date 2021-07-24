@@ -1,4 +1,7 @@
 const db = require('../config/database')
+const Db = require("../models");
+const Post = Db.artikel;
+const Op = Db.Sequelize.Op;
 var sess;
 
 module.exports = {
@@ -14,7 +17,7 @@ module.exports = {
           if (error) console.log(error)
           else {
             db.query(
-              'SELECT * FROM artikel ORDER BY `id_artikel` DESC',
+              'SELECT * FROM artikel ORDER BY `id` DESC',
               (error, artikel) => {
                 if (error) console.log(error)
                 else {
@@ -35,7 +38,7 @@ module.exports = {
   crud: (req, res) => {
     if (req.body.submit=="hapus") {
       db.query(
-        "DELETE FROM `artikel` WHERE `id_artikel` = ?",
+        "DELETE FROM `artikel` WHERE `id` = ?",
         [req.body.id_artikel],
         (err, result) => {
           if (err) console.log(err)
@@ -49,7 +52,7 @@ module.exports = {
         file.mv("public/assets/img/artikel/"+filename,function(err){
           if(err)console.log(err)
           db.query(
-            "UPDATE `artikel` SET `foto`=? WHERE `id_artikel` = ?",
+            "UPDATE `artikel` SET `foto`=? WHERE `id` = ?",
             [filename, req.body.id_artikel],
             (err, result) => {
               if (err) console.log(err)
@@ -63,6 +66,33 @@ module.exports = {
       res.redirect('/artikel')
     }
 
-  }
+  },
 
+  findAll : (req, res) => {
+    const judul = req.query.judul;
+    let condition = judul ? { judul: { [Op.like]: `%${judul}%` } } : null;
+
+    Post.findAll({ where: condition })
+        .then((data) => {
+            res.send(data);
+        }).catch((err) => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occured while find post"
+            });
+        });
+  },
+
+  findOne : (req, res) => {
+    const id = req.params.id;
+
+    Post.findByPk(id)
+        .then((data) => {
+            res.send(data);
+        }).catch((err) => {
+            res.status(500).send({
+                message: "Error retrieving post with id=" + id
+            });
+        });
+  }
 }

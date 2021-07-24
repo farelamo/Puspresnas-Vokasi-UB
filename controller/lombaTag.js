@@ -14,15 +14,24 @@ module.exports = {
           if (error) console.log(error)
           else {
             db.query(
-              'SELECT * FROM tag_lomba',
+              'SELECT * FROM tag_lomba ORDER BY `id` DESC',
               (error, tag) => {
                 if (error) console.log(error)
                 else {
-                  res.render('../views/admin/index.ejs', {
-                    profil,
-                    tag,
-                    page: 'lombaTag'
-                  })
+                  db.query(
+                    'SELECT * FROM kategori_lomba ORDER BY kategori DESC',
+                    (error, kategori) => {
+                      if (error) console.log(error)
+                      else {
+                        res.render('../views/admin/index.ejs', {
+                          profil,
+                          tag,
+                          kategori,
+                          page: 'lombaTag'
+                        })
+                      }
+                    }
+                  )
                 }
               }
             )
@@ -33,10 +42,10 @@ module.exports = {
   },
 
   kondisi: (req, res) => {
-    if(req.body.submit == 'tambah') {
+    if (req.body.submit == 'tambah') {
       db.query(
-        "INSERT INTO tag_lomba (tag) VALUES (?)",
-        [req.body.tag],
+        "INSERT INTO tag_lomba (tag, id_kategori_lomba) VALUES (?,?)",
+        [req.body.tag, req.body.kategoriLomba],
         (error, result) => {
           if (error) console.log(error)
           res.redirect('/lombaTag')
@@ -44,8 +53,8 @@ module.exports = {
       )
     } else if (req.body.submit == 'edit') {
       db.query(
-        'UPDATE tag_lomba SET tag = ? WHERE id = ?',
-        [req.body.lomba, req.body.id],
+        'UPDATE tag_lomba SET tag = ?, id_kategori_lomba = ? WHERE id = ?',
+        [req.body.lomba, req.body.kategoriLomba, req.body.id],
         (error, result) => {
           // console.log(req.body.lomba)
           if (error) console.log(error)
@@ -55,13 +64,13 @@ module.exports = {
     } else {
       db.query(
         'DELETE FROM tag_lomba WHERE id = (?)',
-         [req.body.id],
-         (error,result) => {
-           if(error) {
-             console.log(error)
-           }
-           res.redirect('/lombaTag')
-         }
+        [req.body.id],
+        (error, result) => {
+          if (error) {
+            console.log(error)
+          }
+          res.redirect('/lombaTag')
+        }
       )
     }
   }
