@@ -15,7 +15,7 @@
                 <div class="row m-0">
                   <div class="col-md-3 p-md-2 p-5">
                     <div class="avatar-item mb-0">
-                        <img alt="image" src="/assets/img/profil/<%= foto %>" class="img-fluid" data-toggle="tooltip" title="Foto <%= nama %>" style="width: 100%; object-fit: cover;">
+                        <img alt="image" src="/assets/img/profil/<%= foto %>" id="fotoprofil" class="img-fluid" data-toggle="tooltip" title="Foto <%= nama %>" style="width: 100%; object-fit: cover;">
                         <a class="btn btn-icon btn-primary text-white rounded-circle" data-toggle="modal" data-target="#editFoto" title="Edit Foto" style="position: absolute; bottom: 0; right: 0; height: 50px; width: 50px; font-size: 18px">
                           <i class="fa fa-pen" style="vertical-align: -webkit-baseline-middle;"></i>
                         </a>
@@ -68,3 +68,13 @@
             </div>
           </div>
         </div>
+
+<script type="text/javascript">
+  function setHeight(){
+    var height = document.getElementById('fotoprofil').clientWidth;
+    console.log(height);
+    document.getElementById('fotoprofil').style.height = height+"px";
+    console.log(height+"p");
+  }  
+  setHeight();
+</script>

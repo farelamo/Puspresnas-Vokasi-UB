@@ -64,15 +64,8 @@ module.exports = {
           }
         }
       )
-      // db.query(
-      //   "UPDATE `user` SET `username`=?,`nama`=?,`isi`=?,`id_kategori`=? WHERE `id_artikel` = ?",
-      //   [judul, deskripsi, isi, req.body.id_kategori, req.body.id_artikel],
-      //   (err, result) => {
-      //     if (err) console.log(err)
-      //     res.redirect('/artikel')
-      //   }
-      // )
-    }else if (req.body.submit=="foto") {
+    }
+    else if (req.body.submit=="foto") {
       if (req.files) {
         var file = req.files.foto;
         var filename = sess.id_user+".png";
