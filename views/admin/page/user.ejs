@@ -1,27 +1,219 @@
 
         <section class="section">
           <div class="section-header">
-            <h1>Pengaturan User</h1>
+            <div class="row m-0">
+              <h1 class="mr-3">Pengaturan User</h1>
+              <a class="btn btn-primary text-white" data-toggle="modal" data-target="#tambahUser"> Tambah User</a>
+            </div>
           </div>
 
           <div class="section-body">
-            <h2 class="section-title">This is Example Page</h2>
-            <p class="section-lead">This page is just an example for you to create your own page.</p>
             <div class="card">
-              <div class="card-header">
-                <h4>Example Card</h4>
-              </div>
               <div class="card-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              </div>
-              <div class="card-footer bg-whitesmoke">
-                This is card footer
+                <table id="myTable" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th width="5%">No.</th>
+                      <th>Nama</th>
+                      <th>Username</th>
+                      <th>Level</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% 
+                      var no = 1;
+                      user.forEach((data)=> { 
+                        if (data.foto!==""){ var foto = data.foto;}
+                        else {var foto = "default.png";}
+                    %>
+                      <tr>
+                        <td class="text-center"><%= no %></td>
+                        <td>
+                          <img alt="" src="/assets/img/profil/<%= foto %>" class="rounded-circle mr-2 of-cover" width="35" height="35">
+                          <%= data.nama %>
+                        </td>
+                        <td><%= data.username %></td>
+                        <td>
+                          <div class="badge badge-success"><%= data.level %></div>
+                        </td>
+                        <td align="center" style="width: 90px;">
+                          <button type="button" class="btn btn-table btn-sm btn-primary" title="Edit" data-toggle="modal" data-target="#editUser" onclick='editUser("<%= data.id_user %>")'><i class="fa fa-pen"></i></button>
+                          <button type="button" class="btn btn-table btn-sm btn-primary" title="Foto" data-toggle="modal" data-target="#fotoUser" onclick='fotoUser("<%= data.id_user %>")'><i class="fa fa-camera"></i></button>
+                          <p id="<%= data.id_user %>" class="d-none"><%= data.username+","+data.nama+","+data.level %></p>
+                          <button type="button" class="btn btn-table btn-sm btn-danger" title="Hapus" data-toggle="modal" data-target="#hapusUser" onclick='hapusUser("<%= data.id_user %>")'><i class="fa fa-times"></i></button>
+                      </td>
+                      </tr>
+                    <% no++; }) %>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </section>
+
+        <div class="modal fade" id="tambahUser" tabindex="-1" role="dialog"  style="display: none;" aria-modal="true">
+          <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title"><i class="fa fa-pen"></i> Tambah User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div><hr>
+              <div class="modal-body">
+                <form class="forms-sample" method="post">
+                  <div class="row">
+                    <div class="form-group col-md-4">
+                      <p>Username</p>
+                      <input type="text" class="form-control" name="username" value="" required>
+                    </div>
+                    <div class="form-group col-md-8">
+                      <p>Nama</p>
+                      <input type="text" class="form-control" name="nama" value="" required>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-8">
+                      <p>Password</p>
+                      <input type="password" class="form-control" name="password" value="" required>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <p>Level</p>
+                      <select class="form-control" name="level" required>
+                        <option value="admin">Admin</option>
+                        <option value="superadmin">Superadmin</option>
+                      </select>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="modal-footer p-0 pt-3">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-shadow" name="submit" value="tambah"><i class="fa fa-check"></i><span> Submit</span></button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="editUser" tabindex="-1" role="dialog"  style="display: none;" aria-modal="true">
+          <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title"><i class="fa fa-pen"></i> Edit User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div><hr>
+              <div class="modal-body">
+                <form class="forms-sample" method="post">
+                  <input type="hidden" class="d-none" id="eId" name="id_user">
+                  <div class="row">
+                    <div class="form-group col-md-4">
+                      <p>Username</p>
+                      <input type="text" class="form-control" id="eUsername" name="username" required>
+                    </div>
+                    <div class="form-group col-md-8">
+                      <p>Nama</p>
+                      <input type="text" class="form-control" id="eNama" name="nama" required>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-8">
+                      <p>Password</p>
+                      <input type="password" class="form-control" id="ePassword" name="password" value="" required>
+                      <label class="text-danger">*kosongkan jika tidak ingin mengubah password</label>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <p>Level</p>
+                      <select class="form-control" name="level" required>
+                        <option class="eLevel" value="admin">Admin</option>
+                        <option class="eLevel" value="superadmin">Superadmin</option>
+                      </select>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="modal-footer p-0 pt-3">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-shadow" name="submit" value="edit"><i class="fa fa-check"></i><span> Submit</span></button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="fotoUser" tabindex="-1" role="dialog"  style="display: none;" aria-modal="true">
+          <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title"><i class="fa fa-pen"></i> Edit Foto User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div><hr>
+              <div class="modal-body">
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <input type="hidden" class="d-none" id="fId" name="id_user" required>
+                    <p for="foto">Upload foto :</p>
+                    <input type="file" class="form-control" id="foto" name="foto" required style="height: auto">
+                  </div><hr>
+                  <div class="modal-footer p-0 pt-3">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary btn-shadow" name="submit" value="foto"><i class="fa fa-save"></i><span> Simpan</span></button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="hapusUser" tabindex="-1" role="dialog"  style="display: none;" aria-modal="true">
+          <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title"><i class="fa fa-times"></i> Hapus User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div><hr>
+              <div class="modal-body">
+                <form class="forms-sample" method="post">
+                  <div class="form-group">
+                    <p id="dHapus">Apakah anda yakin ingin menghapus user ini?</p>
+                    <input type="hidden" class="d-none" class="form-control" id="dId" name="id_user" value="" required>
+                  </div><hr>
+                  <div class="modal-footer p-0 pt-3">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger btn-shadow" name="submit" value="hapus"><i class="fa fa-times"></i><span> Hapus</span></button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<script type="text/javascript">
+  function editUser(iduser){
+    var dataUser = (document.getElementById(iduser).textContent).split(",");
+    document.getElementById("eId").value = iduser;
+    document.getElementById("eUsername").value = dataUser[0];
+    document.getElementById("eNama").value = dataUser[1];
+    document.getElementById("ePassword").value = "";
+    for (var i = 0; i < document.getElementsByClassName("eLevel").length ; i++) {
+      if (document.getElementsByClassName("eLevel")[i].value==dataUser[2]) {
+        document.getElementsByClassName("eLevel")[i].selected = "true";
+      }
+    }
+  }
+  function fotoUser(iduser){
+    document.getElementById("fId").value = iduser;
+  }
+  function hapusUser(iduser){
+    var dataUser = (document.getElementById(iduser).textContent).split(",");
+    document.getElementById("dId").value = iduser;
+    document.getElementById("dHapus").textContent = 'Apakah anda yakin ingin menghapus "'+dataUser[1]+'"?';
+  }
+</script>
