@@ -1,4 +1,6 @@
 const db = require('../config/database')
+const CryptoJS = require("crypto-js");
+const fs = require('fs');
 var sess;
 
 module.exports = {
@@ -19,6 +21,129 @@ module.exports = {
           );
         }
       );
+    }
+  },
+
+  crud: (req, res) => {
+    if (req.body.submit == "tambah") {
+      db.query(
+        "SELECT * FROM `user` WHERE `username` = ?",
+        [req.body.username],
+        (err, user2) => {
+          if (err) console.log(err)
+          console.log("username baru = "+req.body.username);
+          console.log("duplikat username baru = "+user2.length);
+          if (user2.length==0) {
+            var password = CryptoJS.MD5(req.body.password).toString();
+            db.query(
+              "INSERT INTO `user` (`username`,`nama`,`password`,`level`) VALUES (?,?,?,?)",
+              [req.body.username, req.body.nama, password, req.body.level],
+              (err, result) => {
+                if (err) console.log(err)
+                console.log("berhasil");
+                res.redirect('user');
+              }
+            )
+          }else{
+            console.log("gagal");
+            res.redirect('user');
+          }
+        }
+      )
+    }
+    else if (req.body.submit == "edit") {
+      db.query(
+        "SELECT * FROM `user` WHERE `id_user` = ?",
+        [req.body.id_user],
+        (err, user) => {
+          if (err) console.log(err)
+          var usernameLama = user[0].username;
+          console.log("username lama = "+usernameLama);
+          console.log("username baru = "+req.body.username);
+          if (usernameLama !== req.body.username) {
+            db.query(
+              "SELECT * FROM `user` WHERE `username` = ?",
+              [req.body.username],
+              (err, user2) => {
+                if (err) console.log(err)
+                console.log("duplikat username baru = "+user2.length);
+                if (user2.length==0) {
+                  if (req.body.password=="") {var password = user[0].password;}
+                  else {var password = CryptoJS.MD5(req.body.password).toString();}
+                  db.query(
+                    "UPDATE `user` SET `username`=?,`nama`=?,`password`=?,`level`=? WHERE `id_user` = ?",
+                    [req.body.username, req.body.nama, password, req.body.level, req.body.id_user],
+                    (err, result) => {
+                      if (err) console.log(err)
+                      console.log("berhasil");
+                      res.redirect('user');
+                    }
+                  )
+                }else{
+                  console.log("gagal");
+                  res.redirect('user');
+                }
+              }
+            )
+          }
+          else{
+            if (req.body.password=="") {var password = user[0].password;}
+            else {var password = CryptoJS.MD5(req.body.password).toString();}
+            db.query(
+              "UPDATE `user` SET `username`=?,`nama`=?,`password`=?,`level`=? WHERE `id_user` = ?",
+              [req.body.username, req.body.nama, password, req.body.level, req.body.id_user],
+              (err, result) => {
+                if (err) console.log(err)
+                console.log("berhasil");
+                res.redirect('user');
+              }
+            )
+          }
+        }
+      )
+    }
+    else if (req.body.submit == "foto") {
+      if (req.files) {
+        var file = req.files.foto;
+        var filename = req.body.id_user+".png";
+        file.mv("public/assets/img/profil/"+filename,function(err){
+          if(err)console.log(err)
+          db.query(
+            "UPDATE `user` SET `foto`=? WHERE `id_user` = ?",
+            [filename, req.body.id_user],
+            (err, result) => {
+              if (err) console.log(err)
+              res.redirect('user')
+            }
+          )
+        });
+      }
+    }
+    else if (req.body.submit == "hapus") {
+      db.query(
+        "SELECT * FROM `user` WHERE `id_user` = ?",
+        [req.body.id_user],
+        (err, user) => {
+          if (user[0].foto!==""){
+            var filePath = "public/assets/img/profil/"+user[0].foto;
+            fs.unlinkSync(filePath);
+            console.log("foto berhasil dihapus");
+          }
+          db.query(
+            "DELETE FROM `user` WHERE id_user = (?)",
+            [req.body.id_user],
+            (error,result) => {
+              if(error) { console.log(error)}
+              console.log("user berhasil dihapus");
+              res.redirect('user')
+            }
+          )
+        }
+      )
+    }
+    else {
+      console.log("nothing happen -"+req.body.submit+"-");
+      res.redirect('user')
     }
   }
 }

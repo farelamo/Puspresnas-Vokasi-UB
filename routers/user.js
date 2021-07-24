@@ -4,6 +4,6 @@ const controller = require('../controller/user')
 
 user.route('/user')
     .get(controller.index)
-    //.post(controller.crud)
+    .post(controller.crud)
 
 module.exports = user
