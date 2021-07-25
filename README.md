@@ -12,6 +12,6 @@ nodemon app
 
 Kekurangan 
 ```
-~ Dashboard On Progress 
+~ Bug pada tag tambah jenis & edit jenis (pilih hanya 1 tag di lain kategori teknologi)
 ```
 # Jangan dilihat penamaan commit yang rusak, karena terjadi error waktu commit - By admin
