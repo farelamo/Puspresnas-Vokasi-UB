@@ -3,7 +3,7 @@
           <div class="section-header">
             <div class="row m-0">
               <h1 class="mr-3">Pengaturan User</h1>
-              <a class="btn btn-primary text-white" data-toggle="modal" data-target="#tambahUser"> Tambah User</a>
+              <a class="btn btn-primary text-white" data-toggle="modal" onclick="tambahUser()" data-target="#tambahUser"> Tambah User</a>
             </div>
           </div>
 
@@ -66,7 +66,7 @@
                   <div class="row">
                     <div class="form-group col-md-4">
                       <p>Username</p>
-                      <input type="text" class="form-control" name="username" value="" required>
+                      <input type="text" class="form-control" id="tUsername" name="username" value="" required>
                     </div>
                     <div class="form-group col-md-8">
                       <p>Nama</p>
@@ -76,7 +76,7 @@
                   <div class="row">
                     <div class="form-group col-md-8">
                       <p>Password</p>
-                      <input type="password" class="form-control" name="password" value="" required>
+                      <input type="password" class="form-control" id="tPassword" name="password" value="" required>
                     </div>
                     <div class="form-group col-md-4">
                       <p>Level</p>
@@ -122,7 +122,7 @@
                   <div class="row">
                     <div class="form-group col-md-8">
                       <p>Password</p>
-                      <input type="password" class="form-control" id="ePassword" name="password" value="" required>
+                      <input type="password" class="form-control" id="ePassword" name="password" value="">
                       <label class="text-danger">*kosongkan jika tidak ingin mengubah password</label>
                     </div>
                     <div class="form-group col-md-4">
@@ -148,7 +148,7 @@
           <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title"><i class="fa fa-pen"></i> Edit Foto User</h5>
+                <h5 class="modal-title"><i class="fa fa-pen"></i> <span id="fDesc">Edit Foto User</span></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
@@ -196,6 +196,10 @@
         </div>
 
 <script type="text/javascript">
+  function tambahUser(){
+    document.getElementById("tUsername").value = "";
+    document.getElementById("tPassword").value = "";
+  }
   function editUser(iduser){
     var dataUser = (document.getElementById(iduser).textContent).split(",");
     document.getElementById("eId").value = iduser;
@@ -209,7 +213,9 @@
     }
   }
   function fotoUser(iduser){
+    var dataUser = (document.getElementById(iduser).textContent).split(",");
     document.getElementById("fId").value = iduser;
+    document.getElementById("fDesc").textContent = 'Edit foto '+dataUser[1];
   }
   function hapusUser(iduser){
     var dataUser = (document.getElementById(iduser).textContent).split(",");
