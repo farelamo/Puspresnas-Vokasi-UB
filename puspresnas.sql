@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Jul 2021 pada 17.02
+-- Waktu pembuatan: 25 Jul 2021 pada 05.31
 -- Versi server: 10.4.20-MariaDB
 -- Versi PHP: 8.0.8
 
@@ -46,7 +46,7 @@ INSERT INTO `artikel` (`id`, `judul`, `deskripsi`, `isi`, `tanggal`, `foto`, `id
 (2, 'Petunjuk Teknis Pelaksanaan PIMNAS ke 34 Tahun 2021', 'Lorem 2 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2021-05-13', '', 1),
 (3, 'Jelang Lomba Gemastik 2021, Vokasi UB mengadakan bimbingan lomba rutin', 'Lorem 3 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2021-06-03', '', 1),
 (4, 'Pekan Ilmiah Mahasiswa Nasional 2020, Universitas Brawijaya Jadi Juara Kedua', 'Lorem 4 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2021-06-13', '', 4),
-(5, 'Judul Artikel', 'Deskripsi Artikel', 'Isi Artikel', '2021-07-16', '5.png', 3);
+(5, 'a', 'v', 'c', '2021-07-16', '5.png', 3);
 
 -- --------------------------------------------------------
 
@@ -55,7 +55,7 @@ INSERT INTO `artikel` (`id`, `judul`, `deskripsi`, `isi`, `tanggal`, `foto`, `id
 --
 
 CREATE TABLE `berita` (
-  `id_berita` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `judul` varchar(100) NOT NULL,
   `deskripsi` text NOT NULL,
   `isi` text NOT NULL,
@@ -68,12 +68,12 @@ CREATE TABLE `berita` (
 -- Dumping data untuk tabel `berita`
 --
 
-INSERT INTO `berita` (`id_berita`, `judul`, `deskripsi`, `isi`, `tanggal`, `foto`, `id_kategori`) VALUES
+INSERT INTO `berita` (`id`, `judul`, `deskripsi`, `isi`, `tanggal`, `foto`, `id_kategori`) VALUES
 (1, 'Raih Juara 2 dalam Lomba Desain Maskot Pariwisata Kota Bogor 2020', 'Lorem 1 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'Lorem 1 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2021-04-03', '1.png', 1),
 (2, 'Raih Medali Silver di World Science, Environmental, and Engineering Competition 2021', 'Lorem 2 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2021-05-13', '2.png', 1),
 (3, 'Inovasi Mahasiswa UB Sabet Penghargaan di Ipitex 2020', 'Lorem 3 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2021-06-03', '', 1),
 (4, 'Riset Vokasi UB untuk Perkembangan Bangsa, Ilmu Pengetahuan, dan Kemanusiaan', 'Lorem 4 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2021-06-13', '4.png', 4),
-(5, 'Cara menghilangkan Stress', 'Tidur', 'Tidur', '2021-07-16', '5.png', 1);
+(5, 'aaa', 'aaa', 'aaa', '2021-07-16', '5.png', 3);
 
 -- --------------------------------------------------------
 
@@ -99,8 +99,8 @@ CREATE TABLE `bidang_lomba` (
 
 INSERT INTO `bidang_lomba` (`id`, `nama_bidang`, `desk`, `biaya`, `hadiah`, `link`, `file`, `id_jenis`, `gambar`) VALUES
 (16, 'v', 'v', '30000', 'v', 'v', '', 242, ''),
-(17, 'a', 'a', '30000', 'a', 'a', 'CV (1).docx', 262, ''),
-(18, 'b', 'b', '20000', 'b', 'b', 'CV Revisi.pdf', 262, '');
+(17, 'a', 'a', '30000', 'a', 'a', '', 262, ''),
+(18, 'b', 'b', '20000', 'b', 'b', '', 262, '');
 
 -- --------------------------------------------------------
 
@@ -255,7 +255,7 @@ INSERT INTO `tag_lomba` (`id`, `tag`, `id_kategori_lomba`) VALUES
 --
 
 CREATE TABLE `user` (
-  `id_user` int(2) NOT NULL,
+  `id` int(2) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
@@ -267,7 +267,7 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama`, `username`, `password`, `level`, `foto`) VALUES
+INSERT INTO `user` (`id`, `nama`, `username`, `password`, `level`, `foto`) VALUES
 (1, 'Naufal Ulinnuha', 'naufal', '21232f297a57a5a743894a0e4a801fc3', 'superadmin', '1.png'),
 (2, 'Administrator', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', ''),
 (3, 'Alice Zuberg', 'alice', '6384e2b2184bcbf58eccf10ca7a6563c', 'superadmin', '3.png'),
@@ -287,7 +287,7 @@ ALTER TABLE `artikel`
 -- Indeks untuk tabel `berita`
 --
 ALTER TABLE `berita`
-  ADD PRIMARY KEY (`id_berita`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `bidang_lomba`
@@ -334,7 +334,7 @@ ALTER TABLE `tag_lomba`
 -- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -344,13 +344,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `artikel`
 --
 ALTER TABLE `artikel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `bidang_lomba`
@@ -392,7 +392,7 @@ ALTER TABLE `tag_lomba`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
