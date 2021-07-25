@@ -50,22 +50,20 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <!-- <div class="section-title mt-haha">File Refrensi</div>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile">
-                                <label class="custom-file-label" for="customFile">Pilih File</label>
+                            <div class="form-group">
+                                <div class="section-title mt-0">Gambar Bidang Lomba</div>
+                                <input type="file" name="gambar">
                             </div>
-                            <br><br> -->
 
                             <div class="form-group">
-                                <div class="section-title mt-haha">File Refrensi</div>
+                                <div class="section-title mt-0" id="eberkas">File Refrensi</div>
                                 <input type="file" name="berkas">
                             </div>
 
-                            <div class="section-title mt-haha">Link Group</div>
+                            <div class="section-title mt-0">Link Group</div>
                             <div class="form-group">
                                 <textarea class="form-control" id="elink" name="link" placeholder="Link Grup (bila ada)"
-                                    style="height: 1hahahahapx"></textarea>
+                                    style="height: 100px"></textarea>
                             </div>
                         </div>
                     </div>
@@ -82,8 +80,8 @@
     document.getElementById("enama").value = dataLomba[0];
     document.getElementById("ehadiah").value = dataLomba[1];
     document.getElementById("ebiaya").value = dataLomba[2];
-    document.getElementById("edesk").value = dataLomba[4];
     document.getElementById("elink").value = dataLomba[3];
+    document.getElementById("edesk").value = dataLomba[4];
     document.getElementById("eId").value = haha;
   });
 </script>

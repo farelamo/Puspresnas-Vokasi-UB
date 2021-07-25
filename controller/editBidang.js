@@ -13,7 +13,7 @@ module.exports = {
                 link,
             } = req.body
 
-            console.log(id)
+            //console.log(id)
             var file = req.files.berkas
             var filename = file.name
             file.mv("public/assets/bidangLomba/" + filename, ((error) => {
@@ -24,12 +24,25 @@ module.exports = {
                     (error, edit) => {
                         if (error) console.log(error)
                         else {
-                            res.redirect('/lombaAll')
+                            var gambar = req.files.gambar
+                            var namaGambar = gambar.name
+                            file.mv("public/assets/img/bidangLomba/" + namaGambar, ((error) => {
+                                if (error) console.log(error)
+                                db.query(
+                                    'UPDATE bidang_lomba SET gambar = ? WHERE id = ?',
+                                    [namaGambar, id],
+                                    (error, hasil) => {
+                                        if (error) console.log(error)
+                                        else {
+                                            res.redirect('/lombaAll')
+                                        }
+                                    }
+                                )
+                            }))
                         }
                     }
                 )
             }))
-
         }
     }
 }
