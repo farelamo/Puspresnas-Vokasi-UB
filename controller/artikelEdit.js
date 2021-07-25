@@ -13,13 +13,13 @@ module.exports = {
       res.redirect('login')
     } else {
       db.query(
-        'SELECT * FROM `user` WHERE `id_user`=(?)',
+        'SELECT * FROM `user` WHERE `id`=(?)',
         [sess.id_user],
         (error, profil) => {
           if (error) console.log(error)
           else {
             db.query(
-              "SELECT * FROM `artikel` WHERE `id_artikel`=?",
+              "SELECT * FROM `artikel` WHERE `id`=?",
               [req.params.id_artikel],
               (error, artikel) => {
                 if (error) console.log(error)
@@ -48,7 +48,7 @@ module.exports = {
       var deskripsi = req.body.deskripsi;
       var isi       = req.body.isi;
       db.query(
-        "UPDATE `artikel` SET `judul`=?,`deskripsi`=?,`isi`=?,`id_kategori`=? WHERE `id_artikel` = ?",
+        "UPDATE `artikel` SET `judul`=?,`deskripsi`=?,`isi`=?,`id_kategori`=? WHERE `id` = ?",
         [judul, deskripsi, isi, req.body.id_kategori, req.body.id_artikel],
         (err, result) => {
           if (err) console.log(err)

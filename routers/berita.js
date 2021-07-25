@@ -6,4 +6,6 @@ berita.route('/berita')
     .get(controller.index)
     .post(controller.crud)
 
+berita.get('/api/berita', controller.findAll)
+berita.get('/api/berita/:id', controller.findOne)
 module.exports = berita

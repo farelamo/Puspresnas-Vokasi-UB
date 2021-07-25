@@ -8,7 +8,7 @@
             <form method="post" action="./artikelEdit">
               <div class="row">
                 <div class="col-12 col-md-7 col-lg-8">
-                  <input type="hidden" class="d-none" name="id_artikel" value="<%= artikel[0].id_artikel %>">
+                  <input type="hidden" class="d-none" name="id_artikel" value="<%= artikel[0].id %>">
                   <input type="text" class="form-control" name="judul" value="<%= artikel[0].judul %>" placeholder="Judul Berita..."><br>
                   <textarea class="form-control" name="isi" placeholder="Isi artikel..." style="height: 400px"><%= artikel[0].isi %></textarea>
                 </div>

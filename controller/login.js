@@ -22,7 +22,7 @@ module.exports = {
               console.log(numRows);
               if (numRows==1) { 
                 sess=req.session; 
-                sess.id_user=results[0].id_user; 
+                sess.id_user=results[0].id; 
                 res.redirect('/dashboard')
               }
               else {res.redirect('/login')

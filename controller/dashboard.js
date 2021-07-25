@@ -7,7 +7,7 @@ module.exports = {
         if (sess.id_user==undefined) { res.redirect('/login'); } 
         else {  
           db.query(
-            'SELECT * FROM `user` WHERE `id_user`=(?)',
+            'SELECT * FROM `user` WHERE `id`=(?)',
             [sess.id_user],
             (err,profil) => {
               if(err) console.log(err)

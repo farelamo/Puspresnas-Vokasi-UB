@@ -7,4 +7,7 @@ jenisLomba.route('/jenisLomba')
     .post(controller.tambah)
     // .post(controller.post)
 
+jenisLomba.get('/api/jenisLomba', controller.findAll)
+jenisLomba.get('/api/jenisLomba/:id', controller.findOne)
+
 module.exports = jenisLomba

@@ -1,5 +1,8 @@
 const db = require('../config/database')
 var sess;
+const Db = require('../models')
+const Post = Db.bidangLomba
+const Op = Db.Sequelize.Op
 
 module.exports = {
   index: (req, res) => {
@@ -8,7 +11,7 @@ module.exports = {
       res.redirect('login')
     } else {
       db.query(
-        'SELECT * FROM `user` WHERE `id_user`=(?)',
+        'SELECT * FROM `user` WHERE `id`=(?)',
         [sess.id_user],
         (error, profil) => {
           if (error) console.log(error)
@@ -72,5 +75,32 @@ module.exports = {
         )
       });
     }
+  },
+
+  findAll: (req,res) => {
+    const nama_bidang = req.query.nama_bidang
+    let condition = nama_bidang ? { nama_bidang: { [Op.like]: `%${nama_bidang}%` }} : null
+
+    Post.findAll({ where: condition})
+      .then((data) => {
+        res.send(data)
+      }).catch((err) => {
+        res.status(500).send({
+          message: err.message || "Some error occurred while find post"
+        })
+      })
+  },
+
+  findOne: (req,res) => {
+    const id = req.params.id
+
+    Post.findByPk(id)
+    .then((data) => {
+      res.send(data)
+    }).catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving post with id=" + id
+      })
+    })
   }
 }

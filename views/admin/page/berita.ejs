@@ -40,10 +40,10 @@
                               <td><%= data.deskripsi %></td>
                               <td style="width: 100px;"><%= data.tanggal %></td>
                               <td align="center" style="width: 90px;">
-                                <a href="beritaEdit/<%= data.id_berita %>" class="btn btn-table btn-sm btn-primary" title="Edit"><i class="fa fa-pen"></i></a>
-                                <button type="button" class="btn btn-table btn-sm btn-primary" title="Foto" data-toggle="modal" data-target="#fotoBerita" onclick='fotoBerita("<%= data.id_berita %>")'><i class="fa fa-camera"></i></button>
-                                <p id="<%= data.id_berita %>" class="d-none"><%= data.judul %></p>
-                                <button type="button" class="btn btn-table btn-sm btn-danger" title="Hapus" data-toggle="modal" data-target="#hapusBerita" onclick='hapusBerita("<%= data.id_berita %>")'><i class="fa fa-times"></i></button>
+                                <a href="beritaEdit/<%= data.id %>" class="btn btn-table btn-sm btn-primary" title="Edit"><i class="fa fa-pen"></i></a>
+                                <button type="button" class="btn btn-table btn-sm btn-primary" title="Foto" data-toggle="modal" data-target="#fotoBerita" onclick='fotoBerita("<%= data.id %>")'><i class="fa fa-camera"></i></button>
+                                <p id="<%= data.id %>" class="d-none"><%= data.judul %></p>
+                                <button type="button" class="btn btn-table btn-sm btn-danger" title="Hapus" data-toggle="modal" data-target="#hapusBerita" onclick='hapusBerita("<%= data.id %>")'><i class="fa fa-times"></i></button>
                             </td>
                             </tr>
                           <% no++; }) %>
