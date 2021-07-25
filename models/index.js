@@ -21,7 +21,6 @@ const db = {}
 db.Sequelize = Sequelize
 db.sequelize = sequelize
 
-db.posts = require('./posts.model.js')(sequelize,Sequelize)
 db.artikel = require('./artikel.model.js')(sequelize,Sequelize)
 db.berita = require('./berita.model.js')(sequelize,Sequelize)
 db.bidangLomba = require('./bidangLomba.model.js')(sequelize,Sequelize)
