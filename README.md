@@ -9,3 +9,11 @@ Run Project
 ```
 nodemon app
 ```
+
+Kekurangan 
+```
+~ Dashboard On Progress 
+
+~ Edit Gambar bidang Lomba On Progress
+```
+# Jangan dilihat penamaan commit yang rusak, karena terjadi error waktu commit - By admin
