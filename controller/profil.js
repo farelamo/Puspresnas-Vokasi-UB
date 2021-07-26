@@ -40,13 +40,23 @@ module.exports = {
                     [req.body.username, req.body.nama, sess.id_user],
                     (err, result) => {
                       if (err) console.log(err)
-                      console.log("berhasil");
-                      res.redirect('profil');
+                      var berhasil = "Profil berhasil diedit"
+                      console.log(berhasil);
+                      db.query(
+                        'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error,profil) => {
+                          res.render('../views/admin/index.ejs',{profil, page : 'profil',berhasil});
+                        }
+                      );
                     }
                   )
                 }else{
-                  console.log("gagal");
-                  res.redirect('profil');
+                  var gagal = "Edit gagal! Username telah dipakai user lain"
+                  console.log(gagal);
+                  db.query(
+                    'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error,profil) => {
+                      res.render('../views/admin/index.ejs',{profil, page : 'profil',gagal});
+                    }
+                  );
                 }
               }
             )
@@ -57,8 +67,13 @@ module.exports = {
               [req.body.username, req.body.nama, sess.id_user],
               (err, result) => {
                 if (err) console.log(err)
-                console.log("berhasil");
-                res.redirect('profil');
+                var berhasil = "Profil berhasil diedit"
+                console.log(berhasil);
+                db.query(
+                  'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error,profil) => {
+                    res.render('../views/admin/index.ejs',{profil, page : 'profil',berhasil});
+                  }
+                );
               }
             )
           }
@@ -76,14 +91,20 @@ module.exports = {
             [filename, sess.id_user],
             (err, result) => {
               if (err) console.log(err)
-              res.redirect('/profil')
+              var berhasil = "Foto berhasil diedit"
+              console.log(berhasil);
+              db.query(
+                'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error,profil) => {
+                  res.render('../views/admin/index.ejs',{profil, page : 'profil',berhasil});
+                }
+              );
             }
           )
         });
       }
     } else {
       console.log("nothing happen -"+req.body.submit+"-")
-      res.redirect('/berita')
+      res.redirect('/profil')
     }
 
   }
