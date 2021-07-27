@@ -13,6 +13,25 @@
             <div class="card">
               <div class="card-body">
                 <div class="row m-0">
+                  <div class="col-12">
+                    <% 
+                      if (locals.berhasil){ %>
+                        <div class="alert alert-success alert-dismissible show fade">
+                          <div class="alert-body">
+                            <button class="close" data-dismiss="alert"><span>×</span></button>
+                            <%= locals.berhasil %>
+                          </div>
+                        </div>
+                      <% } else if (locals.gagal) { %>
+                        <div class="alert alert-danger alert-dismissible show fade">
+                          <div class="alert-body">
+                            <button class="close" data-dismiss="alert"><span>×</span></button>
+                            <%= locals.gagal %>
+                          </div>
+                        </div>
+                      <% }
+                    %>
+                  </div>
                   <div class="col-md-3 p-md-2 p-5">
                     <div class="avatar-item mb-0">
                         <img alt="image" src="/assets/img/profil/<%= foto %>" id="fotoprofil" class="img-fluid" data-toggle="tooltip" title="Foto <%= nama %>" style="width: 100%; object-fit: cover;">
@@ -71,10 +90,8 @@
 
 <script type="text/javascript">
   function setHeight(){
-    var height = document.getElementById('fotoprofil').clientWidth;
-    console.log(height);
-    document.getElementById('fotoprofil').style.height = height+"px";
-    console.log(height+"p");
+    var width = document.getElementById('fotoprofil').clientWidth;
+    document.getElementById('fotoprofil').style.height = width+"px";
   }  
   setHeight();
 </script>
