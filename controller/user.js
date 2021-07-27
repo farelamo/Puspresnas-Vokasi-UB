@@ -45,20 +45,38 @@ module.exports = {
               [req.body.username, req.body.nama, password, req.body.level],
               (err, result) => {
                 if (err) console.log(err)
-                console.log("berhasil");
-                res.redirect('user');
+                var berhasil = "User berhasil ditambahkan"
+                console.log(berhasil);
+                db.query(
+                  'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
+                    db.query(
+                      'SELECT * FROM `user`',[sess.id_user],(error, user) => {
+                        res.render('../views/admin/index.ejs', {profil,user,page: 'user',berhasil});
+                      }
+                    );
+                  }
+                );
               }
             )
           }else{
-            console.log("gagal");
-            res.redirect('user');
+            var gagal = "Username "+[req.body.username]+" telah dipakai user lain"
+            console.log(gagal);
+            db.query(
+              'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
+                db.query(
+                  'SELECT * FROM `user`',[sess.id_user],(error, user) => {
+                    res.render('../views/admin/index.ejs', {profil,user,page: 'user',gagal});
+                  }
+                );
+              }
+            );
           }
         }
       )
     }
     else if (req.body.submit == "edit") {
       db.query(
-        "SELECT * FROM `user` WHERE `id_user` = ?",
+        "SELECT * FROM `user` WHERE `id` = ?",
         [req.body.id_user],
         (err, user) => {
           if (err) console.log(err)
@@ -76,17 +94,35 @@ module.exports = {
                   if (req.body.password=="") {var password = user[0].password;}
                   else {var password = CryptoJS.MD5(req.body.password).toString();}
                   db.query(
-                    "UPDATE `user` SET `username`=?,`nama`=?,`password`=?,`level`=? WHERE `id_user` = ?",
+                    "UPDATE `user` SET `username`=?,`nama`=?,`password`=?,`level`=? WHERE `id` = ?",
                     [req.body.username, req.body.nama, password, req.body.level, req.body.id_user],
                     (err, result) => {
                       if (err) console.log(err)
-                      console.log("berhasil");
-                      res.redirect('user');
+                      var berhasil = "User berhasil diedit"
+                      console.log(berhasil);
+                      db.query(
+                        'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
+                          db.query(
+                            'SELECT * FROM `user`',[sess.id_user],(error, user) => {
+                              res.render('../views/admin/index.ejs', {profil,user,page: 'user',berhasil});
+                            }
+                          );
+                        }
+                      );
                     }
                   )
                 }else{
-                  console.log("gagal");
-                  res.redirect('user');
+                  var gagal = "Username "+[req.body.username]+" telah dipakai user lain"
+                  console.log(gagal);
+                  db.query(
+                    'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
+                      db.query(
+                        'SELECT * FROM `user`',[sess.id_user],(error, user) => {
+                          res.render('../views/admin/index.ejs', {profil,user,page: 'user',gagal});
+                        }
+                      );
+                    }
+                  );
                 }
               }
             )
@@ -95,12 +131,21 @@ module.exports = {
             if (req.body.password=="") {var password = user[0].password;}
             else {var password = CryptoJS.MD5(req.body.password).toString();}
             db.query(
-              "UPDATE `user` SET `username`=?,`nama`=?,`password`=?,`level`=? WHERE `id_user` = ?",
+              "UPDATE `user` SET `username`=?,`nama`=?,`password`=?,`level`=? WHERE `id` = ?",
               [req.body.username, req.body.nama, password, req.body.level, req.body.id_user],
               (err, result) => {
                 if (err) console.log(err)
-                console.log("berhasil");
-                res.redirect('user');
+                var berhasil = "User berhasil diedit"
+                console.log(berhasil);
+                db.query(
+                  'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
+                    db.query(
+                      'SELECT * FROM `user`',[sess.id_user],(error, user) => {
+                        res.render('../views/admin/index.ejs', {profil,user,page: 'user',berhasil});
+                      }
+                    );
+                  }
+                );
               }
             )
           }
@@ -114,11 +159,21 @@ module.exports = {
         file.mv("public/assets/img/profil/"+filename,function(err){
           if(err)console.log(err)
           db.query(
-            "UPDATE `user` SET `foto`=? WHERE `id_user` = ?",
+            "UPDATE `user` SET `foto`=? WHERE `id` = ?",
             [filename, req.body.id_user],
             (err, result) => {
               if (err) console.log(err)
-              res.redirect('user')
+              var berhasil = "Foto berhasil diedit"
+              console.log(berhasil);
+              db.query(
+                'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
+                  db.query(
+                    'SELECT * FROM `user`',[sess.id_user],(error, user) => {
+                      res.render('../views/admin/index.ejs', {profil,user,page: 'user',berhasil});
+                    }
+                  );
+                }
+              );
             }
           )
         });
@@ -126,7 +181,7 @@ module.exports = {
     }
     else if (req.body.submit == "hapus") {
       db.query(
-        "SELECT * FROM `user` WHERE `id_user` = ?",
+        "SELECT * FROM `user` WHERE `id` = ?",
         [req.body.id_user],
         (err, user) => {
           if (user[0].foto!==""){
@@ -135,12 +190,21 @@ module.exports = {
             console.log("foto berhasil dihapus");
           }
           db.query(
-            "DELETE FROM `user` WHERE id_user = (?)",
+            "DELETE FROM `user` WHERE id = (?)",
             [req.body.id_user],
             (error,result) => {
               if(error) { console.log(error)}
-              console.log("user berhasil dihapus");
-              res.redirect('user')
+              var berhasil = "User berhasil dihapus"
+              console.log(berhasil);
+              db.query(
+                'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
+                  db.query(
+                    'SELECT * FROM `user`',[sess.id_user],(error, user) => {
+                      res.render('../views/admin/index.ejs', {profil,user,page: 'user',berhasil});
+                    }
+                  );
+                }
+              );
             }
           )
         }

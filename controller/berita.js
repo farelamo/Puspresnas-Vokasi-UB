@@ -1,8 +1,9 @@
 const db = require('../config/database')
-var sess;
 const Db = require('../models')
+const fs = require('fs');
 const Post = Db.berita
 const Op = Db.Sequelize.Op
+var sess;
 
 module.exports = {
   index: (req, res) => {
@@ -38,13 +39,30 @@ module.exports = {
   crud: (req, res) => {
     if (req.body.submit=="hapus") {
       db.query(
-        "DELETE FROM `berita` WHERE `id` = ?",
-        [req.body.id_berita],
-        (err, result) => {
-          if (err) console.log(err)
-          res.redirect('/berita')
+        "SELECT * FROM `berita` WHERE `id` = ?",[req.body.id_berita],(error, berita) => {
+          db.query(
+            "DELETE FROM `berita` WHERE `id` = ?",[req.body.id_berita],(err, result) => {
+              if (berita[0].foto!==""){
+                var filePath = "public/assets/img/berita/"+berita[0].foto;
+                fs.unlinkSync(filePath);
+                console.log("Foto berhasil dihapus");
+              }
+              if (err) console.log(err)
+              var berhasil = "Berita berhasil dihapus"
+              console.log(berhasil);
+              db.query(
+                'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
+                  db.query(
+                    'SELECT * FROM `berita` ORDER BY `id` DESC',(error, berita) => {
+                      res.render('../views/admin/index.ejs', {profil,berita,page: 'berita',berhasil});
+                    }
+                  );
+                }
+              );
+            }
+          )
         }
-      )
+      );
     }else if (req.body.submit=="foto") {
       if (req.files) {
         var file = req.files.foto;
@@ -56,7 +74,17 @@ module.exports = {
             [filename, req.body.id_berita],
             (err, result) => {
               if (err) console.log(err)
-              res.redirect('/berita')
+              var berhasil = "Foto berita berhasil diedit"
+              console.log(berhasil);
+              db.query(
+                'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
+                  db.query(
+                    'SELECT * FROM `berita` ORDER BY `id` DESC',(error, berita) => {
+                      res.render('../views/admin/index.ejs', {profil,berita,page: 'berita',berhasil});
+                    }
+                  );
+                }
+              );
             }
           )
         });

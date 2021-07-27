@@ -10,6 +10,19 @@
           <div class="section-body">
             <div class="card">
               <div class="card-body">
+                <div class="col-12 p-0">
+                  <% 
+                    if (locals.berhasil){ %>
+                      <script type="text/javascript">
+                        swal('Berhasil', '<%= locals.berhasil %>', 'success');
+                      </script>
+                    <% } else if (locals.gagal) { %>
+                      <script type="text/javascript">
+                        swal('Gagal', '<%= locals.gagal %>', 'error');
+                      </script>
+                    <% }
+                  %>
+                </div>
                 <div class="row">
                   <div class="col-12">
                     <div class="table-responsive">

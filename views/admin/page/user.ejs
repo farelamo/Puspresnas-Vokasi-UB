@@ -10,6 +10,19 @@
           <div class="section-body">
             <div class="card">
               <div class="card-body">
+                <div class="col-12 p-0">
+                  <% 
+                    if (locals.berhasil){ %>
+                      <script type="text/javascript">
+                        swal('Berhasil', '<%= locals.berhasil %>', 'success');
+                      </script>
+                    <% } else if (locals.gagal) { %>
+                      <script type="text/javascript">
+                        swal('Gagal', '<%= locals.gagal %>', 'error');
+                      </script>
+                    <% }
+                  %>
+                </div>
                 <table id="myTable" class="table table-striped">
                   <thead>
                     <tr>
@@ -38,10 +51,10 @@
                           <div class="badge badge-success"><%= data.level %></div>
                         </td>
                         <td align="center" style="width: 90px;">
-                          <button type="button" class="btn btn-table btn-sm btn-primary" title="Edit" data-toggle="modal" data-target="#editUser" onclick='editUser("<%= data.id_user %>")'><i class="fa fa-pen"></i></button>
-                          <button type="button" class="btn btn-table btn-sm btn-primary" title="Foto" data-toggle="modal" data-target="#fotoUser" onclick='fotoUser("<%= data.id_user %>")'><i class="fa fa-camera"></i></button>
-                          <p id="<%= data.id_user %>" class="d-none"><%= data.username+","+data.nama+","+data.level %></p>
-                          <button type="button" class="btn btn-table btn-sm btn-danger" title="Hapus" data-toggle="modal" data-target="#hapusUser" onclick='hapusUser("<%= data.id_user %>")'><i class="fa fa-times"></i></button>
+                          <button type="button" class="btn btn-table btn-sm btn-primary" title="Edit" data-toggle="modal" data-target="#editUser" onclick='editUser("<%= data.id %>")'><i class="fa fa-pen"></i></button>
+                          <button type="button" class="btn btn-table btn-sm btn-primary" title="Foto" data-toggle="modal" data-target="#fotoUser" onclick='fotoUser("<%= data.id %>")'><i class="fa fa-camera"></i></button>
+                          <p id="<%= data.id %>" class="d-none"><%= data.username+","+data.nama+","+data.level %></p>
+                          <button type="button" class="btn btn-table btn-sm btn-danger" title="Hapus" data-toggle="modal" data-target="#hapusUser" onclick='hapusUser("<%= data.id %>")'><i class="fa fa-times"></i></button>
                       </td>
                       </tr>
                     <% no++; }) %>
