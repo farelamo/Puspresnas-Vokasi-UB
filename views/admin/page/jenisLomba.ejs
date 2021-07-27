@@ -19,7 +19,7 @@
                   <i class="fas fa-calendar"></i>
                 </div>
               </div>
-              <input type="text" class="form-control daterange" name="tanggal">
+              <input type="text" class="form-control daterange" name="tanggal" required>
             </div>
           </div>
 
@@ -87,7 +87,7 @@
                   <div class="selectgroup selectgroup-pills selectTag kategori<%= data.id_kategori_lomba %>"
                     style="display : none">
                     <label class="selectgroup-item">
-                      <input type="checkbox" name="tag" value="<%= data.id %>" class="selectgroup-input">
+                      <input type="checkbox" name="tag" value="<%= data.id %>" class="selectgroup-input" >
                       <span class="selectgroup-button">
                         <%= data.tag %>
                       </span>

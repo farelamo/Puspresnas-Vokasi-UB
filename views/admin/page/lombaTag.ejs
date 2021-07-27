@@ -71,7 +71,7 @@
             <input type="text" class="form-control" name="tag" value="" required>
             <div class="section-title mt-0">Kategori Lomba</div>
             <div class="form-group">
-              <select class="form-control" name="kategoriLomba">
+              <select class="form-control" name="kategoriLomba" required>
                 <option class="eKategori" value="">Pilih Kategori</option>
                 <% kategori.forEach((data)=> { %>
                   <option class="eKategori" value="<%= data.id %>" >
