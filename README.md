@@ -10,8 +10,8 @@ Run Project
 nodemon app
 ```
 
-Kekurangan 
+Done
 ```
-~ Bug pada tag tambah jenis & edit jenis (pilih hanya 1 tag di lain kategori teknologi)
+~ Fix Bug Edit & Add Tag on Jenis Lomba
 ```
 # Jangan dilihat penamaan commit yang rusak, karena terjadi error waktu commit - By admin
