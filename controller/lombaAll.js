@@ -1,4 +1,5 @@
 const db = require('../config/database')
+const fs = require('fs');
 var sess;
 
 module.exports = {
@@ -45,10 +46,26 @@ module.exports = {
   crud: async (req, res) => {                /* HAPUS JENIS */
     if (req.body.submit == "hapus") {
       db.query(
-        "DELETE FROM `jenis_lomba` WHERE `id` = ?",
+        'SELECT * FROM jenis_lomba WHERE id = ?',
         [req.body.id_lomba],
-        (err, result) => {
-          if (err) console.log(err)
+        (error, jenis) => {
+          console.log(jenis[0].gambar)
+          if (jenis[0].gambar !== ""){
+            var filePath = "public/assets/img/jenisLomba/"+jenis[0].gambar;
+            fs.unlinkSync(filePath);
+            console.log("gambar berhasil dihapus");
+          }
+          db.query(
+            "DELETE FROM `jenis_lomba` WHERE `id` = ?",
+            [req.body.id_lomba],
+            (err, haha) => {
+              if (err) console.log(err)
+              else {
+                
+                
+               }
+            }
+          )
           res.redirect('/lombaAll')
         }
       )
