@@ -28,29 +28,33 @@ module.exports = {
                 if (error) console.log(error)
                 else {
 
-                if(tag.length > 1) {
-                  tag.forEach((tags) => {
+                  console.log(tag)
+                  
+                   if (Array.isArray(tag)) {
+                    tag.forEach((tags) => {
+                      db.query(
+                        'INSERT INTO `tag` (`id_jenis`,`id_tag_lomba`) VALUES (?,?)',
+                        [id, tags],
+                        (error, tagjenis) => {
+                          if (error) console.log(error)
+                        }
+                      )
+                    })
+                  } else if (!Array.isArray(tag)) {
+                    //var hasil = tag.length[0]
                     db.query(
                       'INSERT INTO `tag` (`id_jenis`,`id_tag_lomba`) VALUES (?,?)',
-                      [id, tags],
-                      (error, tagJenis) => {
+                      [id, tag],
+                      (error, haha) => {
                         if (error) console.log(error)
                       }
                     )
-                  })
-                } else {
-                  db.query(
-                    'INSERT INTO `tag` (`id_jenis`,`id_tag_lomba`) VALUES (?,?)',
-                    [id, tag],
-                    (error, tagJenis) => {
-                      if (error) console.log(error)
-                    }
-                  )
-                }
+                  }
                   res.redirect('/lombaAll')
                 }
               }
             )
+
           }
         }
       )

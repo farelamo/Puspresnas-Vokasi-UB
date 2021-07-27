@@ -67,30 +67,38 @@ module.exports = {
           else {
             console.log(tag)
             var jenis = jenisLomba.insertId;
-            if(tag.length > 1) {
-            tag.forEach((tag) => {
-              db.query(
-                'INSERT INTO `tag` (`id_jenis`,`id_tag_lomba`) VALUES (?,?)',
-                [jenis, tag],
-                (error, tagJenis) => {
-                  if (error) console.log(error)
-                  else {
-                    // console.log(tagJenis, tag)
-                    return console.log(tagJenis)
-                  }
-                }
-              )
-            })
-          } else {
+
             db.query(
-              'INSERT INTO `tag` (`id_jenis`,`id_tag_lomba`) VALUES (?,?)',
-              [jenis, tag],
-              (error, tagJenis) => {
+              'DELETE FROM `tag` WHERE id_jenis = ?',
+              [jenis],
+              (error, hapus) => {
                 if (error) console.log(error)
+                else {
+                  console.log(tag)
+                  
+                   if (Array.isArray(tag)) {
+                    tag.forEach((tags) => {
+                      db.query(
+                        'INSERT INTO `tag` (`id_jenis`,`id_tag_lomba`) VALUES (?,?)',
+                        [jenis, tags],
+                        (error, tagjenis) => {
+                          if (error) console.log(error)
+                        }
+                      )
+                    })
+                  } else if (!Array.isArray(tag)) {
+                    db.query(
+                      'INSERT INTO `tag` (`id_jenis`,`id_tag_lomba`) VALUES (?,?)',
+                      [jenis, tag],
+                      (error, haha) => {
+                        if (error) console.log(error)
+                      }
+                    )
+                  }
+                  res.redirect('/lombaAll')
+                }
               }
             )
-          }
-            res.redirect('/lombaAll')
           }
         }
       )
@@ -99,29 +107,34 @@ module.exports = {
 
   findAll: (req, res) => {
     const nama_lomba = req.query.nama_lomba
-    let condition = nama_lomba ? { nama_lomba: { [Op.like]: `%${nama_lomba}%` }} : null
+    let condition = nama_lomba ? {
+      nama_lomba: {
+        [Op.like]: `%${nama_lomba}%`
+      }
+    } : null
 
-    Post.findAll({ where: condition })
+    Post.findAll({
+        where: condition
+      })
       .then((data) => {
         res.send(data)
       }).catch((err) => {
         res.status(500).send({
-          message: 
-            err.message || "Some error occured while find post"
+          message: err.message || "Some error occured while find post"
         })
       })
-  }, 
+  },
 
   findOne: (req, res) => {
     const id = req.params.id;
 
     Post.findByPk(id)
-        .then((data) => {
-            res.send(data);
-        }).catch((err) => {
-            res.status(500).send({
-                message: "Error retrieving post with id=" + id
-            });
+      .then((data) => {
+        res.send(data);
+      }).catch((err) => {
+        res.status(500).send({
+          message: "Error retrieving post with id=" + id
         });
+      });
   }
 }
