@@ -60,28 +60,40 @@ module.exports = {
       var filename = file.name;
       file.mv("public/assets/bidangLomba/" + filename, function (err) {
         if (err) console.log(err)
-        db.query(
-          "INSERT INTO `bidang_lomba` (`nama_bidang`, `desk`, `biaya`, `hadiah`, `link`, `file`, `id_jenis`) VALUES (?,?,?,?,?,?,?)",
-          [
-            nama, desk, biaya, hadiah, link, filename, namaLomba
-          ],
-          (err, bidangLomba) => {
-            if (err) console.log(err)
-            else {
-
-              res.redirect('/lombaAll')
-            }
-          }
-        )
+        else {
+          var gambar = req.files.gambar
+          var namaGambar = gambar.name
+          file.mv("public/assets/img/bidangLomba/" + namaGambar, ((error) => {
+            if (error) console.log(error)
+            db.query(
+              "INSERT INTO `bidang_lomba` (`nama_bidang`, `desk`, `biaya`, `hadiah`, `link`, `file`, `id_jenis`, `gambar`) VALUES (?,?,?,?,?,?,?,?)",
+              [
+                nama, desk, biaya, hadiah, link, filename, namaLomba, namaGambar
+              ],
+              (err, bidangLomba) => {
+                if (err) console.log(err)
+                else {
+                  res.redirect('/lombaAll')
+                }
+              }
+            )
+          }))
+        }
       });
     }
   },
 
-  findAll: (req,res) => {
+  findAll: (req, res) => {
     const nama_bidang = req.query.nama_bidang
-    let condition = nama_bidang ? { nama_bidang: { [Op.like]: `%${nama_bidang}%` }} : null
+    let condition = nama_bidang ? {
+      nama_bidang: {
+        [Op.like]: `%${nama_bidang}%`
+      }
+    } : null
 
-    Post.findAll({ where: condition})
+    Post.findAll({
+        where: condition
+      })
       .then((data) => {
         res.send(data)
       }).catch((err) => {
@@ -91,16 +103,16 @@ module.exports = {
       })
   },
 
-  findOne: (req,res) => {
+  findOne: (req, res) => {
     const id = req.params.id
 
     Post.findByPk(id)
-    .then((data) => {
-      res.send(data)
-    }).catch((err) => {
-      res.status(500).send({
-        message: "Error retrieving post with id=" + id
+      .then((data) => {
+        res.send(data)
+      }).catch((err) => {
+        res.status(500).send({
+          message: "Error retrieving post with id=" + id
+        })
       })
-    })
   }
 }
