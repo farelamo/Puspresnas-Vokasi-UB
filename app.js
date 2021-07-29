@@ -43,20 +43,20 @@ app.set('view engine','ejs');
 var sess;
 //akhir middleware
 
-function isEmpty(obj) {
-    return Object.keys(obj).length === 0;
-}
+// function isEmpty(obj) {
+//     return Object.keys(obj).length === 0;
+// }
 
-function cekSesi(obj) {
-  sess=req.session; 
-  if (sess.id_user!==undefined) {
-    console.log("+"+sess.id_user+"+")
-    res.render('admin/'+obj+'.ejs')
-  } else {
-    console.log("/"+sess.id_user+"/")
-    res.redirect('login');
-  }
-}
+// function cekSesi(obj) {
+//   sess=req.session; 
+//   if (sess.id_user!==undefined) {
+//     console.log("+"+sess.id_user+"+")
+//     res.render('admin/'+obj+'.ejs')
+//   } else {
+//     console.log("/"+sess.id_user+"/")
+//     res.redirect('login');
+//   }
+// }
 
 app.use(index)
 app.use(login)
