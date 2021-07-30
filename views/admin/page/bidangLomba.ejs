@@ -43,18 +43,6 @@
                                 <div class="section-title mt-0">File Refrensi</div>
                                 <input type="file" name="berkas" required>
                             </div>
-
-                            <div class="section-title mt-0">Nama Lomba</div>
-                            <div class="form-group">
-                                <select class="form-control" name="namaLomba" required>
-                                    <option class="eKategori" value="">Pilih Sumber Lomba</option>
-                                    <% jenisLomba.forEach((data)=> { %>
-                                        <option value="<%= data.id %>">
-                                            <%= data.nama_lomba %>
-                                        </option>
-                                        <% }) %>
-                                </select>
-                            </div>
                             
                             <div class="section-title mt-0">Link Group</div>
                             <div class="form-group">

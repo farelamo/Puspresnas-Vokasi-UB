@@ -4,10 +4,9 @@
   </div>
 
   <div class="section-body">
-    <form action="/editJenis" method="post">
+    <form action="/editJenis/<%= jenis[0].id %>  " method="post">
       <div class="row">
         <div class="col-12 col-md-7 col-lg-8">
-          <input type="hidden" class="d-none" id="eId" name="id" value="<%= id %> " required>
 
           <input type="text" class="form-control" name="nama" value="<%= jenis[0].nama_lomba %> "
             placeholder="Nama Lomba" required><br>
@@ -51,8 +50,6 @@
               <div class="form-group">
                 <select class="form-control" name="tipe" required>
                   <option class="eKategori" value="">Pilih Tipe</option>
-                  <!-- <option class="eKategori" value="Team">Team</option>
-                  <option class="eKategori" value="Individu">Individu</option> -->
                   <% enumArray.forEach((data)=> { %>
                     <option value="<%= data %>" <% if(data==jenis[0].tipe){ %> selected <% } %>><%= data %>
                     </option>

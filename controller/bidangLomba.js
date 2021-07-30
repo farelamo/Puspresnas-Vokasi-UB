@@ -53,27 +53,26 @@ module.exports = {
         biaya,
         desk,
         link,
-        namaLomba
       } = req.body
 
       var file = req.files.berkas
-      var filename = file.name;
+      var filename = req.params.id + '.pdf';
       file.mv("public/assets/bidangLomba/" + filename, function (err) {
         if (err) console.log(err)
         else {
           var gambar = req.files.gambar
-          var namaGambar = gambar.name
-          file.mv("public/assets/img/bidangLomba/" + namaGambar, ((error) => {
+          var namaGambar = req.params.id + '.png'
+          gambar.mv("public/assets/img/bidangLomba/" + namaGambar, ((error) => {
             if (error) console.log(error)
             db.query(
-              "INSERT INTO `bidang_lomba` (`nama_bidang`, `desk`, `biaya`, `hadiah`, `link`, `file`, `id_jenis`, `gambar`) VALUES (?,?,?,?,?,?,?,?)",
+              "INSERT INTO `bidang_lomba` (`nama_bidang`, `desk`, `biaya`, `hadiah`, `link`, `file`, `gambar`, `id_jenis`) VALUES (?,?,?,?,?,?,?,?)",
               [
-                nama, desk, biaya, hadiah, link, filename, namaLomba, namaGambar
+                nama, desk, biaya, hadiah, link, filename, namaGambar, req.params.id
               ],
               (err, bidangLomba) => {
                 if (err) console.log(err)
                 else {
-                  res.redirect('/lombaAll')
+                  res.redirect('/bidangAll/' + req.params.id)
                 }
               }
             )

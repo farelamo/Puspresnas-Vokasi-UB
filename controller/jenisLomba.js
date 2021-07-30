@@ -57,10 +57,13 @@ module.exports = {
         tag
       } = req.body
 
+      var file = req.files.gambar;
+      var filename = file.name;
+      file.mv("public/assets/img/jenisLomba/" + filename, ((error) => {
       db.query(
-        "INSERT INTO `jenis_lomba` (`nama_lomba`,`sumber`,`desk`,`tipe`,`id_kategori`,`tanggal`) VALUES (?,?,?,?,?,?)",
+        "INSERT INTO `jenis_lomba` (`nama_lomba`,`sumber`,`desk`,`tipe`,`id_kategori`,`tanggal`,`gambar`) VALUES (?,?,?,?,?,?,?)",
         [
-          nama, sumber, desk, tipe, kategoriLomba, tanggal
+          nama, sumber, desk, tipe, kategoriLomba, tanggal, filename
         ],
         (err, jenisLomba) => {
           if (err) console.log(err)
@@ -102,6 +105,7 @@ module.exports = {
           }
         }
       )
+      }))
     }
   },
 

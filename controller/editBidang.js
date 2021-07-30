@@ -2,39 +2,81 @@ const db = require('../config/database')
 var sess
 
 module.exports = {
+
+    index: (req, res) => {
+        sess = req.session;
+        if (sess.id_user == undefined) {
+            res.redirect('login');
+        } else {
+            db.query(
+                'SELECT * FROM `user` WHERE `id`= ?',
+                [sess.id_user],
+                (error, profil) => {
+                    if (error) console.log(error)
+                    else {
+                        db.query(
+                            'SELECT * FROM bidang_lomba WHERE id = ?',
+                            [req.params.id],
+                            (error, bidang) => {
+                                if (error) console.log(error)
+                                else {
+                                    var idJenis = req.params.id
+                                    res.render('../views/admin/index.ejs', {
+                                        profil,
+                                        bidang,
+                                        idJenis,
+                                        page: 'editBidang'
+                                    })
+                                }
+                            })
+                    }
+                })
+        }
+    },
+
     edit: (req, res) => {
         if (req.body.submit == "edit") {
             const {
-                id,
                 nama,
                 hadiah,
                 desk,
                 biaya,
-                link,
+                link
             } = req.body
 
-            //console.log(id)
             var file = req.files.berkas
-            var filename = file.name
+            var filename = req.params.id + '.pdf'
             file.mv("public/assets/bidangLomba/" + filename, ((error) => {
                 if (error) console.log(error)
                 db.query(
                     'UPDATE bidang_lomba SET nama_bidang = ?, desk = ?, biaya = ?, hadiah = ?, link = ?, file = ? WHERE id = ?',
-                    [nama, desk, biaya, hadiah, link, filename, id],
+                    [nama, desk, biaya, hadiah, link, filename, req.params.id],
                     (error, edit) => {
                         if (error) console.log(error)
                         else {
                             var gambar = req.files.gambar
-                            var namaGambar = gambar.name
-                            file.mv("public/assets/img/bidangLomba/" + namaGambar, ((error) => {
+                            var namaGambar = req.params.id + '.png'
+                            gambar.mv("public/assets/img/bidangLomba/" + namaGambar, ((error) => {
                                 if (error) console.log(error)
                                 db.query(
                                     'UPDATE bidang_lomba SET gambar = ? WHERE id = ?',
-                                    [namaGambar, id],
+                                    [namaGambar, req.params.id],
                                     (error, hasil) => {
                                         if (error) console.log(error)
                                         else {
-                                            res.redirect('/lombaAll')
+                                            db.query(
+                                                "SELECT `id`, `id_jenis` FROM `bidang_lomba` WHERE `id` = ?",
+                                                [req.params.id],
+                                                (error, sesuai) => {
+                                                    if (error) console.log(error)
+                                                    else {
+                                                        console.log(sesuai[0].id)
+                                                        if (req.params.id == sesuai[0].id) {
+                                                            res.redirect('/bidangAll/' + sesuai[0].id_jenis)
+                                                        }
+                                                    }
+                                                }
+                                            )
                                         }
                                     }
                                 )
