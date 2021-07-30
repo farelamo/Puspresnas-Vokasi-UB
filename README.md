@@ -8,6 +8,4 @@ npm i express express-session express-fileupload mysql ejs dotenv cryptojs nodem
 Run Project 
 ```
 nodemon app
-```
-
-# Jangan dilihat penamaan commit yang rusak, karena terjadi error waktu commit - By admin
+``` 
