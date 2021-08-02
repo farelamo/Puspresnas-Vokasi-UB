@@ -1,0 +1,358 @@
+{
+    "openapi" : "3.0.0",
+    "info": {
+        "title": "API PUSPRESNAS",
+        "description": "Daftar API PUSPRESNAS",
+        "version": "1.0.0"
+    },
+
+    "servers" : [
+        {
+            "url": "http://localhost:3000",
+            "description": "localhost"
+        }
+    ],
+
+    "tags" : [
+        {
+            "name": "Berita",
+            "description": "Berita"
+        },
+        {
+            "name": "Artikel",
+            "description": "Artikel"
+        },
+        {
+            "name": "Jenis Lomba",
+            "description": "Jenis Lomba"
+        },
+        {
+            "name": "Bidang Lomba",
+            "description": "Bidang Lomba"
+        },
+        {
+            "name": "Tag Lomba",
+            "description": "Tag Lomba"
+        },
+        {
+            "name": "Tag",
+            "description": "Tag"
+        },
+        {
+            "name": "Kategori Lomba",
+            "description": "Kategori Lomba"
+        },
+        {
+            "name": "Kategori Konten",
+            "description": "Kategori Konten"
+        }
+    ],
+
+    "paths" : {
+        "/api/berita": {
+            "get": {
+                "tags": [
+                    "Berita"
+                ],
+                "summary": "Get All Berita",
+                 "description": "",
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/berita/{id}": {
+            "get": {
+                "tags": [
+                    "Berita"
+                ],
+                "summary": "Get One Berita",
+                 "description": "",
+                 "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Nomor Berita"
+                    }
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/artikel": {
+            "get": {
+                "tags": [
+                    "Artikel"
+                ],
+                "summary": "Get All Artikel",
+                 "description": "",
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/artikel/{id}": {
+            "get": {
+                "tags": [
+                    "Artikel"
+                ],
+                "summary": "Get One Artikel",
+                 "description": "",
+                 "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Nomor Artikel"
+                    }
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/jenisLomba": {
+            "get": {
+                "tags": [
+                    "Jenis Lomba"
+                ],
+                "summary": "Get All Jenis Lomba",
+                 "description": "",
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/jenisLomba/{id}": {
+            "get": {
+                "tags": [
+                    "Jenis Lomba"
+                ],
+                "summary": "Get One Jenis Lomba",
+                 "description": "",
+                 "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Nomor Jenis Lomba"
+                    }
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/bidangLomba": {
+            "get": {
+                "tags": [
+                    "Bidang Lomba"
+                ],
+                "summary": "Get All Bidang Lomba",
+                 "description": "",
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/bidangLomba/{id}": {
+            "get": {
+                "tags": [
+                    "Bidang Lomba"
+                ],
+                "summary": "Get One Bidang Lomba",
+                 "description": "",
+                 "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Nomor Bidang Lomba"
+                    }
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/tagLomba": {
+            "get": {
+                "tags": [
+                    "Tag Lomba"
+                ],
+                "summary": "Get All Tag Lomba",
+                 "description": "",
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/tagLomba/{id}": {
+            "get": {
+                "tags": [
+                    "Tag Lomba"
+                ],
+                "summary": "Get One Tag Lomba",
+                 "description": "",
+                 "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Nomor Tag Lomba"
+                    }
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/tag": {
+            "get": {
+                "tags": [
+                    "Tag"
+                ],
+                "summary": "Get All Tag",
+                 "description": "",
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/tag/{id}": {
+            "get": {
+                "tags": [
+                    "Tag"
+                ],
+                "summary": "Get One Tag",
+                 "description": "",
+                 "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Nomor Tag"
+                    }
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/kategoriKonten": {
+            "get": {
+                "tags": [
+                    "Kategori Konten"
+                ],
+                "summary": "Get All Kategori Konten",
+                 "description": "",
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/kategoriKonten/{id}": {
+            "get": {
+                "tags": [
+                    "Kategori Konten"
+                ],
+                "summary": "Get One Kategori Konten",
+                 "description": "",
+                 "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Nomor Kategori Konten"
+                    }
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/kategoriLomba": {
+            "get": {
+                "tags": [
+                    "Kategori Lomba"
+                ],
+                "summary": "Get All Kategori Lomba",
+                 "description": "",
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/kategoriLomba/{id}": {
+            "get": {
+                "tags": [
+                    "Kategori Lomba"
+                ],
+                "summary": "Get One Kategori Lomba",
+                 "description": "",
+                 "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Nomor Kategori Lomba"
+                    }
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        }
+
+    }
+}

@@ -1,8 +1,15 @@
 const express  = require('express')
 const session  = require('express-session')
 const upload = require("express-fileupload");
-const bodyparser = require('body-parser');
+const bodyparser = require('body-parser')
 const app = express()
+
+// SWAGGER
+const swaggerUi = require('swagger-ui-express')
+const apiDocumentation = require('./apidocs.json')
+const apiberita = require('./routers/berita')
+app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(apiDocumentation))
+// END SWAGGER
 
 
 //mvc
