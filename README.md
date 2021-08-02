@@ -17,5 +17,5 @@ npm i mysql2 --save replace-in-file swangger-ui-express
 
 Run Project 
 ```
-nodemon app
+nodemon app atau npm start
 ``` 
