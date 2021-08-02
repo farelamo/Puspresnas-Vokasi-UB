@@ -19,3 +19,8 @@ Run Project
 ```
 nodemon app atau npm start
 ``` 
+
+End Point API
+```
+localhost:3000/api-docs
+```
