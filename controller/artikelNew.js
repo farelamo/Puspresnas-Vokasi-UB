@@ -36,7 +36,7 @@ module.exports = {
   crud: (req, res) => {
     if (req.body.submit=="tambah") {
       db.query(
-        "INSERT INTO `artikel` (`judul`,`deskripsi`,`isi`,`id_kategori`,`tanggal`) VALUES (?,?,?,?,?)",
+        "INSERT INTO `artikel` (`judul`,`deskripsi`,`isi`,`kategori_konten_id`,`tanggal`) VALUES (?,?,?,?,?)",
         [req.body.judul, req.body.deskripsi, req.body.isi, req.body.id_kategori, datenow],
         (err, result) => {
           if (err) console.log(err)

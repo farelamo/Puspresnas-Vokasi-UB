@@ -7,10 +7,10 @@ const app = express()
 // SWAGGER
 const swaggerUi = require('swagger-ui-express')
 const apiDocumentation = require('./apidocs.json')
-const apiberita = require('./routers/berita')
 app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(apiDocumentation))
 // END SWAGGER
 
+const db = require('./models')
 
 //mvc
 const dashboard = require('./routers/dashboard')
@@ -66,6 +66,7 @@ var sess;
 //   }
 // }
 
+db.sequelize.sync();
 app.use(index)
 app.use(login)
 app.use(profil)
@@ -91,9 +92,6 @@ app.use(kategoriLomba)
 app.use(tagLomba)
 app.use(tag)
 
-// app.use(start)
-const api = require("./routers/artikel")
-app.use(api)
 
 app.get('/logout', (req, res) => {
   sess=req.session; 

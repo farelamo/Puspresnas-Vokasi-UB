@@ -115,7 +115,7 @@
                 <option class="eKategori" value="">Pilih Kategori</option>
                 <% kategori.forEach((data)=> { %>
                   <option class="eKategori" value="<%= data.id %>" 
-                    <% if(data.id == tag[0].id_kategori_lomba) { %>
+                    <% if(data.id == tag[0].kategori_lomba_id) { %>
                        selected = "selected"
                     <% } %>>
                       <%= data.kategori %>

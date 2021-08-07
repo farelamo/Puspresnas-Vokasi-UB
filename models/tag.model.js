@@ -6,10 +6,18 @@ module.exports = (sequelize, Sequelize) => {
         id_tag_lomba: {
             type: Sequelize.INTEGER
         }
-    }, 
-    {
+    }, {
         freezeTableName: true,
-        timestamps : false
+        timestamps: false,
+        indexes: [{
+                unique: false,
+                fields: ['id_jenis']
+            },
+            {
+                unique: false,
+                fields: ['id_tag_lomba']
+            }
+        ]
     });
 
     return tag;

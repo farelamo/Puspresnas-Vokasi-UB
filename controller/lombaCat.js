@@ -1,5 +1,8 @@
 const db = require('../config/database')
 var sess;
+const Db = require('../models')
+const Post = Db.kategoriLomba
+const Op = Db.Sequelize.Op
 
 module.exports = {
   index: (req, res) => {
@@ -13,56 +16,90 @@ module.exports = {
         (error, profil) => {
           if (error) console.log(error)
           else {
-            db.query(
-              'SELECT * FROM kategori_lomba',
-              (error, isi) => {
-                if (error) console.log(error)
-                else {
-                  res.render('../views/admin/index.ejs', {
-                    profil,
-                    isi,
-                    page: 'lombaCat'
-                  })
-                }
+            const kategori = req.query.kategori
+            let condition = kategori ? {
+              kategori: {
+                [Op.like]: `%${kategori}%` 
+               
               }
-            )
+            } : null
+
+            Post.findAll({
+              order: [['id', 'DESC']],
+                where: condition,
+                
+                // attributes: ['kategori']
+              })
+              .then((data) => {
+                res.render('../views/admin/index.ejs', {
+                  isi: data,
+                  profil,
+                  page: 'lombaCat'
+                })
+              }).catch((err) => {
+                res.status(500).send({
+                  message: err.message || "Some error occured while find post"
+                })
+              })
           }
         }
       )
     }
   },
 
-  kondisi: (req, res) => {
-    if(req.body.submit == 'tambah') {
-      db.query(
-        "INSERT INTO kategori_lomba (kategori) VALUES (?)",
-        [req.body.lombas],
-        (error, result) => {
-          if (error) console.log(error)
-          res.redirect('/lombaCat')
-        }
-      )
+  kondisi: async (req, res) => {
+    if (req.body.submit == 'tambah') {
+      const post = {
+        kategori: req.body.lombas
+    };
+
+    await Post.create(post)
+        .then((data) => {res.redirect('/lombaCat')})
+        .catch((err) => {
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while creating the Post."
+          })
+      })
     } else if (req.body.submit == 'edit') {
-      db.query(
-        'UPDATE kategori_lomba SET kategori = ? WHERE id = ?',
-        [req.body.lomba, req.body.id],
-        (error, result) => {
-          // console.log(req.body.lomba)
-          if (error) console.log(error)
-          res.redirect('/lombaCat')
-        }
-      )
+
+      const id = req.body.id;
+      const lomba = req.body.lomba;
+
+      await Post.update({kategori: lomba}, {
+          where: {id: id}
+      }).then((result) => {
+        console.log(result);
+          if ( result == 1 || result == 0 ) {
+            res.redirect('/lombaCat')
+          } else {
+              res.send({
+                  message: `Cannot update Post with id=${id}.`
+              })
+          }
+      }).catch((err) => {
+          res.status(500).send({
+              message: "Error updating post with id=" + id
+          })
+      })
     } else {
-      db.query(
-        'DELETE FROM kategori_lomba WHERE id = (?)',
-         [req.body.id],
-         (error,result) => {
-           if(error) {
-             console.log(error)
-           }
-           res.redirect('/lombaCat')
-         }
-      )
+      const id = req.body.id;
+
+      await Post.destroy({
+          where: { id: id }
+      }).then((result) => {
+          if (result == 1 || result == 0) {
+              res.redirect('/lombaCat')
+          } else {
+              res.send({
+                  message: `Cannot delete post with id=${id}`
+              })
+          }
+      }).catch((err) => {
+          res.status(500).send({
+              message: "Could not delete post with id=" + id
+          })
+      })
     }
   }
 }

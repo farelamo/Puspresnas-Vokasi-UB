@@ -7,7 +7,7 @@ module.exports = (sequelize,Sequelize) => {
             type: Sequelize.STRING
         },
         desk: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING(2000)
         },
         tipe: {
             type: Sequelize.STRING
@@ -19,7 +19,8 @@ module.exports = (sequelize,Sequelize) => {
             type: Sequelize.STRING
         },
         gambar: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         }
     },
     {

@@ -1,8 +1,12 @@
 const db = require('../config/database')
 var sess;
+const Db = require('../models')
+const Post = Db.tagLomba
+const PostCat = Db.kategoriLomba
+const Op = Db.Sequelize.Op
 
 module.exports = {
-  index: (req, res) => {
+  index: async (req, res) => {
     sess = req.session;
     if (sess.id_user == undefined) {
       res.redirect('login')
@@ -13,65 +17,129 @@ module.exports = {
         (error, profil) => {
           if (error) console.log(error)
           else {
-            db.query(
-              'SELECT * FROM tag_lomba ORDER BY `id` DESC',
-              (error, tag) => {
-                if (error) console.log(error)
-                else {
-                  db.query(
-                    'SELECT * FROM kategori_lomba ORDER BY kategori DESC',
-                    (error, kategori) => {
-                      if (error) console.log(error)
-                      else {
-                        res.render('../views/admin/index.ejs', {
-                          profil,
-                          tag,
-                          kategori,
-                          page: 'lombaTag'
-                        })
-                      }
-                    }
-                  )
-                }
+            const tag = req.query.tag
+            let condition = tag ? {
+              tag: {
+                [Op.like]: `%${tag}%`
               }
-            )
+            } : null
+
+            Post.findAll({
+                order: [
+                  ['id', 'DESC']
+                ],
+                where: condition,
+                include: [{
+                  model: PostCat,
+                  required: false,
+                 
+                }]
+              })
+
+              .then((tags) => {
+                const kategori = req.query.kategori
+                let kondition = kategori ? {
+                  kategori: {
+                    [Op.like]: `%${kategori}%`
+
+                  }
+                } : null
+
+                PostCat.findAll({
+                    order: [
+                      ['id', 'DESC']
+                    ],
+                    where: kondition,
+
+                    // attributes: ['kategori']
+                  })
+                  .then((data) => {
+                    res.render('../views/admin/index.ejs', {
+                      kategori: data,
+                      tag: tags,
+                      profil,
+                      page: 'lombaTag'
+                    })
+                  }).catch((err) => {
+                    res.status(500).send({
+                      message: err.message || "Some error occured while find post"
+                    })
+                  })
+              }).catch((err) => {
+                res.status(500).send({
+                  message: err.message || "Some error occured while find post"
+                })
+              })
           }
         }
       )
     }
   },
 
-  kondisi: (req, res) => {
+  kondisi: async (req, res) => {
     if (req.body.submit == 'tambah') {
-      db.query(
-        "INSERT INTO tag_lomba (tag, id_kategori_lomba) VALUES (?,?)",
-        [req.body.tag, req.body.kategoriLomba],
-        (error, result) => {
-          if (error) console.log(error)
+      const post = {
+        tag: req.body.tag,
+        kategori_lomba_id: req.body.kategoriLomba
+      };
+
+      Post.create(post, {
+          include: [PostCat]
+        })
+        .then((data) => {
           res.redirect('/lombaTag')
-        }
-      )
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "Some error occurred while creating the Post."
+          })
+        })
     } else if (req.body.submit == 'edit') {
-      db.query(
-        'UPDATE tag_lomba SET tag = ?, id_kategori_lomba = ? WHERE id = ?',
-        [req.body.lomba, req.body.kategoriLomba, req.body.id],
-        (error, result) => {
-          // console.log(req.body.lomba)
-          if (error) console.log(error)
-          res.redirect('/lombaTag')
+      const id = req.body.id;
+      const lomba = req.body.lomba;
+      const kategori = req.body.kategoriLomba
+
+      Post.update({
+        tag: lomba,
+        kategori_lomba_id: kategori
+      }, {
+        where: {
+          id: id
         }
-      )
+      }).then((result) => {
+        if (result == 1 || result == 0) {
+          res.redirect('/lombaTag')
+        } else {
+          res.send({
+            message: `Cannot update Post with id=${id}.`
+          })
+        }
+      }).catch((err) => {
+        res.status(500).send({
+          message: "Error updating post with id=" + id
+        })
+      })
     } else {
-      db.query(
-        'DELETE FROM tag_lomba WHERE id = (?)',
-        [req.body.id],
-        (error, result) => {
-          if (error) {
-            console.log(error)
+      const id = req.body.id;
+
+      Post.destroy({
+          where: {
+            id: id
           }
-          res.redirect('/lombaTag')
-        }
-      )
+        })
+        .then((result) => {
+          if (result == 1 || result == 0) {
+            res.redirect('/lombaTag')
+          } else {
+            res.send({
+              message: `Cannot delete post with id=${id}`
+            })
+          }
+        }).catch((err) => {
+          res.status(500).send({
+            message: "Could not delete post with id=" + id
+          })
+        })
     }
   }
 }

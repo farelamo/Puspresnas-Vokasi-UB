@@ -8,9 +8,9 @@
             <form method="post" action="./beritaEdit">
               <div class="row">
                 <div class="col-12 col-md-7 col-lg-8">
-                  <input type="hidden" class="d-none" name="id_berita" value="<%= berita[0].id %>">
-                  <input type="text" class="form-control" name="judul" value="<%= berita[0].judul %>" placeholder="Judul Berita..."><br>
-                  <textarea class="form-control" name="isi" placeholder="Isi berita..." style="height: 400px"><%= berita[0].isi %></textarea>
+                  <input type="hidden" class="d-none" name="id_berita" value="<%= berita.id %>">
+                  <input type="text" class="form-control" name="judul" value="<%= berita.judul %>" placeholder="Judul Berita..."><br>
+                  <textarea class="form-control" name="isi" placeholder="Isi berita..." style="height: 400px"><%= berita.isi %></textarea>
                 </div>
                 <div class="col-12 col-md-5 col-lg-4">
                   <button type="submit" class="col-12 btn btn-primary btn-shadow" name="submit" value="edit">UPDATE</button><br><br>
@@ -18,7 +18,7 @@
                     <div class="card-body">
                       <div class="section-title mt-0">Deskripsi singkat</div>
                       <div class="form-group">
-                        <textarea class="form-control" name="deskripsi" placeholder="Deskripsi singkat..." style="height: 100px"><%= berita[0].deskripsi %></textarea>
+                        <textarea class="form-control" name="deskripsi" placeholder="Deskripsi singkat..." style="height: 100px"><%= berita.deskripsi %></textarea>
                       </div>
                       <div class="section-title mt-0">Kategori</div>
                       <div class="form-group">
@@ -26,7 +26,7 @@
                           <% 
                             kategori.forEach((data)=> { 
                           %>
-                          <option class="eKategori" value="<%= data.id %>" <% if(data.id==berita[0].id_kategori){ %> selected<% } %> ><%= data.kategori %></option>
+                          <option class="eKategori" value="<%= data.id %>" <% if(data.id==berita.kategori_konten_id){ %> selected<% } %> ><%= data.kategori %></option>
                           <% }) %>
                         </select>
                       </div>

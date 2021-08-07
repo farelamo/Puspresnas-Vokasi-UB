@@ -1,23 +1,19 @@
 module.exports = (sequelize, Sequelize) => {
-    const Artikel = sequelize.define("artikel", {
-        judul: {
+    const tagLomba = sequelize.define("user", {
+        nama: {
             type: Sequelize.STRING
         },
-        deskripsi: {
+        username: {
             type: Sequelize.STRING
         },
-        isi: {
+        password: {
             type: Sequelize.STRING
         },
-        tanggal: {
-            type: Sequelize.STRING
+        level: {
+            type: Sequelize.ENUM(['Superadmin', 'Admin'])
         },
         foto: {
-            type: Sequelize.STRING,
-            allowNull: false
-        },
-        kategori_konten_id: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING
         }
     }, 
     {
@@ -26,5 +22,5 @@ module.exports = (sequelize, Sequelize) => {
         underscored: true
     });
 
-    return Artikel;
+    return tagLomba;
 }

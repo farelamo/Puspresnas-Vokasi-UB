@@ -3,13 +3,14 @@ module.exports = (sequelize, Sequelize) => {
         tag: {
             type: Sequelize.STRING
         },
-        id_kategori_lomba: {
+        kategori_lomba_id: {
             type: Sequelize.INTEGER
         }
     }, 
     {
         freezeTableName: true,
-        timestamps : false
+        timestamps : false,
+        underscored: true
     });
 
     return tagLomba;

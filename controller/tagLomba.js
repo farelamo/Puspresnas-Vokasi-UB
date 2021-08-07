@@ -1,6 +1,7 @@
 const Db = require('../models')
 const Post = Db.tagLomba
 const Op = Db.Sequelize.Op
+const PostCat = Db.kategoriLomba
 
 module.exports = {
     findAll: (req, res) => {
@@ -12,6 +13,10 @@ module.exports = {
         } : null
 
         Post.findAll({
+            include: [{
+                model: PostCat,
+                required: false,
+              }],
                 where: condition
             })
             .then((data) => {

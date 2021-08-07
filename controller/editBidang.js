@@ -21,6 +21,7 @@ module.exports = {
                                 if (error) console.log(error)
                                 else {
                                     var idJenis = req.params.id
+                                    console.log(idJenis)
                                     res.render('../views/admin/index.ejs', {
                                         profil,
                                         bidang,
@@ -70,7 +71,7 @@ module.exports = {
                                                 (error, sesuai) => {
                                                     if (error) console.log(error)
                                                     else {
-                                                        console.log(sesuai[0].id)
+                                                        console.log(sesuai[0].id_jenis)
                                                         if (req.params.id == sesuai[0].id) {
                                                             res.redirect('/bidangAll/' + sesuai[0].id_jenis)
                                                         }

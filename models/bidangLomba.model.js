@@ -1,11 +1,10 @@
-module.exports = (sequelize,Sequelize) => {
-    const bidangLomba = sequelize.define('bidang_lomba',
-    {
+module.exports = (sequelize, Sequelize) => {
+    const bidangLomba = sequelize.define('bidang_lomba', {
         nama_bidang: {
             type: Sequelize.STRING
         },
         desk: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING(2000)
         },
         biaya: {
             type: Sequelize.STRING
@@ -23,14 +22,13 @@ module.exports = (sequelize,Sequelize) => {
             type: Sequelize.INTEGER
         },
         gambar: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         }
-    },
-        { 
-            timestamps: false,
-            freezeTableName: true
-        }
-    )
+    }, {
+        timestamps: false,
+        freezeTableName: true
+    })
 
     return bidangLomba
 }

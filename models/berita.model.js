@@ -8,20 +8,22 @@ module.exports = (sequelize,Sequelize) => {
             type: Sequelize.STRING
         },
         isi: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING(2000)
         },
         tanggal: {
             type: Sequelize.STRING
         },
         foto: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         },
-        id_kategori: {
+        kategori_konten_id: {
             type: Sequelize.INTEGER
         }
     }, {
         timestamps: false,
-        freezeTableName: true
+        freezeTableName: true,
+        underscored: true
     })
 
     return Berita
