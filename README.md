@@ -1,4 +1,10 @@
 # Puspresnas-Vokasi-UB
+WARNING !!
+```
+Database menggunakan persamaan migrate, 
+sehingga hanya buat databasenya saja di phpmyadmin
+(tdk perlu bikin tabel)
+```
 
 Persiapan yang di install
 
