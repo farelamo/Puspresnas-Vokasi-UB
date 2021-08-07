@@ -6,6 +6,7 @@ sehingga hanya buat databasenya saja di phpmyadmin
 (tdk perlu bikin tabel)
 ```
 
+
 Persiapan yang di install
 
 Install Part 1
