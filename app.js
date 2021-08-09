@@ -37,6 +37,9 @@ const kategoriKonten = require('./routers/kategoriKonten')
 const kategoriLomba = require('./routers/kategoriLomba')
 const tagLomba = require('./routers/tagLomba')
 const tag = require('./routers/tag')
+const mahasiswa = require('./routers/mahasiswa')
+const mahasiswaNew = require('./routers/mahasiswaNew')
+const mahasiswaEdit = require('./routers/mahasiswaEdit')
 // const start = require('./routers/app')
 //akhir mvc
 
@@ -91,6 +94,9 @@ app.use(kategoriKonten)
 app.use(kategoriLomba)
 app.use(tagLomba)
 app.use(tag)
+app.use(mahasiswa)
+app.use(mahasiswaNew)
+app.use(mahasiswaEdit)
 
 
 app.get('/logout', (req, res) => {
