@@ -1,0 +1,60 @@
+<section class="section">
+    <div class="section-header">
+        <h1>Tambah Mahasiswa</h1>
+    </div>
+
+    <div class="section-body">
+        <form method="post">
+            <div class="row">
+                <div class="col-12 col-md-7 col-lg-8">
+                    <h5>Data Diri Mahasiswa</h5>
+                    <hr>
+                    <label for="exampleInputEmail1">Nama</label>
+                    <input type="text" class="form-control" name="nama" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" placeholder="Nama Mahasiswa">
+                    <label for="exampleInputEmail1">Nim</label>
+                    <input type="text" class="form-control" name="nim" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" placeholder="Nomor Induk Mahasiswa">
+                    <label for="exampleInputEmail1">Jurusan</label>
+                    <input type="text" class="form-control" name="jurusan" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" placeholder="Jurusan Mahasiswa">
+                    <label for="exampleInputEmail1">Bidang Minat</label>
+                    <input type="text" class="form-control" name="bidang_minat" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" placeholder="Bidang Minat Mahasiswa">
+                </div>
+                <div class="col-12 col-md-5 col-lg-4">
+                    <button type="submit" class="col-12 btn btn-primary btn-shadow" name="submit"
+                        value="submit">PUBLISH</button><br><br>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="section-title mt-0">Peringkat</div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="peringkat" placeholder="Juara 1 Nasional">
+                            </div>
+                            <div class="section-title mt-0">Nama Lomba</div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="nama_lomba"
+                                    placeholder="Olivia Universitas Halu Oleo" style="height: 100px">
+                            </div>
+                            <div class="section-title mt-0">Pelaksana Lomba</div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="pelaksana" placeholder="Universitas Halu Oleo"
+                                    style="height: 100px"></textarea>
+                            </div>
+                            <div class="section-title mt-0">Kategori</div>
+                            <div class="form-group">
+                                <select class="form-control" name="id_berita">
+                                    <% 
+                              berita.forEach((data)=> { 
+                            %>
+                                    <option class="eKategori" value="<%= data.id %>"><%= data.judul %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

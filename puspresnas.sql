@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Jul 2021 pada 05.31
--- Versi server: 10.4.20-MariaDB
--- Versi PHP: 8.0.8
+-- Generation Time: Aug 09, 2021 at 03:20 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,404 +24,324 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `artikel`
+-- Table structure for table `artikel`
 --
 
 CREATE TABLE `artikel` (
   `id` int(11) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  `deskripsi` text NOT NULL,
-  `isi` text NOT NULL,
-  `tanggal` varchar(50) NOT NULL,
-  `foto` varchar(50) NOT NULL,
-  `id_kategori` int(11) NOT NULL
+  `judul` varchar(255) DEFAULT NULL,
+  `deskripsi` varchar(255) DEFAULT NULL,
+  `isi` varchar(255) DEFAULT NULL,
+  `tanggal` varchar(255) DEFAULT NULL,
+  `foto` varchar(255) NOT NULL,
+  `kategori_konten_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `artikel`
---
-
-INSERT INTO `artikel` (`id`, `judul`, `deskripsi`, `isi`, `tanggal`, `foto`, `id_kategori`) VALUES
-(1, 'Dibalik kisah mahasiswa para pejuang kompetisi Gemastik', 'Lorem 1 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'Lorem 1 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2021-04-03', '', 1),
-(2, 'Petunjuk Teknis Pelaksanaan PIMNAS ke 34 Tahun 2021', 'Lorem 2 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2021-05-13', '', 1),
-(3, 'Jelang Lomba Gemastik 2021, Vokasi UB mengadakan bimbingan lomba rutin', 'Lorem 3 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2021-06-03', '', 1),
-(4, 'Pekan Ilmiah Mahasiswa Nasional 2020, Universitas Brawijaya Jadi Juara Kedua', 'Lorem 4 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2021-06-13', '', 4),
-(5, 'a', 'v', 'c', '2021-07-16', '5.png', 3);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `berita`
+-- Table structure for table `berita`
 --
 
 CREATE TABLE `berita` (
   `id` int(11) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  `deskripsi` text NOT NULL,
-  `isi` text NOT NULL,
-  `tanggal` varchar(50) NOT NULL,
-  `foto` varchar(50) NOT NULL,
-  `id_kategori` int(11) NOT NULL
+  `judul` varchar(255) DEFAULT NULL,
+  `deskripsi` varchar(255) DEFAULT NULL,
+  `isi` varchar(2000) DEFAULT NULL,
+  `tanggal` varchar(255) DEFAULT NULL,
+  `foto` varchar(255) NOT NULL,
+  `kategori_konten_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `berita`
+-- Dumping data for table `berita`
 --
 
-INSERT INTO `berita` (`id`, `judul`, `deskripsi`, `isi`, `tanggal`, `foto`, `id_kategori`) VALUES
-(1, 'Raih Juara 2 dalam Lomba Desain Maskot Pariwisata Kota Bogor 2020', 'Lorem 1 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'Lorem 1 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2021-04-03', '1.png', 1),
-(2, 'Raih Medali Silver di World Science, Environmental, and Engineering Competition 2021', 'Lorem 2 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2021-05-13', '2.png', 1),
-(3, 'Inovasi Mahasiswa UB Sabet Penghargaan di Ipitex 2020', 'Lorem 3 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2021-06-03', '', 1),
-(4, 'Riset Vokasi UB untuk Perkembangan Bangsa, Ilmu Pengetahuan, dan Kemanusiaan', 'Lorem 4 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2021-06-13', '4.png', 4),
-(5, 'aaa', 'aaa', 'aaa', '2021-07-16', '5.png', 3);
+INSERT INTO `berita` (`id`, `judul`, `deskripsi`, `isi`, `tanggal`, `foto`, `kategori_konten_id`) VALUES
+(1, 'Daun Jatuh Tidak Pernah Membenci Angin', 'testing', 'testing', '2021-08-09', '', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bidang_lomba`
+-- Table structure for table `bidang_lomba`
 --
 
 CREATE TABLE `bidang_lomba` (
   `id` int(11) NOT NULL,
-  `nama_bidang` varchar(225) NOT NULL,
-  `desk` varchar(2000) NOT NULL,
-  `biaya` varchar(225) NOT NULL,
-  `hadiah` varchar(225) NOT NULL,
-  `link` varchar(2000) NOT NULL,
-  `file` varchar(500) NOT NULL,
-  `id_jenis` int(11) NOT NULL,
-  `gambar` varchar(225) NOT NULL
+  `nama_bidang` varchar(255) DEFAULT NULL,
+  `desk` varchar(2000) DEFAULT NULL,
+  `biaya` varchar(255) DEFAULT NULL,
+  `hadiah` varchar(255) DEFAULT NULL,
+  `link` varchar(255) DEFAULT NULL,
+  `file` varchar(255) DEFAULT NULL,
+  `id_jenis` int(11) DEFAULT NULL,
+  `gambar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `bidang_lomba`
---
-
-INSERT INTO `bidang_lomba` (`id`, `nama_bidang`, `desk`, `biaya`, `hadiah`, `link`, `file`, `id_jenis`, `gambar`) VALUES
-(16, 'v', 'v', '30000', 'v', 'v', '', 242, ''),
-(17, 'a', 'a', '30000', 'a', 'a', '', 262, ''),
-(18, 'b', 'b', '20000', 'b', 'b', '', 262, '');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenis_lomba`
+-- Table structure for table `jenis_lomba`
 --
 
 CREATE TABLE `jenis_lomba` (
   `id` int(11) NOT NULL,
-  `nama_lomba` varchar(100) NOT NULL,
-  `sumber` varchar(100) NOT NULL,
-  `desk` varchar(2000) NOT NULL,
-  `tipe` enum('Team','Individu') NOT NULL,
-  `id_kategori` int(11) NOT NULL,
-  `tanggal` varchar(100) NOT NULL,
-  `gambar` varchar(225) NOT NULL
+  `nama_lomba` varchar(255) DEFAULT NULL,
+  `sumber` varchar(255) DEFAULT NULL,
+  `desk` varchar(2000) DEFAULT NULL,
+  `tipe` varchar(255) DEFAULT NULL,
+  `id_kategori` int(11) DEFAULT NULL,
+  `tanggal` varchar(255) DEFAULT NULL,
+  `gambar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `jenis_lomba`
---
-
-INSERT INTO `jenis_lomba` (`id`, `nama_lomba`, `sumber`, `desk`, `tipe`, `id_kategori`, `tanggal`, `gambar`) VALUES
-(238, 'GEMASTIK XIII 2020', 'Gemastik Telkom University', 'Program ini ditujukan untuk meningkatkan kompetensi mahasiswa Indonesia, sehingga mampu mengambil peran sebagai agen perubahan dalam memajukan TIK dan pemanfaatannya, baik ketika masih dalam masa studi maupun kelak sesudah lu', 'Team', 9, '2021-10-20 - 2021-10-23', '238.png'),
-(239, 'OLIVIA 2020', 'Institut Teknologi Sepulus November', 'Program ini ditujukan untuk meningkatkan kompetensi mahasiswa Indonesia, sehingga mampu mengambil peran sebagai agen perubahan dalam memajukan TIK dan pemanfaatannya, baik ketika masih dalam masa studi maupun kelak sesudah lu', 'Team', 9, '2021-08-19 - 2021-08-21', '239.png'),
-(240, 'MTQ Universitas Brawijaya', 'Universitas Brawijaya', 'Program ini ditujukan untuk meningkatkan kompetensi mahasiswa Indonesia, sehingga mampu mengambil peran sebagai agen perubahan dalam memajukan TIK dan pemanfaatannya, baik ketika masih dalam masa studi maupun kelak sesudah lu', 'Team', 9, '2021-08-17 - 2021-08-20', '240.png'),
-(241, 'PKM REKTOR CUP UB', 'Universitas Brawijaya', 'Program ini ditujukan untuk meningkatkan kompetensi mahasiswa Indonesia, sehingga mampu mengambil peran sebagai agen perubahan dalam memajukan TIK dan pemanfaatannya, baik ketika masih dalam masa studi maupun kelak sesudah lu', 'Team', 9, '2021-09-07 - 2021-09-09', '241.png'),
-(242, 'PKM 2020', 'Ristekdikti', 'Program ini ditujukan untuk meningkatkan kompetensi mahasiswa Indonesia, sehingga mampu mengambil peran sebagai agen perubahan dalam memajukan TIK dan pemanfaatannya, baik ketika masih dalam masa studi maupun kelak sesudah lu', 'Team', 9, '2021-07-20 - 2021-07-20', '242.png'),
-(262, 'Yuyu A', 'aaaa', 'ccc', 'Individu', 9, '2021-07-24 - 2021-07-24', '262.png');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori_konten`
+-- Table structure for table `kategori_konten`
 --
 
 CREATE TABLE `kategori_konten` (
   `id` int(11) NOT NULL,
-  `kategori` varchar(50) NOT NULL
+  `kategori` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `kategori_konten`
---
-
-INSERT INTO `kategori_konten` (`id`, `kategori`) VALUES
-(1, 'Info Vokasi'),
-(2, 'Info Lomba'),
-(3, 'Tips & Trick'),
-(4, 'Vokasi Juara');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori_lomba`
+-- Table structure for table `kategori_lomba`
 --
 
 CREATE TABLE `kategori_lomba` (
   `id` int(11) NOT NULL,
-  `kategori` varchar(50) NOT NULL
+  `kategori` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `kategori_lomba`
---
-
-INSERT INTO `kategori_lomba` (`id`, `kategori`) VALUES
-(9, 'Teknologi'),
-(11, 'Design'),
-(12, 'Wirausaha'),
-(13, 'Public Relation'),
-(17, 'Nopal jilid 2'),
-(18, 'mas Alvin');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tag`
+-- Table structure for table `mahasiswa`
+--
+
+CREATE TABLE `mahasiswa` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(225) NOT NULL,
+  `nim` varchar(225) NOT NULL,
+  `jurusan` varchar(225) NOT NULL,
+  `bidang_minat` varchar(225) NOT NULL,
+  `nama_lomba` varchar(225) NOT NULL,
+  `peringkat` varchar(225) NOT NULL,
+  `pelaksana` varchar(225) NOT NULL,
+  `id_berita` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tag`
 --
 
 CREATE TABLE `tag` (
   `id` int(11) NOT NULL,
-  `id_jenis` int(11) NOT NULL,
-  `id_tag_lomba` int(11) NOT NULL
+  `id_jenis` int(11) DEFAULT NULL,
+  `id_tag_lomba` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `tag`
---
-
-INSERT INTO `tag` (`id`, `id_jenis`, `id_tag_lomba`) VALUES
-(138, 238, 1),
-(139, 238, 2),
-(140, 238, 5),
-(141, 238, 6),
-(142, 238, 7),
-(143, 238, 8),
-(144, 239, 2),
-(145, 239, 6),
-(146, 240, 2),
-(147, 240, 8),
-(148, 241, 1),
-(149, 241, 2),
-(150, 241, 5),
-(151, 241, 6),
-(152, 241, 7),
-(153, 241, 8),
-(154, 242, 1),
-(155, 242, 2),
-(156, 242, 5),
-(157, 242, 6),
-(158, 242, 7),
-(159, 242, 8),
-(280, 262, 1),
-(281, 262, 2);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tag_lomba`
+-- Table structure for table `tag_lomba`
 --
 
 CREATE TABLE `tag_lomba` (
   `id` int(11) NOT NULL,
-  `tag` varchar(100) NOT NULL,
-  `id_kategori_lomba` int(11) DEFAULT NULL
+  `tag` varchar(255) DEFAULT NULL,
+  `kategori_lomba_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `tag_lomba`
---
-
-INSERT INTO `tag_lomba` (`id`, `tag`, `id_kategori_lomba`) VALUES
-(1, 'Cyber Security                  ', 9),
-(2, 'Pemrograman', 9),
-(5, 'Game Development', 9),
-(6, 'IoT', 9),
-(7, 'Data Mining', 9),
-(8, 'UI/UX Design', 9),
-(11, 'Karya Adobe Ilustrator', 11),
-(12, 'Ide Jualan', 12),
-(13, 'Speak English Well', 13),
-(14, 'Androida', 11),
-(15, 'wwww', 11),
-(16, '2222', 17),
-(17, 'mas fawwaz', 18);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
-  `id` int(2) NOT NULL,
-  `nama` varchar(100) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `level` enum('admin','superadmin') NOT NULL,
-  `foto` varchar(50) NOT NULL
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `level` enum('Superadmin','Admin') DEFAULT NULL,
+  `foto` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `nama`, `username`, `password`, `level`, `foto`) VALUES
-(1, 'Naufal Ulinnuha', 'naufal', '21232f297a57a5a743894a0e4a801fc3', 'superadmin', '1.png'),
-(2, 'Administrator', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', ''),
-(3, 'Alice Zuberg', 'alice', '6384e2b2184bcbf58eccf10ca7a6563c', 'superadmin', '3.png'),
-(4, 'farelamo', 'farlam', '827ccb0eea8a706c4c34a16891f84e7b', 'admin', '4.png');
+(1, 'naufal', 'naufal', '21232f297a57a5a743894a0e4a801fc3', 'Superadmin', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `artikel`
+-- Indexes for table `artikel`
 --
 ALTER TABLE `artikel`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `kategori_konten_id` (`kategori_konten_id`);
 
 --
--- Indeks untuk tabel `berita`
+-- Indexes for table `berita`
 --
 ALTER TABLE `berita`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `kategori_konten_id` (`kategori_konten_id`);
+
+--
+-- Indexes for table `bidang_lomba`
+--
+ALTER TABLE `bidang_lomba`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `bidang_lomba`
---
-ALTER TABLE `bidang_lomba`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_jenis` (`id_jenis`);
-
---
--- Indeks untuk tabel `jenis_lomba`
+-- Indexes for table `jenis_lomba`
 --
 ALTER TABLE `jenis_lomba`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `kategori_lomba` (`id_kategori`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `kategori_konten`
+-- Indexes for table `kategori_konten`
 --
 ALTER TABLE `kategori_konten`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `kategori_lomba`
+-- Indexes for table `kategori_lomba`
 --
 ALTER TABLE `kategori_lomba`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tag`
+-- Indexes for table `mahasiswa`
+--
+ALTER TABLE `mahasiswa`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_berita` (`id_berita`);
+
+--
+-- Indexes for table `tag`
 --
 ALTER TABLE `tag`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `jenis_lomba` (`id_jenis`),
-  ADD KEY `id_tag_lomba` (`id_tag_lomba`);
+  ADD KEY `tag_id_jenis` (`id_jenis`),
+  ADD KEY `tag_id_tag_lomba` (`id_tag_lomba`);
 
 --
--- Indeks untuk tabel `tag_lomba`
+-- Indexes for table `tag_lomba`
 --
 ALTER TABLE `tag_lomba`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_kategori_lomba` (`id_kategori_lomba`);
+  ADD KEY `kategori_lomba_id` (`kategori_lomba_id`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `artikel`
+-- AUTO_INCREMENT for table `artikel`
 --
 ALTER TABLE `artikel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `berita`
+-- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `bidang_lomba`
+-- AUTO_INCREMENT for table `bidang_lomba`
 --
 ALTER TABLE `bidang_lomba`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `jenis_lomba`
+-- AUTO_INCREMENT for table `jenis_lomba`
 --
 ALTER TABLE `jenis_lomba`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `kategori_konten`
+-- AUTO_INCREMENT for table `kategori_konten`
 --
 ALTER TABLE `kategori_konten`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `kategori_lomba`
+--
+ALTER TABLE `kategori_lomba`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `mahasiswa`
+--
+ALTER TABLE `mahasiswa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `kategori_lomba`
---
-ALTER TABLE `kategori_lomba`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT untuk tabel `tag`
+-- AUTO_INCREMENT for table `tag`
 --
 ALTER TABLE `tag`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=282;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tag_lomba`
+-- AUTO_INCREMENT for table `tag_lomba`
 --
 ALTER TABLE `tag_lomba`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `bidang_lomba`
+-- Constraints for table `artikel`
 --
-ALTER TABLE `bidang_lomba`
-  ADD CONSTRAINT `jenis_bidang` FOREIGN KEY (`id_jenis`) REFERENCES `jenis_lomba` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `artikel`
+  ADD CONSTRAINT `artikel_ibfk_1` FOREIGN KEY (`kategori_konten_id`) REFERENCES `kategori_konten` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `jenis_lomba`
+-- Constraints for table `berita`
 --
-ALTER TABLE `jenis_lomba`
-  ADD CONSTRAINT `kategori_lomba` FOREIGN KEY (`id_kategori`) REFERENCES `kategori_lomba` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `berita`
+  ADD CONSTRAINT `berita_ibfk_1` FOREIGN KEY (`kategori_konten_id`) REFERENCES `kategori_konten` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tag`
+-- Constraints for table `mahasiswa`
 --
-ALTER TABLE `tag`
-  ADD CONSTRAINT `jenis_lomba` FOREIGN KEY (`id_jenis`) REFERENCES `jenis_lomba` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tag_lomba` FOREIGN KEY (`id_tag_lomba`) REFERENCES `tag_lomba` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `mahasiswa`
+  ADD CONSTRAINT `mahasiswa_ibfk_1` FOREIGN KEY (`id_berita`) REFERENCES `berita` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `tag_lomba`
+-- Constraints for table `tag_lomba`
 --
 ALTER TABLE `tag_lomba`
-  ADD CONSTRAINT `kategori_lomba_tag` FOREIGN KEY (`id_kategori_lomba`) REFERENCES `kategori_lomba` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tag_lomba_ibfk_1` FOREIGN KEY (`kategori_lomba_id`) REFERENCES `kategori_lomba` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
