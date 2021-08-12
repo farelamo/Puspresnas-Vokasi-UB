@@ -45,6 +45,10 @@
         {
             "name": "Kategori Konten",
             "description": "Kategori Konten"
+        },
+        {
+            "name": "Mahasiswa",
+            "description": "Mahasiswa"
         }
     ],
 
@@ -344,6 +348,44 @@
                             "type": "integer"
                         },
                         "description": "Nomor Kategori Lomba"
+                    }
+                 ],
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/mahasiswa": {
+            "get": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Get All Mahasiswa",
+                 "description": "",
+                 "responses": {
+                     "200": {
+                         "description": "Sukses"
+                     }
+                 }
+            }
+        },
+        "/api/mahasiswa/{id}": {
+            "get": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Get One Mahasiswa",
+                 "description": "",
+                 "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Nomor Mahasiswa"
                     }
                  ],
                  "responses": {

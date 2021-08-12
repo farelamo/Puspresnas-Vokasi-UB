@@ -2,17 +2,26 @@ const express  = require('express')
 const session  = require('express-session')
 const upload = require("express-fileupload");
 const bodyparser = require('body-parser')
+const db = require('./models')
 const app = express()
 
-// SWAGGER
+//SWAGGER
 const swaggerUi = require('swagger-ui-express')
 const apiDocumentation = require('./apidocs.json')
 app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(apiDocumentation))
-// END SWAGGER
+//END SWAGGER
 
-const db = require('./models')
+//Middleware
+app.use(express.static('public'));
+app.use(express.urlencoded({extended: false}));
+app.use(bodyparser.urlencoded({extended: true}));
+app.use(session({secret: 'excalibur'}));
+app.use(upload());
+app.set('view engine','ejs');
+var sess;
+//END Middleware
 
-//mvc
+//Routers ADMIN
 const dashboard = require('./routers/dashboard')
 const user = require('./routers/user')
 const bidangLomba = require('./routers/bidangLomba')
@@ -33,43 +42,27 @@ const berita = require('./routers/berita')
 const beritaNew = require('./routers/beritaNew')
 const beritaEdit = require('./routers/beritaEdit')
 const kontenCat = require('./routers/kontenCat')
-const kategoriKonten = require('./routers/kategoriKonten')
-const kategoriLomba = require('./routers/kategoriLomba')
-const tagLomba = require('./routers/tagLomba')
-const tag = require('./routers/tag')
 const mahasiswa = require('./routers/mahasiswa')
 const mahasiswaNew = require('./routers/mahasiswaNew')
 const mahasiswaEdit = require('./routers/mahasiswaEdit')
-// const start = require('./routers/app')
-//akhir mvc
+//END ROUTERS ADMIN
 
+//ROUTERS API
+const artikelAPI = require('./API/routersAPI/artikelAPI')
+const beritaAPI = require('./API/routersAPI/beritaAPI')
+const jenisLombaAPI = require('./API/routersAPI/jenisLombaAPI')
+const bidangLombaAPI = require('./API/routersAPI/bidangLombaAPI')
+const kategoriKontenAPI = require('./API/routersAPI/kategoriKontenAPI')
+const kategoriLombaAPI = require('./API/routersAPI/kategoriLombaAPI')
+const tagAPI = require('./API/routersAPI/tagAPI')
+const tagLombaAPI = require('./API/routersAPI/tagLombaAPI')
+const mahasiswaAPI = require('./API/routersAPI/mahasiswaAPI')
+//END ROUTERS API
 
-//middleware
-app.use(express.static('public'));
-app.use(express.urlencoded({extended: false}));
-app.use(bodyparser.urlencoded({extended: true}));
-app.use(session({secret: 'excalibur'}));
-app.use(upload());
-app.set('view engine','ejs');
-var sess;
-//akhir middleware
-
-// function isEmpty(obj) {
-//     return Object.keys(obj).length === 0;
-// }
-
-// function cekSesi(obj) {
-//   sess=req.session; 
-//   if (sess.id_user!==undefined) {
-//     console.log("+"+sess.id_user+"+")
-//     res.render('admin/'+obj+'.ejs')
-//   } else {
-//     console.log("/"+sess.id_user+"/")
-//     res.redirect('login');
-//   }
-// }
-
+//PERSAMAAN MIGRATE
 db.sequelize.sync();
+
+//ADMIN DASHBOARD
 app.use(index)
 app.use(login)
 app.use(profil)
@@ -90,14 +83,22 @@ app.use(lombaAll)
 app.use(lombaCat)
 app.use(lombaTag)
 app.use(user)
-app.use(kategoriKonten)
-app.use(kategoriLomba)
-app.use(tagLomba)
-app.use(tag)
 app.use(mahasiswa)
 app.use(mahasiswaNew)
 app.use(mahasiswaEdit)
+//END ADMIN DASHBOARD
 
+//API
+app.use(artikelAPI)
+app.use(beritaAPI)
+app.use(bidangLombaAPI)
+app.use(jenisLombaAPI)
+app.use(kategoriKontenAPI)
+app.use(kategoriLombaAPI)
+app.use(tagAPI)
+app.use(tagLombaAPI)
+app.use(mahasiswaAPI)
+//END API
 
 app.get('/logout', (req, res) => {
   sess=req.session; 
@@ -105,6 +106,7 @@ app.get('/logout', (req, res) => {
   res.redirect('/login'); 
 })
 
+//CONFIGURASI SERVER LOCAL
 app.listen(3000, ()=> {
   console.log('server listening on port 3000...')
 })

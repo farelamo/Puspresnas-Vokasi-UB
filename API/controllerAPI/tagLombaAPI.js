@@ -1,17 +1,22 @@
-const Db = require('../models')
-const Post = Db.tag
+const Db = require('../../models')
+const Post = Db.tagLomba
 const Op = Db.Sequelize.Op
+const PostCat = Db.kategoriLomba
 
 module.exports = {
     findAll: (req, res) => {
-        const id_jenis = req.query.id_jenis
-        let condition = id_jenis ? {
-            id_jenis: {
-                [Op.like]: `%${id_jenis}%`
+        const tag = req.query.tag
+        let condition = tag ? {
+            tag: {
+                [Op.like]: `%${tag}%`
             }
         } : null
 
         Post.findAll({
+            include: [{
+                model: PostCat,
+                required: false,
+              }],
                 where: condition
             })
             .then((data) => {

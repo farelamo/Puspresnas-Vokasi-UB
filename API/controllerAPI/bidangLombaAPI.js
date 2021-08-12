@@ -1,17 +1,20 @@
-const Db = require('../models')
-const Post = Db.kategoriLomba
-const Op = Db.Sequelize.Op
+const Db = require("../../models");
+const Post = Db.bidangLomba;
+const Op = Db.Sequelize.Op;
 
 module.exports = {
     findAll: (req, res) => {
-        const kategori = req.query.kategori
-        let condition = kategori ? {
-            kategori: {
-                [Op.like]: `%${kategori}%`
+        const judul = req.query.judul;
+        let condition = judul ? {
+            judul: {
+                [Op.like]: `%${judul}%`
             }
-        } : null
+        } : null;
 
         Post.findAll({
+                order: [
+                    ['id', 'DESC']
+                ],
                 where: condition
             })
             .then((data) => {
@@ -19,8 +22,8 @@ module.exports = {
             }).catch((err) => {
                 res.status(500).send({
                     message: err.message || "Some error occured while find post"
-                })
-            })
+                });
+            });
     },
 
     findOne: (req, res) => {

@@ -252,23 +252,5 @@ module.exports = {
       console.log("nothing happen -" + req.body.submit + "-")
       res.redirect('/artikel')
     }
-
-  },
-
-  findAll: (req, res) => {
-
-  },
-
-  findOne: (req, res) => {
-    const id = req.params.id;
-
-    Post.findByPk(id)
-      .then((data) => {
-        res.send(data);
-      }).catch((err) => {
-        res.status(500).send({
-          message: "Error retrieving post with id=" + id
-        });
-      });
   }
 }
