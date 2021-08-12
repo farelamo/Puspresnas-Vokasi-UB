@@ -38,9 +38,9 @@
                                             <a href="mahasiswaEdit/<%= data.id %>"
                                                 class="btn btn-table btn-sm btn-primary" title="Edit"><i
                                                     class="fa fa-pen"></i></a>
-                                            <p id="<%= data.id %>" class="d-none"><%= data.judul %></p>
+                                            <p id="<%= data.id %>" class="d-none"><%= data.nama %></p>
                                             <button type="button" class="btn btn-table btn-sm btn-danger" title="Hapus"
-                                                data-toggle="modal" data-target="#hapusArtikel"
+                                                data-toggle="modal" data-target="#hapusMahasiswa"
                                                 onclick='hapusMahasiswa("<%= data.id %>")'><i
                                                     class="fa fa-times"></i></button>
                                         </td>
@@ -57,11 +57,11 @@
 </section>
 
 
-<div class="modal fade" id="hapusArtikel" tabindex="-1" role="dialog" style="display: none;" aria-modal="true">
+<div class="modal fade" id="hapusMahasiswa" tabindex="-1" role="dialog" style="display: none;" aria-modal="true">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><i class="fa fa-times"></i> Hapus artikel</h5>
+                <h5 class="modal-title"><i class="fa fa-times"></i> Hapus Mahasiswa</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -70,8 +70,8 @@
             <div class="modal-body">
                 <form class="forms-sample" method="post">
                     <div class="form-group">
-                        <p id="dHapus">Apakah anda yakin ingin menghapus artikel ini?</p>
-                        <input type="hidden" class="d-none" class="form-control" id="dId" name="id_artikel" value=""
+                        <p id="dHapus">Apakah anda yakin ingin menghapus Mahasiswa ini?</p>
+                        <input type="hidden" class="d-none" class="form-control" id="dId" name="id_mahasiswa" value=""
                             required>
                     </div>
                     <hr>
@@ -87,14 +87,9 @@
 </div>
 
 <script type="text/javascript">
-    function hapusArtikel(idartikel) {
-        var dataArtikel = (document.getElementById(idartikel).textContent).split(",");
-        document.getElementById("dId").value = idartikel;
+    function hapusMahasiswa(id_mahasiswa) {
+        var dataArtikel = (document.getElementById(id_mahasiswa).textContent).split(",");
+        document.getElementById("dId").value = id_mahasiswa;
         document.getElementById("dHapus").textContent = 'Apakah anda yakin ingin menghapus "' + dataArtikel[0] + '"?';
-    }
-
-    function fotoArtikel(idartikel) {
-        var dataArtikel = (document.getElementById(idartikel).textContent).split(",");
-        document.getElementById("fId").value = idartikel;
     }
 </script>
