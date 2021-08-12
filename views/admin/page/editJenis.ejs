@@ -62,7 +62,7 @@
                 <select class="form-control" name="kategoriLomba" id="test" required>
                   <option class="eKategori" value="0">Pilih Kategori</option>
                   <% kategoriLomba.forEach((data)=> { %>
-                    <option class="eKategori" value="<%= data.id %>" <% if(data.id==jenis[0].id_kategori){ %> selected
+                    <option class="eKategori" value="<%= data.id %>" <% if(data.id==jenis[0].kategori_lomba_id){ %> selected
                       <% } %>>
                         <%= data.kategori %>
                     </option>
@@ -81,7 +81,7 @@
                 </div>
 
                 <% tagLomba.forEach((data)=> { %>
-                  <div class="selectgroup selectgroup-pills selectTag kategori<%= data.id_kategori_lomba %>" style="display : none">
+                  <div class="selectgroup selectgroup-pills selectTag kategori<%= data.kategori_lomba_id %>" style="display : none">
                     <label class="selectgroup-item">
                       <input  type="checkbox" name="tag" value="<%= data.id %>" <% tag.forEach((isi)=> { %>
                       <% if (data.id==isi) { %>

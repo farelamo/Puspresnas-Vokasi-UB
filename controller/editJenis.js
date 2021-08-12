@@ -1,6 +1,12 @@
 const db = require('../config/database')
 const fs = require('fs');
 var sess;
+const Db = require('../models')
+const Post = Db.jenisLomba
+const PostCat = Db.kategoriLomba
+const PostTagLomba = Db.tagLomba
+const PostTag = Db.tag
+const Op = Db.Sequelize.Op
 
 module.exports = {
   index: (req, res) => {
@@ -36,13 +42,13 @@ module.exports = {
                                   if (error) console.log(error)
                                   else {
                                     db.query(
-                                      'SELECT `id_tag_lomba` FROM `tag` WHERE `id_jenis`= ?',
+                                      'SELECT `tag_lomba_id` FROM `tag` WHERE `jenis_lomba_id`= ?',
                                       [req.params.id],
                                       (error, hasil) => {
 
                                         if (error) console.log(error)
                                         else {
-                                          var tag = hasil.map(tags => tags.id_tag_lomba)
+                                          var tag = hasil.map(tags => tags.tag_lomba_id)
 
                                           let enumVal = type[0]['tipes'];
                                           let tempString = enumVal.replace(/\'/g, '');
@@ -96,25 +102,25 @@ module.exports = {
       } = req.body
 
       db.query(
-        'UPDATE jenis_lomba SET nama_lomba = ?, sumber = ?, desk = ?, tipe = ?, id_kategori = ?, tanggal = ? WHERE id = ?',
+        'UPDATE jenis_lomba SET nama_lomba = ?, sumber = ?, desk = ?, tipe = ?, kategori_lomba_id = ?, tanggal = ? WHERE id = ?',
         [nama, sumber, desk, tipe, kategoriLomba, tanggal, req.params.id],
         (error, edit) => {
           if (error) console.log(error)
           else {
             db.query(
-              'DELETE FROM `tag` WHERE id_jenis = ?',
+              'DELETE FROM `tag` WHERE `jenis_lomba_id` = ?',
               [req.params.id],
               (error, hapus) => {
                 if (error) console.log(error)
                 else {
 
-                  console.log(tag)
+                  // console.log(tag)
                   
                    if (Array.isArray(tag)) {
                     tag.forEach((tags) => {
                       db.query(
-                        'INSERT INTO `tag` (`id_jenis`,`id_tag_lomba`) VALUES (?,?)',
-                        [req.params.id, tags],
+                        'INSERT INTO `tag` (`tag_lomba_id`,`jenis_lomba_id`) VALUES (?,?)',
+                        [tags, req.params.id],
                         (error, tagjenis) => {
                           if (error) console.log(error)
                         }
@@ -123,8 +129,8 @@ module.exports = {
                   } else if (!Array.isArray(tag)) {
                     //var hasil = tag.length[0]
                     db.query(
-                      'INSERT INTO `tag` (`id_jenis`,`id_tag_lomba`) VALUES (?,?)',
-                      [req.params.id, tag],
+                      'INSERT INTO `tag` (`tag_lomba_id`,`jenis_lomba_id`) VALUES (?,?)',
+                      [tag, req.params.id],
                       (error, haha) => {
                         if (error) console.log(error)
                       }
@@ -134,6 +140,70 @@ module.exports = {
                 }
               }
             )
+            
+          // const id = req.params.id;
+
+          // PostTag.destroy({
+          //   where: {
+          //     jenis_lomba_id: id
+          //   }
+          // }).then((result) => {
+          //   if (result == 1 || result == 0) {
+          //   console.log(req.params.id)
+            
+          //   if (Array.isArray(tag)) {
+          //     tag.forEach((tags) => {
+          //       const isi = {
+          //         jenis_lomba_id: req.params.id,
+          //         tag_lomba_id: tags
+          //       }
+          //       PostTag.create(isi)
+          //         .then((hasil) => {
+          //           res.redirect('/lombaAll')
+          //         })
+          //         .catch((err) => {
+          //           res.status(500).send({
+          //             message: err.message || "Some error occurred while creating the Post."
+          //           })
+          //         })
+          //     })
+          //   } else if (!Array.isArray(tag)) {
+          //     const isi = {
+          //       jenis_lomba_id: req.params.id,
+          //       tag_lomba_id: tag
+          //     };
+          //     PostTag.create(isi)
+          //       .then((hasil) => {
+          //         res.redirect('/lombaAll')
+          //       })
+          //       .catch((err) => {
+          //         res.status(500).send({
+          //           message: err.message || "Some error occurred while creating the Post."
+          //         })
+          //       })
+          //   }
+          //   } else {
+          //     res.send({
+          //       message: `Cannot delete post with id=${id}`
+          //     })
+          //   }
+          // }).catch((err) => {
+          //   res.status(500).send({
+          //     message: "Could not delete post with id=" + id
+          //   })
+          // })
+
+
+            // db.query(
+            //   'UPDATE tag INNER JOIN tag_lomba ON tag.tag_lomba_id = tag_lomba.id SET tag.tag_lomba_id = (?) WHERE tag.jenis_lomba_id = (?)',
+            //   [tag,req.params.id],
+            //   (err, result) => {
+            //     if(error) console.log(error)
+            //     else {
+            //       res.redirect('/lombaAll')
+            //     }
+            //   }
+            // )
 
           }
         }

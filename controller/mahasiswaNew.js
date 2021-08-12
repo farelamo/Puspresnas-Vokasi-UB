@@ -31,7 +31,7 @@ module.exports = {
   crud: (req, res) => {
     if (req.body.submit=="submit") {
       db.query(
-        "INSERT INTO `mahasiswa` (`nama`, `nim`, `jurusan`, `bidang_minat`, `nama_lomba`, `peringkat`, `pelaksana`, `id_berita`) VALUES (?,?,?,?,?,?,?,?)",
+        "INSERT INTO `mahasiswa` (`nama`, `nim`, `jurusan`, `bidang_minat`, `nama_lomba`, `peringkat`, `pelaksana`, `beritum_id`) VALUES (?,?,?,?,?,?,?,?)",
         [req.body.nama, req.body.nim, req.body.jurusan, req.body.bidang_minat,req.body.nama_lomba,req.body.peringkat,req.body.pelaksana,req.body.id_berita],
         (err, result) => {
           if (err) console.log(err)

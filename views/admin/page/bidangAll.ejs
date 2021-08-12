@@ -124,15 +124,43 @@
     })
 
       .then((hasil) => {
-        if (hasil) {
-          window.location.href = "editBidang/" + idBidang
+        // if (hasil) {
+        //   window.location.href = "editBidang/" + idBidang
 
+        // } else {
+        //   swal({
+        //     icon: 'info',
+        //     title: 'Data tidak jadi diedit !!'
+        //   });
+        // }
+
+        if (hasil) {
+          if (hasil) {
+            console.log(idBidang)
+            $.ajax({
+              type: "GET",
+              url: 'editBidang/' + idBidang,
+              data: { 'idBidang': idBidang },
+              cache: false,
+              success: function (response) {
+                swal(
+                  "Sccess!",
+                  "Your note has been saved!",
+                  "success",
+                  window.location.href = "editBidang/" + idBidang
+                )
+              }
+            })
+            
+          }
         } else {
           swal({
             icon: 'info',
             title: 'Data tidak jadi diedit !!'
           });
         }
+
+
       });
   }
 

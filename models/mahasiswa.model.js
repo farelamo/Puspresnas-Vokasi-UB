@@ -21,13 +21,14 @@ module.exports = (sequelize, Sequelize) => {
         pelaksana: {
             type: Sequelize.STRING
         },
-        id_berita: {
+        beritum_id: {
             type: Sequelize.INTEGER
         }
     }, 
     {
         freezeTableName: true,
-        timestamps : false
+        timestamps : false,
+        underscored: true
     });
 
     return Mahasiswa;

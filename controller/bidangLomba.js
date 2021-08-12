@@ -55,30 +55,49 @@ module.exports = {
         link,
       } = req.body
 
-      var file = req.files.berkas
-      var filename = req.params.id + '.pdf';
-      file.mv("public/assets/bidangLomba/" + filename, function (err) {
-        if (err) console.log(err)
-        else {
-          var gambar = req.files.gambar
-          var namaGambar = req.params.id + '.png'
-          gambar.mv("public/assets/img/bidangLomba/" + namaGambar, ((error) => {
-            if (error) console.log(error)
-            db.query(
-              "INSERT INTO `bidang_lomba` (`nama_bidang`, `desk`, `biaya`, `hadiah`, `link`, `file`, `gambar`, `id_jenis`) VALUES (?,?,?,?,?,?,?,?)",
-              [
-                nama, desk, biaya, hadiah, link, filename, namaGambar, req.params.id
-              ],
-              (err, bidangLomba) => {
-                if (err) console.log(err)
-                else {
-                  res.redirect('/bidangAll/' + req.params.id)
-                }
+
+      db.query(
+        "INSERT INTO `bidang_lomba` (`nama_bidang`, `desk`, `biaya`, `hadiah`, `link`, `file`, `id_jenis`, `gambar`) VALUES (?,?,?,?,?,?,?,?)",
+        [
+          nama, desk, biaya, hadiah, link, '', req.params.id, ''
+        ],
+        (err, bidangLomba) => {
+          if (err) console.log(err)
+          else {
+            console.log(bidangLomba.insertId)
+            var file = req.files.berkas
+            var filename = bidangLomba.insertId + '.pdf';
+            file.mv("public/assets/bidangLomba/" + filename, function (err) {
+
+              if (err) console.log(err)
+              else {
+                var gambar = req.files.gambar
+                var namaGambar = bidangLomba.insertId + '.png'
+                gambar.mv("public/assets/img/bidangLomba/" + namaGambar, ((error) => {
+
+                  if (error) console.log(error)
+                  else {
+                    db.query(
+                      'UPDATE `bidang_lomba` SET  `file` = (?), `gambar`= (?) WHERE `id` = (?)',
+                      [filename, namaGambar, bidangLomba.insertId],
+                      (err, hasil) => {
+                        if (error) console.log(error)
+                        else {
+                          res.redirect('/bidangAll/' + req.params.id)
+                        }
+                      }
+                    )
+                    // res.redirect('/bidangAll/' + req.params.id)
+                  }
+
+                }))
+
               }
-            )
-          }))
+            });
+          }
         }
-      });
+      )
+
     }
   },
 

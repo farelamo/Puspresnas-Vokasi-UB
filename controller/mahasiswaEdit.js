@@ -49,7 +49,7 @@ module.exports = {
       var peringkat       = req.body.peringkat;
       var pelaksana       = req.body.pelaksana;
       db.query(
-        "UPDATE `mahasiswa` SET `nama`=?,`nim`=?,`jurusan`=?,`bidang_minat`=?,`nama_lomba`=?,`peringkat`=?,`pelaksana`=? , `id_berita`=? WHERE `id` = ?",
+        "UPDATE `mahasiswa` SET `nama`=?,`nim`=?,`jurusan`=?,`bidang_minat`=?,`nama_lomba`=?,`peringkat`=?,`pelaksana`=? , `beritum_id`=? WHERE `id` = ?",
         [nama, nim, jurusan,bidang_minat, nama_lomba,peringkat,pelaksana, req.body.id_berita, req.body.id],
         (err, result) => {
           if (err) console.log(err)

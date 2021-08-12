@@ -45,11 +45,11 @@
                             <div class="section-title mt-0">Pelaksana Lomba</div>
                             <div class="form-group">
                                 <textarea class="form-control" name="pelaksana" placeholder="Universitas Halu Oleo"
-                                    style="height: 100px" value="<%= mahasiswa[0].pelaksana %>"></textarea>
+                                    style="height: 100px"><%= mahasiswa[0].pelaksana %></textarea>
                             </div>
                             <div class="section-title mt-0">Kategori</div>
                             <div class="form-group">
-                                <select class="form-control" name="id_berita" value="<%= mahasiswa[0].id_berita %>">
+                                <select class="form-control" name="id_berita" value="<%= mahasiswa[0].beritum_id %>">
                                     <% 
                               berita.forEach((data)=> { 
                             %>

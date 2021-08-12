@@ -30,13 +30,28 @@ db.kategoriLomba = require('./kategoriLomba.model.js')(sequelize,Sequelize)
 db.tagLomba = require('./tagLomba.model.js')(sequelize,Sequelize)
 db.tag = require('./tag.model.js')(sequelize,Sequelize)
 db.user = require('./user.model.js')(sequelize,Sequelize)
+db.mahasiswa = require('./mahasiswa.model.js')(sequelize,Sequelize)
 
 // db.tagLomba.hasOne(db.kategoriLomba, {foreignKey: 'id'})
 // db.tagLomba.belongsTo(db.kategoriLomba, {foreignKey: 'id'})
 
-db.tagLomba.belongsTo(db.kategoriLomba);
-db.artikel.belongsTo(db.kategoriKonten);
-db.berita.belongsTo(db.kategoriKonten);
+db.tagLomba.belongsTo(db.kategoriLomba)
+db.artikel.belongsTo(db.kategoriKonten)
+db.berita.belongsTo(db.kategoriKonten)
+db.jenisLomba.belongsTo(db.kategoriLomba)
+db.mahasiswa.belongsTo(db.berita)
+
+db.jenisLomba.belongsToMany(db.tagLomba, {
+    through: 'tag',
+    foreignKey: 'jenis_lomba_id'
+});
+db.tagLomba.belongsToMany(db.jenisLomba, {
+    through: 'tag',
+    foreignKey: 'tag_lomba_id'
+});
+
+// db.tag.belongsTo(db.JenisLomba)
+// db.tag.belongsTo(db.tagLomba)
 // db.kategoriLomba.hasMany(db.tagLomba);
 
 module.exports = db 

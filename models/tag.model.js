@@ -1,23 +1,20 @@
 module.exports = (sequelize, Sequelize) => {
     const tag = sequelize.define("tag", {
-        id_jenis: {
+        // id: {
+        //     type: Sequelize.INTEGER,
+        //     primaryKey: true,
+        //     autoIncrement: true
+        // },
+        tag_lomba_id: {
             type: Sequelize.INTEGER
         },
-        id_tag_lomba: {
+        jenis_lomba_id: {
             type: Sequelize.INTEGER
         }
     }, {
         freezeTableName: true,
         timestamps: false,
-        indexes: [{
-                unique: false,
-                fields: ['id_jenis']
-            },
-            {
-                unique: false,
-                fields: ['id_tag_lomba']
-            }
-        ]
+        underscored: true
     });
 
     return tag;

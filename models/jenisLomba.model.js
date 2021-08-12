@@ -1,5 +1,6 @@
 module.exports = (sequelize,Sequelize) => {
     const jenisLomba = sequelize.define('jenis_lomba',{
+        id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
         nama_lomba: {
             type: Sequelize.STRING
         },
@@ -10,9 +11,9 @@ module.exports = (sequelize,Sequelize) => {
             type: Sequelize.STRING(2000)
         },
         tipe: {
-            type: Sequelize.STRING
+            type: Sequelize.ENUM(['Team', 'Individu'])
         },
-        id_kategori: {
+        kategori_lomba_id: {
             type: Sequelize.INTEGER
         },
         tanggal: {
@@ -25,7 +26,8 @@ module.exports = (sequelize,Sequelize) => {
     },
     {
         timestamps: false,
-        freezeTableName: true
+        freezeTableName: true,
+        underscored: true
     }
     )
     return jenisLomba
