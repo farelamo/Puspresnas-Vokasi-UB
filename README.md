@@ -1,11 +1,4 @@
 # Puspresnas-Vokasi-UB
-WARNING !!
-```
-Database menggunakan persamaan migrate, 
-sehingga hanya buat databasenya saja di phpmyadmin
-(tdk perlu bikin tabel)
-```
-
 
 Persiapan yang di install
 
@@ -20,6 +13,21 @@ npm i dotenv cryptojs nodemon sequelize
 Install Part 3
 ```
 npm i mysql2 --save replace-in-file swangger-ui-express
+```
+
+Install Part 4 (Untuk Migrate & Seeder)
+```
+npm install --save-dev sequelize-cli
+```
+
+Run Migration
+```
+npx sequelize db:migrate
+```
+
+Run Seeder
+```
+npx sequelize db:seed:all
 ```
 
 Run Project 
