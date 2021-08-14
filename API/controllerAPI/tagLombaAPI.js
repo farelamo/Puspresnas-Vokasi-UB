@@ -15,7 +15,7 @@ module.exports = {
         Post.findAll({
             include: [{
                 model: PostCat,
-                required: false,
+                required: true,
               }],
                 where: condition
             })

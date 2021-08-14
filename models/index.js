@@ -39,16 +39,18 @@ db.tagLomba.belongsTo(db.kategoriLomba)
 db.artikel.belongsTo(db.kategoriKonten)
 db.berita.belongsTo(db.kategoriKonten)
 db.jenisLomba.belongsTo(db.kategoriLomba)
+db.bidangLomba.belongsTo(db.jenisLomba)
 db.mahasiswa.belongsTo(db.berita)
 
 db.jenisLomba.belongsToMany(db.tagLomba, {
     through: 'tag',
     foreignKey: 'jenis_lomba_id'
-});
+})
+
 db.tagLomba.belongsToMany(db.jenisLomba, {
     through: 'tag',
     foreignKey: 'tag_lomba_id'
-});
+})
 
 // db.tag.belongsTo(db.JenisLomba)
 // db.tag.belongsTo(db.tagLomba)

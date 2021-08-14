@@ -57,7 +57,7 @@ module.exports = {
 
 
       db.query(
-        "INSERT INTO `bidang_lomba` (`nama_bidang`, `desk`, `biaya`, `hadiah`, `link`, `file`, `id_jenis`, `gambar`) VALUES (?,?,?,?,?,?,?,?)",
+        "INSERT INTO `bidang_lomba` (`nama_bidang`, `desk`, `biaya`, `hadiah`, `link`, `file`, `jenis_lomba_id`, `gambar`) VALUES (?,?,?,?,?,?,?,?)",
         [
           nama, desk, biaya, hadiah, link, '', req.params.id, ''
         ],

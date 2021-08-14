@@ -1,0 +1,400 @@
+{
+    "tables": {
+        "artikel": {
+            "tableName": "artikel",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "judul": {
+                    "field": "judul",
+                    "seqType": "Sequelize.STRING"
+                },
+                "deskripsi": {
+                    "field": "deskripsi",
+                    "seqType": "Sequelize.STRING"
+                },
+                "isi": {
+                    "field": "isi",
+                    "seqType": "Sequelize.STRING"
+                },
+                "tanggal": {
+                    "field": "tanggal",
+                    "seqType": "Sequelize.STRING"
+                },
+                "foto": {
+                    "allowNull": false,
+                    "field": "foto",
+                    "seqType": "Sequelize.STRING"
+                },
+                "kategori_konten_id": {
+                    "field": "kategori_konten_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "kategoriKontenId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "kategori_konten",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "kategori_konten_id",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "berita": {
+            "tableName": "berita",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "judul": {
+                    "field": "judul",
+                    "seqType": "Sequelize.STRING"
+                },
+                "deskripsi": {
+                    "field": "deskripsi",
+                    "seqType": "Sequelize.STRING"
+                },
+                "isi": {
+                    "field": "isi",
+                    "seqType": "Sequelize.STRING(2000)"
+                },
+                "tanggal": {
+                    "field": "tanggal",
+                    "seqType": "Sequelize.STRING"
+                },
+                "foto": {
+                    "allowNull": false,
+                    "field": "foto",
+                    "seqType": "Sequelize.STRING"
+                },
+                "kategori_konten_id": {
+                    "field": "kategori_konten_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "kategoriKontenId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "kategori_konten",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "kategori_konten_id",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "bidang_lomba": {
+            "tableName": "bidang_lomba",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "nama_bidang": {
+                    "field": "nama_bidang",
+                    "seqType": "Sequelize.STRING"
+                },
+                "desk": {
+                    "field": "desk",
+                    "seqType": "Sequelize.STRING(2000)"
+                },
+                "biaya": {
+                    "field": "biaya",
+                    "seqType": "Sequelize.STRING"
+                },
+                "hadiah": {
+                    "field": "hadiah",
+                    "seqType": "Sequelize.STRING"
+                },
+                "link": {
+                    "field": "link",
+                    "seqType": "Sequelize.STRING"
+                },
+                "file": {
+                    "field": "file",
+                    "seqType": "Sequelize.STRING"
+                },
+                "jenis_lomba_id": {
+                    "field": "jenis_lomba_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "gambar": {
+                    "allowNull": false,
+                    "field": "gambar",
+                    "seqType": "Sequelize.STRING"
+                },
+                "jenisLombaId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "jenis_lomba",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "jenis_lomba_id",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "jenis_lomba": {
+            "tableName": "jenis_lomba",
+            "schema": {
+                "id": {
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "nama_lomba": {
+                    "field": "nama_lomba",
+                    "seqType": "Sequelize.STRING"
+                },
+                "sumber": {
+                    "field": "sumber",
+                    "seqType": "Sequelize.STRING"
+                },
+                "desk": {
+                    "field": "desk",
+                    "seqType": "Sequelize.STRING(2000)"
+                },
+                "tipe": {
+                    "field": "tipe",
+                    "seqType": "Sequelize.ENUM('Team', 'Individu')"
+                },
+                "kategori_lomba_id": {
+                    "field": "kategori_lomba_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "tanggal": {
+                    "field": "tanggal",
+                    "seqType": "Sequelize.STRING"
+                },
+                "gambar": {
+                    "allowNull": false,
+                    "field": "gambar",
+                    "seqType": "Sequelize.STRING"
+                },
+                "kategoriLombaId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "kategori_lomba",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "kategori_lomba_id",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "kategori_konten": {
+            "tableName": "kategori_konten",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "kategori": {
+                    "field": "kategori",
+                    "seqType": "Sequelize.STRING"
+                }
+            },
+            "indexes": []
+        },
+        "kategori_lomba": {
+            "tableName": "kategori_lomba",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "kategori": {
+                    "field": "kategori",
+                    "seqType": "Sequelize.STRING"
+                }
+            },
+            "indexes": []
+        },
+        "tag_lomba": {
+            "tableName": "tag_lomba",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "tag": {
+                    "field": "tag",
+                    "seqType": "Sequelize.STRING"
+                },
+                "kategori_lomba_id": {
+                    "field": "kategori_lomba_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "kategoriLombaId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "kategori_lomba",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "kategori_lomba_id",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "tag": {
+            "tableName": "tag",
+            "schema": {
+                "tag_lomba_id": {
+                    "field": "tag_lomba_id",
+                    "primaryKey": true,
+                    "references": {
+                        "model": "tag_lomba",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "unique": "tag_tag_lomba_id_jenis_lomba_id_unique",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "jenis_lomba_id": {
+                    "field": "jenis_lomba_id",
+                    "primaryKey": true,
+                    "references": {
+                        "model": "jenis_lomba",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "unique": "tag_tag_lomba_id_jenis_lomba_id_unique",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "user": {
+            "tableName": "user",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "nama": {
+                    "field": "nama",
+                    "seqType": "Sequelize.STRING"
+                },
+                "username": {
+                    "field": "username",
+                    "seqType": "Sequelize.STRING"
+                },
+                "password": {
+                    "field": "password",
+                    "seqType": "Sequelize.STRING"
+                },
+                "level": {
+                    "field": "level",
+                    "seqType": "Sequelize.ENUM('Superadmin', 'Admin')"
+                },
+                "foto": {
+                    "field": "foto",
+                    "seqType": "Sequelize.STRING"
+                }
+            },
+            "indexes": []
+        },
+        "mahasiswa": {
+            "tableName": "mahasiswa",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "nama": {
+                    "field": "nama",
+                    "seqType": "Sequelize.STRING"
+                },
+                "nim": {
+                    "field": "nim",
+                    "seqType": "Sequelize.STRING"
+                },
+                "jurusan": {
+                    "field": "jurusan",
+                    "seqType": "Sequelize.STRING"
+                },
+                "bidang_minat": {
+                    "field": "bidang_minat",
+                    "seqType": "Sequelize.STRING"
+                },
+                "nama_lomba": {
+                    "field": "nama_lomba",
+                    "seqType": "Sequelize.STRING"
+                },
+                "peringkat": {
+                    "field": "peringkat",
+                    "seqType": "Sequelize.STRING"
+                },
+                "pelaksana": {
+                    "field": "pelaksana",
+                    "seqType": "Sequelize.STRING"
+                },
+                "beritum_id": {
+                    "field": "beritum_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "beritumId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "berita",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "beritum_id",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        }
+    },
+    "path": "E:\\Node JS\\Project Vokasi\\Puspresnas-Vokasi-UB\\migrations\\_current.json",
+    "backupPath": "E:\\Node JS\\Project Vokasi\\Puspresnas-Vokasi-UB\\migrations\\_current_bak.json",
+    "exists": false,
+    "revision": 1
+}

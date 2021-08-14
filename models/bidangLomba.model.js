@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
         file: {
             type: Sequelize.STRING
         },
-        id_jenis: {
+        jenis_lomba_id: {
             type: Sequelize.INTEGER
         },
         gambar: {
@@ -27,7 +27,8 @@ module.exports = (sequelize, Sequelize) => {
         }
     }, {
         timestamps: false,
-        freezeTableName: true
+        freezeTableName: true,
+        underscored: true
     })
 
     return bidangLomba

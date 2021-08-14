@@ -1,0 +1,15 @@
+{
+    "development": {
+        "host": "localhost",
+        "username": "root",
+        "password": null,
+        "database": "puspresnas",
+        "dialect": "mysql",
+        "pool": {
+            "max": 5,
+            "min": 0,
+            "acquire": 30000,
+            "idle": 10000
+        }
+    }
+}

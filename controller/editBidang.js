@@ -53,14 +53,14 @@ module.exports = {
                         if (error) console.log(error)
                         else {
                             db.query(
-                                "SELECT `id`, `id_jenis` FROM `bidang_lomba` WHERE `id` = ?",
+                                "SELECT `id`, `jenis_lomba_id` FROM `bidang_lomba` WHERE `id` = ?",
                                 [req.params.id],
                                 (error, sesuai) => {
                                     if (error) console.log(error)
                                     else {
-                                        console.log(sesuai[0].id_jenis)
+                                        console.log(sesuai[0].jenis_lomba_id)
                                         if (req.params.id == sesuai[0].id) {
-                                            res.redirect('/bidangAll/' + sesuai[0].id_jenis)
+                                            res.redirect('/bidangAll/' + sesuai[0].jenis_lomba_id)
                                         }
                                     }
                                 }
@@ -90,14 +90,14 @@ module.exports = {
                                             if (error) console.log(error)
                                             else {
                                                 db.query(
-                                                    "SELECT `id`, `id_jenis` FROM `bidang_lomba` WHERE `id` = ?",
+                                                    "SELECT `id`, `jenis_id` FROM `bidang_lomba` WHERE `id` = ?",
                                                     [req.params.id],
                                                     (error, sesuai) => {
                                                         if (error) console.log(error)
                                                         else {
-                                                            console.log(sesuai[0].id_jenis)
+                                                            console.log(sesuai[0].jenis_lomba_id)
                                                             if (req.params.id == sesuai[0].id) {
-                                                                res.redirect('/bidangAll/' + sesuai[0].id_jenis)
+                                                                res.redirect('/bidangAll/' + sesuai[0].jenis_lomba_id)
                                                             }
                                                         }
                                                     }

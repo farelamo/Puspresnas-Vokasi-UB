@@ -60,11 +60,11 @@ const mahasiswaAPI = require('./API/routersAPI/mahasiswaAPI')
 //END ROUTERS API
 
 //PERSAMAAN MIGRATE
-db.sequelize.sync();
+// db.sequelize.sync();
 
 //ADMIN DASHBOARD
 app.use(index)
-app.use(login)
+app.use(login)/
 app.use(profil)
 app.use(dashboard)
 app.use(artikel)

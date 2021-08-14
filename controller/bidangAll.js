@@ -15,7 +15,7 @@ module.exports = {
           if (error) console.log(error)
           else {
             db.query(
-              'SELECT * FROM bidang_lomba WHERE id_jenis= ? ORDER BY `id` DESC',
+              'SELECT * FROM bidang_lomba WHERE jenis_lomba_id= ? ORDER BY `id` DESC',
               [req.params.id],
               (error, bidang) => {
                 if (error) console.log(error)

@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Mahasiswa = sequelize.define("mahasiswa", {
+    const Mahasiswa = sequelize.define('mahasiswa', {
         nama: {
             type: Sequelize.STRING
         },
@@ -29,7 +29,7 @@ module.exports = (sequelize, Sequelize) => {
         freezeTableName: true,
         timestamps : false,
         underscored: true
-    });
+    })
 
     return Mahasiswa;
 }
