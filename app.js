@@ -2,7 +2,8 @@ const express  = require('express')
 const session  = require('express-session')
 const upload = require("express-fileupload");
 const bodyparser = require('body-parser')
-const db = require('./models')
+//const helmet = require('helmet')
+const cors = require("cors");
 const app = express()
 
 //SWAGGER
@@ -60,11 +61,31 @@ const mahasiswaAPI = require('./API/routersAPI/mahasiswaAPI')
 //END ROUTERS API
 
 //PERSAMAAN MIGRATE
+//const db = require('./models')
 // db.sequelize.sync();
+
+//SECURITY APP
+//app.use(helmet())
+
+//CORS
+let whiteList = ['http://localhost:3000'];
+let corsOptions = {
+    origin: function (origin, callback) {
+        if (whiteList.indexOf(origin) !== -1 || !origin) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    }
+};
+
+app.use(cors(corsOptions));
+
+//END CORS
 
 //ADMIN DASHBOARD
 app.use(index)
-app.use(login)/
+app.use(login)
 app.use(profil)
 app.use(dashboard)
 app.use(artikel)
@@ -107,6 +128,6 @@ app.get('/logout', (req, res) => {
 })
 
 //CONFIGURASI SERVER LOCAL
-app.listen(3000, ()=> {
+app.listen(8000, ()=> {
   console.log('server listening on port 3000...')
 })

@@ -203,7 +203,7 @@ module.exports = {
             
             console.log(result)
             if (result == 1 || result == 0) {
-              var berhasil = "Foto artikel berhasil diedit"
+              var berhasil = "Gambar Lomba berhasil diedit"
               console.log(berhasil);
 
               sess = req.session;

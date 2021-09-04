@@ -140,7 +140,20 @@ module.exports = {
                 }
               }
             )
-            
+          
+
+            // db.query(
+            //   ' DELIMITER // CREATE TRIGGER insert_trigger AFTER DELETE ON tag BEGIN INSERT INTO `tag` (`tag_lomba_id`,`jenis_lomba_id`) VALUES (?,?) END // DELIMITER ;',
+            //   [tag,req.params.id],
+            //   (error, hasil) => {
+            //     if (error) console.log(error)
+            //     else {
+            //       res.redirect('/lombaAll')
+            //     }
+            //   }
+            // )
+
+
           // const id = req.params.id;
 
           // PostTag.destroy({
