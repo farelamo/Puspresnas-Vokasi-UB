@@ -1,4 +1,4 @@
-# Puspresnas-Vokasi-UB
+ui# Puspresnas-Vokasi-UB
 
 Persiapan yang di install
 
@@ -12,7 +12,7 @@ npm i dotenv cryptojs nodemon sequelize
 ```
 Install Part 3
 ```
-npm i mysql2 --save replace-in-file swangger-ui-express
+npm i mysql2 --save replace-in-file swagger-ui-express
 ```
 
 Install Part 4 (Untuk Migrate & Seeder)
