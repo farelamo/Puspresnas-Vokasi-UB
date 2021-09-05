@@ -68,7 +68,10 @@ const mahasiswaAPI = require('./API/routersAPI/mahasiswaAPI')
 //app.use(helmet())
 
 //CORS
-let whiteList = ['http://localhost:3000'];
+let whiteList = [
+'http://localhost:3000',
+'http://localhost:8000'
+];
 let corsOptions = {
     origin: function (origin, callback) {
         if (whiteList.indexOf(origin) !== -1 || !origin) {
