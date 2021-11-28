@@ -84,6 +84,20 @@ const mahasiswaAPI = require('./API/routersAPI/mahasiswaAPI')
 //     }
 // };
 
+let whiteList = [
+'http://localhost:3000',
+'http://localhost:8000'
+];
+let corsOptions = {
+    origin: function (origin, callback) {
+        if (whiteList.indexOf(origin) !== -1 || !origin) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    }
+};
+
 // app.use(cors(corsOptions));
 
 //END CORS
