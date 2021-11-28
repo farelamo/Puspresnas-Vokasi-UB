@@ -3,7 +3,7 @@ const session  = require('express-session')
 const upload = require("express-fileupload");
 const bodyparser = require('body-parser')
 //const helmet = require('helmet')
-const cors = require("cors");
+// const cors = require("cors");
 const app = express()
 
 //SWAGGER
@@ -68,18 +68,23 @@ const mahasiswaAPI = require('./API/routersAPI/mahasiswaAPI')
 //app.use(helmet())
 
 //CORS
-let whiteList = ['http://localhost:3000'];
-let corsOptions = {
-    origin: function (origin, callback) {
-        if (whiteList.indexOf(origin) !== -1 || !origin) {
-            callback(null, true)
-        } else {
-            callback(new Error('Not allowed by CORS'))
-        }
-    }
-};
+// let whiteList = [
+//   'http://localhost:3000',
+//   'http://localhost:8000',
+//   'https://front-end-simapres.vercel.app/prestasi'
+    
+// ];
+// let corsOptions = {
+//     origin: function (origin, callback) {
+//         if (whiteList.indexOf(origin) !== -1 || !origin) {
+//             callback(null, true)
+//         } else {
+//             callback(new Error('Not allowed by CORS'))
+//         }
+//     }
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 //END CORS
 
@@ -128,6 +133,6 @@ app.get('/logout', (req, res) => {
 })
 
 //CONFIGURASI SERVER LOCAL
-app.listen(8000, ()=> {
+app.listen(3000, ()=> {
   console.log('server listening on port 3000...')
 })
