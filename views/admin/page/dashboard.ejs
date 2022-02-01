@@ -13,53 +13,122 @@
     }
   </style>
 </head>
-        <section class="section">
-          <div class="section-header">
-            <h1>Selamat datang, <%= profil[0].nama %> !</h1>
-          </div>
+<!-- <section class="section">
+  <div class="section-header">
+    <h1>Selamat datang, <%= profil[0].nama %> !</h1>
+    </div>
 
-          <div class="section-body">
-            <div class="card" style="width: 50%">
-              <div class="card-header">
-                <h4>OVERVIEW</h4>
-              </div>
-              <div class="card-body">
+    <div class="section-body">
+      <div class="card" style="width: 50%">
+        <div class="card-header">
+          <h4>OVERVIEW</h4>
+        </div>
+        <div class="card-body">
 
-                <i class="far fa-newspaper ukuran"></i>
-                <b class="ukuran">Data Bacaan :</b>
-                </i><br>
+          <i class="far fa-newspaper ukuran"></i>
+          <b class="ukuran">Data Bacaan :</b>
+        </i><br>
 
-                <i class="fas fa-check jarak size">
-                  &nbsp;<b>Berita : <%= berita.length %></b>
-                </i><br>
+        <i class="fas fa-check jarak size">
+          &nbsp;<b>Berita : <%= berita.length %></b>
+          </i><br>
 
-                <i class="fas fa-check jarak size">
-                  &nbsp;<b>Artikel :  <%= artikel.length %></b>
-                </i><br>
+          <i class="fas fa-check jarak size">
+            &nbsp;<b>Artikel : <%= artikel.length %></b>
+            </i><br>
 
-                <i class="fas fa-medal ukuran" style="margin-top: 5%"></i>
-                <b class="ukuran">Data Lomba :</b>
-                </i><br>
-                <i class="fas fa-check jarak size"> 
-                  &nbsp;<b>Tag Lomba : <%= tag_lomba.length %></b>
-                </i><br>
+            <i class="fas fa-medal ukuran" style="margin-top: 5%"></i>
+            <b class="ukuran">Data Lomba :</b>
+          </i><br>
+          <i class="fas fa-check jarak size">
+            &nbsp;<b>Tag Lomba : <%= tag_lomba.length %></b>
+            </i><br>
 
-                <i class="fas fa-check jarak size">
-                  &nbsp;<b>Jenis Lomba : <%= jenis_lomba.length %> </b>
-                </i><br>
+            <i class="fas fa-check jarak size">
+              &nbsp;<b>Jenis Lomba : <%= jenis_lomba.length %> </b>
+              </i><br>
 
-                <i class="fas fa-check jarak size">
-                  &nbsp;<b>Bidang Lomba : <%= bidang_lomba.length %></b>
+              <i class="fas fa-check jarak size">
+                &nbsp;<b>Bidang Lomba : <%= bidang_lomba.length %></b>
                 </i><br>
 
                 <i class="fas fa-check jarak size">
                   &nbsp;<b>Kategori Lomba : <%= kategori_lomba.length %></b>
-                </i><br>
+                  </i><br>
 
-                <i class="fas fa-check jarak size">
-                  &nbsp;<b>Kategori Konten : <%= kategori_konten.length %></b>
-                </i><br>
+                  <i class="fas fa-check jarak size">
+                    &nbsp;<b>Kategori Konten : <%= kategori_konten.length %></b>
+                    </i><br>
+                  </div>
+                </div>
               </div>
+            </section> -->
+
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+        <div class="card card-statistic-1">
+            <div class="card-icon bg-primary">
+                <i class="fas fa-flag-checkered"></i>
             </div>
-          </div>
-        </section>
+            <div class="card-wrap">
+                <div class="card-header">
+                    <h4>Jenis Lomba</h4>
+                </div>
+                <div class="card-body">
+                    <%= jenis_lomba.length %> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+        <div class="card card-statistic-1">
+            <div class="card-icon bg-danger">
+                <i class="fas fa-boxes"></i>
+            </div>
+            <div class="card-wrap">
+                <div class="card-header">
+                    <h4>Bidang Lomba</h4>
+                </div>
+                <div class="card-body">
+                   <%= bidang_lomba.length %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+        <div class="card card-statistic-1">
+            <div class="card-icon bg-warning">
+                <i class="fas fa-align-left"></i>
+            </div>
+            <div class="card-wrap">
+                <div class="card-header">
+                    <h4>Kategori Lomba</h4>
+                </div>
+                <div class="card-body">
+                    <%= kategori_lomba.length %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+        <div class="card card-statistic-1">
+            <div class="card-icon bg-success">
+                <i class="fas fa-tags"></i>
+            </div>
+            <div class="card-wrap">
+                <div class="card-header">
+                    <h4>Tag Lomba</h4>
+                </div>
+                <div class="card-body">
+                    <%= tag_lomba.length %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div id='calendar'></div>
+    </div>
+</div>
