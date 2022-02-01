@@ -3,8 +3,9 @@ const session  = require('express-session')
 const upload = require("express-fileupload");
 const bodyparser = require('body-parser')
 //const helmet = require('helmet')
-// const cors = require("cors");
+const cors = require("cors");
 const app = express()
+app.use(cors())
 
 //SWAGGER
 const swaggerUi = require('swagger-ui-express')
@@ -85,8 +86,8 @@ const mahasiswaAPI = require('./API/routersAPI/mahasiswaAPI')
 // };
 
 let whiteList = [
-'http://localhost:3000',
-'http://localhost:8000'
+  'http://localhost:3000',
+  'http://localhost:8000'
 ];
 let corsOptions = {
     origin: function (origin, callback) {
@@ -147,6 +148,6 @@ app.get('/logout', (req, res) => {
 })
 
 //CONFIGURASI SERVER LOCAL
-app.listen(3000, ()=> {
-  console.log('server listening on port 3000...')
+app.listen(8000, ()=> {
+  console.log('server listening on port 8000...')
 })
