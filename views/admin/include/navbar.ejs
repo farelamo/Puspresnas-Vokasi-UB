@@ -197,8 +197,8 @@
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             <% 
               var nama = profil[0].nama;
-              if (profil[0].foto!==""){ var foto = profil[0].foto;}
-              else {var foto = "default.png";}
+              var foto = profil[0].foto;
+              if (foto==""){foto = "default.png";}
             %>
             <img alt="image" src="/assets/img/profil/<%= foto %>" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block"><%= nama %></div></a>     
