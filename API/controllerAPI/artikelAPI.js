@@ -1,4 +1,4 @@
-const Db = require("../../models");
+const Db = require("../../database/models");
 const Post = Db.artikel;
 const Op = Db.Sequelize.Op;
 

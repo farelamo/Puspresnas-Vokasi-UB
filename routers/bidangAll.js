@@ -1,6 +1,6 @@
 const express = require('express')
 const bidangAll = express.Router()
-const controller = require('../controller/bidangAll')
+const controller = require('../app/controller/bidangAll')
 
 bidangAll.route('/bidangAll/:id')
     .get(controller.index)

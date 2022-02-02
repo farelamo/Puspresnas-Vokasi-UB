@@ -1,5 +1,5 @@
 const db = require('../config/database')
-const Db = require("../models");
+const Db = require("../../database/models");
 var sess;
 const Post = Db.berita;
 let date_ob = new Date();

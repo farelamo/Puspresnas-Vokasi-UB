@@ -1,6 +1,6 @@
 const db = require('../config/database')
 const fs = require('fs');
-const Db = require('../models')
+const Db = require('../../database/models')
 const Post = Db.jenisLomba
 const Op = Db.Sequelize.Op
 var sess;

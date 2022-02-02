@@ -1,6 +1,6 @@
 const express = require('express')
 const artikelNew = express.Router()
-const controller = require('../controller/artikelNew')
+const controller = require('../app/controller/artikelNew')
 
 artikelNew.route('/artikelNew')
     .get(controller.index)

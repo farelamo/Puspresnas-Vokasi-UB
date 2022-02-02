@@ -1,6 +1,6 @@
 const express = require('express')
 const jenisLomba = express.Router()
-const controller = require('../controller/editJenis')
+const controller = require('../app/controller/editJenis')
     
 jenisLomba.route('/editJenis/:id')
     .get(controller.index)

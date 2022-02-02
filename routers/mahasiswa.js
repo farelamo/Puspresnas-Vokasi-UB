@@ -1,6 +1,6 @@
 const express = require('express')
 const mahasiswa = express.Router()
-const controller = require('../controller/mahasiswa')
+const controller = require('../app/controller/mahasiswa')
 
 mahasiswa.route('/mahasiswa')
     .get(controller.index)

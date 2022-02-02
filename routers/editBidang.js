@@ -1,6 +1,6 @@
 const express = require('express')
 const bidangLomba = express.Router()
-const controller = require('../controller/editBidang')
+const controller = require('../app/controller/editBidang')
 
 bidangLomba.route('/bidangAll/editBidang/:id')
     .get(controller.index)

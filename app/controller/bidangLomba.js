@@ -1,6 +1,6 @@
 const db = require('../config/database')
 var sess;
-const Db = require('../models')
+const Db = require('../../database/models')
 const Post = Db.bidangLomba
 const Op = Db.Sequelize.Op
 

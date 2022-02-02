@@ -1,7 +1,7 @@
 const db = require('../config/database')
 const fs = require('fs');
 var sess;
-const Db = require('../models')
+const Db = require('../../database/models')
 const Post = Db.jenisLomba
 const PostCat = Db.kategoriLomba
 const PostTagLomba = Db.tagLomba

@@ -1,6 +1,6 @@
 const express = require('express')
 const beritaNew = express.Router()
-const controller = require('../controller/beritaNew')
+const controller = require('../app/controller/beritaNew')
 
 beritaNew.route('/beritaNew')
     .get(controller.index)

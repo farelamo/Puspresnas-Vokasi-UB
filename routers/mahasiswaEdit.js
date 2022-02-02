@@ -1,6 +1,6 @@
 const express = require('express')
 const mahasiswaEdit = express.Router()
-const controller = require('../controller/mahasiswaEdit')
+const controller = require('../app/controller/mahasiswaEdit')
 
 mahasiswaEdit.route('/mahasiswaEdit/:id')
     .get(controller.index)
