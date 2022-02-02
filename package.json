@@ -2,10 +2,13 @@
   "name": "node-experiment",
   "version": "1.0.0",
   "description": "",
+  "main": "index.js",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "bootstrap-datepicker": "^1.9.0",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "cryptojs": "^2.5.3",
@@ -27,7 +30,6 @@
     "pg": "^8.7.1",
     "replace-in-file": "^6.2.0",
     "sequelize": "^6.6.5",
-    "sequelize-auto-migrations-v2": "^1.2.1",
     "swagger-autogen": "^2.11.2",
     "swagger-ui-express": "^4.1.6",
     "sweetalert": "^2.1.2"

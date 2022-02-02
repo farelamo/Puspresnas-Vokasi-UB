@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const tagLomba = sequelize.define("user", {
+    const user = sequelize.define("user", {
         nama: {
             type: Sequelize.STRING
         },
@@ -14,6 +14,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         foto: {
             type: Sequelize.STRING
+        },
+        refresh_token: {
+            type: Sequelize.TEXT
         }
     }, 
     {
@@ -22,5 +25,5 @@ module.exports = (sequelize, Sequelize) => {
         underscored: true
     });
 
-    return tagLomba;
+    return user;
 }

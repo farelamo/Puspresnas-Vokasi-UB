@@ -75,6 +75,7 @@ const migrationCommands = (transaction) => [
         password: { type: Sequelize.STRING, field: "password" },
         level: { type: Sequelize.ENUM("Superadmin", "Admin"), field: "level" },
         foto: { type: Sequelize.STRING, field: "foto" },
+        refresh_token: { type: Sequelize.TEXT, field: "refresh_token" }
       },
       { transaction },
     ],
