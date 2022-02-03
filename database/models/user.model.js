@@ -14,6 +14,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         foto: {
             type: Sequelize.STRING
+        },
+        is_active: {
+            type: Sequelize.TINYINT
         }
     }, 
     {

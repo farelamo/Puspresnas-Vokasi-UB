@@ -19,10 +19,16 @@ module.exports = {
           var match = bcrypt.compareSync(req.body.password, result.password)
           console.log(match)
           if(match){
-            sess=req.session; 
-            sess.id_user=result.id; 
-            res.redirect('/dashboard')
+            if(result.is_active == 1){
+              sess=req.session; 
+              sess.id_user=result.id; 
+              res.redirect('/dashboard')
+            }else {
+              console.log('akun belum di ACC !!')
+              res.redirect('/login')
+            }
           }else {
+            console.log('password salah !!')
             res.redirect('/login')
           }
         })
@@ -53,7 +59,8 @@ module.exports = {
                 username: username,
                 password: hashedPassword,
                 level: 'Admin',
-                foto: ''
+                foto: '',
+                is_active: 0
               },
             (err, result) => {
             if (err) {
@@ -70,6 +77,7 @@ module.exports = {
     logout: (req, res) => {
       sess=req.session; 
       sess.id_user=undefined; 
+      console.log('logout success !!')
       res.redirect('/login');
     },
 }

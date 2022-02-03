@@ -1,5 +1,5 @@
 'use strict';
-var crypto = require('crypto');
+var bcrypt = require('bcrypt')
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -16,37 +16,42 @@ module.exports = {
     var user = [{
         nama: 'Farelamo',
         username: 'farlam',
-        password: crypto.createHash('md5').update('12345').digest("hex"),
+        password: await bcrypt.hash('12345', 8),
         level: 'Superadmin',
-        foto: ''
+        foto: '',
+        is_active: 1
       },
       {
         nama: 'Alvin DS',
         username: 'haya',
-        password: crypto.createHash('md5').update('12345').digest("hex"),
+        password: await bcrypt.hash('12345', 8),
         level: 'Superadmin',
-        foto: ''
+        foto: '',
+        is_active: 1
       },
       {
         nama: 'Naufalix',
         username: 'naufalix',
-        password: crypto.createHash('md5').update('12345').digest("hex"),
+        password: await bcrypt.hash('12345', 8),
         level: 'Superadmin',
-        foto: ''
+        foto: '',
+        is_active: 1
       },
       {
         nama: 'Fawwaz',
         username: 'fawwaz',
-        password: crypto.createHash('md5').update('12345').digest("hex"),
+        password: await bcrypt.hash('12345', 8),
         level: 'Admin',
-        foto: ''
+        foto: '',
+        is_active: 1
       },
       {
         nama: 'Umam',
         username: 'umam',
-        password: crypto.createHash('md5').update('12345').digest("hex"),
+        password: await bcrypt.hash('12345', 8),
         level: 'Admin',
-        foto: ''
+        foto: '',
+        is_active: 1
       }
     ]
 
