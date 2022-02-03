@@ -1,4 +1,4 @@
-const Sequelize = require("sequelize");
+var Sequelize = require("sequelize");
 
 /**
  * Actions summary:
@@ -16,14 +16,14 @@ const Sequelize = require("sequelize");
  *
  */
 
-const info = {
+var info = {
   revision: 1,
   name: "Puspresnas",
   created: "2021-08-13T02:06:35.415Z",
   comment: "",
 };
 
-const migrationCommands = (transaction) => [
+var migrationCommands = (transaction) => [
   {
     fn: "createTable",
     params: [
@@ -74,8 +74,7 @@ const migrationCommands = (transaction) => [
         username: { type: Sequelize.STRING, field: "username" },
         password: { type: Sequelize.STRING, field: "password" },
         level: { type: Sequelize.ENUM("Superadmin", "Admin"), field: "level" },
-        foto: { type: Sequelize.STRING, field: "foto" },
-        refresh_token: { type: Sequelize.TEXT, field: "refresh_token" }
+        foto: { type: Sequelize.STRING, field: "foto" }
       },
       { transaction },
     ],
@@ -301,7 +300,7 @@ const migrationCommands = (transaction) => [
   },
 ];
 
-const rollbackCommands = (transaction) => [
+var rollbackCommands = (transaction) => [
   {
     fn: "dropTable",
     params: ["artikel", { transaction }],
@@ -344,17 +343,17 @@ const rollbackCommands = (transaction) => [
   },
 ];
 
-const pos = 0;
-const useTransaction = true;
+var pos = 0;
+var useTransaction = true;
 
-const execute = (queryInterface, sequelize, _commands) => {
+var execute = (queryInterface, sequelize, _commands) => {
   let index = pos;
-  const run = (transaction) => {
-    const commands = _commands(transaction);
+  var run = (transaction) => {
+    var commands = _commands(transaction);
     return new Promise((resolve, reject) => {
-      const next = () => {
+      var next = () => {
         if (index < commands.length) {
-          const command = commands[index];
+          var command = commands[index];
           console.log(`[#${index}] execute: ${command.fn}`);
           index++;
           queryInterface[command.fn](...command.params).then(next, reject);

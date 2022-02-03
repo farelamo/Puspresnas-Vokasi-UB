@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const user = sequelize.define("user", {
+    var user = sequelize.define("user", {
         nama: {
             type: Sequelize.STRING
         },
@@ -14,9 +14,6 @@ module.exports = (sequelize, Sequelize) => {
         },
         foto: {
             type: Sequelize.STRING
-        },
-        refresh_token: {
-            type: Sequelize.TEXT
         }
     }, 
     {
