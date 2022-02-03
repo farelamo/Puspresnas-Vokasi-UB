@@ -1,12 +1,12 @@
-const db = require('../config/database')
-const fs = require('fs');
+var db = require('../config/database')
+var fs = require('fs');
 var sess;
-const Db = require('../../database/models')
-const Post = Db.jenisLomba
-const PostCat = Db.kategoriLomba
-const PostTagLomba = Db.tagLomba
-const PostTag = Db.tag
-const Op = Db.Sequelize.Op
+var Db = require('../../database/models')
+var Post = Db.jenisLomba
+var PostCat = Db.kategoriLomba
+var PostTagLomba = Db.tagLomba
+var PostTag = Db.tag
+var Op = Db.Sequelize.Op
 
 module.exports = {
   index: (req, res) => {
@@ -54,7 +54,7 @@ module.exports = {
                                           let tempString = enumVal.replace(/\'/g, '');
                                           enumArray = tempString.split(',');
 
-                                          const {
+                                          var {
                                             id,
                                           } = req.body
 
@@ -91,7 +91,7 @@ module.exports = {
 
   edit: (req, res) => {
     if (req.body.submit == "edit") {
-      const {
+      var {
         nama,
         sumber,
         tanggal,
@@ -154,7 +154,7 @@ module.exports = {
             // )
 
 
-          // const id = req.params.id;
+          // var id = req.params.id;
 
           // PostTag.destroy({
           //   where: {
@@ -166,7 +166,7 @@ module.exports = {
             
           //   if (Array.isArray(tag)) {
           //     tag.forEach((tags) => {
-          //       const isi = {
+          //       var isi = {
           //         jenis_lomba_id: req.params.id,
           //         tag_lomba_id: tags
           //       }
@@ -181,7 +181,7 @@ module.exports = {
           //         })
           //     })
           //   } else if (!Array.isArray(tag)) {
-          //     const isi = {
+          //     var isi = {
           //       jenis_lomba_id: req.params.id,
           //       tag_lomba_id: tag
           //     };

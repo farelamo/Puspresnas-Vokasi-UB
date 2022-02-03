@@ -1079,7 +1079,7 @@
 			{
 				/* Get the language definitions from a file - because this Ajax call makes the language
 				 * get async to the remainder of this function we use bInitHandedOff to indicate that
-				 * _fnInitialise will be fired by the returned Ajax handler, rather than the constructor
+				 * _fnInitialise will be fired by the returned Ajax handler, rather than the varructor
 				 */
 				$.ajax( {
 					dataType: 'json',
@@ -1267,7 +1267,7 @@
 					_fnDetectHeader( oSettings.aoFooter, oSettings.nTFoot );
 				}
 			
-				/* Check if there is data passing into the constructor */
+				/* Check if there is data passing into the varructor */
 				if ( oInit.aaData ) {
 					for ( i=0 ; i<oInit.aaData.length ; i++ ) {
 						_fnAddData( oSettings, oInit.aaData[ i ] );
@@ -1854,7 +1854,7 @@
 	 */
 	function _fnBrowserDetect( settings )
 	{
-		// We don't need to do this every time DataTables is constructed, the values
+		// We don't need to do this every time DataTables is varructed, the values
 		// calculated are specific to the browser and OS configuration which we
 		// don't expect to change between initialisations
 		if ( ! DataTable.__browser ) {
@@ -2971,7 +2971,7 @@
 			columns = settings.aoColumns,
 			objectRead = settings._rowReadObject;
 	
-		// Allow the data object to be passed in, or construct
+		// Allow the data object to be passed in, or varruct
 		d = d !== undefined ?
 			d :
 			objectRead ?
@@ -3271,7 +3271,7 @@
 	/**
 	 * Draw the header (or footer) element based on the column visibility states. The
 	 * methodology here is to use the layout array from _fnDetectHeader, modified for
-	 * the instantaneous column visibility, to construct the new layout. The grid is
+	 * the instantaneous column visibility, to varruct the new layout. The grid is
 	 * traversed over cell at a time in a rows x columns grid fashion, although each
 	 * cell insert can cover multiple elements in the grid - which is tracks using the
 	 * aApplied array. Cell inserts in the grid will only occur where there isn't
@@ -3600,7 +3600,7 @@
 						j++;
 					}
 	
-					/* Replace jQuery UI constants @todo depreciated */
+					/* Replace jQuery UI varants @todo depreciated */
 					if ( sAttr == "H" )
 					{
 						sAttr = classes.sJUIHeader;
@@ -3709,7 +3709,7 @@
 	 * Use the DOM source to create up an array of header cells. The idea here is to
 	 * create a layout grid (array) of rows x columns, which contains a reference
 	 * to the cell that that point in the grid (regardless of col/rowspan), such that
-	 * any column / row could be removed and the new grid constructed
+	 * any column / row could be removed and the new grid varructed
 	 *  @param array {object} aLayout Array to store the calculated layout in
 	 *  @param {node} nThead The header/footer element for the table
 	 *  @memberof DataTable#oApi
@@ -4434,7 +4434,7 @@
 	 *  @param {bool} bRegex treat as a regular expression or not
 	 *  @param {bool} bSmart perform smart filtering or not
 	 *  @param {bool} bCaseInsensitive Do case insensitive matching or not
-	 *  @returns {RegExp} constructed object
+	 *  @returns {RegExp} varructed object
 	 *  @memberof DataTable#oApi
 	 */
 	function _fnFilterCreateSearch( search, regex, smart, caseInsensitive )
@@ -5569,7 +5569,7 @@
 		}
 		else
 		{
-			// Otherwise construct a single row, worst case, table with the widest
+			// Otherwise varruct a single row, worst case, table with the widest
 			// node in the data, assign any user defined widths, then insert it into
 			// the DOM and allow the browser to do all the hard work of calculating
 			// table widths
@@ -5675,7 +5675,7 @@
 				tmpTable.width( tableWidthAttr );
 			}
 	
-			// Get the width of each column in the constructed table - we need to
+			// Get the width of each column in the varructed table - we need to
 			// know the inner width (so it can be assigned to the other table's
 			// cells) and the outer width so we can calculate the full width of the
 			// table. This is safe since DataTables requires a unique cell for each
@@ -6766,7 +6766,7 @@
 	
 	
 	/**
-	 * Abstraction for `context` parameter of the `Api` constructor to allow it to
+	 * Abstraction for `context` parameter of the `Api` varructor to allow it to
 	 * take several different forms for ease of use.
 	 *
 	 * Each of the input parameter types will be converted to a DataTables settings
@@ -6869,7 +6869,7 @@
 	 * @param {array} [data] Data to initialise the Api instance with.
 	 *
 	 * @example
-	 *   // Direct initialisation during DataTables construction
+	 *   // Direct initialisation during DataTables varruction
 	 *   var api = $('#example').DataTable();
 	 *
 	 * @example
@@ -6877,7 +6877,7 @@
 	 *   var api = $('#example').dataTable().api();
 	 *
 	 * @example
-	 *   // Initialisation as a constructor
+	 *   // Initialisation as a varructor
 	 *   var api = new $.fn.DataTable.Api( 'table.dataTable' );
 	 */
 	_Api = function ( context, data )
@@ -9794,7 +9794,7 @@
 	
 		/**
 		 * When DataTables calculates the column widths to assign to each column,
-		 * it finds the longest string in each column and then constructs a
+		 * it finds the longest string in each column and then varructs a
 		 * temporary table and reads the widths from that. The problem with this
 		 * is that "mmm" is much wider then "iiii", but the latter is a longer
 		 * string - thus the calculation can go wrong (doing it properly and putting
@@ -9898,7 +9898,7 @@
 		/**
 		 * An array of data to use for the table, passed in at initialisation which
 		 * will be used in preference to any data which is already in the DOM. This is
-		 * particularly useful for constructing tables purely in Javascript, for
+		 * particularly useful for varructing tables purely in Javascript, for
 		 * example with a custom Ajax call.
 		 *  @type array
 		 *  @default null
@@ -10323,7 +10323,7 @@
 		/**
 		 * Replace a DataTable which matches the given selector and replace it with
 		 * one which has the properties of the new initialisation object passed. If no
-		 * table matches the selector, then the new DataTable will be constructed as
+		 * table matches the selector, then the new DataTable will be varructed as
 		 * per normal.
 		 *  @type boolean
 		 *  @default false
@@ -10924,11 +10924,11 @@
 		 *  It is often useful to send extra data to the server when making an Ajax
 		 * request - for example custom filtering information, and this callback
 		 * function makes it trivial to send extra information to the server. The
-		 * passed in parameter is the data set that has been constructed by
+		 * passed in parameter is the data set that has been varructed by
 		 * DataTables, and you can add to this or modify it as you require.
 		 *  @type function
 		 *  @param {array} data Data array (array of objects which are name/value
-		 *    pairs) that has been constructed by DataTables and will be sent to the
+		 *    pairs) that has been varructed by DataTables and will be sent to the
 		 *    server. In the case of Ajax sourced data with server-side processing
 		 *    this will be an empty array, for server-side processing there will be a
 		 *    significant number of parameters!
@@ -11850,7 +11850,7 @@
 		 *         <li>'r' - pRocessing</li>
 		 *       </ul>
 		 *     </li>
-		 *     <li>The following constants are allowed:
+		 *     <li>The following varants are allowed:
 		 *       <ul>
 		 *         <li>'H' - jQueryUI theme "header" classes ('fg-toolbar ui-widget-header ui-corner-tl ui-corner-tr ui-helper-clearfix')</li>
 		 *         <li>'F' - jQueryUI theme "footer" classes ('fg-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix')</li>
@@ -11985,7 +11985,7 @@
 	
 	
 		/**
-		 * Enable vertical scrolling. Vertical scrolling will constrain the DataTable
+		 * Enable vertical scrolling. Vertical scrolling will varrain the DataTable
 		 * to the given height, and enable scrolling for any data which overflows the
 		 * current viewport. This can be used as an alternative to paging to display
 		 * a lot of data in a small area (although paging and scrolling can both be
@@ -12644,7 +12644,7 @@
 	
 		/**
 		 * When DataTables calculates the column widths to assign to each column,
-		 * it finds the longest string in each column and then constructs a
+		 * it finds the longest string in each column and then varructs a
 		 * temporary table and reads the widths from that. The problem with this
 		 * is that "mmm" is much wider then "iiii", but the latter is a longer
 		 * string - thus the calculation can go wrong (doing it properly and putting

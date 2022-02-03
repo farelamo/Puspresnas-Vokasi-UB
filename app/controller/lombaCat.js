@@ -1,8 +1,8 @@
-const db = require('../config/database')
+var db = require('../config/database')
 var sess;
-const Db = require('../../database/models')
-const Post = Db.kategoriLomba
-const Op = Db.Sequelize.Op
+var Db = require('../../database/models')
+var Post = Db.kategoriLomba
+var Op = Db.Sequelize.Op
 
 module.exports = {
   index: (req, res) => {
@@ -16,7 +16,7 @@ module.exports = {
         (error, profil) => {
           if (error) console.log(error)
           else {
-            const kategori = req.query.kategori
+            var kategori = req.query.kategori
             let condition = kategori ? {
               kategori: {
                 [Op.like]: `%${kategori}%` 
@@ -49,7 +49,7 @@ module.exports = {
 
   kondisi: async (req, res) => {
     if (req.body.submit == 'tambah') {
-      const post = {
+      var post = {
         kategori: req.body.lombas
     };
 
@@ -63,8 +63,8 @@ module.exports = {
       })
     } else if (req.body.submit == 'edit') {
 
-      const id = req.body.id;
-      const lomba = req.body.lomba;
+      var id = req.body.id;
+      var lomba = req.body.lomba;
 
       await Post.update({kategori: lomba}, {
           where: {id: id}
@@ -83,7 +83,7 @@ module.exports = {
           })
       })
     } else {
-      const id = req.body.id;
+      var id = req.body.id;
 
       await Post.destroy({
           where: { id: id }

@@ -1,7 +1,7 @@
-const db = require('../config/database')
-const Db = require("../../database/models");
-const Post = Db.mahasiswa;
-const Op = Db.Sequelize.Op;
+var db = require('../config/database')
+var Db = require("../../database/models");
+var Post = Db.mahasiswa;
+var Op = Db.Sequelize.Op;
 var sess;
 
 module.exports = {
@@ -69,7 +69,7 @@ module.exports = {
   },
 
   findAll : (req, res) => {
-    const judul = req.query.judul;
+    var judul = req.query.judul;
     let condition = judul ? { judul: { [Op.like]: `%${judul}%` } } : null;
 
     Post.findAll({ where: condition })
@@ -84,7 +84,7 @@ module.exports = {
   },
 
   findOne : (req, res) => {
-    const id = req.params.id;
+    var id = req.params.id;
 
     Post.findByPk(id)
         .then((data) => {

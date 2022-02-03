@@ -1,5 +1,5 @@
-const db = require('../config/database')
-const fs = require('fs');
+var db = require('../config/database')
+var fs = require('fs');
 var sess;
 
 module.exports = {

@@ -1,8 +1,8 @@
-const db = require('../config/database')
-const fs = require('fs');
-const Db = require('../../database/models')
-const Post = Db.jenisLomba
-const Op = Db.Sequelize.Op
+var db = require('../config/database')
+var fs = require('fs');
+var Db = require('../../database/models')
+var Post = Db.jenisLomba
+var Op = Db.Sequelize.Op
 var sess;
 
 module.exports = {
@@ -17,7 +17,7 @@ module.exports = {
         (error, profil) => {
           if (error) console.log(error)
           else {
-            const jenis = req.query.jenis;
+            var jenis = req.query.jenis;
             let condition = jenis ? {
               jenis: {
                 [Op.like]: `%${jenis}%`
@@ -73,11 +73,11 @@ module.exports = {
 
   crud: async (req, res) => {                /* HAPUS JENIS */
     if (req.body.submit == "hapus") {
-      const id = req.body.id_lomba;
+      var id = req.body.id_lomba;
 
       Post.findByPk(id)
         .then((data) => {
-          const id = req.body.id_lomba;
+          var id = req.body.id_lomba;
 
           Post.destroy({
             where: {
@@ -103,7 +103,7 @@ module.exports = {
                   (error, profil) => {
                     if (error) console.log(error)
                     else {
-                      const judul = req.query.judul;
+                      var judul = req.query.judul;
                       let condition = judul ? {
                         judul: {
                           [Op.like]: `%${judul}%`
@@ -191,7 +191,7 @@ module.exports = {
         file.mv("public/assets/img/jenisLomba/" + filename, function (err) {
           if (err) console.log(err)
           
-          const id = req.body.IdGambar;
+          var id = req.body.IdGambar;
 
           Post.update({
             gambar: filename
@@ -216,7 +216,7 @@ module.exports = {
                   (error, profil) => {
                     if (error) console.log(error)
                     else {
-                      const judul = req.query.judul;
+                      var judul = req.query.judul;
                       let condition = judul ? {
                         judul: {
                           [Op.like]: `%${judul}%`
@@ -281,7 +281,7 @@ module.exports = {
                         if (error) console.log(error)
                         else {
 
-                          const {
+                          var {
                             id
                           } = req.body
 

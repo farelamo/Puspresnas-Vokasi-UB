@@ -1,6 +1,6 @@
-const express = require('express')
-const profil = express.Router()
-const controller = require('../app/controller/profil')
+var express = require('express')
+var profil = express.Router()
+var controller = require('../app/controller/profil')
 
 profil.route('/profil')
     .get(controller.index)

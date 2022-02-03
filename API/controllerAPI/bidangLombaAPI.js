@@ -1,10 +1,10 @@
-const Db = require("../../database/models");
-const Post = Db.bidangLomba;
-const Op = Db.Sequelize.Op;
+var Db = require("../../database/models");
+var Post = Db.bidangLomba;
+var Op = Db.Sequelize.Op;
 
 module.exports = {
     findAll: (req, res) => {
-        const judul = req.query.judul;
+        var judul = req.query.judul;
         let condition = judul ? {
             judul: {
                 [Op.like]: `%${judul}%`
@@ -27,7 +27,7 @@ module.exports = {
     },
 
     findOne: (req, res) => {
-        const id = req.params.id;
+        var id = req.params.id;
 
         Post.findByPk(id)
             .then((data) => {

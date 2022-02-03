@@ -1,11 +1,11 @@
-const Db = require('../../database/models')
-const Post = Db.tagLomba
-const Op = Db.Sequelize.Op
-const PostCat = Db.kategoriLomba
+var Db = require('../../database/models')
+var Post = Db.tagLomba
+var Op = Db.Sequelize.Op
+var PostCat = Db.kategoriLomba
 
 module.exports = {
     findAll: (req, res) => {
-        const tag = req.query.tag
+        var tag = req.query.tag
         let condition = tag ? {
             tag: {
                 [Op.like]: `%${tag}%`
@@ -29,7 +29,7 @@ module.exports = {
     },
 
     findOne: (req, res) => {
-        const id = req.params.id;
+        var id = req.params.id;
 
         Post.findByPk(id)
             .then((data) => {

@@ -1,7 +1,7 @@
-const db = require('../config/database')
-const Db = require("../../database/models");
+var db = require('../config/database')
+var Db = require("../../database/models");
 var sess;
-const Post = Db.berita;
+var Post = Db.berita;
 let date_ob = new Date();
 let date = ("0" + date_ob.getDate()).slice(-2);
 let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
@@ -20,7 +20,7 @@ module.exports = {
         (error, profil) => {
           if (error) console.log(error)
           else {
-            const id = req.params.id_berita;
+            var id = req.params.id_berita;
 
             Post.findByPk(id)
               .then((hasil) => {
@@ -52,7 +52,7 @@ module.exports = {
 
   crud: (req, res) => {
     if (req.body.submit == "edit") {
-      const id = req.body.id_berita;
+      var id = req.body.id_berita;
       var judul = req.body.judul;
       var deskripsi = req.body.deskripsi;
       var isi = req.body.isi;

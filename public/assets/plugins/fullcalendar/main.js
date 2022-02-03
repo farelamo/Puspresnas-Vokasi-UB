@@ -31,7 +31,7 @@ var FullCalendar = (function (exports) {
 
     function __extends(d, b) {
         extendStatics(d, b);
-        function __() { this.constructor = d; }
+        function __() { this.varructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     }
 
@@ -54,7 +54,7 @@ var FullCalendar = (function (exports) {
         return r;
     }
 
-    var n,u,i,t,o,r,f={},e=[],c=/acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i;function s(n,l){for(var u in l)n[u]=l[u];return n}function a(n){var l=n.parentNode;l&&l.removeChild(n);}function v(n,l,u){var i,t,o,r=arguments,f={};for(o in l)"key"==o?i=l[o]:"ref"==o?t=l[o]:f[o]=l[o];if(arguments.length>3)for(u=[u],o=3;o<arguments.length;o++)u.push(r[o]);if(null!=u&&(f.children=u),"function"==typeof n&&null!=n.defaultProps)for(o in n.defaultProps)void 0===f[o]&&(f[o]=n.defaultProps[o]);return h(n,f,i,t,null)}function h(l,u,i,t,o){var r={type:l,props:u,key:i,ref:t,__k:null,__:null,__b:0,__e:null,__d:void 0,__c:null,__h:null,constructor:void 0,__v:null==o?++n.__v:o};return null!=n.vnode&&n.vnode(r),r}function y(){return {current:null}}function p(n){return n.children}function d(n,l){this.props=n,this.context=l;}function _(n,l){if(null==l)return n.__?_(n.__,n.__.__k.indexOf(n)+1):null;for(var u;l<n.__k.length;l++)if(null!=(u=n.__k[l])&&null!=u.__e)return u.__e;return "function"==typeof n.type?_(n):null}function w(n){var l,u;if(null!=(n=n.__)&&null!=n.__c){for(n.__e=n.__c.base=null,l=0;l<n.__k.length;l++)if(null!=(u=n.__k[l])&&null!=u.__e){n.__e=n.__c.base=u.__e;break}return w(n)}}function k(l){(!l.__d&&(l.__d=!0)&&u.push(l)&&!g.__r++||t!==n.debounceRendering)&&((t=n.debounceRendering)||i)(g);}function g(){for(var n;g.__r=u.length;)n=u.sort(function(n,l){return n.__v.__b-l.__v.__b}),u=[],n.some(function(n){var l,u,i,t,o,r,f;n.__d&&(r=(o=(l=n).__v).__e,(f=l.__P)&&(u=[],(i=s({},o)).__v=o.__v+1,t=$(f,o,i,l.__n,void 0!==f.ownerSVGElement,null!=o.__h?[r]:null,u,null==r?_(o):r,o.__h),j(u,o),t!=r&&w(o)));});}function m(n,l,u,i,t,o,r,c,s,v){var y,d,w,k,g,m,b,A=i&&i.__k||e,P=A.length;for(s==f&&(s=null!=r?r[0]:P?_(i,0):null),u.__k=[],y=0;y<l.length;y++)if(null!=(k=u.__k[y]=null==(k=l[y])||"boolean"==typeof k?null:"string"==typeof k||"number"==typeof k?h(null,k,null,null,k):Array.isArray(k)?h(p,{children:k},null,null,null):null!=k.__e||null!=k.__c?h(k.type,k.props,k.key,null,k.__v):k)){if(k.__=u,k.__b=u.__b+1,null===(w=A[y])||w&&k.key==w.key&&k.type===w.type)A[y]=void 0;else for(d=0;d<P;d++){if((w=A[d])&&k.key==w.key&&k.type===w.type){A[d]=void 0;break}w=null;}g=$(n,k,w=w||f,t,o,r,c,s,v),(d=k.ref)&&w.ref!=d&&(b||(b=[]),w.ref&&b.push(w.ref,null,k),b.push(d,k.__c||g,k)),null!=g?(null==m&&(m=g),s=x(n,k,w,A,r,g,s),v||"option"!=u.type?"function"==typeof u.type&&(u.__d=s):n.value=""):s&&w.__e==s&&s.parentNode!=n&&(s=_(w));}if(u.__e=m,null!=r&&"function"!=typeof u.type)for(y=r.length;y--;)null!=r[y]&&a(r[y]);for(y=P;y--;)null!=A[y]&&L(A[y],A[y]);if(b)for(y=0;y<b.length;y++)I(b[y],b[++y],b[++y]);}function x(n,l,u,i,t,o,r){var f,e,c;if(void 0!==l.__d)f=l.__d,l.__d=void 0;else if(t==u||o!=r||null==o.parentNode)n:if(null==r||r.parentNode!==n)n.appendChild(o),f=null;else {for(e=r,c=0;(e=e.nextSibling)&&c<i.length;c+=2)if(e==o)break n;n.insertBefore(o,r),f=r;}return void 0!==f?f:o.nextSibling}function A(n,l,u,i,t){var o;for(o in u)"children"===o||"key"===o||o in l||C(n,o,null,u[o],i);for(o in l)t&&"function"!=typeof l[o]||"children"===o||"key"===o||"value"===o||"checked"===o||u[o]===l[o]||C(n,o,l[o],u[o],i);}function P(n,l,u){"-"===l[0]?n.setProperty(l,u):n[l]=null==u?"":"number"!=typeof u||c.test(l)?u:u+"px";}function C(n,l,u,i,t){var o,r,f;if(t&&"className"==l&&(l="class"),"style"===l)if("string"==typeof u)n.style.cssText=u;else {if("string"==typeof i&&(n.style.cssText=i=""),i)for(l in i)u&&l in u||P(n.style,l,"");if(u)for(l in u)i&&u[l]===i[l]||P(n.style,l,u[l]);}else "o"===l[0]&&"n"===l[1]?(o=l!==(l=l.replace(/Capture$/,"")),(r=l.toLowerCase())in n&&(l=r),l=l.slice(2),n.l||(n.l={}),n.l[l+o]=u,f=o?N:z,u?i||n.addEventListener(l,f,o):n.removeEventListener(l,f,o)):"list"!==l&&"tagName"!==l&&"form"!==l&&"type"!==l&&"size"!==l&&"download"!==l&&"href"!==l&&!t&&l in n?n[l]=null==u?"":u:"function"!=typeof u&&"dangerouslySetInnerHTML"!==l&&(l!==(l=l.replace(/xlink:?/,""))?null==u||!1===u?n.removeAttributeNS("http://www.w3.org/1999/xlink",l.toLowerCase()):n.setAttributeNS("http://www.w3.org/1999/xlink",l.toLowerCase(),u):null==u||!1===u&&!/^ar/.test(l)?n.removeAttribute(l):n.setAttribute(l,u));}function z(l){this.l[l.type+!1](n.event?n.event(l):l);}function N(l){this.l[l.type+!0](n.event?n.event(l):l);}function T(n,l,u){var i,t;for(i=0;i<n.__k.length;i++)(t=n.__k[i])&&(t.__=n,t.__e&&("function"==typeof t.type&&t.__k.length>1&&T(t,l,u),l=x(u,t,t,n.__k,null,t.__e,l),"function"==typeof n.type&&(n.__d=l)));}function $(l,u,i,t,o,r,f,e,c){var a,v,h,y,_,w,k,g,b,x,A,P=u.type;if(void 0!==u.constructor)return null;null!=i.__h&&(c=i.__h,e=u.__e=i.__e,u.__h=null,r=[e]),(a=n.__b)&&a(u);try{n:if("function"==typeof P){if(g=u.props,b=(a=P.contextType)&&t[a.__c],x=a?b?b.props.value:a.__:t,i.__c?k=(v=u.__c=i.__c).__=v.__E:("prototype"in P&&P.prototype.render?u.__c=v=new P(g,x):(u.__c=v=new d(g,x),v.constructor=P,v.render=M),b&&b.sub(v),v.props=g,v.state||(v.state={}),v.context=x,v.__n=t,h=v.__d=!0,v.__h=[]),null==v.__s&&(v.__s=v.state),null!=P.getDerivedStateFromProps&&(v.__s==v.state&&(v.__s=s({},v.__s)),s(v.__s,P.getDerivedStateFromProps(g,v.__s))),y=v.props,_=v.state,h)null==P.getDerivedStateFromProps&&null!=v.componentWillMount&&v.componentWillMount(),null!=v.componentDidMount&&v.__h.push(v.componentDidMount);else {if(null==P.getDerivedStateFromProps&&g!==y&&null!=v.componentWillReceiveProps&&v.componentWillReceiveProps(g,x),!v.__e&&null!=v.shouldComponentUpdate&&!1===v.shouldComponentUpdate(g,v.__s,x)||u.__v===i.__v){v.props=g,v.state=v.__s,u.__v!==i.__v&&(v.__d=!1),v.__v=u,u.__e=i.__e,u.__k=i.__k,v.__h.length&&f.push(v),T(u,e,l);break n}null!=v.componentWillUpdate&&v.componentWillUpdate(g,v.__s,x),null!=v.componentDidUpdate&&v.__h.push(function(){v.componentDidUpdate(y,_,w);});}v.context=x,v.props=g,v.state=v.__s,(a=n.__r)&&a(u),v.__d=!1,v.__v=u,v.__P=l,a=v.render(v.props,v.state,v.context),v.state=v.__s,null!=v.getChildContext&&(t=s(s({},t),v.getChildContext())),h||null==v.getSnapshotBeforeUpdate||(w=v.getSnapshotBeforeUpdate(y,_)),A=null!=a&&a.type==p&&null==a.key?a.props.children:a,m(l,Array.isArray(A)?A:[A],u,i,t,o,r,f,e,c),v.base=u.__e,u.__h=null,v.__h.length&&f.push(v),k&&(v.__E=v.__=null),v.__e=!1;}else null==r&&u.__v===i.__v?(u.__k=i.__k,u.__e=i.__e):u.__e=H(i.__e,u,i,t,o,r,f,c);(a=n.diffed)&&a(u);}catch(l){u.__v=null,(c||null!=r)&&(u.__e=e,u.__h=!!c,r[r.indexOf(e)]=null),n.__e(l,u,i);}return u.__e}function j(l,u){n.__c&&n.__c(u,l),l.some(function(u){try{l=u.__h,u.__h=[],l.some(function(n){n.call(u);});}catch(l){n.__e(l,u.__v);}});}function H(n,l,u,i,t,o,r,c){var s,a,v,h,y,p=u.props,d=l.props;if(t="svg"===l.type||t,null!=o)for(s=0;s<o.length;s++)if(null!=(a=o[s])&&((null===l.type?3===a.nodeType:a.localName===l.type)||n==a)){n=a,o[s]=null;break}if(null==n){if(null===l.type)return document.createTextNode(d);n=t?document.createElementNS("http://www.w3.org/2000/svg",l.type):document.createElement(l.type,d.is&&{is:d.is}),o=null,c=!1;}if(null===l.type)p===d||c&&n.data===d||(n.data=d);else {if(null!=o&&(o=e.slice.call(n.childNodes)),v=(p=u.props||f).dangerouslySetInnerHTML,h=d.dangerouslySetInnerHTML,!c){if(null!=o)for(p={},y=0;y<n.attributes.length;y++)p[n.attributes[y].name]=n.attributes[y].value;(h||v)&&(h&&(v&&h.__html==v.__html||h.__html===n.innerHTML)||(n.innerHTML=h&&h.__html||""));}A(n,d,p,t,c),h?l.__k=[]:(s=l.props.children,m(n,Array.isArray(s)?s:[s],l,u,i,"foreignObject"!==l.type&&t,o,r,f,c)),c||("value"in d&&void 0!==(s=d.value)&&(s!==n.value||"progress"===l.type&&!s)&&C(n,"value",s,p.value,!1),"checked"in d&&void 0!==(s=d.checked)&&s!==n.checked&&C(n,"checked",s,p.checked,!1));}return n}function I(l,u,i){try{"function"==typeof l?l(u):l.current=u;}catch(l){n.__e(l,i);}}function L(l,u,i){var t,o,r;if(n.unmount&&n.unmount(l),(t=l.ref)&&(t.current&&t.current!==l.__e||I(t,null,u)),i||"function"==typeof l.type||(i=null!=(o=l.__e)),l.__e=l.__d=void 0,null!=(t=l.__c)){if(t.componentWillUnmount)try{t.componentWillUnmount();}catch(l){n.__e(l,u);}t.base=t.__P=null;}if(t=l.__k)for(r=0;r<t.length;r++)t[r]&&L(t[r],u,i);null!=o&&a(o);}function M(n,l,u){return this.constructor(n,u)}function O(l,u,i){var t,r,c;n.__&&n.__(l,u),r=(t=i===o)?null:i&&i.__k||u.__k,l=v(p,null,[l]),c=[],$(u,(t?u:i||u).__k=l,r||f,f,void 0!==u.ownerSVGElement,i&&!t?[i]:r?null:u.childNodes.length?e.slice.call(u.childNodes):null,c,i||f,t),j(c,l);}function B(n,l){var u={__c:l="__cC"+r++,__:n,Consumer:function(n,l){return n.children(l)},Provider:function(n,u,i){return this.getChildContext||(u=[],(i={})[l]=this,this.getChildContext=function(){return i},this.shouldComponentUpdate=function(n){this.props.value!==n.value&&u.some(k);},this.sub=function(n){u.push(n);var l=n.componentWillUnmount;n.componentWillUnmount=function(){u.splice(u.indexOf(n),1),l&&l.call(n);};}),n.children}};return u.Provider.__=u.Consumer.contextType=u}n={__e:function(n,l){for(var u,i,t,o=l.__h;l=l.__;)if((u=l.__c)&&!u.__)try{if((i=u.constructor)&&null!=i.getDerivedStateFromError&&(u.setState(i.getDerivedStateFromError(n)),t=u.__d),null!=u.componentDidCatch&&(u.componentDidCatch(n),t=u.__d),t)return l.__h=o,u.__E=u}catch(l){n=l;}throw n},__v:0},d.prototype.setState=function(n,l){var u;u=null!=this.__s&&this.__s!==this.state?this.__s:this.__s=s({},this.state),"function"==typeof n&&(n=n(s({},u),this.props)),n&&s(u,n),null!=n&&this.__v&&(l&&this.__h.push(l),k(this));},d.prototype.forceUpdate=function(n){this.__v&&(this.__e=!0,n&&this.__h.push(n),k(this));},d.prototype.render=p,u=[],i="function"==typeof Promise?Promise.prototype.then.bind(Promise.resolve()):setTimeout,g.__r=0,o=f,r=0;
+    var n,u,i,t,o,r,f={},e=[],c=/acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i;function s(n,l){for(var u in l)n[u]=l[u];return n}function a(n){var l=n.parentNode;l&&l.removeChild(n);}function v(n,l,u){var i,t,o,r=arguments,f={};for(o in l)"key"==o?i=l[o]:"ref"==o?t=l[o]:f[o]=l[o];if(arguments.length>3)for(u=[u],o=3;o<arguments.length;o++)u.push(r[o]);if(null!=u&&(f.children=u),"function"==typeof n&&null!=n.defaultProps)for(o in n.defaultProps)void 0===f[o]&&(f[o]=n.defaultProps[o]);return h(n,f,i,t,null)}function h(l,u,i,t,o){var r={type:l,props:u,key:i,ref:t,__k:null,__:null,__b:0,__e:null,__d:void 0,__c:null,__h:null,varructor:void 0,__v:null==o?++n.__v:o};return null!=n.vnode&&n.vnode(r),r}function y(){return {current:null}}function p(n){return n.children}function d(n,l){this.props=n,this.context=l;}function _(n,l){if(null==l)return n.__?_(n.__,n.__.__k.indexOf(n)+1):null;for(var u;l<n.__k.length;l++)if(null!=(u=n.__k[l])&&null!=u.__e)return u.__e;return "function"==typeof n.type?_(n):null}function w(n){var l,u;if(null!=(n=n.__)&&null!=n.__c){for(n.__e=n.__c.base=null,l=0;l<n.__k.length;l++)if(null!=(u=n.__k[l])&&null!=u.__e){n.__e=n.__c.base=u.__e;break}return w(n)}}function k(l){(!l.__d&&(l.__d=!0)&&u.push(l)&&!g.__r++||t!==n.debounceRendering)&&((t=n.debounceRendering)||i)(g);}function g(){for(var n;g.__r=u.length;)n=u.sort(function(n,l){return n.__v.__b-l.__v.__b}),u=[],n.some(function(n){var l,u,i,t,o,r,f;n.__d&&(r=(o=(l=n).__v).__e,(f=l.__P)&&(u=[],(i=s({},o)).__v=o.__v+1,t=$(f,o,i,l.__n,void 0!==f.ownerSVGElement,null!=o.__h?[r]:null,u,null==r?_(o):r,o.__h),j(u,o),t!=r&&w(o)));});}function m(n,l,u,i,t,o,r,c,s,v){var y,d,w,k,g,m,b,A=i&&i.__k||e,P=A.length;for(s==f&&(s=null!=r?r[0]:P?_(i,0):null),u.__k=[],y=0;y<l.length;y++)if(null!=(k=u.__k[y]=null==(k=l[y])||"boolean"==typeof k?null:"string"==typeof k||"number"==typeof k?h(null,k,null,null,k):Array.isArray(k)?h(p,{children:k},null,null,null):null!=k.__e||null!=k.__c?h(k.type,k.props,k.key,null,k.__v):k)){if(k.__=u,k.__b=u.__b+1,null===(w=A[y])||w&&k.key==w.key&&k.type===w.type)A[y]=void 0;else for(d=0;d<P;d++){if((w=A[d])&&k.key==w.key&&k.type===w.type){A[d]=void 0;break}w=null;}g=$(n,k,w=w||f,t,o,r,c,s,v),(d=k.ref)&&w.ref!=d&&(b||(b=[]),w.ref&&b.push(w.ref,null,k),b.push(d,k.__c||g,k)),null!=g?(null==m&&(m=g),s=x(n,k,w,A,r,g,s),v||"option"!=u.type?"function"==typeof u.type&&(u.__d=s):n.value=""):s&&w.__e==s&&s.parentNode!=n&&(s=_(w));}if(u.__e=m,null!=r&&"function"!=typeof u.type)for(y=r.length;y--;)null!=r[y]&&a(r[y]);for(y=P;y--;)null!=A[y]&&L(A[y],A[y]);if(b)for(y=0;y<b.length;y++)I(b[y],b[++y],b[++y]);}function x(n,l,u,i,t,o,r){var f,e,c;if(void 0!==l.__d)f=l.__d,l.__d=void 0;else if(t==u||o!=r||null==o.parentNode)n:if(null==r||r.parentNode!==n)n.appendChild(o),f=null;else {for(e=r,c=0;(e=e.nextSibling)&&c<i.length;c+=2)if(e==o)break n;n.insertBefore(o,r),f=r;}return void 0!==f?f:o.nextSibling}function A(n,l,u,i,t){var o;for(o in u)"children"===o||"key"===o||o in l||C(n,o,null,u[o],i);for(o in l)t&&"function"!=typeof l[o]||"children"===o||"key"===o||"value"===o||"checked"===o||u[o]===l[o]||C(n,o,l[o],u[o],i);}function P(n,l,u){"-"===l[0]?n.setProperty(l,u):n[l]=null==u?"":"number"!=typeof u||c.test(l)?u:u+"px";}function C(n,l,u,i,t){var o,r,f;if(t&&"className"==l&&(l="class"),"style"===l)if("string"==typeof u)n.style.cssText=u;else {if("string"==typeof i&&(n.style.cssText=i=""),i)for(l in i)u&&l in u||P(n.style,l,"");if(u)for(l in u)i&&u[l]===i[l]||P(n.style,l,u[l]);}else "o"===l[0]&&"n"===l[1]?(o=l!==(l=l.replace(/Capture$/,"")),(r=l.toLowerCase())in n&&(l=r),l=l.slice(2),n.l||(n.l={}),n.l[l+o]=u,f=o?N:z,u?i||n.addEventListener(l,f,o):n.removeEventListener(l,f,o)):"list"!==l&&"tagName"!==l&&"form"!==l&&"type"!==l&&"size"!==l&&"download"!==l&&"href"!==l&&!t&&l in n?n[l]=null==u?"":u:"function"!=typeof u&&"dangerouslySetInnerHTML"!==l&&(l!==(l=l.replace(/xlink:?/,""))?null==u||!1===u?n.removeAttributeNS("http://www.w3.org/1999/xlink",l.toLowerCase()):n.setAttributeNS("http://www.w3.org/1999/xlink",l.toLowerCase(),u):null==u||!1===u&&!/^ar/.test(l)?n.removeAttribute(l):n.setAttribute(l,u));}function z(l){this.l[l.type+!1](n.event?n.event(l):l);}function N(l){this.l[l.type+!0](n.event?n.event(l):l);}function T(n,l,u){var i,t;for(i=0;i<n.__k.length;i++)(t=n.__k[i])&&(t.__=n,t.__e&&("function"==typeof t.type&&t.__k.length>1&&T(t,l,u),l=x(u,t,t,n.__k,null,t.__e,l),"function"==typeof n.type&&(n.__d=l)));}function $(l,u,i,t,o,r,f,e,c){var a,v,h,y,_,w,k,g,b,x,A,P=u.type;if(void 0!==u.varructor)return null;null!=i.__h&&(c=i.__h,e=u.__e=i.__e,u.__h=null,r=[e]),(a=n.__b)&&a(u);try{n:if("function"==typeof P){if(g=u.props,b=(a=P.contextType)&&t[a.__c],x=a?b?b.props.value:a.__:t,i.__c?k=(v=u.__c=i.__c).__=v.__E:("prototype"in P&&P.prototype.render?u.__c=v=new P(g,x):(u.__c=v=new d(g,x),v.varructor=P,v.render=M),b&&b.sub(v),v.props=g,v.state||(v.state={}),v.context=x,v.__n=t,h=v.__d=!0,v.__h=[]),null==v.__s&&(v.__s=v.state),null!=P.getDerivedStateFromProps&&(v.__s==v.state&&(v.__s=s({},v.__s)),s(v.__s,P.getDerivedStateFromProps(g,v.__s))),y=v.props,_=v.state,h)null==P.getDerivedStateFromProps&&null!=v.componentWillMount&&v.componentWillMount(),null!=v.componentDidMount&&v.__h.push(v.componentDidMount);else {if(null==P.getDerivedStateFromProps&&g!==y&&null!=v.componentWillReceiveProps&&v.componentWillReceiveProps(g,x),!v.__e&&null!=v.shouldComponentUpdate&&!1===v.shouldComponentUpdate(g,v.__s,x)||u.__v===i.__v){v.props=g,v.state=v.__s,u.__v!==i.__v&&(v.__d=!1),v.__v=u,u.__e=i.__e,u.__k=i.__k,v.__h.length&&f.push(v),T(u,e,l);break n}null!=v.componentWillUpdate&&v.componentWillUpdate(g,v.__s,x),null!=v.componentDidUpdate&&v.__h.push(function(){v.componentDidUpdate(y,_,w);});}v.context=x,v.props=g,v.state=v.__s,(a=n.__r)&&a(u),v.__d=!1,v.__v=u,v.__P=l,a=v.render(v.props,v.state,v.context),v.state=v.__s,null!=v.getChildContext&&(t=s(s({},t),v.getChildContext())),h||null==v.getSnapshotBeforeUpdate||(w=v.getSnapshotBeforeUpdate(y,_)),A=null!=a&&a.type==p&&null==a.key?a.props.children:a,m(l,Array.isArray(A)?A:[A],u,i,t,o,r,f,e,c),v.base=u.__e,u.__h=null,v.__h.length&&f.push(v),k&&(v.__E=v.__=null),v.__e=!1;}else null==r&&u.__v===i.__v?(u.__k=i.__k,u.__e=i.__e):u.__e=H(i.__e,u,i,t,o,r,f,c);(a=n.diffed)&&a(u);}catch(l){u.__v=null,(c||null!=r)&&(u.__e=e,u.__h=!!c,r[r.indexOf(e)]=null),n.__e(l,u,i);}return u.__e}function j(l,u){n.__c&&n.__c(u,l),l.some(function(u){try{l=u.__h,u.__h=[],l.some(function(n){n.call(u);});}catch(l){n.__e(l,u.__v);}});}function H(n,l,u,i,t,o,r,c){var s,a,v,h,y,p=u.props,d=l.props;if(t="svg"===l.type||t,null!=o)for(s=0;s<o.length;s++)if(null!=(a=o[s])&&((null===l.type?3===a.nodeType:a.localName===l.type)||n==a)){n=a,o[s]=null;break}if(null==n){if(null===l.type)return document.createTextNode(d);n=t?document.createElementNS("http://www.w3.org/2000/svg",l.type):document.createElement(l.type,d.is&&{is:d.is}),o=null,c=!1;}if(null===l.type)p===d||c&&n.data===d||(n.data=d);else {if(null!=o&&(o=e.slice.call(n.childNodes)),v=(p=u.props||f).dangerouslySetInnerHTML,h=d.dangerouslySetInnerHTML,!c){if(null!=o)for(p={},y=0;y<n.attributes.length;y++)p[n.attributes[y].name]=n.attributes[y].value;(h||v)&&(h&&(v&&h.__html==v.__html||h.__html===n.innerHTML)||(n.innerHTML=h&&h.__html||""));}A(n,d,p,t,c),h?l.__k=[]:(s=l.props.children,m(n,Array.isArray(s)?s:[s],l,u,i,"foreignObject"!==l.type&&t,o,r,f,c)),c||("value"in d&&void 0!==(s=d.value)&&(s!==n.value||"progress"===l.type&&!s)&&C(n,"value",s,p.value,!1),"checked"in d&&void 0!==(s=d.checked)&&s!==n.checked&&C(n,"checked",s,p.checked,!1));}return n}function I(l,u,i){try{"function"==typeof l?l(u):l.current=u;}catch(l){n.__e(l,i);}}function L(l,u,i){var t,o,r;if(n.unmount&&n.unmount(l),(t=l.ref)&&(t.current&&t.current!==l.__e||I(t,null,u)),i||"function"==typeof l.type||(i=null!=(o=l.__e)),l.__e=l.__d=void 0,null!=(t=l.__c)){if(t.componentWillUnmount)try{t.componentWillUnmount();}catch(l){n.__e(l,u);}t.base=t.__P=null;}if(t=l.__k)for(r=0;r<t.length;r++)t[r]&&L(t[r],u,i);null!=o&&a(o);}function M(n,l,u){return this.varructor(n,u)}function O(l,u,i){var t,r,c;n.__&&n.__(l,u),r=(t=i===o)?null:i&&i.__k||u.__k,l=v(p,null,[l]),c=[],$(u,(t?u:i||u).__k=l,r||f,f,void 0!==u.ownerSVGElement,i&&!t?[i]:r?null:u.childNodes.length?e.slice.call(u.childNodes):null,c,i||f,t),j(c,l);}function B(n,l){var u={__c:l="__cC"+r++,__:n,Consumer:function(n,l){return n.children(l)},Provider:function(n,u,i){return this.getChildContext||(u=[],(i={})[l]=this,this.getChildContext=function(){return i},this.shouldComponentUpdate=function(n){this.props.value!==n.value&&u.some(k);},this.sub=function(n){u.push(n);var l=n.componentWillUnmount;n.componentWillUnmount=function(){u.splice(u.indexOf(n),1),l&&l.call(n);};}),n.children}};return u.Provider.__=u.Consumer.contextType=u}n={__e:function(n,l){for(var u,i,t,o=l.__h;l=l.__;)if((u=l.__c)&&!u.__)try{if((i=u.varructor)&&null!=i.getDerivedStateFromError&&(u.setState(i.getDerivedStateFromError(n)),t=u.__d),null!=u.componentDidCatch&&(u.componentDidCatch(n),t=u.__d),t)return l.__h=o,u.__E=u}catch(l){n=l;}throw n},__v:0},d.prototype.setState=function(n,l){var u;u=null!=this.__s&&this.__s!==this.state?this.__s:this.__s=s({},this.state),"function"==typeof n&&(n=n(s({},u),this.props)),n&&s(u,n),null!=n&&this.__v&&(l&&this.__h.push(l),k(this));},d.prototype.forceUpdate=function(n){this.__v&&(this.__e=!0,n&&this.__h.push(n),k(this));},d.prototype.render=p,u=[],i="function"==typeof Promise?Promise.prototype.then.bind(Promise.resolve()):setTimeout,g.__r=0,o=f,r=0;
 
     var globalObj = typeof globalThis !== 'undefined' ? globalThis : window; // // TODO: streamline when killing IE11 support
     if (globalObj.FullCalendarVDom) {
@@ -424,7 +424,7 @@ var FullCalendar = (function (exports) {
         var allWidthEl = cellEl.querySelector('.fc-scrollgrid-shrink-frame');
         var contentWidthEl = cellEl.querySelector('.fc-scrollgrid-shrink-cushion');
         if (!allWidthEl) {
-            throw new Error('needs fc-scrollgrid-shrink-frame className'); // TODO: use const
+            throw new Error('needs fc-scrollgrid-shrink-frame className'); // TODO: use var
         }
         if (!contentWidthEl) {
             throw new Error('needs fc-scrollgrid-shrink-cushion className');
@@ -1617,7 +1617,7 @@ var FullCalendar = (function (exports) {
         eventStartEditable: Boolean,
         eventDurationEditable: Boolean,
         eventOverlap: identity,
-        eventConstraint: identity,
+        eventvarraint: identity,
         eventAllow: identity,
         eventBackgroundColor: String,
         eventBorderColor: String,
@@ -1627,7 +1627,7 @@ var FullCalendar = (function (exports) {
         eventContent: identity,
         eventDidMount: identity,
         eventWillUnmount: identity,
-        selectConstraint: identity,
+        selectvarraint: identity,
         selectOverlap: identity,
         selectAllow: identity,
         droppable: Boolean,
@@ -1887,7 +1887,7 @@ var FullCalendar = (function (exports) {
         };
     }
 
-    function normalizeConstraint(input, context) {
+    function normalizevarraint(input, context) {
         if (Array.isArray(input)) {
             return parseEvents(input, null, context, true); // allowOpenRange=true
         }
@@ -1912,13 +1912,13 @@ var FullCalendar = (function (exports) {
 
     // TODO: better called "EventSettings" or "EventConfig"
     // TODO: move this file into structs
-    // TODO: separate constraint/overlap/allow, because selection uses only that, not other props
+    // TODO: separate varraint/overlap/allow, because selection uses only that, not other props
     var EVENT_UI_REFINERS = {
         display: String,
         editable: Boolean,
         startEditable: Boolean,
         durationEditable: Boolean,
-        constraint: identity,
+        varraint: identity,
         overlap: identity,
         allow: identity,
         className: parseClassNames,
@@ -1932,7 +1932,7 @@ var FullCalendar = (function (exports) {
         display: null,
         startEditable: null,
         durationEditable: null,
-        constraints: [],
+        varraints: [],
         overlap: null,
         allows: [],
         backgroundColor: '',
@@ -1941,12 +1941,12 @@ var FullCalendar = (function (exports) {
         classNames: [],
     };
     function createEventUi(refined, context) {
-        var constraint = normalizeConstraint(refined.constraint, context);
+        var varraint = normalizevarraint(refined.varraint, context);
         return {
             display: refined.display || null,
             startEditable: refined.startEditable != null ? refined.startEditable : refined.editable,
             durationEditable: refined.durationEditable != null ? refined.durationEditable : refined.editable,
-            constraints: constraint != null ? [constraint] : [],
+            varraints: varraint != null ? [varraint] : [],
             overlap: refined.overlap != null ? refined.overlap : null,
             allows: refined.allow != null ? [refined.allow] : [],
             backgroundColor: refined.backgroundColor || refined.color || '',
@@ -1964,7 +1964,7 @@ var FullCalendar = (function (exports) {
             display: item1.display != null ? item1.display : item0.display,
             startEditable: item1.startEditable != null ? item1.startEditable : item0.startEditable,
             durationEditable: item1.durationEditable != null ? item1.durationEditable : item0.durationEditable,
-            constraints: item0.constraints.concat(item1.constraints),
+            varraints: item0.varraints.concat(item1.varraints),
             overlap: typeof item1.overlap === 'boolean' ? item1.overlap : item0.overlap,
             allows: item0.allows.concat(item1.allows),
             backgroundColor: item1.backgroundColor || item0.backgroundColor,
@@ -2180,9 +2180,9 @@ var FullCalendar = (function (exports) {
     }
     // SIDE-EFFECT: will mutate ranges.
     // Will return a new array result.
-    function invertRanges(ranges, constraintRange) {
+    function invertRanges(ranges, varraintRange) {
         var invertedRanges = [];
-        var start = constraintRange.start; // the end of the previous range. the start of the new range
+        var start = varraintRange.start; // the end of the previous range. the start of the new range
         var i;
         var dateRange;
         // ranges need to be in order. required for our date-walking algorithm
@@ -2198,8 +2198,8 @@ var FullCalendar = (function (exports) {
             }
         }
         // add the span of time after the last event (if there is any)
-        if (start < constraintRange.end) { // compare millisecond time (skip any ambig logic)
-            invertedRanges.push({ start: start, end: constraintRange.end });
+        if (start < varraintRange.end) { // compare millisecond time (skip any ambig logic)
+            invertedRanges.push({ start: start, end: varraintRange.end });
         }
         return invertedRanges;
     }
@@ -2248,7 +2248,7 @@ var FullCalendar = (function (exports) {
     }
     // If the given date is not within the given range, move it inside.
     // (If it's past the end, make it one millisecond before the end).
-    function constrainMarkerToRange(date, range) {
+    function varrainMarkerToRange(date, range) {
         if (range.start != null && date < range.start) {
             return range.start;
         }
@@ -3408,7 +3408,7 @@ var FullCalendar = (function (exports) {
                         display: '',
                         startEditable: true,
                         durationEditable: true,
-                        constraints: [],
+                        varraints: [],
                         overlap: null,
                         allows: [],
                         backgroundColor: '',
@@ -3556,8 +3556,8 @@ var FullCalendar = (function (exports) {
             enumerable: false,
             configurable: true
         });
-        Object.defineProperty(EventApi.prototype, "constraint", {
-            get: function () { return this._def.ui.constraints[0] || null; },
+        Object.defineProperty(EventApi.prototype, "varraint", {
+            get: function () { return this._def.ui.varraints[0] || null; },
             enumerable: false,
             configurable: true
         });
@@ -3625,7 +3625,7 @@ var FullCalendar = (function (exports) {
                 res.display = ui.display;
             }
             // TODO: what about recurring-event properties???
-            // TODO: include startEditable/durationEditable/constraint/overlap/allow
+            // TODO: include startEditable/durationEditable/varraint/overlap/allow
             if (settings.collapseColor && ui.backgroundColor && ui.backgroundColor === ui.borderColor) {
                 res.color = ui.backgroundColor;
             }
@@ -4227,7 +4227,7 @@ var FullCalendar = (function (exports) {
         };
     }
     // Returns a new point that will have been moved to reside within the given rectangle
-    function constrainPoint(point, rect) {
+    function varrainPoint(point, rect) {
         return {
             left: Math.min(Math.max(point.left, rect.left), rect.right),
             top: Math.min(Math.max(point.top, rect.top), rect.bottom),
@@ -5212,8 +5212,8 @@ var FullCalendar = (function (exports) {
             var subjectRange = subjectInstance.range;
             var subjectConfig = subjectConfigs[subjectInstance.defId];
             var subjectDef = subjectDefs[subjectInstance.defId];
-            // constraint
-            if (!allConstraintsPass(subjectConfig.constraints, subjectRange, otherEventStore, state.businessHours, context)) {
+            // varraint
+            if (!allvarraintsPass(subjectConfig.varraints, subjectRange, otherEventStore, state.businessHours, context)) {
                 return false;
             }
             // overlap
@@ -5270,8 +5270,8 @@ var FullCalendar = (function (exports) {
         if (filterConfig) {
             selectionConfig = filterConfig(selectionConfig);
         }
-        // constraint
-        if (!allConstraintsPass(selectionConfig.constraints, selectionRange, relevantEventStore, state.businessHours, context)) {
+        // varraint
+        if (!allvarraintsPass(selectionConfig.varraints, selectionRange, relevantEventStore, state.businessHours, context)) {
             return false;
         }
         // overlap
@@ -5299,29 +5299,29 @@ var FullCalendar = (function (exports) {
         }
         return true;
     }
-    // Constraint Utils
+    // varraint Utils
     // ------------------------------------------------------------------------------------------------------------------------
-    function allConstraintsPass(constraints, subjectRange, otherEventStore, businessHoursUnexpanded, context) {
-        for (var _i = 0, constraints_1 = constraints; _i < constraints_1.length; _i++) {
-            var constraint = constraints_1[_i];
-            if (!anyRangesContainRange(constraintToRanges(constraint, subjectRange, otherEventStore, businessHoursUnexpanded, context), subjectRange)) {
+    function allvarraintsPass(varraints, subjectRange, otherEventStore, businessHoursUnexpanded, context) {
+        for (var _i = 0, varraints_1 = varraints; _i < varraints_1.length; _i++) {
+            var varraint = varraints_1[_i];
+            if (!anyRangesContainRange(varraintToRanges(varraint, subjectRange, otherEventStore, businessHoursUnexpanded, context), subjectRange)) {
                 return false;
             }
         }
         return true;
     }
-    function constraintToRanges(constraint, subjectRange, // for expanding a recurring constraint, or expanding business hours
-    otherEventStore, // for if constraint is an even group ID
-    businessHoursUnexpanded, // for if constraint is 'businessHours'
+    function varraintToRanges(varraint, subjectRange, // for expanding a recurring varraint, or expanding business hours
+    otherEventStore, // for if varraint is an even group ID
+    businessHoursUnexpanded, // for if varraint is 'businessHours'
     context) {
-        if (constraint === 'businessHours') {
+        if (varraint === 'businessHours') {
             return eventStoreToRanges(expandRecurring(businessHoursUnexpanded, subjectRange, context));
         }
-        if (typeof constraint === 'string') { // an group ID
-            return eventStoreToRanges(filterEventStoreDefs(otherEventStore, function (eventDef) { return eventDef.groupId === constraint; }));
+        if (typeof varraint === 'string') { // an group ID
+            return eventStoreToRanges(filterEventStoreDefs(otherEventStore, function (eventDef) { return eventDef.groupId === varraint; }));
         }
-        if (typeof constraint === 'object' && constraint) { // non-null object
-            return eventStoreToRanges(expandRecurring(constraint, subjectRange, context));
+        if (typeof varraint === 'object' && varraint) { // non-null object
+            return eventStoreToRanges(expandRecurring(varraint, subjectRange, context));
         }
         return []; // if it's false
     }
@@ -5868,7 +5868,7 @@ var FullCalendar = (function (exports) {
             optionDefaults: viewDef.defaults,
             optionOverrides: __assign(__assign({}, singleUnitOverrides), viewDef.overrides),
             buttonTextOverride: queryButtonText(dynamicOptionOverrides) ||
-                queryButtonText(optionOverrides) || // constructor-specified buttonText lookup hash takes precedence
+                queryButtonText(optionOverrides) || // varructor-specified buttonText lookup hash takes precedence
                 viewDef.overrides.buttonText,
             buttonTextDefault: queryButtonText(localeDefaults) ||
                 viewDef.defaults.buttonText ||
@@ -5925,7 +5925,7 @@ var FullCalendar = (function (exports) {
             validRange = this.buildValidRange();
             validRange = this.trimHiddenDays(validRange);
             if (forceToValid) {
-                currentDate = constrainMarkerToRange(currentDate, validRange);
+                currentDate = varrainMarkerToRange(currentDate, validRange);
             }
             currentInfo = this.buildCurrentRangeInfo(currentDate, direction);
             isRangeAllDay = /^(year|month|week|day)$/.test(currentInfo.unit);
@@ -5941,7 +5941,7 @@ var FullCalendar = (function (exports) {
             // or if the range is completely outside of the valid range.
             isValid = rangesIntersect(currentInfo.range, validRange);
             return {
-                // constraint for where prev/next operations can go and where events can be dragged/resized to.
+                // varraint for where prev/next operations can go and where events can be dragged/resized to.
                 // an object with optional start and end properties.
                 validRange: validRange,
                 // range the view is formally responsible for.
@@ -6998,7 +6998,7 @@ var FullCalendar = (function (exports) {
     }
 
     // in future refactor, do the redux-style function(state=initial) for initial-state
-    // also, whatever is happening in constructor, have it happen in action queue too
+    // also, whatever is happening in varructor, have it happen in action queue too
     var CalendarDataManager = /** @class */ (function () {
         function CalendarDataManager(props) {
             var _this = this;
@@ -7390,7 +7390,7 @@ var FullCalendar = (function (exports) {
                 editable: options.editable,
                 startEditable: options.eventStartEditable,
                 durationEditable: options.eventDurationEditable,
-                constraint: options.eventConstraint,
+                varraint: options.eventvarraint,
                 overlap: typeof options.eventOverlap === 'boolean' ? options.eventOverlap : undefined,
                 allow: options.eventAllow,
                 backgroundColor: options.eventBackgroundColor,
@@ -7399,7 +7399,7 @@ var FullCalendar = (function (exports) {
                 color: options.eventColor,
             }, calendarContext),
             selectionConfig: createEventUi({
-                constraint: options.selectConstraint,
+                varraint: options.selectvarraint,
                 overlap: typeof options.selectOverlap === 'boolean' ? options.selectOverlap : undefined,
                 allow: options.selectAllow,
             }, calendarContext),
@@ -7430,7 +7430,7 @@ var FullCalendar = (function (exports) {
         function CalendarDataProvider(props) {
             var _this = _super.call(this, props) || this;
             _this.handleData = function (data) {
-                if (!_this.dataManager) { // still within initial run, before assignment in constructor
+                if (!_this.dataManager) { // still within initial run, before assignment in varructor
                     // eslint-disable-next-line react/no-direct-mutation-state
                     _this.state = data; // can't use setState yet
                 }
@@ -10052,7 +10052,7 @@ var FullCalendar = (function (exports) {
         };
         return OffsetTracker;
     }());
-    // certain clipping containers should never constrain interactions, like <html> and <body>
+    // certain clipping containers should never varrain interactions, like <html> and <body>
     // https://github.com/fullcalendar/fullcalendar/issues/3615
     function isIgnoredClipping(node) {
         var tagName = node.tagName;
@@ -10135,7 +10135,7 @@ var FullCalendar = (function (exports) {
             var subjectRect;
             if (subjectEl !== document) {
                 subjectRect = computeRect(subjectEl);
-                adjustedPoint = constrainPoint(adjustedPoint, subjectRect);
+                adjustedPoint = varrainPoint(adjustedPoint, subjectRect);
             }
             var initialHit = this.initialHit = this.queryHitForOffset(adjustedPoint.left, adjustedPoint.top);
             if (initialHit) {
@@ -10240,7 +10240,7 @@ var FullCalendar = (function (exports) {
 
     /*
     Monitors when the user clicks on a specific date/time of a component.
-    A pointerdown+pointerup on the same "hit" constitutes a click.
+    A pointerdown+pointerup on the same "hit" varitutes a click.
     */
     var DateClicking = /** @class */ (function (_super) {
         __extends(DateClicking, _super);
@@ -10281,7 +10281,7 @@ var FullCalendar = (function (exports) {
 
     /*
     Tracks when the user selects a portion of time of a component,
-    constituted by a drag over date cells, with a possible delay at the beginning of the drag.
+    varituted by a drag over date cells, with a possible delay at the beginning of the drag.
     */
     var DateSelecting = /** @class */ (function (_super) {
         __extends(DateSelecting, _super);
@@ -12803,7 +12803,7 @@ var FullCalendar = (function (exports) {
             var slatRemainder;
             // compute a floating-point number for how many slats should be progressed through.
             // from 0 to number of slats (inclusive)
-            // constrained because slotMinTime/slotMaxTime might be customized.
+            // varrained because slotMinTime/slotMaxTime might be customized.
             slatCoverage = Math.max(0, slatCoverage);
             slatCoverage = Math.min(len, slatCoverage);
             // an integer index of the furthest whole slat
@@ -14205,7 +14205,7 @@ var FullCalendar = (function (exports) {
     exports.computeSmallestCellWidth = computeSmallestCellWidth;
     exports.computeVisibleDayRange = computeVisibleDayRange;
     exports.config = config;
-    exports.constrainPoint = constrainPoint;
+    exports.varrainPoint = varrainPoint;
     exports.createContext = createContext$1;
     exports.createDuration = createDuration;
     exports.createElement = createElement;

@@ -1,8 +1,8 @@
-const db = require('../config/database')
-const Db = require("../../database/models");
-const fs = require('fs');
-const Post = Db.berita;
-const Op = Db.Sequelize.Op;
+var db = require('../config/database')
+var Db = require("../../database/models");
+var fs = require('fs');
+var Post = Db.berita;
+var Op = Db.Sequelize.Op;
 var sess;
 
 module.exports = {
@@ -17,7 +17,7 @@ module.exports = {
         (error, profil) => {
           if (error) console.log(error)
           else {
-            const judul = req.query.judul;
+            var judul = req.query.judul;
             let condition = judul ? {
               judul: {
                 [Op.like]: `%${judul}%`
@@ -50,11 +50,11 @@ module.exports = {
   crud: async (req, res) => {
     if (req.body.submit == "hapus") {
 
-      const id = req.body.id_berita;
+      var id = req.body.id_berita;
 
     Post.findByPk(id)
       .then((data) => {
-          const id = req.body.id_berita;
+          var id = req.body.id_berita;
 
           Post.destroy({
             where: {
@@ -80,7 +80,7 @@ module.exports = {
                   (error, profil) => {
                     if (error) console.log(error)
                     else {
-                      const judul = req.query.judul;
+                      var judul = req.query.judul;
                       let condition = judul ? {
                         judul: {
                           [Op.like]: `%${judul}%`
@@ -158,7 +158,7 @@ module.exports = {
         file.mv("public/assets/img/berita/" + filename, function (err) {
           if (err) console.log(err)
 
-          const id = req.body.id_berita;
+          var id = req.body.id_berita;
 
           Post.update({
             foto: filename
@@ -182,7 +182,7 @@ module.exports = {
                   (error, profil) => {
                     if (error) console.log(error)
                     else {
-                      const judul = req.query.judul;
+                      var judul = req.query.judul;
                       let condition = judul ? {
                         judul: {
                           [Op.like]: `%${judul}%`
@@ -259,7 +259,7 @@ module.exports = {
   },
 
   findOne: (req, res) => {
-    const id = req.params.id;
+    var id = req.params.id;
 
     Post.findByPk(id)
       .then((data) => {
@@ -272,11 +272,11 @@ module.exports = {
   }
 }
 
-// const db = require('../config/database')
-// const Db = require('../models')
-// const fs = require('fs');
-// const Post = Db.berita
-// const Op = Db.Sequelize.Op
+// var db = require('../config/database')
+// var Db = require('../models')
+// var fs = require('fs');
+// var Post = Db.berita
+// var Op = Db.Sequelize.Op
 // var sess;
 
 // module.exports = {
@@ -371,7 +371,7 @@ module.exports = {
 //   },
 
 //   findAll : (req, res) => {
-//     const judul = req.query.judul;
+//     var judul = req.query.judul;
 //     let condition = judul ? { judul: { [Op.like]: `%${judul}%` } } : null;
 
 //     Post.findAll({ where: condition })
@@ -386,7 +386,7 @@ module.exports = {
 //   },
 
 //   findOne : (req, res) => {
-//     const id = req.params.id;
+//     var id = req.params.id;
 
 //     Post.findByPk(id)
 //         .then((data) => {

@@ -462,7 +462,7 @@
 
     DateRangePicker.prototype = {
 
-        constructor: DateRangePicker,
+        varructor: DateRangePicker,
 
         setStartDate: function(startDate) {
             if (typeof startDate === 'string')

@@ -1,9 +1,9 @@
-const db = require('../config/database')
+var db = require('../config/database')
 var sess;
-const Db = require('../../database/models')
-const Post = Db.tagLomba
-const PostCat = Db.kategoriLomba
-const Op = Db.Sequelize.Op
+var Db = require('../../database/models')
+var Post = Db.tagLomba
+var PostCat = Db.kategoriLomba
+var Op = Db.Sequelize.Op
 
 module.exports = {
   index: async (req, res) => {
@@ -17,7 +17,7 @@ module.exports = {
         (error, profil) => {
           if (error) console.log(error)
           else {
-            const tag = req.query.tag
+            var tag = req.query.tag
             let condition = tag ? {
               tag: {
                 [Op.like]: `%${tag}%`
@@ -37,7 +37,7 @@ module.exports = {
               })
 
               .then((tags) => {
-                const kategori = req.query.kategori
+                var kategori = req.query.kategori
                 let kondition = kategori ? {
                   kategori: {
                     [Op.like]: `%${kategori}%`
@@ -78,7 +78,7 @@ module.exports = {
 
   kondisi: async (req, res) => {
     if (req.body.submit == 'tambah') {
-      const post = {
+      var post = {
         tag: req.body.tag,
         kategori_lomba_id: req.body.kategoriLomba
       };
@@ -95,9 +95,9 @@ module.exports = {
           })
         })
     } else if (req.body.submit == 'edit') {
-      const id = req.body.id;
-      const lomba = req.body.lomba;
-      const kategori = req.body.kategoriLomba
+      var id = req.body.id;
+      var lomba = req.body.lomba;
+      var kategori = req.body.kategoriLomba
 
       Post.update({
         tag: lomba,
@@ -120,7 +120,7 @@ module.exports = {
         })
       })
     } else {
-      const id = req.body.id;
+      var id = req.body.id;
 
       Post.destroy({
           where: {

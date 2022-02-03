@@ -1,6 +1,6 @@
-const express = require('express')
-const jenisLomba = express.Router()
-const controller = require('../app/controller/jenisLomba')
+var express = require('express')
+var jenisLomba = express.Router()
+var controller = require('../app/controller/jenisLomba')
 
 jenisLomba.route('/jenisLomba')
     .get(controller.index)

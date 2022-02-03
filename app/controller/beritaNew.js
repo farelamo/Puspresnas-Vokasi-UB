@@ -1,4 +1,4 @@
-const db = require('../config/database')
+var db = require('../config/database')
 var sess;
 let date_ob = new Date();
 let date = ("0" + date_ob.getDate()).slice(-2);

@@ -1,4 +1,4 @@
-const db = require('../config/database')
+var db = require('../config/database')
 var sess
 
 module.exports = {
@@ -37,7 +37,7 @@ module.exports = {
 
     edit: (req, res) => {
         if (req.body.submit == "edit") {
-            const {
+            var {
                 nama,
                 hadiah,
                 desk,

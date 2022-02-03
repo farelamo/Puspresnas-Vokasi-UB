@@ -1,6 +1,6 @@
-const express = require('express')
-const lombaNew = express.Router()
-const controller = require('../app/controller/lombaNew')
+var express = require('express')
+var lombaNew = express.Router()
+var controller = require('../app/controller/lombaNew')
 
 lombaNew.route('/lombaNew')
     .get(controller.index)

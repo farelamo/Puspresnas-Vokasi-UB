@@ -1,6 +1,6 @@
-const express = require('express')
-const dashboard = express.Router()
-const controller = require('../app/controller/dashboard')
+var express = require('express')
+var dashboard = express.Router()
+var controller = require('../app/controller/dashboard')
 
 dashboard.route('/dashboard')
     .get(controller.index)

@@ -1,8 +1,8 @@
-const db = require('../config/database')
+var db = require('../config/database')
 var sess;
-const Db = require('../../database/models')
-const Post = Db.bidangLomba
-const Op = Db.Sequelize.Op
+var Db = require('../../database/models')
+var Post = Db.bidangLomba
+var Op = Db.Sequelize.Op
 
 module.exports = {
   index: (req, res) => {
@@ -47,7 +47,7 @@ module.exports = {
   tambah: (req, res) => {
     if (req.body.submit == "tambah") {
 
-      const {
+      var {
         nama,
         hadiah,
         biaya,
@@ -102,7 +102,7 @@ module.exports = {
   },
 
   findAll: (req, res) => {
-    const nama_bidang = req.query.nama_bidang
+    var nama_bidang = req.query.nama_bidang
     let condition = nama_bidang ? {
       nama_bidang: {
         [Op.like]: `%${nama_bidang}%`
@@ -122,7 +122,7 @@ module.exports = {
   },
 
   findOne: (req, res) => {
-    const id = req.params.id
+    var id = req.params.id
 
     Post.findByPk(id)
       .then((data) => {

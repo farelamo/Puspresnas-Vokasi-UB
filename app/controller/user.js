@@ -1,6 +1,6 @@
-const db = require('../config/database')
-const CryptoJS = require("crypto-js");
-const fs = require('fs');
+var db = require('../config/database')
+var CryptoJS = require("crypto-js");
+var fs = require('fs');
 var sess;
 
 module.exports = {

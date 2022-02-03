@@ -13,7 +13,7 @@ module.exports = {
      * }], {});
      */
 
-    const user = [{
+    var user = [{
         nama: 'Farelamo',
         username: 'farlam',
         password: crypto.createHash('md5').update('12345').digest("hex"),

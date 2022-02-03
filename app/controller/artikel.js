@@ -1,8 +1,8 @@
-const db = require('../config/database')
-const Db = require("../../database/models");
-const fs = require('fs');
-const Post = Db.artikel;
-const Op = Db.Sequelize.Op;
+var db = require('../config/database')
+var Db = require("../../database/models");
+var fs = require('fs');
+var Post = Db.artikel;
+var Op = Db.Sequelize.Op;
 var sess;
 
 module.exports = {
@@ -17,7 +17,7 @@ module.exports = {
         (error, profil) => {
           if (error) console.log(error)
           else {
-            const judul = req.query.judul;
+            var judul = req.query.judul;
             let condition = judul ? {
               judul: {
                 [Op.like]: `%${judul}%`
@@ -50,11 +50,11 @@ module.exports = {
   crud: async (req, res) => {
     if (req.body.submit == "hapus") {
 
-      const id = req.body.id_artikel;
+      var id = req.body.id_artikel;
 
       Post.findByPk(id)
         .then((data) => {
-          const id = req.body.id_artikel;
+          var id = req.body.id_artikel;
 
           Post.destroy({
             where: {
@@ -80,7 +80,7 @@ module.exports = {
                   (error, profil) => {
                     if (error) console.log(error)
                     else {
-                      const judul = req.query.judul;
+                      var judul = req.query.judul;
                       let condition = judul ? {
                         judul: {
                           [Op.like]: `%${judul}%`
@@ -158,7 +158,7 @@ module.exports = {
         file.mv("public/assets/img/artikel/" + filename, function (err) {
           if (err) console.log(err)
 
-          const id = req.body.id_artikel;
+          var id = req.body.id_artikel;
 
           Post.update({
             foto: filename
@@ -183,7 +183,7 @@ module.exports = {
                   (error, profil) => {
                     if (error) console.log(error)
                     else {
-                      const judul = req.query.judul;
+                      var judul = req.query.judul;
                       let condition = judul ? {
                         judul: {
                           [Op.like]: `%${judul}%`

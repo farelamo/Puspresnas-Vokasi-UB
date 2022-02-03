@@ -1,7 +1,7 @@
-const db = require('../config/database')
-const Db = require("../../database/models");
+var db = require('../config/database')
+var Db = require("../../database/models");
 var sess;
-const Post = Db.mahasiswa;
+var Post = Db.mahasiswa;
 module.exports = {
   index: (req, res) => {
     sess = req.session;
@@ -60,7 +60,7 @@ module.exports = {
   }
   // crud: (req, res) => {
   //     if (req.body.submit == "edit") {
-  //       const id = req.body.id;
+  //       var id = req.body.id;
   //       var nama     = req.body.nama;
   //       var nim = req.body.nim;
   //       var jurusan       = req.body.jurusan;
