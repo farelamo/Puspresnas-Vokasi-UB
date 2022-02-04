@@ -32,7 +32,15 @@
                                         <td class="text-center"><%= no %></td>
                                         <td><%= data.nama %></td>
                                         <td><%= data.bidang_minat %></td>
-                                        <td><%= data.nama_lomba %></td>
+                                        <td>
+                                            <% jenis_lomba.forEach((datalomba)=> { %>
+                                                <% 
+                                                    if(data.jenis_lomba_id==datalomba.id) {%>
+                                                        <%= datalomba.nama_lomba %>
+                                                    <% }
+                                                %>
+                                            <% }) %>
+                                        </td>
                                         <td style="width: 100px;"><%= data.peringkat %></td>
                                         <td align="center" style="width: 90px;">
                                             <a href="mahasiswaEdit/<%= data.id %>"
