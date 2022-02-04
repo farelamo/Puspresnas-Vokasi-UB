@@ -42,6 +42,9 @@ db.jenisLomba.belongsTo(db.kategoriLomba)
 db.bidangLomba.belongsTo(db.jenisLomba)
 db.mahasiswa.belongsTo(db.berita)
 
+db.mahasiswa.hasMany(db.jenisLomba)
+db.jenisLomba.belongsTo(db.mahasiswa)
+
 db.jenisLomba.belongsToMany(db.tagLomba, {
     through: 'tag',
     foreignKey: 'jenis_lomba_id'

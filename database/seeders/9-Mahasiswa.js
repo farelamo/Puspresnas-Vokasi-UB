@@ -19,9 +19,8 @@ module.exports = {
         nim: '203140914111041',
         jurusan: 'Teknologi Informatika',
         bidang_minat: 'Teknologi Informatika',
-        nama_lomba: 'PKM',
+        jenis_lomba_id: '1',
         peringkat: 'Juara 1 Nasional',
-        pelaksana: 'Kemenristekdikti',
         beritum_id: '3'
       }
     ],
