@@ -3,7 +3,7 @@ var user = express.Router()
 var controller = require('../app/controller/user')
 
 user.route('/user')
-    .get(controller.index)
-    .post(controller.crud)
+    .get(controller.superadmin, controller.index)
+    .post(controller.superadmin, controller.crud)
 
 module.exports = user
