@@ -2,6 +2,7 @@ var express  = require('express')
 var session  = require('express-session')
 var upload = require("express-fileupload");
 var bodyparser = require('body-parser')
+var flash = require('flash-express')
 //var helmet = require('helmet')
 var cors = require("cors");
 var app = express()
@@ -11,13 +12,14 @@ var swaggerUi = require('swagger-ui-express')
 var apiDocumentation = require('./apidocs.json')
 app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(apiDocumentation))
 
-//Middleware
+//Initialization
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(session({secret: 'excalibur'}));
 app.use(upload());
 app.set('view engine','ejs');
+app.use(flash());
 
 //Routers ADMIN
 var dashboard = require('./routers/dashboard')
