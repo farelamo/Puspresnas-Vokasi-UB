@@ -74,7 +74,8 @@ var migrationCommands = (transaction) => [
         username: { type: Sequelize.STRING, field: "username" },
         password: { type: Sequelize.STRING, field: "password" },
         level: { type: Sequelize.ENUM("Superadmin", "Admin"), field: "level" },
-        foto: { type: Sequelize.STRING, field: "foto" }
+        foto: { type: Sequelize.STRING, field: "foto" },
+        is_active: {type: Sequelize.TINYINT, field: "is_active"}
       },
       { transaction },
     ],
