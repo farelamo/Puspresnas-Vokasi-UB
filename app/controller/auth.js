@@ -20,8 +20,9 @@ module.exports = {
           console.log(match)
           if(match){
             if(result.is_active == 1){
-              sess=req.session; 
-              sess.id_user=result.id; 
+              sess = req.session
+              sess.id_user = result.id
+              sess.role = result.level
               res.redirect('/dashboard')
             }else {
               console.log('akun belum di ACC !!')
