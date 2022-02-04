@@ -1,9 +1,23 @@
 var db = require('../config/database')
+var Db = require('../../database/models')
 var CryptoJS = require("crypto-js");
+var bcrypt = require('bcrypt')
+var users = Db.user
 var fs = require('fs');
 var sess;
 
 module.exports = {
+  superadmin: (req, res, next) => {
+    sess = req.session
+    if(sess.role == 'Superadmin'){
+      next()
+      return
+    }else {
+      res.flash('Anda bukan superadmin', 'warn')
+      return res.redirect('back')
+    }
+  },
+
   index: (req, res) => {
     sess = req.session;
     if (sess.id_user == undefined) {
@@ -31,50 +45,55 @@ module.exports = {
 
   crud: (req, res) => {
     if (req.body.submit == "tambah") {
-      db.query(
-        "SELECT * FROM `user` WHERE `username` = ?",
-        [req.body.username],
-        (err, user2) => {
+      var {nama,username,password, level} = req.body
+      db.query('SELECT username FROM user WHERE username = ?',
+      [username],
+      async (error, result) => {
+        if (error) {
+          console.log(error)
+      }else { 
+        if (result.length == 0) {
+          let hashedPassword = await bcrypt.hash(password, 8)
+          console.log(hashedPassword)
+          db.query('INSERT INTO user SET ?', 
+            {
+              nama: nama,
+              username: username,
+              password: hashedPassword,
+              level: level,
+              foto: '',
+              is_active: 0
+            },
+          (err, result) => {
           if (err) console.log(err)
-          console.log("username baru = "+req.body.username);
-          console.log("duplikat username baru = "+user2.length);
-          if (user2.length==0) {
-            var password = CryptoJS.MD5(req.body.password).toString();
-            db.query(
-              "INSERT INTO `user` (`username`,`nama`,`password`,`level`) VALUES (?,?,?,?)",
-              [req.body.username, req.body.nama, password, req.body.level],
-              (err, result) => {
-                if (err) console.log(err)
-                var berhasil = "User berhasil ditambahkan"
-                console.log(berhasil);
-                db.query(
-                  'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
-                    db.query(
-                      'SELECT * FROM `user`',[sess.id_user],(error, user) => {
-                        res.render('../views/admin/index.ejs', {profil,user,page: 'user',berhasil});
-                      }
-                    );
-                  }
-                );
-              }
-            )
-          }else{
-            var gagal = "Username "+[req.body.username]+" telah dipakai user lain"
-            console.log(gagal);
+            var berhasil = "User berhasil ditambahkan"
+            console.log(berhasil);
             db.query(
               'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
                 db.query(
                   'SELECT * FROM `user`',[sess.id_user],(error, user) => {
-                    res.render('../views/admin/index.ejs', {profil,user,page: 'user',gagal});
+                    res.render('../views/admin/index.ejs', {profil,user,page: 'user',berhasil});
                   }
-                );
+                )
               }
-            );
-          }
+            )
+          })
+        }else{
+          var gagal = "Username "+[req.body.username]+" telah dipakai user lain"
+          console.log(gagal);
+          db.query(
+            'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
+              db.query(
+                'SELECT * FROM `user`',[sess.id_user],(error, user) => {
+                  res.render('../views/admin/index.ejs', {profil,user,page: 'user',gagal});
+                }
+              );
+            }
+          );
         }
-      )
-    }
-    else if (req.body.submit == "edit") {
+      }
+    })
+  }else if (req.body.submit == "edit") {
       db.query(
         "SELECT * FROM `user` WHERE `id` = ?",
         [req.body.id_user],
