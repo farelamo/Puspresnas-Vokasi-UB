@@ -42,20 +42,22 @@
                             </div>
                             <div class="section-title mt-0">Berita</div>
                             <div class="form-group">
-                                <select class="form-control" name="lomba_id">
-                                    <option class="eKategori" value="1">lomba 1</option>
-                                    <option class="eKategori" value="2">lomba 2</option>
+                                <select class="form-control" name="jenis_lomba_id">
+                                    <% jenis_lomba.forEach((data)=> {
+                                        %>
+                                        <option class="eKategori" value="<%= data.id %>" <% if(data.id==mahasiswa[0].jenis_lomba_id){ %>selected<% } %>>
+                                            <%= data.nama_lomba %>
+                                        </option>
+                                        <% }) %>
                                 </select>
                             </div>
-                            <div class="section-title mt-0">Kategori</div>
+                            <div class="section-title mt-0">Berita</div>
                             <div class="form-group">
                                 <select class="form-control" name="id_berita" value="<%= mahasiswa[0].beritum_id %>">
                                     <% 
-                              berita.forEach((data)=> { 
-                            %>
-                                    <option class="eKategori" value="<%= data.id %>"
-                                        <% if(data.id==mahasiswa[0].id_berita){ %>selected<% } %>><%= data.berita %>
-                                    </option>
+                                        berita.forEach((data)=> { 
+                                    %>
+                                        <option class="eKategori" value="<%= data.id %>" <% if(data.id==mahasiswa[0].beritum_id){ %>selected<% } %>><%= data.judul %></option>
                                     <% }) %>
                                 </select>
                             </div>

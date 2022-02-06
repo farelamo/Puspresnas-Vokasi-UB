@@ -25,7 +25,15 @@ module.exports = {
                     (error, berita) => {
                       if (error) console.log(error)
                       else {
-                        res.render('../views/admin/index.ejs', {profil, mahasiswa, berita, page: 'mahasiswaEdit'})
+                        db.query(
+                          'SELECT * FROM jenis_lomba',
+                          (error, jenis_lomba) => {
+                            if (error) console.log(error)
+                            else {
+                              res.render('../views/admin/index.ejs', {profil, mahasiswa, jenis_lomba, berita, page: 'mahasiswaEdit'})
+                            }
+                          }
+                        )
                       }
                     }
                   )
@@ -40,16 +48,16 @@ module.exports = {
 
   crud: (req, res) => {
     if (req.body.submit=="edit") {
-      var nama     = req.body.nama;
-      var nim = req.body.nim;
-      var jurusan       = req.body.jurusan;
-      var bidang_minat       = req.body.bidang_minat;
-      var nama_lomba       = req.body.nama_lomba;
-      var peringkat       = req.body.peringkat;
-      var pelaksana       = req.body.pelaksana;
+      var id          = req.body.id;
+      var nama        = req.body.nama;
+      var nim         = req.body.nim;
+      var jurusan     = req.body.jurusan;
+      var bidang_minat = req.body.bidang_minat;
+      var jenis_lomba_id = req.body.jenis_lomba_id;
+      var peringkat   = req.body.peringkat;
       db.query(
-        "UPDATE `mahasiswa` SET `nama`=?,`nim`=?,`jurusan`=?,`bidang_minat`=?,`nama_lomba`=?,`peringkat`=?,`pelaksana`=? , `beritum_id`=? WHERE `id` = ?",
-        [nama, nim, jurusan,bidang_minat, nama_lomba,peringkat,pelaksana, req.body.id_berita, req.body.id],
+        "UPDATE `mahasiswa` SET `nama`=?,`nim`=?,`jurusan`=?,`bidang_minat`=?,`jenis_lomba_id`=?,`peringkat`=?, `beritum_id`=? WHERE `id` = ?",
+        [nama, nim, jurusan,bidang_minat, jenis_lomba_id,peringkat, req.body.id_berita, req.body.id],
         (err, result) => {
           if (err) console.log(err)
           res.redirect('/mahasiswa')
