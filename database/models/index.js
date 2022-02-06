@@ -42,7 +42,6 @@ db.jenisLomba.belongsTo(db.kategoriLomba)
 db.bidangLomba.belongsTo(db.jenisLomba)
 db.mahasiswa.belongsTo(db.berita)
 db.mahasiswa.belongsTo(db.jenisLomba)
-db.jenisLomba.belongsTo(db.mahasiswa)
 
 db.jenisLomba.belongsToMany(db.tagLomba, {
     through: 'tag',
