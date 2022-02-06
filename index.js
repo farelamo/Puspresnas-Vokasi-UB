@@ -45,6 +45,7 @@ var kontenCat = require('./routers/kontenCat')
 var mahasiswa = require('./routers/mahasiswa')
 var mahasiswaNew = require('./routers/mahasiswaNew')
 var mahasiswaEdit = require('./routers/mahasiswaEdit')
+var report = require('./routers/report')
 
 //ROUTERS API
 var artikelAPI = require('./API/routersAPI/artikelAPI')
@@ -104,6 +105,7 @@ app.use(user)
 app.use(mahasiswa)
 app.use(mahasiswaNew)
 app.use(mahasiswaEdit)
+app.use(report)
 
 //API
 app.use(artikelAPI)
