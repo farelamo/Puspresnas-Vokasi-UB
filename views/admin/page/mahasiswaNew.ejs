@@ -37,9 +37,13 @@
                             </div>
                             <div class="section-title mt-0">Nama Lomba</div>
                             <div class="form-group">
-                                <select class="form-control" name="lomba_id">
-                                    <option class="eKategori" value="1">lomba 1</option>
-                                    <option class="eKategori" value="2">lomba 2</option>
+                                <select class="form-control" name="jenis_lomba_id">
+                                    <% jenis_lomba.forEach((data)=> {
+                                        %>
+                                        <option class="eKategori" value="<%= data.id %>">
+                                            <%= data.nama_lomba %>
+                                        </option>
+                                        <% }) %>
                                 </select>
                             </div>
                             <div class="section-title mt-0">Kategori</div>

@@ -21,11 +21,15 @@ module.exports = {
               (error, mahasiswa) => {
                 if (error) console.log(error)
                 else {
-                  res.render('../views/admin/index.ejs', {
-                    profil,
-                    mahasiswa,
-                    page: 'mahasiswa'
-                  })
+                  db.query(
+                    'SELECT * FROM jenis_lomba',
+                    (error, jenis_lomba) => {
+                      if (error) console.log(error)
+                      else {
+                        res.render('../views/admin/index.ejs', {profil, mahasiswa, jenis_lomba, page: 'mahasiswa'})
+                      }
+                    }
+                  )
                 }
               }
             )
