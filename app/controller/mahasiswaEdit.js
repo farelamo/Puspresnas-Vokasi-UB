@@ -40,7 +40,6 @@ module.exports = {
 
   crud: (req, res) => {
     if (req.body.submit=="edit") {
-      var id = req.body.id;
       var nama     = req.body.nama;
       var nim = req.body.nim;
       var jurusan       = req.body.jurusan;

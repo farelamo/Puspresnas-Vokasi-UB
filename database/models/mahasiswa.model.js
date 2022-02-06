@@ -12,14 +12,11 @@ module.exports = (sequelize, Sequelize) => {
         bidang_minat: {
             type: Sequelize.STRING
         },
-        nama_lomba: {
-            type: Sequelize.STRING
-        },
         peringkat: {
             type: Sequelize.STRING
         },
-        pelaksana: {
-            type: Sequelize.STRING
+        jenis_lomba_id: {
+            type: Sequelize.INTEGER
         },
         beritum_id: {
             type: Sequelize.INTEGER
