@@ -1,10 +1,10 @@
 var express  = require('express')
 var session  = require('express-session')
-var upload = require("express-fileupload");
+var upload = require("express-fileupload")
 var bodyparser = require('body-parser')
 var flash = require('flash-express')
 //var helmet = require('helmet')
-var cors = require("cors");
+var cors = require("cors")
 var app = express()
 
 //SWAGGER
@@ -57,8 +57,8 @@ var tagAPI = require('./API/routersAPI/tagAPI')
 var tagLombaAPI = require('./API/routersAPI/tagLombaAPI')
 var mahasiswaAPI = require('./API/routersAPI/mahasiswaAPI')
 
-//PERSAMAAN MIGRATE
-//var db = require('./models')
+// MIGRATE SYNC
+// var db = require('./database/models')
 // db.sequelize.sync();
 
 //SECURITY APP

@@ -1,6 +1,11 @@
-ui# Puspresnas-Vokasi-UB
+# Puspresnas-Vokasi-UB
 
-Persiapan yang di install
+# ERD
+
+# High Level Architecture 
+
+
+Prerequisite
 
 Install Part 1
 ```
@@ -8,7 +13,7 @@ npm i express express-session express-fileupload mysql ejs
 ```
 Install Part 2
 ```
-npm i dotenv cryptojs nodemon sequelize 
+npm i dotenv bcrypt nodemon sequelize connect-flash cookie-parser
 ```
 Install Part 3
 ```

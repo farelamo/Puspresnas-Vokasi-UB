@@ -41,9 +41,7 @@ db.berita.belongsTo(db.kategoriKonten)
 db.jenisLomba.belongsTo(db.kategoriLomba)
 db.bidangLomba.belongsTo(db.jenisLomba)
 db.mahasiswa.belongsTo(db.berita)
-
-db.mahasiswa.hasMany(db.jenisLomba)
-db.jenisLomba.belongsTo(db.mahasiswa)
+db.mahasiswa.belongsTo(db.jenisLomba)
 
 db.jenisLomba.belongsToMany(db.tagLomba, {
     through: 'tag',
