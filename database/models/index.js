@@ -47,7 +47,7 @@ db.jenisLomba.belongsToMany(db.tagLomba, {
     through: 'tag',
     foreignKey: 'jenis_lomba_id'
 })
-
+    
 db.tagLomba.belongsToMany(db.jenisLomba, {
     through: 'tag',
     foreignKey: 'tag_lomba_id'

@@ -1,16 +1,106 @@
+<head>
+  <style>
+   .vote-result-wrapper{
+      width: 700px;
+      height: 700px;
+   }
+   </style>
+</head>
 
-        <section class="section">
-          <div class="section-header">
-            <div class="row m-0">
-              <h1 class="mr-3">Reporting</h1>
-            </div>
-          </div>
+<section class="section">
+  <div class="section-header">
+    <div class="row m-0">
+      <h1 class="mr-3">Reporting</h1>
+    </div>
+  </div>
 
-          <div class="section-body">
-            <div class="card">
-              <div class="card-body">
-                
-              </div>
-            </div>
+  <div class="section-body">
+    <div class="card">
+      <div class="card-body">
+        <h1>Report Mahasiswa</h1>
+        <div class="d-flex justify-content-between">
+          <div class="form-group awal">
+            <label>Start Date</label>
+            <input type="text" class="form-control datepicker" id="startDate">
           </div>
-        </section>
+          <div class="form-group awal">
+            <label>End Date</label>
+            <input type="text" class="form-control datepicker" id="endDate">
+          </div>
+        </div>
+        <canvas id="grafikData"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// $("#startDate").datepicker({
+//    onSelect: function(dateText, inst) { 
+//       var dateAsString = dateText; //the first parameter of this function
+//       var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
+//    }
+// });
+var start = document.getElementById("startDate").value
+var end = document.getElementById("endDate").value
+console.log(start)
+
+    fetch("http://localhost:8000/api/report", {
+      method: "POST",
+      body: JSON.stringify({
+        dateStart: "2022-02-07", 
+        dateEnd: "2022-02-10"
+      }),
+    headers: {"Content-type": "application/json; charset=UTF-8"}
+    }).then((response) => {
+        return response.json()
+    .then((res) => {
+        console.log(res)
+        console.log(res.data)
+
+    var lineData = {
+      labels: [
+        "January", "February", "March", 
+        "April", "May", "June", 
+        "July", "August", "September",
+        "October", "November", "December"
+      ], //monthData
+      datasets: [
+        {
+          label: ' Mahasiswa ',
+          data: [res.data, 5, 10 ], //countData
+          borderWidth: 2,
+          backgroundColor: '#6777ef',
+          borderColor: '#6777ef',
+          borderWidth: 2.5,
+          pointBackgroundColor: '#ffffff',
+          pointRadius: 4
+        }
+      ]
+    }
+    var context = document.getElementById('grafikData').getContext('2d');
+    var clientsChart = new Chart(context, {
+        type: 'line',
+        data: lineData,
+        options: {
+          legend: {
+            display: false
+          },
+          scales: {
+            y: {beginAtZero: true},
+              yAxes: [{
+                gridLines: {
+                  drawBorder: true, //month view
+                  color: '#f2f2f2',},
+                  ticks: {beginAtZero: true}
+              }],
+                xAxes: [{
+                    ticks: {display: true},
+                    gridLines: {display: true}
+                }]
+              }
+            }
+          })
+      })
+    })
+</script>

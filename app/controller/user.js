@@ -13,9 +13,11 @@ module.exports = {
       next()
       return
     }else {
-      res.flash('Anda bukan superadmin', 'warn')
-      return res.redirect('back')
+      req.toastr.error('Anda bukan superadmin ! !', "Invalid ! !")
+      res.redirect('back')
+      return 
     }
+    
   },
 
   index: (req, res) => {

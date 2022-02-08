@@ -13,6 +13,7 @@
     }
   </style>
 </head>
+
 <!-- <section class="section">
   <div class="section-header">
     <h1>Selamat datang, <%= profil[0].nama %> !</h1>
@@ -65,17 +66,6 @@
             </section> -->
 
 <div class="row">
-  <% 
-    if (locals.berhasil){ %>
-      <script type="text/javascript">
-        swal('Berhasil', '<%= locals.berhasil %>', 'success');
-      </script>
-    <% } else if (locals.gagal) { %>
-      <script type="text/javascript">
-        swal('Gagal', '<%= locals.gagal %>', 'error');
-      </script>
-    <% }
-  %>
     <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
             <div class="card-icon bg-primary">
@@ -143,3 +133,5 @@
         <div id='calendar'></div>
     </div>
 </div>
+
+
