@@ -5,6 +5,96 @@
       height: 700px;
    }
    </style>
+
+  <script>
+  function date() {
+    var lineData;
+
+    var start = document.getElementById("startDate").value;
+    document.getElementById("tes1").innerHTML = "Start selected: " + start;
+
+    var end = document.getElementById("endDate").value;
+    document.getElementById("tes2").innerHTML = "End selected: " + end;
+
+      fetch("http://localhost:8000/api/report", {
+          method: "POST",
+          body: JSON.stringify({
+            dateStart: start, 
+            dateEnd: end
+          }),
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+      }).then((response) => {
+            return response.json()
+        .then((res) => {
+          if(res.status == "true"){
+            
+            document.getElementById("notFound").style.display = "none"
+            document.getElementById('grafikData').style.display = "block"
+           //looping data bulan res.month
+          //  console.log(res.data[0].month)
+          //   let month2 = []
+          //   let count2 = []
+          //   for(i = 0; i <= res.data.length; i++){
+          //     count2.push(res.data[i].count)
+          //     month2.push(res.data[i].month)
+          //   }
+          //   console.log(month2)
+            lineData = {
+              labels: [res.data[0].month, res.data[1].month], /*monthData (
+                    pengennya ambil dari api terus di split bulannya doang, abis itu dijadiin string dari angka ke nama bulan pake Date
+                  )*/
+
+              //looping res.count
+              datasets: [
+                {
+                  label: ' Mahasiswa ',
+                  data:  [res.data[0].count, res.data[1].count], //countData
+                  borderWidth: 2,
+                  backgroundColor: '#6777ef',
+                  borderColor: '#6777ef',
+                  borderWidth: 2.5,
+                  pointBackgroundColor: '#ffffff',
+                  pointRadius: 4
+                }
+              ]
+            }
+            var context = document.getElementById('grafikData').getContext('2d');
+            var clientsChart = new Chart(context, {
+                type: 'line',
+                data: lineData,
+                options: {
+                  legend: {
+                    display: false
+                  },
+                  scales: {
+                    y: {beginAtZero: true},
+                      yAxes: [{
+                        gridLines: {
+                          drawBorder: true, //month view
+                          color: '#f2f2f2',},
+                          ticks: {beginAtZero: true}
+                      }],
+                        xAxes: [{
+                            ticks: {display: true},
+                            gridLines: {display: true}
+                        }]
+                  }
+                }
+            })
+            clientsChart.data.datasets = lineData.datasets;
+            clientsChart.data.labels = lineData.labels;
+            clientsChart.update()
+          }else {
+            document.getElementById("notFound").style.display = "block"
+            document.getElementById('grafikData').style.display = "none"
+          }
+        }).catch((err) => {
+            document.getElementById("notFound").style.display = "block"
+            document.getElementById('grafikData').style.display = "none"
+        })
+      })
+  }
+    </script>
 </head>
 
 <section class="section">
@@ -21,86 +111,24 @@
         <div class="d-flex justify-content-between">
           <div class="form-group awal">
             <label>Start Date</label>
-            <input type="text" class="form-control datepicker" id="startDate">
+            <input type="text" class="form-control datepicker" 
+              id="startDate" onchange="date()">
           </div>
           <div class="form-group awal">
             <label>End Date</label>
-            <input type="text" class="form-control datepicker" id="endDate">
+            <input type="text" class="form-control datepicker" id="endDate" 
+            onchange="date()">
           </div>
         </div>
-        <canvas id="grafikData"></canvas>
+        <div class="d-flex justify-content-between">
+          <p id="tes1"></p>
+          <p id="tes2"></p>
+        </div>
+        <canvas id="grafikData" style="display: none"></canvas>
+        <h2 id="notFound" style="display: none">
+          <center>Data grafik not found</center>
+        </h2>
       </div>
     </div>
   </div>
 </section>
-
-<script>
-// $("#startDate").datepicker({
-//    onSelect: function(dateText, inst) { 
-//       var dateAsString = dateText; //the first parameter of this function
-//       var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
-//    }
-// });
-var start = document.getElementById("startDate").value
-var end = document.getElementById("endDate").value
-console.log(start)
-
-    fetch("http://localhost:8000/api/report", {
-      method: "POST",
-      body: JSON.stringify({
-        dateStart: "2022-02-07", 
-        dateEnd: "2022-02-10"
-      }),
-    headers: {"Content-type": "application/json; charset=UTF-8"}
-    }).then((response) => {
-        return response.json()
-    .then((res) => {
-        console.log(res)
-        console.log(res.data)
-
-    var lineData = {
-      labels: [
-        "January", "February", "March", 
-        "April", "May", "June", 
-        "July", "August", "September",
-        "October", "November", "December"
-      ], //monthData
-      datasets: [
-        {
-          label: ' Mahasiswa ',
-          data: [res.data, 5, 10 ], //countData
-          borderWidth: 2,
-          backgroundColor: '#6777ef',
-          borderColor: '#6777ef',
-          borderWidth: 2.5,
-          pointBackgroundColor: '#ffffff',
-          pointRadius: 4
-        }
-      ]
-    }
-    var context = document.getElementById('grafikData').getContext('2d');
-    var clientsChart = new Chart(context, {
-        type: 'line',
-        data: lineData,
-        options: {
-          legend: {
-            display: false
-          },
-          scales: {
-            y: {beginAtZero: true},
-              yAxes: [{
-                gridLines: {
-                  drawBorder: true, //month view
-                  color: '#f2f2f2',},
-                  ticks: {beginAtZero: true}
-              }],
-                xAxes: [{
-                    ticks: {display: true},
-                    gridLines: {display: true}
-                }]
-              }
-            }
-          })
-      })
-    })
-</script>
