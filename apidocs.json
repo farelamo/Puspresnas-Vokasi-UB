@@ -11,7 +11,8 @@
         "description": "localhost"
     }],
 
-    "tags": [{
+    "tags": [
+        {
             "name": "Berita",
             "description": "Berita"
         },
@@ -59,7 +60,13 @@
                 "description": "",
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
@@ -81,7 +88,13 @@
                 }],
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
@@ -95,7 +108,13 @@
                 "description": "",
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
@@ -117,7 +136,13 @@
                 }],
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
@@ -131,7 +156,13 @@
                 "description": "",
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
@@ -153,7 +184,13 @@
                 }],
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
@@ -167,7 +204,13 @@
                 "description": "",
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
@@ -189,7 +232,13 @@
                 }],
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
@@ -203,7 +252,13 @@
                 "description": "",
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
@@ -225,7 +280,13 @@
                 }],
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
@@ -239,7 +300,13 @@
                 "description": "",
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
@@ -261,7 +328,13 @@
                 }],
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
@@ -275,7 +348,13 @@
                 "description": "",
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
@@ -297,7 +376,13 @@
                 }],
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
@@ -311,16 +396,20 @@
                 "description": "",
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
         },
         "/api/kategoriLomba/{id}": {
             "get": {
-                "tags": [
-                    "Kategori Lomba"
-                ],
+                "tags": ["Kategori Lomba"],
                 "summary": "Get One Kategori Lomba",
                 "description": "",
                 "parameters": [{
@@ -333,47 +422,97 @@
                 }],
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
         },
         "/api/mahasiswa": {
             "get": {
-                "tags": [
-                    "Mahasiswa"
-                ],
+                "tags": ["Mahasiswa"],
                 "summary": "Get All Mahasiswa",
                 "description": "",
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
         },
         "/api/mahasiswa/{id}": {
             "get": {
-                "tags": [
-                    "Mahasiswa"
-                ],
+                "tags": ["Mahasiswa"],
                 "summary": "Get One Mahasiswa",
                 "description": "",
                 "parameters": [{
                     "in": "path",
                     "name": "id",
-                    "schema": {
-                        "type": "integer"
-                    },
+                    "schema": {"type": "integer"},
                     "description": "Nomor Mahasiswa"
                 }],
                 "responses": {
                     "200": {
-                        "description": "Sukses"
+                        "description": "Success"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
+                    }
+                }
+            }
+        },
+        "/api/report": {
+            "post": {
+                "tags": [
+                    "Report"
+                ],
+                "summary": "Get Data Reporting by Post Method",
+                "consumes": "multipart/form-data",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "dateStart": {"type": "string", "format": "date"}, 
+                                    "dateEnd": {"type": "string", "format": "date"}
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Service Error"
                     }
                 }
             }
         }
-
     }
 }
