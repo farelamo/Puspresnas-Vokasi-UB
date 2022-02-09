@@ -18,7 +18,18 @@ module.exports = {
                 where: condition
             })
             .then((data) => {
-                res.send(data)
+                 if(data < 1){
+                    res.status(204).send({
+                        status: "false",
+                        message: "Cant get data !!"
+                    })
+                }else {
+                    res.status(200).send({
+                        status: "true",
+                        message: "Successfully get data ! !",
+                        data
+                    })
+                }
             }).catch((err) => {
                 res.status(500).send({
                     message: err.message || "Some error occured while find post"
@@ -31,11 +42,22 @@ module.exports = {
 
         Post.findByPk(id)
             .then((data) => {
-                res.send(data);
+                 if(data < 1){
+                    res.status(204).send({
+                        status: "false",
+                        message: "Cant get data !!"
+                    })
+                }else {
+                    res.status(200).send({
+                        status: "true",
+                        message: "Successfully get data ! !",
+                        data
+                    })
+                }
             }).catch((err) => {
                 res.status(500).send({
                     message: "Error retrieving post with id=" + id
-                });
-            });
+                })
+            })
     }
 }
