@@ -1,6 +1,6 @@
-var express = require('express')
-var lombaCat = express.Router()
-var controller = require('../app/controller/lombaTag')
+let express = require('express')
+let lombaCat = express.Router()
+let controller = require('../app/controller/lombaTag')
 
 lombaCat.route('/lombaTag')
     .get(controller.index)

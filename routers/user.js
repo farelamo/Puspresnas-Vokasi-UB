@@ -1,6 +1,6 @@
-var express = require('express')
-var user = express.Router()
-var controller = require('../app/controller/user')
+let express = require('express')
+let user = express.Router()
+let controller = require('../app/controller/user')
 
 user.route('/user')
     .get(controller.superadmin, controller.index)

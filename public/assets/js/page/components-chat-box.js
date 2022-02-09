@@ -1,6 +1,6 @@
 "use strict";
 
-var chats = [
+let chats = [
   {
     text: 'Hi, dude!',
     position: 'left'
@@ -22,8 +22,8 @@ var chats = [
     position: 'left'
   }
 ];
-for(var i = 0; i < chats.length; i++) {
-  var type = 'text';
+for(let i = 0; i < chats.length; i++) {
+  let type = 'text';
   if(chats[i].typing != undefined) type = 'typing';
   $.chatCtrl('#mychatbox', {
     text: (chats[i].text != undefined ? chats[i].text : ''),
@@ -34,7 +34,7 @@ for(var i = 0; i < chats.length; i++) {
 }
 
 $("#chat-form").submit(function() {
-  var me = $(this);
+  let me = $(this);
 
   if(me.find('input').val().trim().length > 0) {
     $.chatCtrl('#mychatbox', {
@@ -46,7 +46,7 @@ $("#chat-form").submit(function() {
   return false;
 });
 
-var chats = [
+let chats = [
   {
     text: 'Wake up!',
     position: 'left'
@@ -96,8 +96,8 @@ var chats = [
     position: 'right'
   },
 ];
-for(var i = 0; i < chats.length; i++) {
-  var type = 'text';
+for(let i = 0; i < chats.length; i++) {
+  let type = 'text';
   if(chats[i].typing != undefined) type = 'typing';
   $.chatCtrl('#mychatbox2', {
     text: (chats[i].text != undefined ? chats[i].text : ''),
@@ -107,7 +107,7 @@ for(var i = 0; i < chats.length; i++) {
   });
 }
 $("#chat-form2").submit(function() {
-  var me = $(this);
+  let me = $(this);
 
   if(me.find('input').val().trim().length > 0) {
     $.chatCtrl('#mychatbox2', {

@@ -1,7 +1,7 @@
 "use strict";
 
 // initialize map
-var map = new GMaps({
+let map = new GMaps({
   div: '#map',
   lat: -6.8665409,
   lng: 106.4836553,

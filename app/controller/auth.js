@@ -1,8 +1,8 @@
-var db = require('../config/database')
-var Db = require('../../database/models')
-var users = Db.user
-var bcrypt = require('bcrypt')
-var sess;
+let db = require('../config/database')
+let Db = require('../../database/models')
+let users = Db.user
+let bcrypt = require('bcrypt')
+let sess;
 
 module.exports = {
     login: (req, res) => {
@@ -16,7 +16,7 @@ module.exports = {
           if(result == null){
             return res.redirect('login')
           }
-          var match = bcrypt.compareSync(req.body.password, result.password)
+          let match = bcrypt.compareSync(req.body.password, result.password)
           console.log(match)
           if(match){
             if(result.is_active == 1){
@@ -40,7 +40,7 @@ module.exports = {
     },
 
     register: (req, res) => {
-      var {name,username,password} = req.body
+      let {name,username,password} = req.body
       db.query('SELECT username FROM user WHERE username = ?',
       [username],
       async (error, result) => {

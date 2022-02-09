@@ -1,7 +1,7 @@
 "use strict";
 
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
+let ctx = document.getElementById("myChart").getContext('2d');
+let myChart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
@@ -43,8 +43,8 @@ var myChart = new Chart(ctx, {
   }
 });
 
-var ctx = document.getElementById("myChart2").getContext('2d');
-var myChart = new Chart(ctx, {
+let ctx = document.getElementById("myChart2").getContext('2d');
+let myChart = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
@@ -86,8 +86,8 @@ var myChart = new Chart(ctx, {
   }
 });
 
-var ctx = document.getElementById("myChart3").getContext('2d');
-var myChart = new Chart(ctx, {
+let ctx = document.getElementById("myChart3").getContext('2d');
+let myChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
     datasets: [{
@@ -123,8 +123,8 @@ var myChart = new Chart(ctx, {
   }
 });
 
-var ctx = document.getElementById("myChart4").getContext('2d');
-var myChart = new Chart(ctx, {
+let ctx = document.getElementById("myChart4").getContext('2d');
+let myChart = new Chart(ctx, {
   type: 'pie',
   data: {
     datasets: [{

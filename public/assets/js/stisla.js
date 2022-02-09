@@ -3,7 +3,7 @@
 (function($, window, i) {
   // Bootstrap 4 Modal
   $.fn.fireModal = function(options) {
-    var options = $.extend({
+    let options = $.extend({
       size: 'modal-md',
       center: false,
       animation: true,
@@ -24,7 +24,7 @@
 
     this.each(function() {
       i++;
-      var id = 'fire-modal-' + i,
+      let id = 'fire-modal-' + i,
         trigger_class = 'trigger--' + id,
         trigger_button = $('.' + trigger_class);
 
@@ -44,7 +44,7 @@
       }
 
       // Modal base template
-      var modal_template = '   <div class="modal'+ (options.animation == true ? ' fade' : '') +'" tabindex="-1" role="dialog" id="'+ id +'">  '  +
+      let modal_template = '   <div class="modal'+ (options.animation == true ? ' fade' : '') +'" tabindex="-1" role="dialog" id="'+ id +'">  '  +
                  '     <div class="modal-dialog '+options.size+(options.center ? ' modal-dialog-centered' : '')+'" role="document">  '  +
                  '       <div class="modal-content">  '  +
                  ((options.header == true) ?
@@ -68,10 +68,10 @@
                  '  </div>  ' ;
 
       // Convert modal to object
-      var modal_template = $(modal_template);
+      let modal_template = $(modal_template);
 
       // Start creating buttons from 'buttons' option
-      var this_button;
+      let this_button;
       options.buttons.forEach(function(item) {
         // get option 'id'
         let id = "id" in item ? item.id : '';
@@ -176,14 +176,14 @@
 
   // Card Progress Controller
   $.cardProgress = function(card, options) {
-    var options = $.extend({
+    let options = $.extend({
       dismiss: false,
       dismissText: 'Cancel',
       spinner: true,
       onDismiss: function() {}
     }, options);
 
-    var me = $(card);
+    let me = $(card);
 
     me.addClass('card-progress');
     if(options.spinner == false) {
@@ -191,7 +191,7 @@
     }
 
     if(options.dismiss == true) {
-      var btn_dismiss = '<a class="btn btn-danger card-progress-dismiss">'+options.dismissText+'</a>';
+      let btn_dismiss = '<a class="btn btn-danger card-progress-dismiss">'+options.dismissText+'</a>';
       btn_dismiss = $(btn_dismiss).off('click').on('click', function() {
         me.removeClass('card-progress');
         me.find('.card-progress-dismiss').remove();
@@ -208,7 +208,7 @@
   }
 
   $.cardProgressDismiss = function(card, dismissed) {
-    var me = $(card);
+    let me = $(card);
     me.removeClass('card-progress');
     me.find('.card-progress-dismiss').remove();
     if(dismissed)
@@ -216,7 +216,7 @@
   }
 
   $.chatCtrl = function(element, chat) {
-    var chat = $.extend({
+    let chat = $.extend({
       position: 'chat-right',
       text: '',
       time: moment(new Date().toISOString()).format('hh:mm'),
@@ -226,7 +226,7 @@
       onShow: function() {}
     }, chat);
 
-    var target = $(element),
+    let target = $(element),
         element = '<div class="chat-item '+chat.position+'" style="display:none">' +
                   '<img src="'+chat.picture+'">' +
                   '<div class="chat-details">' +
@@ -241,7 +241,7 @@
                   '</div>' +
                   '</div>';
 
-      var append_element = element;
+      let append_element = element;
       if(chat.type == 'typing') {
         append_element = typing_element;
       }
@@ -254,7 +254,7 @@
         target.find('.chat-content').append($(append_element).fadeIn());
       }
 
-      var target_height = 0;
+      let target_height = 0;
       target.find('.chat-content .chat-item').each(function() {
         target_height += $(this).outerHeight();
       });

@@ -1,7 +1,7 @@
-var db = require('../config/database')
-var Db = require("../../database/models");
-var sess;
-var Post = Db.artikel;
+let db = require('../config/database')
+let Db = require("../../database/models");
+let sess;
+let Post = Db.artikel;
 let date_ob = new Date();
 let date = ("0" + date_ob.getDate()).slice(-2);
 let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
@@ -21,7 +21,7 @@ module.exports = {
         (error, profil) => {
           if (error) console.log(error)
           else {
-            var id = req.params.id_artikel;
+            let id = req.params.id_artikel;
 
             Post.findByPk(id)
               .then((hasil) => {
@@ -87,11 +87,11 @@ module.exports = {
   crud: (req, res) => {
     if (req.body.submit == "edit") {
 
-      var id = req.body.id_artikel;
-      var judul = req.body.judul;
-      var deskripsi = req.body.deskripsi;
-      var isi = req.body.isi;
-      var kategori = req.body.id_kategori
+      let id = req.body.id_artikel;
+      let judul = req.body.judul;
+      let deskripsi = req.body.deskripsi;
+      let isi = req.body.isi;
+      let kategori = req.body.id_kategori
 
       Post.update({
         judul: judul,
@@ -116,9 +116,9 @@ module.exports = {
           message: "Error updating post with id=" + id
         })
       })
-      // var judul = req.body.judul;
-      // var deskripsi = req.body.deskripsi;
-      // var isi = req.body.isi;
+      // let judul = req.body.judul;
+      // let deskripsi = req.body.deskripsi;
+      // let isi = req.body.isi;
       // db.query(
       //   "UPDATE `artikel` SET `judul`=?,`deskripsi`=?,`isi`=?,`id_kategori`=? WHERE `id` = ?",
       //   [judul, deskripsi, isi, req.body.id_kategori, req.body.id_artikel],

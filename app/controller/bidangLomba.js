@@ -1,8 +1,8 @@
-var db = require('../config/database')
-var sess;
-var Db = require('../../database/models')
-var Post = Db.bidangLomba
-var Op = Db.Sequelize.Op
+let db = require('../config/database')
+let sess;
+let Db = require('../../database/models')
+let Post = Db.bidangLomba
+let Op = Db.Sequelize.Op
 
 module.exports = {
   index: (req, res) => {
@@ -47,7 +47,7 @@ module.exports = {
   tambah: (req, res) => {
     if (req.body.submit == "tambah") {
 
-      var {
+      let {
         nama,
         hadiah,
         biaya,
@@ -65,14 +65,14 @@ module.exports = {
           if (err) console.log(err)
           else {
             console.log(bidangLomba.insertId)
-            var file = req.files.berkas
-            var filename = bidangLomba.insertId + '.pdf';
+            let file = req.files.berkas
+            let filename = bidangLomba.insertId + '.pdf';
             file.mv("public/assets/bidangLomba/" + filename, function (err) {
 
               if (err) console.log(err)
               else {
-                var gambar = req.files.gambar
-                var namaGambar = bidangLomba.insertId + '.png'
+                let gambar = req.files.gambar
+                let namaGambar = bidangLomba.insertId + '.png'
                 gambar.mv("public/assets/img/bidangLomba/" + namaGambar, ((error) => {
 
                   if (error) console.log(error)
@@ -102,7 +102,7 @@ module.exports = {
   },
 
   findAll: (req, res) => {
-    var nama_bidang = req.query.nama_bidang
+    let nama_bidang = req.query.nama_bidang
     let condition = nama_bidang ? {
       nama_bidang: {
         [Op.like]: `%${nama_bidang}%`
@@ -122,7 +122,7 @@ module.exports = {
   },
 
   findOne: (req, res) => {
-    var id = req.params.id
+    let id = req.params.id
 
     Post.findByPk(id)
       .then((data) => {

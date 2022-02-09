@@ -1,9 +1,9 @@
-var db = require('../config/database')
-var fs = require('fs');
-var Db = require('../../database/models')
-var Post = Db.jenisLomba
-var Op = Db.Sequelize.Op
-var sess;
+let db = require('../config/database')
+let fs = require('fs');
+let Db = require('../../database/models')
+let Post = Db.jenisLomba
+let Op = Db.Sequelize.Op
+let sess;
 
 module.exports = {
   index: async (req, res) => {
@@ -17,7 +17,7 @@ module.exports = {
         (error, profil) => {
           if (error) console.log(error)
           else {
-            var jenis = req.query.jenis;
+            let jenis = req.query.jenis;
             let condition = jenis ? {
               jenis: {
                 [Op.like]: `%${jenis}%`
@@ -73,11 +73,11 @@ module.exports = {
 
   crud: async (req, res) => {                /* HAPUS JENIS */
     if (req.body.submit == "hapus") {
-      var id = req.body.id_lomba;
+      let id = req.body.id_lomba;
 
       Post.findByPk(id)
         .then((data) => {
-          var id = req.body.id_lomba;
+          let id = req.body.id_lomba;
 
           Post.destroy({
             where: {
@@ -87,11 +87,11 @@ module.exports = {
             if (result == 1) {
               console.log(data.gambar)
               if (data.foto !== "") {
-                var filePath = "public/assets/img/jenisLomba/" + data.gambar;
+                let filePath = "public/assets/img/jenisLomba/" + data.gambar;
                 fs.unlinkSync(filePath);
                 console.log("Foto berhasil dihapus");
               }
-              var berhasil = "Lomba berhasil dihapus"
+              let berhasil = "Lomba berhasil dihapus"
               console.log(berhasil);
               sess = req.session;
               if (sess.id_user == undefined) {
@@ -103,7 +103,7 @@ module.exports = {
                   (error, profil) => {
                     if (error) console.log(error)
                     else {
-                      var judul = req.query.judul;
+                      let judul = req.query.judul;
                       let condition = judul ? {
                         judul: {
                           [Op.like]: `%${judul}%`
@@ -154,7 +154,7 @@ module.exports = {
       //   (error, jenis) => {
       //     console.log(jenis[0].gambar)
       //     if (jenis[0].gambar !== ""){
-      //       var filePath = "public/assets/img/jenisLomba/"+jenis[0].gambar;
+      //       let filePath = "public/assets/img/jenisLomba/"+jenis[0].gambar;
       //       fs.unlinkSync(filePath);
       //       console.log("gambar berhasil dihapus");
       //     }
@@ -172,8 +172,8 @@ module.exports = {
       // )
     } else if (req.body.submit == "gambar") {     /* EDIT GAMBAR JENIS */
       if (req.files) {
-        // var file = req.files.gambar;
-        // var filename = req.body.id_lomba + ".png";
+        // let file = req.files.gambar;
+        // let filename = req.body.id_lomba + ".png";
         // file.mv("public/assets/img/jenisLomba/" + filename, function (err) {
         //   if (err) console.log(err)
         //   db.query(
@@ -186,12 +186,12 @@ module.exports = {
         //   )
         // });
 
-        var file = req.files.gambar;
-        var filename = req.body.IdGambar + ".png";
+        let file = req.files.gambar;
+        let filename = req.body.IdGambar + ".png";
         file.mv("public/assets/img/jenisLomba/" + filename, function (err) {
           if (err) console.log(err)
           
-          var id = req.body.IdGambar;
+          let id = req.body.IdGambar;
 
           Post.update({
             gambar: filename
@@ -203,7 +203,7 @@ module.exports = {
             
             console.log(result)
             if (result == 1 || result == 0) {
-              var berhasil = "Gambar Lomba berhasil diedit"
+              let berhasil = "Gambar Lomba berhasil diedit"
               console.log(berhasil);
 
               sess = req.session;
@@ -216,7 +216,7 @@ module.exports = {
                   (error, profil) => {
                     if (error) console.log(error)
                     else {
-                      var judul = req.query.judul;
+                      let judul = req.query.judul;
                       let condition = judul ? {
                         judul: {
                           [Op.like]: `%${judul}%`
@@ -281,7 +281,7 @@ module.exports = {
                         if (error) console.log(error)
                         else {
 
-                          var {
+                          let {
                             id
                           } = req.body
 

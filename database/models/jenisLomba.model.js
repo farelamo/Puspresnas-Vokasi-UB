@@ -1,5 +1,5 @@
 module.exports = (sequelize,Sequelize) => {
-    var jenisLomba = sequelize.define('jenis_lomba',{
+    let jenisLomba = sequelize.define('jenis_lomba',{
         id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
         nama_lomba: {
             type: Sequelize.STRING

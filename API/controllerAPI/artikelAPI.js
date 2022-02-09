@@ -1,10 +1,10 @@
-var Db = require("../../database/models");
-var Post = Db.artikel;
-var Op = Db.Sequelize.Op;
+let Db = require("../../database/models");
+let Post = Db.artikel;
+let Op = Db.Sequelize.Op;
 
 module.exports = {
     findAll: (req, res) => {
-        var judul = req.query.judul;
+        let judul = req.query.judul;
         let condition = judul ? {
             judul: {
                 [Op.like]: `%${judul}%`
@@ -38,7 +38,7 @@ module.exports = {
     },
 
     findOne: (req, res) => {
-        var id = req.params.id;
+        let id = req.params.id;
 
         Post.findByPk(id)
             .then((data) => {

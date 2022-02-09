@@ -1,31 +1,31 @@
-var Db = require("../../database/models")
-var mhs = Db.mahasiswa
-var jenisLomba = Db.jenisLomba
-var Op = Db.Sequelize.Op
+let Db = require("../../database/models")
+let mhs = Db.mahasiswa
+let jenisLomba = Db.jenisLomba
+let Op = Db.Sequelize.Op
 
 module.exports = {
     countData: async (req, res) => {
         try{ 
-            var dateStart = req.body.dateStart
-            var dateEnd = req.body.dateEnd
+            let dateStart = req.body.dateStart
+            let dateEnd = req.body.dateEnd
 
-            var listDate = [];
-            var awal = dateStart;
-            var akhir = dateEnd;
-            var dateMove = new Date(awal);
-            var strDate = awal;
+            let listDate = [];
+            let awal = dateStart;
+            let akhir = dateEnd;
+            let dateMove = new Date(awal);
+            let strDate = awal;
 
             while (strDate < akhir){
-                var strDate = dateMove.toISOString().slice(0,10);
+                let strDate = dateMove.toISOString().slice(0,10);
                 listDate.push(strDate);
                 dateMove.setDate(dateMove.getDate()+1);
             };
             console.log(listDate);
             
             
-            var resultDate = []
+            let resultDate = []
             for(i = 0; i < listDate.length; i++){
-                var tmp = {tanggal: {[Op.like]: `%${listDate[i]}%`}}
+                let tmp = {tanggal: {[Op.like]: `%${listDate[i]}%`}}
                 resultDate.push(tmp)
             }
             await jenisLomba.findAll({where: {[Op.or]: resultDate}}) //jenisLomba
@@ -49,7 +49,7 @@ module.exports = {
                     const text = t.tanggal //2022-02-07
                     const result = text.trim().split("-") //remove "-" will be [2022,02,07] with index [0,1,2]
                     let d = result[1] //index ke 1 yaitu 02
-                    var cek = (d < 10) ? d.slice(1,2) : d //less than 10 will remove 0, ex: 02 will be 2
+                    let cek = (d < 10) ? d.slice(1,2) : d //less than 10 will remove 0, ex: 02 will be 2
                     const months = [                       // array month
                         "January", "February", "March", 
                         "April", "May", "June", "July", "August", 
@@ -68,9 +68,9 @@ module.exports = {
                 }else if(data.length < 1){
                     res.status(204).send('Data not found !!')
                 }else {
-                    var resultData = []
+                    let resultData = []
                     for(i = 0; i < data.length; i++){
-                        var tmp = {jenis_lomba_id: {[Op.like]: `%${data[i].id}%`}}
+                        let tmp = {jenis_lomba_id: {[Op.like]: `%${data[i].id}%`}}
                         resultData.push(tmp)
                     }
                     console.log(resultData) 

@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    var tagLomba = sequelize.define("tag_lomba", {
+    let tagLomba = sequelize.define("tag_lomba", {
         tag: {
             type: Sequelize.STRING
         },

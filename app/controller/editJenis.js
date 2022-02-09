@@ -1,12 +1,12 @@
-var db = require('../config/database')
-var fs = require('fs');
-var sess;
-var Db = require('../../database/models')
-var Post = Db.jenisLomba
-var PostCat = Db.kategoriLomba
-var PostTagLomba = Db.tagLomba
-var PostTag = Db.tag
-var Op = Db.Sequelize.Op
+let db = require('../config/database')
+let fs = require('fs');
+let sess;
+let Db = require('../../database/models')
+let Post = Db.jenisLomba
+let PostCat = Db.kategoriLomba
+let PostTagLomba = Db.tagLomba
+let PostTag = Db.tag
+let Op = Db.Sequelize.Op
 
 module.exports = {
   index: (req, res) => {
@@ -48,13 +48,13 @@ module.exports = {
 
                                         if (error) console.log(error)
                                         else {
-                                          var tag = hasil.map(tags => tags.tag_lomba_id)
+                                          let tag = hasil.map(tags => tags.tag_lomba_id)
 
                                           let enumVal = type[0]['tipes'];
                                           let tempString = enumVal.replace(/\'/g, '');
                                           enumArray = tempString.split(',');
 
-                                          var {
+                                          let {
                                             id,
                                           } = req.body
 
@@ -91,7 +91,7 @@ module.exports = {
 
   edit: (req, res) => {
     if (req.body.submit == "edit") {
-      var {
+      let {
         nama,
         sumber,
         tanggal,
@@ -127,7 +127,7 @@ module.exports = {
                       )
                     })
                   } else if (!Array.isArray(tag)) {
-                    //var hasil = tag.length[0]
+                    //let hasil = tag.length[0]
                     db.query(
                       'INSERT INTO `tag` (`tag_lomba_id`,`jenis_lomba_id`) VALUES (?,?)',
                       [tag, req.params.id],
@@ -154,7 +154,7 @@ module.exports = {
             // )
 
 
-          // var id = req.params.id;
+          // let id = req.params.id;
 
           // PostTag.destroy({
           //   where: {
@@ -166,7 +166,7 @@ module.exports = {
             
           //   if (Array.isArray(tag)) {
           //     tag.forEach((tags) => {
-          //       var isi = {
+          //       let isi = {
           //         jenis_lomba_id: req.params.id,
           //         tag_lomba_id: tags
           //       }
@@ -181,7 +181,7 @@ module.exports = {
           //         })
           //     })
           //   } else if (!Array.isArray(tag)) {
-          //     var isi = {
+          //     let isi = {
           //       jenis_lomba_id: req.params.id,
           //       tag_lomba_id: tag
           //     };

@@ -1,24 +1,24 @@
 "use strict";
 
-var dropzone = new Dropzone("#mydropzone", {
+let dropzone = new Dropzone("#mydropzone", {
   url: "#"
 });
 
-var minSteps = 6,
+let minSteps = 6,
   maxSteps = 60,
   timeBetweenSteps = 100,
   bytesPerStep = 100000;
 
 dropzone.uploadFiles = function(files) {
-  var self = this;
+  let self = this;
 
-  for (var i = 0; i < files.length; i++) {
+  for (let i = 0; i < files.length; i++) {
 
-    var file = files[i];
+    let file = files[i];
       totalSteps = Math.round(Math.min(maxSteps, Math.max(minSteps, file.size / bytesPerStep)));
 
-    for (var step = 0; step < totalSteps; step++) {
-      var duration = timeBetweenSteps * (step + 1);
+    for (let step = 0; step < totalSteps; step++) {
+      let duration = timeBetweenSteps * (step + 1);
       setTimeout(function(file, totalSteps, step) {
         return function() {
           file.upload = {

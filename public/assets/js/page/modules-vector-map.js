@@ -29,7 +29,7 @@ $('#visitorMap').vectorMap({
     tr: '<div class="jqvmap-circle"></div>',
   },
   onRegionClick: function(element, code, region) {
-    var opts = {
+    let opts = {
       title: 'Choosed',
       message: 'You clicked "'
       + region
@@ -53,7 +53,7 @@ $('#visitorMap2').vectorMap({
   selectedRegions: false,
   showTooltip: true,
   onRegionClick: function(element, code, region) {
-    var message = 'You clicked "'
+    let message = 'You clicked "'
       + region
       + '" which has the code: '
       + code.toUpperCase();

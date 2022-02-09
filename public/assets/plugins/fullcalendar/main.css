@@ -68,7 +68,7 @@
 .fc-theme-standard td,
 .fc-theme-standard th {
   border: 1px solid #ddd;
-  border: 1px solid var(--fc-border-color, #ddd);
+  border: 1px solid let(--fc-border-color, #ddd);
 }
 
 /* for FF, which doesn't expand a 100% div within a table cell. use absolute positioning */
@@ -223,30 +223,30 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 
 .fc .fc-button-primary {
   color: #fff;
-  color: var(--fc-button-text-color, #fff);
+  color: let(--fc-button-text-color, #fff);
   background-color: #2C3E50;
-  background-color: var(--fc-button-bg-color, #2C3E50);
+  background-color: let(--fc-button-bg-color, #2C3E50);
   border-color: #2C3E50;
-  border-color: var(--fc-button-border-color, #2C3E50);
+  border-color: let(--fc-button-border-color, #2C3E50);
 }
 
 .fc .fc-button-primary:hover {
   color: #fff;
-  color: var(--fc-button-text-color, #fff);
+  color: let(--fc-button-text-color, #fff);
   background-color: #1e2b37;
-  background-color: var(--fc-button-hover-bg-color, #1e2b37);
+  background-color: let(--fc-button-hover-bg-color, #1e2b37);
   border-color: #1a252f;
-  border-color: var(--fc-button-hover-border-color, #1a252f);
+  border-color: let(--fc-button-hover-border-color, #1a252f);
 }
 
 .fc .fc-button-primary:disabled {
   /* not DRY */
   color: #fff;
-  color: var(--fc-button-text-color, #fff);
+  color: let(--fc-button-text-color, #fff);
   background-color: #2C3E50;
-  background-color: var(--fc-button-bg-color, #2C3E50);
+  background-color: let(--fc-button-bg-color, #2C3E50);
   border-color: #2C3E50;
-  border-color: var(--fc-button-border-color, #2C3E50);
+  border-color: let(--fc-button-border-color, #2C3E50);
   /* overrides :hover */
 }
 
@@ -257,11 +257,11 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 .fc .fc-button-primary:not(:disabled):active,
 .fc .fc-button-primary:not(:disabled).fc-button-active {
   color: #fff;
-  color: var(--fc-button-text-color, #fff);
+  color: let(--fc-button-text-color, #fff);
   background-color: #1a252f;
-  background-color: var(--fc-button-active-bg-color, #1a252f);
+  background-color: let(--fc-button-active-bg-color, #1a252f);
   border-color: #151e27;
-  border-color: var(--fc-button-active-border-color, #151e27);
+  border-color: let(--fc-button-active-border-color, #151e27);
 }
 
 .fc .fc-button-primary:not(:disabled):active:focus,
@@ -395,7 +395,7 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 
 .fc-theme-standard .fc-scrollgrid {
   border: 1px solid #ddd;
-  border: 1px solid var(--fc-border-color, #ddd);
+  border: 1px solid let(--fc-border-color, #ddd);
   /* bootstrap does this. match */
 }
 
@@ -477,11 +477,11 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 
 .fc .fc-scrollgrid-section-sticky>* {
   background: #fff;
-  background: var(--fc-page-bg-color, #fff);
+  background: let(--fc-page-bg-color, #fff);
   position: -webkit-sticky;
   position: sticky;
   z-index: 2;
-  /* TODO: var */
+  /* TODO: let */
   /* TODO: box-shadow when sticking */
 }
 
@@ -548,32 +548,32 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 
 .fc .fc-non-business {
   background: rgba(215, 215, 215, 0.3);
-  background: var(--fc-non-business-color, rgba(215, 215, 215, 0.3));
+  background: let(--fc-non-business-color, rgba(215, 215, 215, 0.3));
 }
 
 .fc .fc-bg-event {
   background: rgb(143, 223, 130);
-  background: var(--fc-bg-event-color, rgb(143, 223, 130));
+  background: let(--fc-bg-event-color, rgb(143, 223, 130));
   opacity: 0.3;
-  opacity: var(--fc-bg-event-opacity, 0.3)
+  opacity: let(--fc-bg-event-opacity, 0.3)
 }
 
 .fc .fc-bg-event .fc-event-title {
   margin: .5em;
   font-size: .85em;
-  font-size: var(--fc-small-font-size, .85em);
+  font-size: let(--fc-small-font-size, .85em);
   font-style: italic;
 }
 
 .fc .fc-highlight {
   background: rgba(188, 232, 241, 0.3);
-  background: var(--fc-highlight-color, rgba(188, 232, 241, 0.3));
+  background: let(--fc-highlight-color, rgba(188, 232, 241, 0.3));
 }
 
 .fc .fc-cell-shaded,
 .fc .fc-day-disabled {
   background: rgba(208, 208, 208, 0.3);
-  background: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
+  background: let(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
 }
 
 /* link resets */
@@ -631,17 +631,17 @@ a.fc-event:hover {
 
 .fc-event-selected .fc-event-resizer {
   border-radius: 4px;
-  border-radius: calc(var(--fc-event-resizer-dot-total-width, 8px) / 2);
+  border-radius: calc(let(--fc-event-resizer-dot-total-width, 8px) / 2);
   border-width: 1px;
-  border-width: var(--fc-event-resizer-dot-border-width, 1px);
+  border-width: let(--fc-event-resizer-dot-border-width, 1px);
   width: 8px;
-  width: var(--fc-event-resizer-dot-total-width, 8px);
+  width: let(--fc-event-resizer-dot-total-width, 8px);
   height: 8px;
-  height: var(--fc-event-resizer-dot-total-width, 8px);
+  height: let(--fc-event-resizer-dot-total-width, 8px);
   border-style: solid;
   border-color: inherit;
   background: #fff;
-  background: var(--fc-page-bg-color, #fff)
+  background: let(--fc-page-bg-color, #fff)
     /* expand hit area */
 
 }
@@ -682,7 +682,7 @@ a.fc-event:hover {
 .fc-event-selected:after {
   content: "";
   background: rgba(0, 0, 0, 0.25);
-  background: var(--fc-event-selected-overlay-color, rgba(0, 0, 0, 0.25));
+  background: let(--fc-event-selected-overlay-color, rgba(0, 0, 0, 0.25));
   position: absolute;
   z-index: 1;
 
@@ -702,14 +702,14 @@ A HORIZONTAL event
   /* allowed to be top-level */
   display: block;
   border: 1px solid #3788d8;
-  border: 1px solid var(--fc-event-border-color, #3788d8);
+  border: 1px solid let(--fc-event-border-color, #3788d8);
   background-color: #3788d8;
-  background-color: var(--fc-event-bg-color, #3788d8)
+  background-color: let(--fc-event-bg-color, #3788d8)
 }
 
 .fc-h-event .fc-event-main {
   color: #fff;
-  color: var(--fc-event-text-color, #fff);
+  color: let(--fc-event-text-color, #fff);
 }
 
 .fc-h-event .fc-event-main-frame {
@@ -771,40 +771,40 @@ A HORIZONTAL event
   top: 0;
   bottom: 0;
   width: 8px;
-  width: var(--fc-event-resizer-thickness, 8px);
+  width: let(--fc-event-resizer-thickness, 8px);
 }
 
 .fc-direction-ltr .fc-h-event:not(.fc-event-selected) .fc-event-resizer-start,
 .fc-direction-rtl .fc-h-event:not(.fc-event-selected) .fc-event-resizer-end {
   cursor: w-resize;
   left: -4px;
-  left: calc(var(--fc-event-resizer-thickness, 8px) / -2);
+  left: calc(let(--fc-event-resizer-thickness, 8px) / -2);
 }
 
 .fc-direction-ltr .fc-h-event:not(.fc-event-selected) .fc-event-resizer-end,
 .fc-direction-rtl .fc-h-event:not(.fc-event-selected) .fc-event-resizer-start {
   cursor: e-resize;
   right: -4px;
-  right: calc(var(--fc-event-resizer-thickness, 8px) / -2);
+  right: calc(let(--fc-event-resizer-thickness, 8px) / -2);
 }
 
 /* resizers for TOUCH */
 .fc-h-event.fc-event-selected .fc-event-resizer {
   top: 50%;
   margin-top: -4px;
-  margin-top: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
+  margin-top: calc(let(--fc-event-resizer-dot-total-width, 8px) / -2);
 }
 
 .fc-direction-ltr .fc-h-event.fc-event-selected .fc-event-resizer-start,
 .fc-direction-rtl .fc-h-event.fc-event-selected .fc-event-resizer-end {
   left: -4px;
-  left: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
+  left: calc(let(--fc-event-resizer-dot-total-width, 8px) / -2);
 }
 
 .fc-direction-ltr .fc-h-event.fc-event-selected .fc-event-resizer-end,
 .fc-direction-rtl .fc-h-event.fc-event-selected .fc-event-resizer-start {
   right: -4px;
-  right: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
+  right: calc(let(--fc-event-resizer-dot-total-width, 8px) / -2);
 }
 
 
@@ -839,14 +839,14 @@ A HORIZONTAL event
 
 .fc-theme-standard .fc-popover {
   border: 1px solid #ddd;
-  border: 1px solid var(--fc-border-color, #ddd);
+  border: 1px solid let(--fc-border-color, #ddd);
   background: #fff;
-  background: var(--fc-page-bg-color, #fff);
+  background: let(--fc-page-bg-color, #fff);
 }
 
 .fc-theme-standard .fc-popover-header {
   background: rgba(208, 208, 208, 0.3);
-  background: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
+  background: let(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
 }
 
 /* help things clear margins of inner content */
@@ -881,7 +881,7 @@ A HORIZONTAL event
 
 .fc .fc-daygrid-day.fc-day-today {
   background-color: rgba(255, 220, 40, 0.15);
-  background-color: var(--fc-today-bg-color, rgba(255, 220, 40, 0.15));
+  background-color: let(--fc-today-bg-color, rgba(255, 220, 40, 0.15));
 }
 
 .fc .fc-daygrid-day-frame {
@@ -1045,9 +1045,9 @@ A HORIZONTAL event
   min-width: 1.5em;
   text-align: center;
   background-color: rgba(208, 208, 208, 0.3);
-  background-color: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
+  background-color: let(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
   color: #808080;
-  color: var(--fc-neutral-text-color, #808080);
+  color: let(--fc-neutral-text-color, #808080);
 }
 
 .fc {
@@ -1098,7 +1098,7 @@ A HORIZONTAL event
   border-radius: 3px;
   /* dot event needs this to when selected */
   font-size: .85em;
-  font-size: var(--fc-small-font-size, .85em);
+  font-size: let(--fc-small-font-size, .85em);
 }
 
 /* --- the rectangle ("block") style of event --- */
@@ -1145,9 +1145,9 @@ A HORIZONTAL event
   width: 0;
   height: 0;
   border: 4px solid #3788d8;
-  border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color, #3788d8);
+  border: calc(let(--fc-daygrid-event-dot-width, 8px) / 2) solid let(--fc-event-border-color, #3788d8);
   border-radius: 4px;
-  border-radius: calc(var(--fc-daygrid-event-dot-width, 8px) / 2);
+  border-radius: calc(let(--fc-daygrid-event-dot-width, 8px) / 2);
 }
 
 /* --- spacing between time and title --- */
@@ -1168,14 +1168,14 @@ A VERTICAL event
   /* allowed to be top-level */
   display: block;
   border: 1px solid #3788d8;
-  border: 1px solid var(--fc-event-border-color, #3788d8);
+  border: 1px solid let(--fc-event-border-color, #3788d8);
   background-color: #3788d8;
-  background-color: var(--fc-event-bg-color, #3788d8)
+  background-color: let(--fc-event-bg-color, #3788d8)
 }
 
 .fc-v-event .fc-event-main {
   color: #fff;
-  color: var(--fc-event-text-color, #fff);
+  color: let(--fc-event-text-color, #fff);
   height: 100%;
 }
 
@@ -1249,19 +1249,19 @@ A VERTICAL event
 
 .fc-v-event:not(.fc-event-selected) .fc-event-resizer {
   height: 8px;
-  height: var(--fc-event-resizer-thickness, 8px);
+  height: let(--fc-event-resizer-thickness, 8px);
   left: 0;
   right: 0;
 }
 
 .fc-v-event:not(.fc-event-selected) .fc-event-resizer-start {
   top: -4px;
-  top: calc(var(--fc-event-resizer-thickness, 8px) / -2);
+  top: calc(let(--fc-event-resizer-thickness, 8px) / -2);
 }
 
 .fc-v-event:not(.fc-event-selected) .fc-event-resizer-end {
   bottom: -4px;
-  bottom: calc(var(--fc-event-resizer-thickness, 8px) / -2);
+  bottom: calc(let(--fc-event-resizer-thickness, 8px) / -2);
 }
 
 .fc-v-event {
@@ -1273,17 +1273,17 @@ A VERTICAL event
 .fc-v-event.fc-event-selected .fc-event-resizer {
   left: 50%;
   margin-left: -4px;
-  margin-left: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
+  margin-left: calc(let(--fc-event-resizer-dot-total-width, 8px) / -2);
 }
 
 .fc-v-event.fc-event-selected .fc-event-resizer-start {
   top: -4px;
-  top: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
+  top: calc(let(--fc-event-resizer-dot-total-width, 8px) / -2);
 }
 
 .fc-v-event.fc-event-selected .fc-event-resizer-end {
   bottom: -4px;
-  bottom: calc(var(--fc-event-resizer-dot-total-width, 8px) / -2);
+  bottom: calc(let(--fc-event-resizer-dot-total-width, 8px) / -2);
 }
 
 .fc .fc-timegrid .fc-daygrid-body {
@@ -1409,7 +1409,7 @@ A VERTICAL event
 
 .fc .fc-timegrid-col.fc-day-today {
   background-color: rgba(255, 220, 40, 0.15);
-  background-color: var(--fc-today-bg-color, rgba(255, 220, 40, 0.15));
+  background-color: let(--fc-today-bg-color, rgba(255, 220, 40, 0.15));
 }
 
 .fc .fc-timegrid-col-frame {
@@ -1521,7 +1521,7 @@ A VERTICAL event
 .fc-timegrid-event-harness-inset .fc-timegrid-event,
 .fc-timegrid-event.fc-event-mirror {
   box-shadow: 0px 0px 0px 1px #fff;
-  box-shadow: 0px 0px 0px 1px var(--fc-page-bg-color, #fff);
+  box-shadow: 0px 0px 0px 1px let(--fc-page-bg-color, #fff);
 }
 
 .fc-timegrid-event {
@@ -1529,7 +1529,7 @@ A VERTICAL event
 
   font-size: .85em;
 
-  font-size: var(--fc-small-font-size, .85em);
+  font-size: let(--fc-small-font-size, .85em);
   border-radius: 3px
 }
 
@@ -1540,7 +1540,7 @@ A VERTICAL event
 .fc-timegrid-event .fc-event-time {
   white-space: nowrap;
   font-size: .85em;
-  font-size: var(--fc-small-font-size, .85em);
+  font-size: let(--fc-small-font-size, .85em);
   margin-bottom: 1px;
 }
 
@@ -1556,7 +1556,7 @@ A VERTICAL event
 
 .fc-timegrid-event-condensed .fc-event-title {
   font-size: .85em;
-  font-size: var(--fc-small-font-size, .85em)
+  font-size: let(--fc-small-font-size, .85em)
 }
 
 .fc-media-screen .fc-timegrid-event {
@@ -1582,7 +1582,7 @@ A VERTICAL event
   right: 0;
   border-style: solid;
   border-color: red;
-  border-color: var(--fc-now-indicator-color, red);
+  border-color: let(--fc-now-indicator-color, red);
   border-width: 1px 0 0;
 }
 
@@ -1599,7 +1599,7 @@ A VERTICAL event
   /* vertically center on top coordinate */
   border-style: solid;
   border-color: red;
-  border-color: var(--fc-now-indicator-color, red);
+  border-color: let(--fc-now-indicator-color, red);
 }
 
 .fc-direction-ltr .fc-timegrid-now-indicator-arrow {
@@ -1628,7 +1628,7 @@ A VERTICAL event
 
 .fc-theme-standard .fc-list {
   border: 1px solid #ddd;
-  border: 1px solid var(--fc-border-color, #ddd);
+  border: 1px solid let(--fc-border-color, #ddd);
 }
 
 .fc {
@@ -1639,7 +1639,7 @@ A VERTICAL event
 
 .fc .fc-list-empty {
   background-color: rgba(208, 208, 208, 0.3);
-  background-color: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
+  background-color: let(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
   height: 100%;
   display: flex;
   justify-content: center;
@@ -1675,7 +1675,7 @@ A VERTICAL event
   position: sticky;
   top: 0;
   background: #fff;
-  background: var(--fc-page-bg-color, #fff);
+  background: let(--fc-page-bg-color, #fff);
   /* for when headers are styled to be transparent and sticky */
 }
 
@@ -1706,7 +1706,7 @@ A VERTICAL event
 
 .fc-theme-standard .fc-list-day-cushion {
   background-color: rgba(208, 208, 208, 0.3);
-  background-color: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
+  background-color: let(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
 }
 
 .fc-direction-ltr .fc-list-day-text,
@@ -1735,7 +1735,7 @@ A VERTICAL event
 
 .fc .fc-list-event:hover td {
   background-color: #f5f5f5;
-  background-color: var(--fc-list-event-hover-bg-color, #f5f5f5);
+  background-color: let(--fc-list-event-hover-bg-color, #f5f5f5);
 }
 
 .fc {
@@ -1756,9 +1756,9 @@ A VERTICAL event
   width: 0;
   height: 0;
   border: 5px solid #3788d8;
-  border: calc(var(--fc-list-event-dot-width, 10px) / 2) solid var(--fc-event-border-color, #3788d8);
+  border: calc(let(--fc-list-event-dot-width, 10px) / 2) solid let(--fc-event-border-color, #3788d8);
   border-radius: 5px;
-  border-radius: calc(var(--fc-list-event-dot-width, 10px) / 2);
+  border-radius: calc(let(--fc-list-event-dot-width, 10px) / 2);
 }
 
 .fc {

@@ -1,11 +1,11 @@
-var db = require('../config/database')
-var sess;
-var Db = require('../../database/models')
-var Post = Db.jenisLomba
-var PostCat = Db.kategoriLomba
-var PostTagLomba = Db.tagLomba
-var PostTag = Db.tag
-var Op = Db.Sequelize.Op
+let db = require('../config/database')
+let sess;
+let Db = require('../../database/models')
+let Post = Db.jenisLomba
+let PostCat = Db.kategoriLomba
+let PostTagLomba = Db.tagLomba
+let PostTag = Db.tag
+let Op = Db.Sequelize.Op
 
 module.exports = {
   index: (req, res) => {
@@ -19,7 +19,7 @@ module.exports = {
         (error, profil) => {
           if (error) console.log(error)
           else {
-            var kategori = req.query.kategori
+            let kategori = req.query.kategori
             let condition = kategori ? {
               kategori: {
                 [Op.like]: `%${kategori}%`
@@ -30,7 +30,7 @@ module.exports = {
                 where: condition
               })
               .then((kategori) => {
-                var tag = req.query.tag
+                let tag = req.query.tag
                 let condition = tag ? {
                   tag: {
                     [Op.like]: `%${tag}%`
@@ -89,7 +89,7 @@ module.exports = {
   tambah: (req, res) => {
     if (req.body.submit == "tambah") {
 
-      var {
+      let {
         nama,
         sumber,
         desk,
@@ -99,7 +99,7 @@ module.exports = {
         tag
       } = req.body
 
-        var post = {
+        let post = {
           nama_lomba: nama,
           sumber: sumber,
           desk: desk,
@@ -115,7 +115,7 @@ module.exports = {
             
             if (Array.isArray(tag)) {
               tag.forEach((tags) => {
-                var isi = {
+                let isi = {
                   jenis_lomba_id: data.id,
                   tag_lomba_id: tags
                 }
@@ -130,7 +130,7 @@ module.exports = {
                   })
               })
             } else if (!Array.isArray(tag)) {
-              var isi = {
+              let isi = {
                 jenis_lomba_id: data.id,
                 tag_lomba_id: tag
               };
@@ -191,7 +191,7 @@ module.exports = {
         //     if (err) console.log(err)
         //     else {
         //       console.log(tag)
-        //       var jenis = jenisLomba.insertId;
+        //       let jenis = jenisLomba.insertId;
 
         //       db.query(
         //         'DELETE FROM `tag` WHERE id_jenis = ?',
@@ -232,7 +232,7 @@ module.exports = {
   },
 
   findAll: (req, res) => {
-    var nama_lomba = req.query.nama_lomba
+    let nama_lomba = req.query.nama_lomba
     let condition = nama_lomba ? {
       nama_lomba: {
         [Op.like]: `%${nama_lomba}%`
@@ -252,7 +252,7 @@ module.exports = {
   },
 
   findOne: (req, res) => {
-    var id = req.params.id;
+    let id = req.params.id;
 
     Post.findByPk(id)
       .then((data) => {

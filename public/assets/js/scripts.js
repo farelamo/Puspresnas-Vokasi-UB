@@ -26,7 +26,7 @@ if (window.Dropzone) {
 
 // Basic confirm box
 $('[data-confirm]').each(function () {
-  var me = $(this),
+  let me = $(this),
     me_data = me.data('confirm');
 
   me_data = me_data.split("|");
@@ -61,7 +61,7 @@ $(function () {
     },
     now_layout_class = null;
 
-  var sidebar_sticky = function () {
+  let sidebar_sticky = function () {
     if ($("body").hasClass('layout-2')) {
       $("body.layout-2 #sidebar-wrapper").stick_in_parent({
         parent: $('body')
@@ -73,8 +73,8 @@ $(function () {
   }
   sidebar_sticky();
 
-  var sidebar_nicescroll;
-  var update_sidebar_nicescroll = function () {
+  let sidebar_nicescroll;
+  let update_sidebar_nicescroll = function () {
     let a = setInterval(function () {
       if (sidebar_nicescroll != null)
         sidebar_nicescroll.resize();
@@ -85,14 +85,14 @@ $(function () {
     }, 600);
   }
 
-  var sidebar_dropdown = function () {
+  let sidebar_dropdown = function () {
     if ($(".main-sidebar").length) {
       $(".main-sidebar").niceScroll(sidebar_nicescroll_opts);
       sidebar_nicescroll = $(".main-sidebar").getNiceScroll();
 
       $(".main-sidebar .sidebar-menu li a.has-dropdown").off('click').on('click', function () {
-        var me = $(this);
-        var active = false;
+        let me = $(this);
+        let active = false;
         if (me.parent().hasClass("active")) {
           active = true;
         }
@@ -148,7 +148,7 @@ $(function () {
     $(".nav-collapse .navbar-nav").removeClass('show');
   });
 
-  var toggle_sidebar_mini = function (mini) {
+  let toggle_sidebar_mini = function (mini) {
     let body = $('body');
 
     if (!mini) {
@@ -187,7 +187,7 @@ $(function () {
   }
 
   $("[data-toggle='sidebar']").click(function () {
-    var body = $("body"),
+    let body = $("body"),
       w = $(window);
 
     if (w.outerWidth() <= 1024) {
@@ -213,8 +213,8 @@ $(function () {
     return false;
   });
 
-  var toggleLayout = function () {
-    var w = $(window),
+  let toggleLayout = function () {
+    let w = $(window),
       layout_class = $('body').attr('class') || '',
       layout_classes = (layout_class.trim().length > 0 ? layout_class.split(' ') : '');
 
@@ -310,7 +310,7 @@ $(function () {
   $(window).resize(toggleLayout);
 
   $("[data-toggle='search']").click(function () {
-    var body = $("body");
+    let body = $("body");
 
     if (body.hasClass('search-gone')) {
       body.addClass('search-gone');
@@ -398,7 +398,7 @@ $(function () {
 
   // Follow function
   $('.follow-btn, .following-btn').each(function () {
-    var me = $(this),
+    let me = $(this),
       follow_text = 'Follow',
       unfollow_text = 'Following';
 
@@ -424,7 +424,7 @@ $(function () {
 
   // Dismiss function
   $("[data-dismiss]").each(function () {
-    var me = $(this),
+    let me = $(this),
       target = me.data('dismiss');
 
     me.click(function () {
@@ -437,7 +437,7 @@ $(function () {
 
   // Collapsable
   $("[data-collapse]").each(function () {
-    var me = $(this),
+    let me = $(this),
       target = me.data('collapse');
 
     me.click(function () {
@@ -456,7 +456,7 @@ $(function () {
 
   // Gallery
   $(".gallery .gallery-item").each(function () {
-    var me = $(this);
+    let me = $(this);
 
     me.attr('href', me.data('image'));
     me.attr('title', me.data('title'));
@@ -481,7 +481,7 @@ $(function () {
 
   // Background
   $("[data-background]").each(function () {
-    var me = $(this);
+    let me = $(this);
     me.css({
       backgroundImage: 'url(' + me.data('background') + ')'
     });
@@ -489,11 +489,11 @@ $(function () {
 
   // Custom Tab
   $("[data-tab]").each(function () {
-    var me = $(this);
+    let me = $(this);
 
     me.click(function () {
       if (!me.hasClass('active')) {
-        var tab_group = $('[data-tab-group="' + me.data('tab') + '"]'),
+        let tab_group = $('[data-tab-group="' + me.data('tab') + '"]'),
           tab_group_active = $('[data-tab-group="' + me.data('tab') + '"].active'),
           target = $(me.attr('href')),
           links = $('[data-tab="' + me.data('tab') + '"]');
@@ -509,7 +509,7 @@ $(function () {
 
   // Bootstrap 4 Validation
   $(".needs-validation").submit(function () {
-    var form = $(this);
+    let form = $(this);
     if (form[0].checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
@@ -519,7 +519,7 @@ $(function () {
 
   // alert dismissible
   $(".alert-dismissible").each(function () {
-    var me = $(this);
+    let me = $(this);
 
     me.find('.close').click(function () {
       me.alert('close');

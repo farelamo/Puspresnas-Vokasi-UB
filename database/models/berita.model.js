@@ -1,5 +1,5 @@
 module.exports = (sequelize,Sequelize) => {
-    var Berita = sequelize.define('berita', 
+    let Berita = sequelize.define('berita', 
     {
         judul: {
             type: Sequelize.STRING

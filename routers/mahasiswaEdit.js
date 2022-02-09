@@ -1,6 +1,6 @@
-var express = require('express')
-var mahasiswaEdit = express.Router()
-var controller = require('../app/controller/mahasiswaEdit')
+let express = require('express')
+let mahasiswaEdit = express.Router()
+let controller = require('../app/controller/mahasiswaEdit')
 
 mahasiswaEdit.route('/mahasiswaEdit/:id')
     .get(controller.index)

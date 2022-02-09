@@ -40,7 +40,7 @@
 	}
 }(function( $, window, document, undefined ) {
 'use strict';
-var DataTable = $.fn.dataTable;
+let DataTable = $.fn.dataTable;
 
 
 /* Set the defaults for DataTables initialisation */
@@ -65,15 +65,15 @@ $.extend( DataTable.ext.classes, {
 
 /* Bootstrap paging button renderer */
 DataTable.ext.renderer.pageButton.bootstrap = function ( settings, host, idx, buttons, page, pages ) {
-	var api     = new DataTable.Api( settings );
-	var classes = settings.oClasses;
-	var lang    = settings.oLanguage.oPaginate;
-	var aria = settings.oLanguage.oAria.paginate || {};
-	var btnDisplay, btnClass, counter=0;
+	let api     = new DataTable.Api( settings );
+	let classes = settings.oClasses;
+	let lang    = settings.oLanguage.oPaginate;
+	let aria = settings.oLanguage.oAria.paginate || {};
+	let btnDisplay, btnClass, counter=0;
 
-	var attach = function( container, buttons ) {
-		var i, ien, node, button;
-		var clickHandler = function ( e ) {
+	let attach = function( container, buttons ) {
+		let i, ien, node, button;
+		let clickHandler = function ( e ) {
 			e.preventDefault();
 			if ( !$(e.currentTarget).hasClass('disabled') && api.page() != e.data.action ) {
 				api.page( e.data.action ).draw( 'page' );
@@ -158,7 +158,7 @@ DataTable.ext.renderer.pageButton.bootstrap = function ( settings, host, idx, bu
 
 	// IE9 throws an 'unknown error' if document.activeElement is used
 	// inside an iframe or frame. 
-	var activeEl;
+	let activeEl;
 
 	try {
 		// Because this approach is destroying and recreating the paging

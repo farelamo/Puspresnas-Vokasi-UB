@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    var tag = sequelize.define("tag", {
+    let tag = sequelize.define("tag", {
         // id: {
         //     type: Sequelize.INTEGER,
         //     primaryKey: true,
