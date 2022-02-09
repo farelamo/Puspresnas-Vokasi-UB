@@ -42,6 +42,7 @@ module.exports = {
                                     db.query(
                                       'SELECT * FROM tag_lomba',
                                       (err, tag_lomba) => {
+                                        
                                         res.render('admin/index', {
                                           profil,
                                           page,
@@ -51,7 +52,8 @@ module.exports = {
                                           jenis_lomba,
                                           bidang_lomba,
                                           kategori_lomba,
-                                          tag_lomba
+                                          tag_lomba,
+                                          req: req
                                         });
                                       }
                                     )

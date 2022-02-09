@@ -1,8 +1,8 @@
 var db = require('../config/database')
-var Db = require("../../database/models");
-var Post = Db.mahasiswa;
-var Op = Db.Sequelize.Op;
-var sess;
+var Db = require("../../database/models")
+var Post = Db.mahasiswa
+var Op = Db.Sequelize.Op
+var sess
 
 module.exports = {
   index: (req, res) => {

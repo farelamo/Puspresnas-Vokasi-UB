@@ -1,16 +1,132 @@
+<head>
+  <style>
+   .vote-result-wrapper{
+      width: 700px;
+      height: 700px;
+   }
+   </style>
 
-        <section class="section">
-          <div class="section-header">
-            <div class="row m-0">
-              <h1 class="mr-3">Reporting</h1>
-            </div>
-          </div>
+  <script>
+  function date() {
+    var lineData;
 
-          <div class="section-body">
-            <div class="card">
-              <div class="card-body">
-                
-              </div>
-            </div>
+    var start = document.getElementById("startDate").value;
+    document.getElementById("tes1").innerHTML = "Start selected: " + start;
+
+    var end = document.getElementById("endDate").value;
+    document.getElementById("tes2").innerHTML = "End selected: " + end;
+
+      fetch("http://localhost:8000/api/report", {
+          method: "POST",
+          body: JSON.stringify({
+            dateStart: start, 
+            dateEnd: end
+          }),
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+      }).then((response) => {
+            return response.json()
+        .then((res) => {
+          if(res.status == "true"){
+            document.getElementById("notFound").style.display = "none"
+            document.getElementById('grafikData').style.display = "block"
+            
+            let save = res.data
+
+            //looping data bulan res.month
+            let bulan = []
+            save.forEach((m) => {
+              bulan.push(m.month)
+            })
+
+            // looping data bulan res.month
+            let jmlData = []
+            save.forEach((d) => {
+              jmlData.push(d.count)
+            })
+
+            lineData = {
+              labels: bulan, //month
+              datasets: [
+                {
+                  label: ' Mahasiswa ',
+                  data:  jmlData, //countData
+                  borderWidth: 2,
+                  backgroundColor: '#6777ef',
+                  borderColor: '#6777ef',
+                  borderWidth: 2.5,
+                  pointBackgroundColor: '#ffffff',
+                  pointRadius: 4
+                }
+              ]
+            }
+            var context = document.getElementById('grafikData').getContext('2d');
+            var clientsChart = new Chart(context, {
+                type: 'line',
+                data: lineData,
+                options: {
+                  legend: {
+                    display: false
+                  },
+                  scales: {
+                    y: {beginAtZero: true},
+                      yAxes: [{
+                        gridLines: {
+                          drawBorder: true, //month view
+                          color: '#f2f2f2',},
+                          ticks: {beginAtZero: true}
+                      }],
+                        xAxes: [{
+                            ticks: {display: true},
+                            gridLines: {display: true}
+                        }]
+                  }
+                }
+            })
+          }else {
+            document.getElementById("notFound").style.display = "block"
+            document.getElementById('grafikData').style.display = "none"
+          }
+        }).catch((err) => {
+            document.getElementById("notFound").style.display = "block"
+            document.getElementById('grafikData').style.display = "none"
+        })
+      })
+  }
+    </script>
+</head>
+
+<section class="section">
+  <div class="section-header">
+    <div class="row m-0">
+      <h1 class="mr-3">Reporting</h1>
+    </div>
+  </div>
+
+  <div class="section-body">
+    <div class="card">
+      <div class="card-body">
+        <h1>Report Mahasiswa</h1>
+        <div class="d-flex justify-content-between">
+          <div class="form-group awal">
+            <label>Start Date</label>
+            <input type="text" class="form-control datepicker" 
+              id="startDate" onchange="date()">
           </div>
-        </section>
+          <div class="form-group awal">
+            <label>End Date</label>
+            <input type="text" class="form-control datepicker" id="endDate" 
+            onchange="date()">
+          </div>
+        </div>
+        <div class="d-flex justify-content-between">
+          <p id="tes1"></p>
+          <p id="tes2"></p>
+        </div>
+        <canvas id="grafikData" style="display: none"></canvas>
+        <h2 id="notFound" style="display: none">
+          <center>Data grafik not found</center>
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>

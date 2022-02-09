@@ -2,7 +2,10 @@ var express  = require('express')
 var session  = require('express-session')
 var upload = require("express-fileupload")
 var bodyparser = require('body-parser')
-var flash = require('flash-express')
+var flash = require("connect-flash")
+var toastr = require('express-toastr')
+var cookieParser = require('cookie-parser')
+const axios = require("axios");
 //var helmet = require('helmet')
 var cors = require("cors")
 var app = express()
@@ -13,13 +16,22 @@ var apiDocumentation = require('./apidocs.json')
 app.use('/api-docs',swaggerUi.serve, swaggerUi.setup(apiDocumentation))
 
 //Initialization
-app.use(express.static('public'));
-app.use(express.urlencoded({extended: false}));
-app.use(bodyparser.urlencoded({extended: true}));
-app.use(session({secret: 'excalibur'}));
-app.use(upload());
-app.set('view engine','ejs');
-app.use(flash());
+app.use(express.static('public'))
+app.use(express.urlencoded({extended: false}))
+// app.use(bodyparser.urlencoded({extended: true}))
+app.use(bodyparser.json())
+// app.use(session({secret: 'excalibur'}))
+app.use(cookieParser('secret'))
+app.use(session({
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: true
+}))
+app.use(toastr());
+app.use(flash())
+app.use(upload())
+app.set('view engine','ejs')
+// app.use(axios)
 
 //Routers ADMIN
 var dashboard = require('./routers/dashboard')
@@ -57,6 +69,7 @@ var kategoriLombaAPI = require('./API/routersAPI/kategoriLombaAPI')
 var tagAPI = require('./API/routersAPI/tagAPI')
 var tagLombaAPI = require('./API/routersAPI/tagLombaAPI')
 var mahasiswaAPI = require('./API/routersAPI/mahasiswaAPI')
+var reportAPI = require('./API/routersAPI/reportAPI')
 
 // MIGRATE SYNC
 // var db = require('./database/models')
@@ -85,6 +98,7 @@ let corsOptions = {
 app.use(index)
 app.use(auth)
 app.use(profil)
+app.use(user)
 app.use(dashboard)
 app.use(artikel)
 app.use(artikelNew)
@@ -101,7 +115,6 @@ app.use(editBidang)
 app.use(lombaAll)
 app.use(lombaCat)
 app.use(lombaTag)
-app.use(user)
 app.use(mahasiswa)
 app.use(mahasiswaNew)
 app.use(mahasiswaEdit)
@@ -117,6 +130,7 @@ app.use(kategoriLombaAPI)
 app.use(tagAPI)
 app.use(tagLombaAPI)
 app.use(mahasiswaAPI)
+app.use(reportAPI)
 
 //CONFIGURASI SERVER LOCAL
 app.listen(8000, ()=> {
