@@ -27,28 +27,29 @@
             return response.json()
         .then((res) => {
           if(res.status == "true"){
-            
             document.getElementById("notFound").style.display = "none"
             document.getElementById('grafikData').style.display = "block"
-           //looping data bulan res.month
-          //  console.log(res.data[0].month)
-          //   let month2 = []
-          //   let count2 = []
-          //   for(i = 0; i <= res.data.length; i++){
-          //     count2.push(res.data[i].count)
-          //     month2.push(res.data[i].month)
-          //   }
-          //   console.log(month2)
-            lineData = {
-              labels: [res.data[0].month, res.data[1].month], /*monthData (
-                    pengennya ambil dari api terus di split bulannya doang, abis itu dijadiin string dari angka ke nama bulan pake Date
-                  )*/
+            
+            let save = res.data
 
-              //looping res.count
+            //looping data bulan res.month
+            let bulan = []
+            save.forEach((m) => {
+              bulan.push(m.month)
+            })
+
+            // looping data bulan res.month
+            let jmlData = []
+            save.forEach((d) => {
+              jmlData.push(d.count)
+            })
+
+            lineData = {
+              labels: bulan, //month
               datasets: [
                 {
                   label: ' Mahasiswa ',
-                  data:  [res.data[0].count, res.data[1].count], //countData
+                  data:  jmlData, //countData
                   borderWidth: 2,
                   backgroundColor: '#6777ef',
                   borderColor: '#6777ef',
@@ -81,9 +82,6 @@
                   }
                 }
             })
-            clientsChart.data.datasets = lineData.datasets;
-            clientsChart.data.labels = lineData.labels;
-            clientsChart.update()
           }else {
             document.getElementById("notFound").style.display = "block"
             document.getElementById('grafikData').style.display = "none"
