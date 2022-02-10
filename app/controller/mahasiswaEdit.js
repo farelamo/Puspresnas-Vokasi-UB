@@ -1,7 +1,7 @@
-let db = require('../config/database')
-let Db = require("../../database/models");
-let sess;
-let Post = Db.mahasiswa;
+var db = require('../config/database')
+var Db = require("../../database/models");
+var sess;
+var Post = Db.mahasiswa;
 module.exports = {
   index: (req, res) => {
     sess = req.session;
@@ -48,13 +48,13 @@ module.exports = {
 
   crud: (req, res) => {
     if (req.body.submit=="edit") {
-      let id          = req.body.id;
-      let nama        = req.body.nama;
-      let nim         = req.body.nim;
-      let jurusan     = req.body.jurusan;
-      let bidang_minat = req.body.bidang_minat;
-      let jenis_lomba_id = req.body.jenis_lomba_id;
-      let peringkat   = req.body.peringkat;
+      var id          = req.body.id;
+      var nama        = req.body.nama;
+      var nim         = req.body.nim;
+      var jurusan     = req.body.jurusan;
+      var bidang_minat = req.body.bidang_minat;
+      var jenis_lomba_id = req.body.jenis_lomba_id;
+      var peringkat   = req.body.peringkat;
       db.query(
         "UPDATE `mahasiswa` SET `nama`=?,`nim`=?,`jurusan`=?,`bidang_minat`=?,`jenis_lomba_id`=?,`peringkat`=?, `beritum_id`=? WHERE `id` = ?",
         [nama, nim, jurusan,bidang_minat, jenis_lomba_id,peringkat, req.body.id_berita, req.body.id],
@@ -67,15 +67,15 @@ module.exports = {
   }
   // crud: (req, res) => {
   //     if (req.body.submit == "edit") {
-  //       let id = req.body.id;
-  //       let nama     = req.body.nama;
-  //       let nim = req.body.nim;
-  //       let jurusan       = req.body.jurusan;
-  //       let bidang_minat       = req.body.bidang_minat;
-  //       let nama_lomba       = req.body.nama_lomba;
-  //       let peringkat       = req.body.peringkat;
-  //       let pelaksana       = req.body.pelaksana;
-  //       let id_berita       = req.body.id_berita;
+  //       var id = req.body.id;
+  //       var nama     = req.body.nama;
+  //       var nim = req.body.nim;
+  //       var jurusan       = req.body.jurusan;
+  //       var bidang_minat       = req.body.bidang_minat;
+  //       var nama_lomba       = req.body.nama_lomba;
+  //       var peringkat       = req.body.peringkat;
+  //       var pelaksana       = req.body.pelaksana;
+  //       var id_berita       = req.body.id_berita;
 
   //       Post.update({
   //         nama: nama,

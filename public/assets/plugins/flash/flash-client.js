@@ -1,8 +1,8 @@
 //write n get cookies n show flash
 //work around to delete cookies
-let flash = function () { }
-let style = {}
-let mainDivs = {};
+var flash = function () { }
+var style = {}
+var mainDivs = {};
 style.default = "opacity: 1;float:left;padding: .3em .4em;margin:0 auto .5em;display:inline-block;clear:both;position:relative;min-width:120px; /* 610/13 */ *max-width:45.750em; /* 610/13.3333 - for IE */";
 style.tl = "top:0;left:0;";
 style.t = "right:45%;top:0;";
@@ -17,23 +17,23 @@ style.info = "color:blue;background-color: rgba(26, 22, 242, 0.42);border-radius
 style.warn = "color:coral;background-color: rgba(255, 250, 80, 0.87);border-radius: 5px;border: 1px coral solid;";
 style.error = "color:red;background-color: rgba(255, 0, 0, 0.42);border-radius: 5px;border: 1px red solid;";
 flash.prototype.clearFlash = function (cname) {
-    let d = new Date();
-    let expires = "expires=" + d.toUTCString();
+    var d = new Date();
+    var expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + "; " + expires;
 }
 flash.prototype.getFlash = function () {
-    let name = "flash-";
-    let flash = [];
-    let ca = document.cookie.split(';');
+    var name = "flash-";
+    var flash = [];
+    var ca = document.cookie.split(';');
     //console.log(ca);
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
         while (c.charAt(0) == ' ') {
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {
-            let str = c.substring(name.length + 5, c.length);
-            let str = JSON.parse(unescape(str));
+            var str = c.substring(name.length + 5, c.length);
+            var str = JSON.parse(unescape(str));
             flash.push(str);
             this.show(str);
             this.clearFlash(c.substring(name.length + 5, 0));
@@ -42,7 +42,7 @@ flash.prototype.getFlash = function () {
     return flash;
 }
 flash.prototype.show = function (flash) {
-    let flashDiv = document.createElement('div');
+    var flashDiv = document.createElement('div');
     flashDiv.innerHTML = flash.msg;
     flashDiv.setAttribute("style", this.getFlashStyle(flash));
     this.getMainDiv(flash.option).appendChild(flashDiv);
@@ -53,7 +53,7 @@ flash.prototype.getFlashStyle = function (flash) {
     return style.default + style[flash.type];
 }
 flash.prototype.getMainDiv = function (option) {
-    let div;
+    var div;
     if (mainDivs[option.position]) {
         return mainDivs[option.position];
     } else {
@@ -67,8 +67,8 @@ flash.prototype.getMainDiv = function (option) {
 }
 flash.prototype.fadeOut = function (div) {
     //div.style.opacity=1;
-    let i = 100;
-    let fn = setInterval(function () {
+    var i = 100;
+    var fn = setInterval(function () {
         console.log(i)
         if (i == 0) {
             clearInterval(fn);
@@ -81,5 +81,5 @@ flash.prototype.fadeOut = function (div) {
 
 }
 
-let f = new flash();
-let d = f.getFlash();
+var f = new flash();
+var d = f.getFlash();

@@ -12,8 +12,8 @@
         <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link
                 dropdown-toggle nav-link-lg nav-link-user">
                 <%
-                    let nama= profil[0].nama;
-                    let foto= profil[0].foto;
+                    var nama= profil[0].nama;
+                    var foto= profil[0].foto;
                     if (foto =="" || foto == null){foto="default.png" ;}
                     %>
                     <img alt="image" src="/assets/img/profil/<%= foto %>"

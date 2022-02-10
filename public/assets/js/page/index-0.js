@@ -1,8 +1,8 @@
 "use strict";
 
-let statistics_chart = document.getElementById("myChart").getContext('2d');
+var statistics_chart = document.getElementById("myChart").getContext('2d');
 
-let myChart = new Chart(statistics_chart, {
+var myChart = new Chart(statistics_chart, {
   type: 'line',
   data: {
     labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
@@ -81,7 +81,7 @@ function getWeather() {
   location: 'Bogor, Indonesia',
   unit: 'c',
   success: function(weather) {
-    let html = '';
+    var html = '';
     html += '<div class="weather">';
     html += '<div class="weather-icon text-primary"><span class="wi wi-yahoo-' + weather.code + '"></span></div>';
     html += '<div class="weather-desc">';

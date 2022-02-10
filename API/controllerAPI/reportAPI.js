@@ -1,31 +1,31 @@
-let Db = require("../../database/models")
-let mhs = Db.mahasiswa
-let jenisLomba = Db.jenisLomba
-let Op = Db.Sequelize.Op
+var Db = require("../../database/models")
+var mhs = Db.mahasiswa
+var jenisLomba = Db.jenisLomba
+var Op = Db.Sequelize.Op
 
 module.exports = {
     countData: async (req, res) => {
         try{ 
-            let dateStart = req.body.dateStart
-            let dateEnd = req.body.dateEnd
+            var dateStart = req.body.dateStart
+            var dateEnd = req.body.dateEnd
 
-            let listDate = [];
-            let awal = dateStart;
-            let akhir = dateEnd;
-            let dateMove = new Date(awal);
-            let strDate = awal;
+            var listDate = [];
+            var awal = dateStart;
+            var akhir = dateEnd;
+            var dateMove = new Date(awal);
+            var strDate = awal;
 
             while (strDate < akhir){
-                let strDate = dateMove.toISOString().slice(0,10);
+                var strDate = dateMove.toISOString().slice(0,10);
                 listDate.push(strDate);
                 dateMove.setDate(dateMove.getDate()+1);
             };
             console.log(listDate);
             
             
-            let resultDate = []
+            var resultDate = []
             for(i = 0; i < listDate.length; i++){
-                let tmp = {tanggal: {[Op.like]: `%${listDate[i]}%`}}
+                var tmp = {tanggal: {[Op.like]: `%${listDate[i]}%`}}
                 resultDate.push(tmp)
             }
             await jenisLomba.findAll({where: {[Op.or]: resultDate}}) //jenisLomba
@@ -44,18 +44,18 @@ module.exports = {
                     10. masukkan z pada object count yang sudah di increment tadi 
                 */
 
-                let json = []
+                var json = []
                 data.forEach((t)=>{
                     const text = t.tanggal //2022-02-07
                     const result = text.trim().split("-") //remove "-" will be [2022,02,07] with index [0,1,2]
-                    let d = result[1] //index ke 1 yaitu 02
-                    let cek = (d < 10) ? d.slice(1,2) : d //less than 10 will remove 0, ex: 02 will be 2
+                    var d = result[1] //index ke 1 yaitu 02
+                    var cek = (d < 10) ? d.slice(1,2) : d //less than 10 will remove 0, ex: 02 will be 2
                     const months = [                       // array month
                         "January", "February", "March", 
                         "April", "May", "June", "July", "August", 
                         "September", "October", "November", "December"
                     ]
-                    let resMonth = months[parseInt(cek) - 1] //convert to Integer and -1 cause by array month start index at 0
+                    var resMonth = months[parseInt(cek) - 1] //convert to Integer and -1 cause by array month start index at 0
                     json.push({id: t.id, month: resMonth}) //save id and month object
                 })
                 console.log(json)
@@ -68,9 +68,9 @@ module.exports = {
                 }else if(data.length < 1){
                     res.status(204).send('Data not found !!')
                 }else {
-                    let resultData = []
+                    var resultData = []
                     for(i = 0; i < data.length; i++){
-                        let tmp = {jenis_lomba_id: {[Op.like]: `%${data[i].id}%`}}
+                        var tmp = {jenis_lomba_id: {[Op.like]: `%${data[i].id}%`}}
                         resultData.push(tmp)
                     }
                     console.log(resultData) 
@@ -78,7 +78,7 @@ module.exports = {
                         .then(result => {
                             
                             json.forEach((j) => {
-                                let z = 0;
+                                var z = 0;
                                 result.forEach((r) => {
                                     if(j.id == r.jenis_lomba_id){
                                         z++ //increment z for every match between json.id and jenis_lomba_id

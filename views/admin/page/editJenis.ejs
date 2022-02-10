@@ -184,19 +184,19 @@
                                                                                 <script>
 
   document.getElementById('test').addEventListener('change', function () {
-    let id = this.value
+    var id = this.value
     console.log(this.value)
 
-    let hasil = document.getElementsByClassName('selectTag');
+    var hasil = document.getElementsByClassName('selectTag');
     console.log(2)
-    for (let i = 0; i < hasil.length; i++) {
+    for (var i = 0; i < hasil.length; i++) {
       hasil[i].style.display = "none";
       console.log(hasil.length)
     }
 
-    let tag = document.getElementsByClassName('kategori' + id)
+    var tag = document.getElementsByClassName('kategori' + id)
     console.log(4)
-    for (let i = 0; i < tag.length; i++) {
+    for (var i = 0; i < tag.length; i++) {
       tag[i].style.display = "block";
       console.log(tag.length)
     }
@@ -204,13 +204,13 @@
   });
 
   function getSelectedChbox(frm) {
-    let selchbox = []; //data dimasukin ke array 
+    var selchbox = []; //data dimasukin ke array 
 
     // dapetin semua data dan nomor yang dimasukkan ke frm yang sebelum e udah dipilih lalu disimpan di variabel inpfields
-    let inpfields = frm.getElementsByTagName('input');
+    var inpfields = frm.getElementsByTagName('input');
 
     // ngubah data yg disimpan di inpfields jadi checkbox, terus valuenya dichecked (dicentang) agar terpilih
-    for (let i = 0; i < inpfields.length; i++) {
+    for (var i = 0; i < inpfields.length; i++) {
       if (inpfields[i].type == 'checkbox' && inpfields[i].checked == true) selchbox.push(inpfields[i].value);
     }
 
@@ -219,7 +219,7 @@
 
   //cuma ngasih pop up buat testing nampilin data yang udah dipilih dan diolah dari proses inpfield
   document.getElementById('tag').onclick = function () {
-    let selchb = getSelectedChbox(this.form); // dapetin array dari fungsi getSelectedChbox()
+    var selchb = getSelectedChbox(this.form); // dapetin array dari fungsi getSelectedChbox()
     alert(selchb);
     return selchb;
   }

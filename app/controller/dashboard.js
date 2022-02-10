@@ -1,5 +1,5 @@
-let db = require('../config/database')
-let sess;
+var db = require('../config/database')
+var sess;
 
 module.exports = {
   index: (req, res) => {
@@ -13,7 +13,7 @@ module.exports = {
         (err, profil) => {
           if (err) console.log(err)
           else {
-            let page = req.url.split('/')[1];
+            var page = req.url.split('/')[1];
             /* 
               ('/') = untuk mendapatkan nama page dari url yang dipencet (dri router)   
                [1] buat nentuin index mana yang diambil,

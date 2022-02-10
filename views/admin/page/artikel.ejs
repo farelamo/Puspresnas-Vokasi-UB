@@ -40,11 +40,11 @@
                                             </thead>
                                             <tbody>
                                                 <%
-                                                    let no= 1;
+                                                    var no= 1;
                                                     artikel.forEach((data)=> {
-                                                    if (data.foto!==""){ let
+                                                    if (data.foto!==""){ var
                                                     foto = data.foto;}
-                                                    else {let foto =
+                                                    else {var foto =
                                                     "default.png";}
                                                     %>
                                                     <tr>
@@ -267,12 +267,12 @@
 
                                         <script type="text/javascript">
   function hapusArtikel(idartikel){
-    let dataArtikel = (document.getElementById(idartikel).textContent).split(",");
+    var dataArtikel = (document.getElementById(idartikel).textContent).split(",");
     document.getElementById("dId").value = idartikel;
     document.getElementById("dHapus").textContent = 'Apakah anda yakin ingin menghapus "'+dataArtikel[0]+'"?';
   }
   function fotoArtikel(idartikel){
-    let dataArtikel = (document.getElementById(idartikel).textContent).split(",");
+    var dataArtikel = (document.getElementById(idartikel).textContent).split(",");
     document.getElementById("fId").value = idartikel;
   }
 </script>

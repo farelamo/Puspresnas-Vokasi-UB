@@ -7,12 +7,12 @@
    </style>
     <script>
   function date() {
-    let lineData;
+    var lineData;
 
-    let start = document.getElementById("startDate").value;
+    var start = document.getElementById("startDate").value;
     document.getElementById("tes1").innerHTML = "Start selected: " + start;
 
-    let end = document.getElementById("endDate").value;
+    var end = document.getElementById("endDate").value;
     document.getElementById("tes2").innerHTML = "End selected: " + end;
 
       fetch("http://localhost:8000/api/report", {
@@ -29,16 +29,16 @@
             document.getElementById("notFound").style.display = "none"
             document.getElementById('grafikData').style.display = "block"
             
-            let save = res.data
+            var save = res.data
 
             //looping data bulan res.month
-            let bulan = []
+            var bulan = []
             save.forEach((m) => {
               bulan.push(m.month)
             })
 
             // looping data bulan res.month
-            let jmlData = []
+            var jmlData = []
             save.forEach((d) => {
               jmlData.push(d.count)
             })
@@ -58,8 +58,8 @@
                 }
               ]
             }
-            let context = document.getElementById('grafikData').getContext('2d');
-            let clientsChart = new Chart(context, {
+            var context = document.getElementById('grafikData').getContext('2d');
+            var clientsChart = new Chart(context, {
                 type: 'line',
                 data: lineData,
                 options: {

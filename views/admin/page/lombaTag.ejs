@@ -24,7 +24,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% let no=1; tag.forEach((data)=> {
+                        <% var no=1; tag.forEach((data)=> {
                             %>
                             <tr>
                                 <td class="text-center">
@@ -300,12 +300,12 @@
                                                     <script
                                                         type="text/javascript">
   function editBuku(idedit) {
-    let dataTag = (document.getElementById(idedit).textContent).split(",");
+    var dataTag = (document.getElementById(idedit).textContent).split(",");
     document.getElementById("eIdTag").value = idedit;
     document.getElementById("eTag").value = dataTag[0];
   }
   function hapusBuku(idhapus) {
-    let datatag = (document.getElementById(idhapus).textContent).split(",");
+    var datatag = (document.getElementById(idhapus).textContent).split(",");
     document.getElementById("dIdTag").value = idhapus;
     document.getElementById("dhapus").textContent = 'Apakah anda yakin ingin menghapus "' + datatag[0] + '"?';
   }

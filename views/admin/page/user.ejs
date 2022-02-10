@@ -36,11 +36,11 @@
                                 </thead>
                                 <tbody>
                                     <%
-                                        let no= 1;
+                                        var no= 1;
                                         user.forEach((data)=> {
-                                        if (data.foto!==""){ let foto =
+                                        if (data.foto!==""){ var foto =
                                         data.foto;}
-                                        else {let foto = "default.png";}
+                                        else {var foto = "default.png";}
                                         %>
                                         <tr>
                                             <td class="text-center"><%= no %></td>
@@ -480,24 +480,24 @@
     document.getElementById("tPassword").value = "";
   }
   function editUser(iduser){
-    let dataUser = (document.getElementById(iduser).textContent).split(",");
+    var dataUser = (document.getElementById(iduser).textContent).split(",");
     document.getElementById("eId").value = iduser;
     document.getElementById("eUsername").value = dataUser[0];
     document.getElementById("eNama").value = dataUser[1];
     document.getElementById("ePassword").value = "";
-    for (let i = 0; i < document.getElementsByClassName("eLevel").length ; i++) {
+    for (var i = 0; i < document.getElementsByClassName("eLevel").length ; i++) {
       if (document.getElementsByClassName("eLevel")[i].value == dataUser[2]) {
         document.getElementsByClassName("eLevel")[i].selected = "true";
       }
     }
   }
   function fotoUser(iduser){
-    let dataUser = (document.getElementById(iduser).textContent).split(",");
+    var dataUser = (document.getElementById(iduser).textContent).split(",");
     document.getElementById("fId").value = iduser;
     document.getElementById("fDesc").textContent = 'Edit foto '+dataUser[1];
   }
   function hapusUser(iduser){
-    let dataUser = (document.getElementById(iduser).textContent).split(",");
+    var dataUser = (document.getElementById(iduser).textContent).split(",");
     document.getElementById("dId").value = iduser;
     document.getElementById("dHapus").textContent = 'Apakah anda yakin ingin menghapus "'+dataUser[1]+'"?';
   }

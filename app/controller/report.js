@@ -1,5 +1,5 @@
-let db = require('../config/database')
-let sess
+var db = require('../config/database')
+var sess
 
 module.exports = {
   index: (req, res) => {

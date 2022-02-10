@@ -1,5 +1,5 @@
-let db = require('../config/database')
-let sess
+var db = require('../config/database')
+var sess
 
 module.exports = {
 
@@ -20,7 +20,7 @@ module.exports = {
                             (error, bidang) => {
                                 if (error) console.log(error)
                                 else {
-                                    let idJenis = req.params.id
+                                    var idJenis = req.params.id
                                     console.log(idJenis)
                                     res.render('../views/admin/index.ejs', {
                                         profil,
@@ -37,7 +37,7 @@ module.exports = {
 
     edit: (req, res) => {
         if (req.body.submit == "edit") {
-            let {
+            var {
                 nama,
                 hadiah,
                 desk,
@@ -69,8 +69,8 @@ module.exports = {
                     }
                 )
             } else {
-                let file = req.files.berkas
-                let filename = req.params.id + '.pdf'
+                var file = req.files.berkas
+                var filename = req.params.id + '.pdf'
                 file.mv("public/assets/bidangLomba/" + filename, ((error) => {
                     if (error) console.log(error)
                     db.query(
@@ -79,8 +79,8 @@ module.exports = {
                         (error, edit) => {
                             if (error) console.log(error)
                             else {
-                                let gambar = req.files.gambar
-                                let namaGambar = req.params.id + '.png'
+                                var gambar = req.files.gambar
+                                var namaGambar = req.params.id + '.png'
                                 gambar.mv("public/assets/img/bidangLomba/" + namaGambar, ((error) => {
                                     if (error) console.log(error)
                                     db.query(

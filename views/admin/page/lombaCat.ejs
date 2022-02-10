@@ -25,7 +25,7 @@
                     </thead>
                     <tbody>
                         <%
-                            let no= 1;
+                            var no= 1;
                             isi.forEach((data)=> {
                             %>
                             <tr>
@@ -175,12 +175,12 @@
 
                     <script type="text/javascript">
   function editLomba(idlomba){
-    let dataLomba = (document.getElementById(idlomba).textContent).split(",");
+    var dataLomba = (document.getElementById(idlomba).textContent).split(",");
     document.getElementById("eIdLomba").value = idlomba;
     document.getElementById("eLomba").value = dataLomba[0];
   }
   function hapusLomba(hapuslomba){
-    let datalomba = (document.getElementById(hapuslomba).textContent).split(",");
+    var datalomba = (document.getElementById(hapuslomba).textContent).split(",");
     document.getElementById("dIdLomba").value = hapuslomba;
     document.getElementById("dhapus").textContent = 'Apakah anda yakin ingin menghapus "'+datalomba[0]+'"?';
   }

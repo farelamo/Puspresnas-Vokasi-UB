@@ -1,6 +1,6 @@
-let express = require('express')
-let beritaEdit = express.Router()
-let controller = require('../app/controller/beritaEdit')
+var express = require('express')
+var beritaEdit = express.Router()
+var controller = require('../app/controller/beritaEdit')
 
 beritaEdit.route('/beritaEdit/:id_berita')
     .get(controller.index)

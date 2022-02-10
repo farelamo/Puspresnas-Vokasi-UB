@@ -1,6 +1,6 @@
-let express = require('express')
-let profil = express.Router()
-let controller = require('../app/controller/profil')
+var express = require('express')
+var profil = express.Router()
+var controller = require('../app/controller/profil')
 
 profil.route('/profil')
     .get(controller.index)

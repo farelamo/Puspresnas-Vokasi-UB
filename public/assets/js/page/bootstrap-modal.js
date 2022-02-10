@@ -3,7 +3,7 @@
 $("#modal-1").fireModal({body: 'Modal body text goes here.'});
 $("#modal-2").fireModal({body: 'Modal body text goes here.', center: true});
 
-let modal_3_body = '<p>Object to create a button on the modal.</p><pre class="language-javascript"><code>';
+var modal_3_body = '<p>Object to create a button on the modal.</p><pre class="language-javascript"><code>';
 modal_3_body += '[\n';
 modal_3_body += ' {\n';
 modal_3_body += "   text: 'Login',\n";
@@ -49,11 +49,11 @@ $("#modal-5").fireModal({
   autoFocus: false,
   onFormSubmit: function(modal, e, form) {
     // Form Data
-    let form_data = $(e.target).serialize();
+    var form_data = $(e.target).serialize();
     console.log(form_data)
 
     // DO AJAX HERE
-    let fake_ajax = setTimeout(function() {
+    var fake_ajax = setTimeout(function() {
       form.stopProgress();
       modal.find('.modal-body').prepend('<div class="alert alert-info">Please check your browser console</div>')
 

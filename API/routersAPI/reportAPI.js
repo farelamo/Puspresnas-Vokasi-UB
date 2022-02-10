@@ -1,6 +1,6 @@
-let express = require('express')
-let reportAPI = express.Router()
-let controller = require('../controllerAPI/reportAPI')
+var express = require('express')
+var reportAPI = express.Router()
+var controller = require('../controllerAPI/reportAPI')
 
 reportAPI.post('/api/report', controller.countData)
 

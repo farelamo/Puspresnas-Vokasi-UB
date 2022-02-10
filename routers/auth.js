@@ -1,6 +1,6 @@
-let express = require('express')
-let auth = express.Router()
-let controller = require('../app/controller/auth')
+var express = require('express')
+var auth = express.Router()
+var controller = require('../app/controller/auth')
 
 auth.route('/login')
     .get(controller.login)

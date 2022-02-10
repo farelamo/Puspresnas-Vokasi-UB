@@ -1,12 +1,12 @@
 "use strict";
 
 $("[data-checkboxes]").each(function() {
-  let me = $(this),
+  var me = $(this),
     group = me.data('checkboxes'),
     role = me.data('checkbox-role');
 
   me.change(function() {
-    let all = $('[data-checkboxes="' + group + '"]:not([data-checkbox-role="dad"])'),
+    var all = $('[data-checkboxes="' + group + '"]:not([data-checkbox-role="dad"])'),
       checked = $('[data-checkboxes="' + group + '"]:not([data-checkbox-role="dad"]):checked'),
       dad = $('[data-checkboxes="' + group + '"][data-checkbox-role="dad"]'),
       total = all.length,

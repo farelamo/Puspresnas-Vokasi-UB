@@ -1,10 +1,10 @@
-let db = require('../config/database')
-let sess;
-let date_ob = new Date();
-let date = ("0" + date_ob.getDate()).slice(-2);
-let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-let year = date_ob.getFullYear();
-let datenow = year + "-" + month + "-" + date;
+var db = require('../config/database')
+var sess;
+var date_ob = new Date();
+var date = ("0" + date_ob.getDate()).slice(-2);
+var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+var year = date_ob.getFullYear();
+var datenow = year + "-" + month + "-" + date;
 
 module.exports = {
   index: (req, res) => {

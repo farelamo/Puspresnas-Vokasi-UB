@@ -1,8 +1,8 @@
 "use strict";
 
-let sparkline_values = [10, 7, 4, 8, 5, 8, 6, 5, 2, 4, 7, 4, 9, 6, 5, 9];
-let sparkline_values_chart = [2, 6, 4, 8, 3, 5, 2, 7];
-let sparkline_values_bar = [10, 7, 4, 8, 5, 8, 6, 5, 2, 4, 7, 4, 9, 10, 7, 4, 8, 5, 8, 6, 5, 2, 4, 7, 4, 9, 8, 6, 5, 2, 4, 7, 4, 9, 10, 2, 4, 7, 4, 9, 7, 4, 8, 5, 8, 6, 5];
+var sparkline_values = [10, 7, 4, 8, 5, 8, 6, 5, 2, 4, 7, 4, 9, 6, 5, 9];
+var sparkline_values_chart = [2, 6, 4, 8, 3, 5, 2, 7];
+var sparkline_values_bar = [10, 7, 4, 8, 5, 8, 6, 5, 2, 4, 7, 4, 9, 10, 7, 4, 8, 5, 8, 6, 5, 2, 4, 7, 4, 9, 8, 6, 5, 2, 4, 7, 4, 9, 10, 2, 4, 7, 4, 9, 7, 4, 8, 5, 8, 6, 5];
 
 $('.sparkline-inline').sparkline(sparkline_values, {
   type: 'line',
@@ -48,8 +48,8 @@ $(".sparkline-bar").sparkline(sparkline_values_bar, {
 });
 
 
-let ctx = document.getElementById("myChart").getContext('2d');
-let myChart = new Chart(ctx, {
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
@@ -105,8 +105,8 @@ let myChart = new Chart(ctx, {
   }
 });
 
-let ctx = document.getElementById("myChart2").getContext('2d');
-let myChart = new Chart(ctx, {
+var ctx = document.getElementById("myChart2").getContext('2d');
+var myChart = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
@@ -154,8 +154,8 @@ let myChart = new Chart(ctx, {
   }
 });
 
-let ctx = document.getElementById("myChart3").getContext('2d');
-let myChart = new Chart(ctx, {
+var ctx = document.getElementById("myChart3").getContext('2d');
+var myChart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],

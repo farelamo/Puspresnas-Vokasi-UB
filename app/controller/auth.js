@@ -1,8 +1,8 @@
-let db = require('../config/database')
-let Db = require('../../database/models')
-let users = Db.user
-let bcrypt = require('bcrypt')
-let sess;
+var db = require('../config/database')
+var Db = require('../../database/models')
+var users = Db.user
+var bcrypt = require('bcrypt')
+var sess;
 
 module.exports = {
     login: (req, res) => {
@@ -16,7 +16,7 @@ module.exports = {
           if(result == null){
             return res.redirect('login')
           }
-          let match = bcrypt.compareSync(req.body.password, result.password)
+          var match = bcrypt.compareSync(req.body.password, result.password)
           console.log(match)
           if(match){
             if(result.is_active == 1){
@@ -40,7 +40,7 @@ module.exports = {
     },
 
     register: (req, res) => {
-      let {name,username,password} = req.body
+      var {name,username,password} = req.body
       db.query('SELECT username FROM user WHERE username = ?',
       [username],
       async (error, result) => {
@@ -52,7 +52,7 @@ module.exports = {
               pesan: "Email sudah pernah terdaftar !!"
             })
           }else {
-            let hashedPassword = await bcrypt.hash(password, 8)
+            var hashedPassword = await bcrypt.hash(password, 8)
             console.log(hashedPassword)
             db.query('INSERT INTO user SET ?', 
               {

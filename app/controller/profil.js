@@ -1,5 +1,5 @@
-let db = require('../config/database')
-let sess;
+var db = require('../config/database')
+var sess;
 
 module.exports = {
   index: (req, res) => {
@@ -24,7 +24,7 @@ module.exports = {
         [sess.id_user],
         (err, user) => {
           if (err) console.log(err)
-          let usernameLama = user[0].username;
+          var usernameLama = user[0].username;
           console.log("username lama = "+usernameLama);
           console.log("username baru = "+req.body.username);
           if (usernameLama !== req.body.username) {
@@ -40,7 +40,7 @@ module.exports = {
                     [req.body.username, req.body.nama, sess.id_user],
                     (err, result) => {
                       if (err) console.log(err)
-                      let berhasil = "Profil berhasil diedit"
+                      var berhasil = "Profil berhasil diedit"
                       console.log(berhasil);
                       db.query(
                         'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error,profil) => {
@@ -50,7 +50,7 @@ module.exports = {
                     }
                   )
                 }else{
-                  let gagal = "Edit gagal! Username telah dipakai user lain"
+                  var gagal = "Edit gagal! Username telah dipakai user lain"
                   console.log(gagal);
                   db.query(
                     'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error,profil) => {
@@ -67,7 +67,7 @@ module.exports = {
               [req.body.username, req.body.nama, sess.id_user],
               (err, result) => {
                 if (err) console.log(err)
-                let berhasil = "Profil berhasil diedit"
+                var berhasil = "Profil berhasil diedit"
                 console.log(berhasil);
                 db.query(
                   'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error,profil) => {
@@ -82,8 +82,8 @@ module.exports = {
     }
     else if (req.body.submit=="foto") {
       if (req.files) {
-        let file = req.files.foto;
-        let filename = sess.id_user+".png";
+        var file = req.files.foto;
+        var filename = sess.id_user+".png";
         file.mv("public/assets/img/profil/"+filename,function(err){
           if(err)console.log(err)
           db.query(
@@ -91,7 +91,7 @@ module.exports = {
             [filename, sess.id_user],
             (err, result) => {
               if (err) console.log(err)
-              let berhasil = "Foto berhasil diedit"
+              var berhasil = "Foto berhasil diedit"
               console.log(berhasil);
               db.query(
                 'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error,profil) => {

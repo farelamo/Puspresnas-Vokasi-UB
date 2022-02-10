@@ -1,9 +1,9 @@
-let db = require('../config/database')
-let Db = require("../../database/models");
-let fs = require('fs');
-let Post = Db.artikel;
-let Op = Db.Sequelize.Op;
-let sess;
+var db = require('../config/database')
+var Db = require("../../database/models");
+var fs = require('fs');
+var Post = Db.artikel;
+var Op = Db.Sequelize.Op;
+var sess;
 
 module.exports = {
   index: (req, res) => {
@@ -17,8 +17,8 @@ module.exports = {
         (error, profil) => {
           if (error) console.log(error)
           else {
-            let judul = req.query.judul;
-            let condition = judul ? {
+            var judul = req.query.judul;
+            var condition = judul ? {
               judul: {
                 [Op.like]: `%${judul}%`
               }
@@ -50,11 +50,11 @@ module.exports = {
   crud: async (req, res) => {
     if (req.body.submit == "hapus") {
 
-      let id = req.body.id_artikel;
+      var id = req.body.id_artikel;
 
       Post.findByPk(id)
         .then((data) => {
-          let id = req.body.id_artikel;
+          var id = req.body.id_artikel;
 
           Post.destroy({
             where: {
@@ -64,11 +64,11 @@ module.exports = {
             if (result == 1) {
               console.log(data.foto)
               if (data.foto !== "") {
-                let filePath = "public/assets/img/artikel/" + data.foto;
+                var filePath = "public/assets/img/artikel/" + data.foto;
                 fs.unlinkSync(filePath);
                 console.log("Foto berhasil dihapus");
               }
-              let berhasil = "Artikel berhasil dihapus"
+              var berhasil = "Artikel berhasil dihapus"
               console.log(berhasil);
               sess = req.session;
               if (sess.id_user == undefined) {
@@ -80,8 +80,8 @@ module.exports = {
                   (error, profil) => {
                     if (error) console.log(error)
                     else {
-                      let judul = req.query.judul;
-                      let condition = judul ? {
+                      var judul = req.query.judul;
+                      var condition = judul ? {
                         judul: {
                           [Op.like]: `%${judul}%`
                         }
@@ -130,12 +130,12 @@ module.exports = {
       //     db.query(
       //       "DELETE FROM `artikel` WHERE `id` = ?",[req.body.id_artikel],(err, result) => {
       //         if (artikel[0].foto!==""){
-      //           let filePath = "public/assets/img/artikel/"+artikel[0].foto;
+      //           var filePath = "public/assets/img/artikel/"+artikel[0].foto;
       //           fs.unlinkSync(filePath);
       //           console.log("Foto berhasil dihapus");
       //         }
       //         if (err) console.log(err)
-      //         let berhasil = "Artikel berhasil dihapus"
+      //         var berhasil = "Artikel berhasil dihapus"
       //         console.log(berhasil);
       //         db.query(
       //           'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
@@ -153,12 +153,12 @@ module.exports = {
 
     } else if (req.body.submit == "foto") {
       if (req.files) {
-        let file = req.files.foto;
-        let filename = req.body.id_artikel + ".png";
+        var file = req.files.foto;
+        var filename = req.body.id_artikel + ".png";
         file.mv("public/assets/img/artikel/" + filename, function (err) {
           if (err) console.log(err)
 
-          let id = req.body.id_artikel;
+          var id = req.body.id_artikel;
 
           Post.update({
             foto: filename
@@ -170,7 +170,7 @@ module.exports = {
             console.log(filename)
             console.log(result)
             if (result == 1 || result == 0) {
-              let berhasil = "Foto artikel berhasil diedit"
+              var berhasil = "Foto artikel berhasil diedit"
               console.log(berhasil);
 
               sess = req.session;
@@ -183,8 +183,8 @@ module.exports = {
                   (error, profil) => {
                     if (error) console.log(error)
                     else {
-                      let judul = req.query.judul;
-                      let condition = judul ? {
+                      var judul = req.query.judul;
+                      var condition = judul ? {
                         judul: {
                           [Op.like]: `%${judul}%`
                         }
@@ -228,7 +228,7 @@ module.exports = {
           //   [filename, req.body.id_artikel],
           //   (err, result) => {
           //     if (err) console.log(err)
-          //     let berhasil = "Foto artikel berhasil diedit"
+          //     var berhasil = "Foto artikel berhasil diedit"
           //     console.log(berhasil);
           //     db.query(
           //       'SELECT * FROM `user` WHERE `id`=(?)', [sess.id_user], (error, profil) => {

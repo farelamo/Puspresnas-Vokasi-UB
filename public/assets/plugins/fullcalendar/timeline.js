@@ -1,5 +1,5 @@
 $((function () {
-    let a = new Date,
+    var a = new Date,
         r = (a.getDate(), a.getMonth(), a.getFullYear(), FullCalendar.Calendar);
     FullCalendar.Draggable, document.getElementById("external-events"), document.getElementById("drop-remove"), new r(document.getElementById("calendar"), {
         headerToolbar: {

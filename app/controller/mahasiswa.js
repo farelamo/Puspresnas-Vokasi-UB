@@ -1,8 +1,8 @@
-let db = require('../config/database')
-let Db = require("../../database/models")
-let Post = Db.mahasiswa
-let Op = Db.Sequelize.Op
-let sess
+var db = require('../config/database')
+var Db = require("../../database/models")
+var Post = Db.mahasiswa
+var Op = Db.Sequelize.Op
+var sess
 
 module.exports = {
   index: (req, res) => {
@@ -51,8 +51,8 @@ module.exports = {
       )
     }else if (req.body.submit=="foto") {
       if (req.files) {
-        let file = req.files.foto;
-        let filename = req.body.id_mahasiswa+".png";
+        var file = req.files.foto;
+        var filename = req.body.id_mahasiswa+".png";
         file.mv("public/assets/img/mahasiswa/"+filename,function(err){
           if(err)console.log(err)
           db.query(
@@ -73,8 +73,8 @@ module.exports = {
   },
 
   findAll : (req, res) => {
-    let judul = req.query.judul;
-    let condition = judul ? { judul: { [Op.like]: `%${judul}%` } } : null;
+    var judul = req.query.judul;
+    var condition = judul ? { judul: { [Op.like]: `%${judul}%` } } : null;
 
     Post.findAll({ where: condition })
         .then((data) => {
@@ -88,7 +88,7 @@ module.exports = {
   },
 
   findOne : (req, res) => {
-    let id = req.params.id;
+    var id = req.params.id;
 
     Post.findByPk(id)
         .then((data) => {

@@ -1,10 +1,10 @@
-let db = require('../config/database')
-let Db = require('../../database/models')
-let CryptoJS = require("crypto-js");
-let bcrypt = require('bcrypt')
-let users = Db.user
-let fs = require('fs');
-let sess;
+var db = require('../config/database')
+var Db = require('../../database/models')
+var CryptoJS = require("crypto-js");
+var bcrypt = require('bcrypt')
+var users = Db.user
+var fs = require('fs');
+var sess;
 
 module.exports = {
   superadmin: (req, res, next) => {
@@ -47,7 +47,7 @@ module.exports = {
 
   crud: (req, res) => {
     if (req.body.submit == "tambah") {
-      let {nama,username,password, level} = req.body
+      var {nama,username,password, level} = req.body
       db.query('SELECT username FROM user WHERE username = ?',
       [username],
       async (error, result) => {
@@ -55,7 +55,7 @@ module.exports = {
           console.log(error)
       }else { 
         if (result.length == 0) {
-          let hashedPassword = await bcrypt.hash(password, 8)
+          var hashedPassword = await bcrypt.hash(password, 8)
           console.log(hashedPassword)
           db.query('INSERT INTO user SET ?', 
             {
@@ -68,7 +68,7 @@ module.exports = {
             },
           (err, result) => {
           if (err) console.log(err)
-            let berhasil = "User berhasil ditambahkan"
+            var berhasil = "User berhasil ditambahkan"
             console.log(berhasil);
             db.query(
               'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
@@ -81,7 +81,7 @@ module.exports = {
             )
           })
         }else{
-          let gagal = "Username "+[req.body.username]+" telah dipakai user lain"
+          var gagal = "Username "+[req.body.username]+" telah dipakai user lain"
           console.log(gagal);
           db.query(
             'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
@@ -101,7 +101,7 @@ module.exports = {
         [req.body.id_user],
         (err, user) => {
           if (err) console.log(err)
-          let usernameLama = user[0].username;
+          var usernameLama = user[0].username;
           console.log("username lama = "+usernameLama);
           console.log("username baru = "+req.body.username);
           if (usernameLama !== req.body.username) {
@@ -112,14 +112,14 @@ module.exports = {
                 if (err) console.log(err)
                 console.log("duplikat username baru = "+user2.length);
                 if (user2.length==0) {
-                  if (req.body.password=="") {let password = user[0].password;}
-                  else {let password = CryptoJS.MD5(req.body.password).toString();}
+                  if (req.body.password=="") {var password = user[0].password;}
+                  else {var password = CryptoJS.MD5(req.body.password).toString();}
                   db.query(
                     "UPDATE `user` SET `username`=?,`nama`=?,`password`=?,`level`=? WHERE `id` = ?",
                     [req.body.username, req.body.nama, password, req.body.level, req.body.id_user],
                     (err, result) => {
                       if (err) console.log(err)
-                      let berhasil = "User berhasil diedit"
+                      var berhasil = "User berhasil diedit"
                       console.log(berhasil);
                       db.query(
                         'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
@@ -133,7 +133,7 @@ module.exports = {
                     }
                   )
                 }else{
-                  let gagal = "Username "+[req.body.username]+" telah dipakai user lain"
+                  var gagal = "Username "+[req.body.username]+" telah dipakai user lain"
                   console.log(gagal);
                   db.query(
                     'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
@@ -149,14 +149,14 @@ module.exports = {
             )
           }
           else{
-            if (req.body.password=="") {let password = user[0].password;}
-            else {let password = CryptoJS.MD5(req.body.password).toString();}
+            if (req.body.password=="") {var password = user[0].password;}
+            else {var password = CryptoJS.MD5(req.body.password).toString();}
             db.query(
               "UPDATE `user` SET `username`=?,`nama`=?,`password`=?,`level`=? WHERE `id` = ?",
               [req.body.username, req.body.nama, password, req.body.level, req.body.id_user],
               (err, result) => {
                 if (err) console.log(err)
-                let berhasil = "User berhasil diedit"
+                var berhasil = "User berhasil diedit"
                 console.log(berhasil);
                 db.query(
                   'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
@@ -175,8 +175,8 @@ module.exports = {
     }
     else if (req.body.submit == "foto") {
       if (req.files) {
-        let file = req.files.foto;
-        let filename = req.body.id_user+".png";
+        var file = req.files.foto;
+        var filename = req.body.id_user+".png";
         file.mv("public/assets/img/profil/"+filename,function(err){
           if(err)console.log(err)
           db.query(
@@ -184,7 +184,7 @@ module.exports = {
             [filename, req.body.id_user],
             (err, result) => {
               if (err) console.log(err)
-              let berhasil = "Foto berhasil diedit"
+              var berhasil = "Foto berhasil diedit"
               console.log(berhasil);
               db.query(
                 'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {
@@ -206,7 +206,7 @@ module.exports = {
         [req.body.id_user],
         (err, user) => {
           if (user[0].foto!==""){
-            let filePath = "public/assets/img/profil/"+user[0].foto;
+            var filePath = "public/assets/img/profil/"+user[0].foto;
             fs.unlinkSync(filePath);
             console.log("foto berhasil dihapus");
           }
@@ -215,7 +215,7 @@ module.exports = {
             [req.body.id_user],
             (error,result) => {
               if(error) { console.log(error)}
-              let berhasil = "User berhasil dihapus"
+              var berhasil = "User berhasil dihapus"
               console.log(berhasil);
               db.query(
                 'SELECT * FROM `user` WHERE `id`=(?)',[sess.id_user],(error, profil) => {

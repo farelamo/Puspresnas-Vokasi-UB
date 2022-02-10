@@ -26,10 +26,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% let no=1; bidang.forEach((data)=> {
-                                        if (data.gambar!==""){ let gambar =
+                                    <% var no=1; bidang.forEach((data)=> {
+                                        if (data.gambar!==""){ var gambar =
                                         data.gambar;}
-                                        else {let gambar = "default.png";}
+                                        else {var gambar = "default.png";}
                                         %>
                                         <tr>
                                             <td class="text-center">
@@ -160,13 +160,13 @@
                                 <script type="text/javascript">
 
   function editLomba(idLomba) {
-    let dataLomba = (document.getElementById(idLomba).textContent).split(",");
+    var dataLomba = (document.getElementById(idLomba).textContent).split(",");
     document.getElementById("eId").value = idLomba;
   }
 
   function hapusBidang(idJenis) {
     console.log(idJenis)
-    let dataLomba = (document.getElementById(idJenis).textContent).split(",");
+    var dataLomba = (document.getElementById(idJenis).textContent).split(",");
     document.getElementById("dId").value = idJenis;
     document.getElementById("dHapus").textContent = 'Apakah anda yakin ingin menghapus " ' + dataLomba[0] + '" ?';
   }

@@ -38,11 +38,11 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <% let no=1;
+                                                <% var no=1;
                                                     jenis.forEach((data)=> {
-                                                    if (data.gambar!==""){ let
+                                                    if (data.gambar!==""){ var
                                                     gambar = data.gambar;}
-                                                    else {let gambar =
+                                                    else {var gambar =
                                                     "default.png";}
                                                     %>
                                                     <tr>
@@ -277,13 +277,13 @@
 
   function gambarlomba(idGambar){
     console.log(idGambar)
-    let dataGambar = (document.getElementById(idGambar).textContent).split(",");
+    var dataGambar = (document.getElementById(idGambar).textContent).split(",");
     document.getElementById("gId").value = idGambar;
   }
 
   function hapusLomba(idJenis) {
     console.log(idJenis)
-    let dataLomba = (document.getElementById(idJenis).textContent).split(",");
+    var dataLomba = (document.getElementById(idJenis).textContent).split(",");
     document.getElementById("dId").value = idJenis;
     document.getElementById("dHapus").textContent = 'Apakah anda yakin ingin menghapus " ' + dataLomba[0] + '" ?';
   }

@@ -1,6 +1,6 @@
-let mysql = require('mysql2')
+var mysql = require('mysql2')
 
-let db = mysql.createConnection({
+var db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',

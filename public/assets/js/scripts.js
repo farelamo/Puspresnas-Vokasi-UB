@@ -26,7 +26,7 @@ if (window.Dropzone) {
 
 // Basic confirm box
 $('[data-confirm]').each(function () {
-  let me = $(this),
+  var me = $(this),
     me_data = me.data('confirm');
 
   me_data = me_data.split("|");
@@ -54,14 +54,14 @@ $('[data-confirm]').each(function () {
 
 // Global
 $(function () {
-  let sidebar_nicescroll_opts = {
+  var sidebar_nicescroll_opts = {
       cursoropacitymin: 0,
       cursoropacitymax: .8,
       zindex: 892
     },
     now_layout_class = null;
 
-  let sidebar_sticky = function () {
+  var sidebar_sticky = function () {
     if ($("body").hasClass('layout-2')) {
       $("body.layout-2 #sidebar-wrapper").stick_in_parent({
         parent: $('body')
@@ -73,9 +73,9 @@ $(function () {
   }
   sidebar_sticky();
 
-  let sidebar_nicescroll;
-  let update_sidebar_nicescroll = function () {
-    let a = setInterval(function () {
+  var sidebar_nicescroll;
+  var update_sidebar_nicescroll = function () {
+    var a = setInterval(function () {
       if (sidebar_nicescroll != null)
         sidebar_nicescroll.resize();
     }, 10);
@@ -85,14 +85,14 @@ $(function () {
     }, 600);
   }
 
-  let sidebar_dropdown = function () {
+  var sidebar_dropdown = function () {
     if ($(".main-sidebar").length) {
       $(".main-sidebar").niceScroll(sidebar_nicescroll_opts);
       sidebar_nicescroll = $(".main-sidebar").getNiceScroll();
 
       $(".main-sidebar .sidebar-menu li a.has-dropdown").off('click').on('click', function () {
-        let me = $(this);
-        let active = false;
+        var me = $(this);
+        var active = false;
         if (me.parent().hasClass("active")) {
           active = true;
         }
@@ -148,8 +148,8 @@ $(function () {
     $(".nav-collapse .navbar-nav").removeClass('show');
   });
 
-  let toggle_sidebar_mini = function (mini) {
-    let body = $('body');
+  var toggle_sidebar_mini = function (mini) {
+    var body = $('body');
 
     if (!mini) {
       body.removeClass('sidebar-mini');
@@ -170,7 +170,7 @@ $(function () {
       sidebar_nicescroll.remove();
       sidebar_nicescroll = null;
       $(".main-sidebar .sidebar-menu > li").each(function () {
-        let me = $(this);
+        var me = $(this);
 
         if (me.find('> .dropdown-menu').length) {
           me.find('> .dropdown-menu').hide();
@@ -187,7 +187,7 @@ $(function () {
   }
 
   $("[data-toggle='sidebar']").click(function () {
-    let body = $("body"),
+    var body = $("body"),
       w = $(window);
 
     if (w.outerWidth() <= 1024) {
@@ -213,8 +213,8 @@ $(function () {
     return false;
   });
 
-  let toggleLayout = function () {
-    let w = $(window),
+  var toggleLayout = function () {
+    var w = $(window),
       layout_class = $('body').attr('class') || '',
       layout_classes = (layout_class.trim().length > 0 ? layout_class.split(' ') : '');
 
@@ -248,14 +248,14 @@ $(function () {
       update_sidebar_nicescroll();
 
       if (now_layout_class == 'layout-3') {
-        let nav_second_classes = $(".navbar-secondary").attr('class'),
+        var nav_second_classes = $(".navbar-secondary").attr('class'),
           nav_second = $(".navbar-secondary");
 
         nav_second.attr('data-nav-classes', nav_second_classes);
         nav_second.removeAttr('class');
         nav_second.addClass('main-sidebar');
 
-        let main_sidebar = $(".main-sidebar");
+        var main_sidebar = $(".main-sidebar");
         main_sidebar.find('.container').addClass('sidebar-wrapper').removeClass('container');
         main_sidebar.find('.navbar-nav').addClass('sidebar-menu').removeClass('navbar-nav');
         main_sidebar.find('.sidebar-menu .nav-item.dropdown.show a').click();
@@ -280,7 +280,7 @@ $(function () {
       if (now_layout_class)
         $("body").addClass(now_layout_class);
 
-      let nav_second_classes = $(".main-sidebar").attr('data-nav-classes'),
+      var nav_second_classes = $(".main-sidebar").attr('data-nav-classes'),
         nav_second = $(".main-sidebar");
 
       if (now_layout_class == 'layout-3' && nav_second.hasClass('main-sidebar')) {
@@ -289,7 +289,7 @@ $(function () {
         nav_second.removeAttr('class');
         nav_second.addClass(nav_second_classes);
 
-        let main_sidebar = $(".navbar-secondary");
+        var main_sidebar = $(".navbar-secondary");
         main_sidebar.find('.sidebar-wrapper').addClass('container').removeClass('sidebar-wrapper');
         main_sidebar.find('.sidebar-menu').addClass('navbar-nav').removeClass('sidebar-menu');
         main_sidebar.find('.dropdown-menu').hide();
@@ -310,7 +310,7 @@ $(function () {
   $(window).resize(toggleLayout);
 
   $("[data-toggle='search']").click(function () {
-    let body = $("body");
+    var body = $("body");
 
     if (body.hasClass('search-gone')) {
       body.addClass('search-gone');
@@ -386,7 +386,7 @@ $(function () {
 
   if (window.CodeMirror) {
     $(".codeeditor").each(function () {
-      let editor = CodeMirror.fromTextArea(this, {
+      var editor = CodeMirror.fromTextArea(this, {
         lineNumbers: true,
         theme: "duotone-dark",
         mode: 'javascript',
@@ -398,7 +398,7 @@ $(function () {
 
   // Follow function
   $('.follow-btn, .following-btn').each(function () {
-    let me = $(this),
+    var me = $(this),
       follow_text = 'Follow',
       unfollow_text = 'Following';
 
@@ -424,7 +424,7 @@ $(function () {
 
   // Dismiss function
   $("[data-dismiss]").each(function () {
-    let me = $(this),
+    var me = $(this),
       target = me.data('dismiss');
 
     me.click(function () {
@@ -437,7 +437,7 @@ $(function () {
 
   // Collapsable
   $("[data-collapse]").each(function () {
-    let me = $(this),
+    var me = $(this),
       target = me.data('collapse');
 
     me.click(function () {
@@ -456,7 +456,7 @@ $(function () {
 
   // Gallery
   $(".gallery .gallery-item").each(function () {
-    let me = $(this);
+    var me = $(this);
 
     me.attr('href', me.data('image'));
     me.attr('title', me.data('title'));
@@ -481,7 +481,7 @@ $(function () {
 
   // Background
   $("[data-background]").each(function () {
-    let me = $(this);
+    var me = $(this);
     me.css({
       backgroundImage: 'url(' + me.data('background') + ')'
     });
@@ -489,11 +489,11 @@ $(function () {
 
   // Custom Tab
   $("[data-tab]").each(function () {
-    let me = $(this);
+    var me = $(this);
 
     me.click(function () {
       if (!me.hasClass('active')) {
-        let tab_group = $('[data-tab-group="' + me.data('tab') + '"]'),
+        var tab_group = $('[data-tab-group="' + me.data('tab') + '"]'),
           tab_group_active = $('[data-tab-group="' + me.data('tab') + '"].active'),
           target = $(me.attr('href')),
           links = $('[data-tab="' + me.data('tab') + '"]');
@@ -509,7 +509,7 @@ $(function () {
 
   // Bootstrap 4 Validation
   $(".needs-validation").submit(function () {
-    let form = $(this);
+    var form = $(this);
     if (form[0].checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
@@ -519,7 +519,7 @@ $(function () {
 
   // alert dismissible
   $(".alert-dismissible").each(function () {
-    let me = $(this);
+    var me = $(this);
 
     me.find('.close').click(function () {
       me.alert('close');
@@ -539,7 +539,7 @@ $(function () {
 
   // Slide Toggle
   $('[data-toggle-slide]').click(function () {
-    let target = $(this).data('toggle-slide');
+    var target = $(this).data('toggle-slide');
 
     $(target).slideToggle();
     return false;

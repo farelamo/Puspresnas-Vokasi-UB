@@ -1,6 +1,6 @@
-let express = require('express')
-let report = express.Router()
-let controller = require('../app/controller/report')
+var express = require('express')
+var report = express.Router()
+var controller = require('../app/controller/report')
 
 report.route('/report')
     .get(controller.index)

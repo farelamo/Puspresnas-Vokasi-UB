@@ -1,4 +1,4 @@
-let Sequelize = require("sequelize");
+var Sequelize = require("sequelize");
 
 /**
  * Actions summary:
@@ -16,14 +16,14 @@ let Sequelize = require("sequelize");
  *
  */
 
-let info = {
+var info = {
   revision: 1,
   name: "Puspresnas",
   created: "2021-08-13T02:06:35.415Z",
   comment: "",
 };
 
-let migrationCommands = (transaction) => [
+var migrationCommands = (transaction) => [
   {
     fn: "createTable",
     params: [
@@ -308,7 +308,7 @@ let migrationCommands = (transaction) => [
   },
 ];
 
-let rollbackCommands = (transaction) => [
+var rollbackCommands = (transaction) => [
   {
     fn: "dropTable",
     params: ["artikel", { transaction }],
@@ -351,17 +351,17 @@ let rollbackCommands = (transaction) => [
   },
 ];
 
-let pos = 0;
-let useTransaction = true;
+var pos = 0;
+var useTransaction = true;
 
-let execute = (queryInterface, sequelize, _commands) => {
-  let index = pos;
-  let run = (transaction) => {
-    let commands = _commands(transaction);
+var execute = (queryInterface, sequelize, _commands) => {
+  var index = pos;
+  var run = (transaction) => {
+    var commands = _commands(transaction);
     return new Promise((resolve, reject) => {
-      let next = () => {
+      var next = () => {
         if (index < commands.length) {
-          let command = commands[index];
+          var command = commands[index];
           console.log(`[#${index}] execute: ${command.fn}`);
           index++;
           queryInterface[command.fn](...command.params).then(next, reject);

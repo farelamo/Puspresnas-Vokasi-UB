@@ -1,6 +1,6 @@
-let db = require('../config/database')
-let fs = require('fs');
-let sess;
+var db = require('../config/database')
+var fs = require('fs');
+var sess;
 
 module.exports = {
   index: (req, res) => {
@@ -44,13 +44,13 @@ module.exports = {
           if (error) console.log(error)
           else {
             if (result[0].gambar !== ""){
-              let filePath = "public/assets/img/bidangLomba/"+result[0].gambar;
+              var filePath = "public/assets/img/bidangLomba/"+result[0].gambar;
               fs.unlinkSync(filePath);
               console.log("gambar berhasil dihapus");
             }
 
             if (result[0].file !== ""){
-              let filePath = "public/assets/bidangLomba/"+result[0].file;
+              var filePath = "public/assets/bidangLomba/"+result[0].file;
               fs.unlinkSync(filePath);
               console.log("file berhasil dihapus");
             }

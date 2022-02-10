@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    let user = sequelize.define("user", {
+    var user = sequelize.define("user", {
         nama: {
             type: Sequelize.STRING
         },

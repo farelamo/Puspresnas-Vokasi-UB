@@ -22,7 +22,7 @@
                     </thead>
                     <tbody>
                         <%
-                            let no= 1;
+                            var no= 1;
                             isi.forEach((data)=> {
                             %>
                             <tr>
@@ -170,12 +170,12 @@
 
                     <script type="text/javascript">
   function editKategori(idkategori){
-    let dataKategori = (document.getElementById(idkategori).textContent).split(",");
+    var dataKategori = (document.getElementById(idkategori).textContent).split(",");
     document.getElementById("eId").value = idkategori;
     document.getElementById("eKategori").value = dataKategori[0];
   }
   function hapusKategori(idkategori){
-    let dataKategori = (document.getElementById(idkategori).textContent).split(",");
+    var dataKategori = (document.getElementById(idkategori).textContent).split(",");
     document.getElementById("dId").value = idkategori;
     document.getElementById("dhapus").textContent = 'Apakah anda yakin ingin menghapus "'+dataKategori[0]+'"?';
   }

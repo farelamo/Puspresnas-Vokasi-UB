@@ -1,11 +1,11 @@
 "use strict";
 
 $("#setting-form").submit(function() {
-  let save_button = $(this).find('#save-btn'),
+  var save_button = $(this).find('#save-btn'),
     output_status = $("#output-status"),
     card = $('#settings-card');
 
-  let card_progress = $.cardProgress(card, {
+  var card_progress = $.cardProgress(card, {
     spinner: false
   });
   save_button.addClass('btn-progress');

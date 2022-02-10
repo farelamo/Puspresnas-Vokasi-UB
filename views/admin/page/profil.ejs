@@ -1,7 +1,7 @@
 <%
-    let nama= profil[0].nama;
-    if (profil[0].foto!=="" ){ let foto= profil[0].foto;}
-    else {let foto="default.png" ;}
+    var nama= profil[0].nama;
+    if (profil[0].foto!=="" ){ var foto= profil[0].foto;}
+    else {var foto="default.png" ;}
     %>
 
     <section class="section">
@@ -159,7 +159,7 @@
 
                             <script type="text/javascript">
   function setHeight(){
-    let width = document.getElementById('fotoprofil').clientWidth;
+    var width = document.getElementById('fotoprofil').clientWidth;
     document.getElementById('fotoprofil').style.height = width+"px";
   }  
   setHeight();
