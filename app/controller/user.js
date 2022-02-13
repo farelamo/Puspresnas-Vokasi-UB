@@ -7,7 +7,7 @@ var fs = require('fs');
 var sess;
 
 module.exports = {
-  superadmin: (req, res, next) => {
+  superadmin: async (req, res, next) => {
     sess = req.session
     if(sess.role == 'Superadmin'){
       next()
