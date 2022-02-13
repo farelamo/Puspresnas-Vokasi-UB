@@ -17,10 +17,9 @@ module.exports = {
       res.redirect('back')
       return 
     }
-    
   },
 
-  index: (req, res) => {
+  index: async (req, res) => {
     sess = req.session;
     if (sess.id_user == undefined) {
       res.redirect('login');
@@ -45,7 +44,7 @@ module.exports = {
     }
   },
 
-  crud: (req, res) => {
+  crud: async (req, res) => {
     if (req.body.submit == "tambah") {
       var {nama,username,password, level} = req.body
       db.query('SELECT username FROM user WHERE username = ?',

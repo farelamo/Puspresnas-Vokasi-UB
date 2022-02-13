@@ -25,7 +25,7 @@ app.use(cookieParser('secret'))
 app.use(session({
     secret: 'secret',
     saveUninitialized: true,
-    resave: true
+    resave: false
 }))
 app.use(toastr());
 app.use(flash())
