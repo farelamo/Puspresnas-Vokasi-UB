@@ -3,6 +3,7 @@ var Db = require('../../database/models')
 var CryptoJS = require("crypto-js");
 var bcrypt = require('bcrypt')
 var users = Db.user
+var Op = Db.Sequelize.Op
 var fs = require('fs');
 var sess;
 
@@ -19,7 +20,32 @@ module.exports = {
     }
   },
 
-  index: async (req, res) => {
+  // index: async (req, res) => {
+  //   sess = req.session;
+  //   if (sess.id_user == undefined) {
+  //     res.redirect('login');
+  //   } else {
+  //     db.query(
+  //       'SELECT * FROM `user` WHERE `id`=(?)',
+  //       [sess.id_user],
+  //       (error, profil) => {
+  //         db.query(
+  //           'SELECT * FROM `user`',
+  //           [sess.id_user],
+  //           (error, user) => {
+  //             res.render('../views/admin/index.ejs', {
+  //               profil,
+  //               user,
+  //               page: 'user'
+  //             });
+  //           }
+  //         );
+  //       }
+  //     );
+  //   }
+  // },
+
+   index: async (req, res) => {
     sess = req.session;
     if (sess.id_user == undefined) {
       res.redirect('login');
@@ -28,19 +54,12 @@ module.exports = {
         'SELECT * FROM `user` WHERE `id`=(?)',
         [sess.id_user],
         (error, profil) => {
-          db.query(
-            'SELECT * FROM `user`',
-            [sess.id_user],
-            (error, user) => {
-              res.render('../views/admin/index.ejs', {
-                profil,
-                user,
-                page: 'user'
-              });
+            users.findAll({where: {[Op.not]: {username: sess.username}}}) //user
+              .then(user => {
+                res.render('../views/admin/index.ejs', {profil,user,page: 'user'});
             }
-          );
-        }
-      );
+        );
+      })
     }
   },
 

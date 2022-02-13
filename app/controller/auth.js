@@ -23,6 +23,7 @@ module.exports = {
               sess = req.session
               sess.id_user = result.id
               sess.role = result.level
+              sess.username = result.username
               res.redirect('/dashboard')
             }else {
               console.log('akun belum di ACC !!')
